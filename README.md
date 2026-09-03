@@ -1,4 +1,4 @@
-# cdp-node-backend-no-db-template
+# grants-config-water-management
 
 Core delivery platform Node.js Backend Template.
 
@@ -35,7 +35,7 @@ easier to use the Node Version Manager [nvm](https://github.com/creationix/nvm)
 To use the correct version of Node.js for this application, via nvm:
 
 ```bash
-cd cdp-node-backend-no-db-template
+cd grants-config-water-management
 nvm use
 ```
 
@@ -138,13 +138,13 @@ No additional proxy configuration is required in the service.
 Build:
 
 ```bash
-docker build --no-cache --tag cdp-node-backend-no-db-template .
+docker build --no-cache --tag grants-config-water-management .
 ```
 
 Run:
 
 ```bash
-docker run -e PORT=3001 -p 3001:3001 cdp-node-backend-no-db-template
+docker run -e PORT=3001 -p 3001:3001 grants-config-water-management
 ```
 
 ### Docker Compose
