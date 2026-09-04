@@ -21,8 +21,39 @@
     "server:watch": "node --watch --inspect=0.0.0.0 --env-file-if-exists=.env ./src",
     "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module",
     "start": "NODE_ENV=production node . --env-file-if-exists=.env",
+    "github:release": "npx cdp-github-release grants-config-water-management",
+    "version:changed": "changeset version",
+    "version": "changeset",
     "test": "TZ=UTC vitest run --coverage",
     "test:watch": "TZ=UTC vitest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DEFRA/grants-config-water-management.git"
+  },
+  "release-it": {
+    "npm": {
+      "publish": false
+    },
+    "github": {
+      "release": true,
+      "releaseName": "${version}",
+      "releaseNotes": "echo ''"
+    },
+    "git": {
+      "commitMessage": "Tagged grants-config-water-management ${version}",
+      "tagName": "${version}",
+      "requireCleanWorkingDir": false,
+      "commitArgs": [
+        "--no-verify"
+      ]
+    }
+  },
+  "bin": {
+    "cdp-github-release": "ci/release-it.sh"
   },
   "imports": {
     "#/*": "./src/*"
@@ -32,6 +63,7 @@
   "dependencies": {
     "@defra/cdp-auditing": "0.6.1",
     "@defra/cdp-metrics": "0.6.0",
+    "@defra/grants-config-utils": "1.3.2",
     "@defra/hapi-secure-context": "0.4.0",
     "@defra/hapi-tracing": "1.30.0",
     "@elastic/ecs-pino-format": "1.5.0",
@@ -46,6 +78,8 @@
     "pino": "10.3.1"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "1.0.0",
+    "@changesets/cli": "3.0.1",
     "@vitest/coverage-v8": "4.1.11",
     "eslint": "9.39.5",
     "husky": "9.1.7",
