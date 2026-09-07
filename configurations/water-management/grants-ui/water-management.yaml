@@ -212,13 +212,11 @@ pages:
   # ==========================================
   # Pre-task-list pages (no section)
   # ==========================================
-
   # Check details page
   - title: Confirm your details
     path: /check-details
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
-
   # Task list page
   - title: Apply for a water management grant
     path: /tasks
@@ -244,6 +242,24 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Crops growing
+  # 1.1. EXIT crops-growing: when 'Something else' is selected
+  - title: You cannot apply for a grant from this scheme
+    id: eb9b88ce-1c08-4461-9698-1cbbc794c159
+    path: /exit-crops-growing-somethingelse
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TerminalPageController
+    condition: 12e0a793-1929-4931-ad20-e5eb76d1d95c
+    components:
+      - name: cropsGrowingSomethingElseInfo
+        id: 6503008c-d3e0-4236-b0a6-09d409c2a818
+        type: Html
+        content: >
+          <p class="govuk-body">This grant is only available to:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>arable and horticultural farming businesses that supply the food industry</li>
+            <li>nurseries growing ornamentals</li>
+            <li>forestry nurseries</li>
+          </ul>
   # 2. Reservoir location
   - title: Confirm where the reservoir will be located
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
@@ -414,15 +430,17 @@ lists:
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
 
 conditions:
-  # Land not registered (landRegistered = false) -> exit page
-  - id: f64f8509-4b15-48a1-b301-5463f23e8b42
-    displayName: landNotRegistered
+  # Crops growing is something else -> exit page
+  - id: 12e0a793-1929-4931-ad20-e5eb76d1d95c
+    displayName: cropsGrowingSomethingElse
     items:
-      - id: d37df5c8-e5c2-4d21-a133-c4fcd967db29
-        componentId: eac135f5-78b1-4179-ab7d-d122befa6bd8
+      - id: ff699da9-9489-46dc-bf8e-6e41076f320f
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
         operator: is
-        type: BooleanValue
-        value: false
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: f2ffdd8a-da39-441a-8be8-f30accdd3397
 
 startPage: /check-details
 schema: 2
