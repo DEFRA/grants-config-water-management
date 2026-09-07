@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.3
+
+### Patch Changes
+
+- 99632a3: update grants-ui config, conditions fix
+
 ## 0.2.2
 
 ### Patch Changes
