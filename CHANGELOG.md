@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.1
+
+### Patch Changes
+
+- a43d55e: grants-ui config, add allow list
+
 ## 0.2.0
 
 ### Minor Changes
