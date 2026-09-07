@@ -228,7 +228,6 @@ pages:
   # ==========================================
   # Section 1: Check before you start
   # ==========================================
-
   # 1. Crops growing
   - title: What crops are you growing?
     id: 800a5b0f-bd41-4b0b-9453-75eca51f43f3
@@ -245,7 +244,6 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Crops growing
-
   # 2. Reservoir location
   - title: Confirm where the reservoir will be located
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
@@ -268,7 +266,6 @@ pages:
         shortDescription: Business address
         id: 481d56be-e9fc-4b2a-89d2-06c5bf93e633
         schema: {}
-
   # 3. Work started yet
   - title: Have you already started work on the project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
@@ -289,82 +286,90 @@ pages:
   # ==========================================
   # Section 2: Project details
   # ==========================================
-
-  # 1. Land registered
-  - title: Is all the land in your application registered with the Rural Payments service?
-    id: 5bfc85ce-58b6-471a-b748-65847aa1e5f6
-    path: /eligibility-land-registered
+  # 1. How much water
+  - title: How much water will your reservoir hold when full, in meters cubed (m3)?
+    id: a5fd52b7-0dc1-4bce-bc5f-a7598f62cd91
+    path: /how-much-water
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     components:
-      - name: landRegisteredWithRpa
-        id: b8599bdd-1967-4c3b-89af-41903eced8af
-        type: YesNoField
-        title: Is all the land in your application registered with the Rural Payments service?
+      - name: howMuchWater
+        id: 26208f72-951c-4944-869c-2bdd60401433
+        title: How much water will your reservoir hold when full, in meters cubed (m3)?
+        type: NumberField
         options:
           required: true
-          classes: govuk-radios
-        shortDescription: All land registered
+          classes: govuk-!-width-one-third
+          suffix: m3
+          autocomplete: off
+          customValidationMessages:
+            any.required: Enter value in meters cubed (m3)
+            number.max: Enter a value less than one million meters cubed (m3)
+            number.min: Enter a value of one meter cubed (m3) or more
+        schema:
+          min: 1
+          max: 999999
+          precision: 0
+        shortDescription: How much water
 
   # ==========================================
   # Section 3: Costs and timescales
   # ==========================================
-
-  # 1. Land registered
-  - title: Is all the land in your application registered with the Rural Payments service?
-    id: 2053732e-c054-4af9-bc65-2a876a2e7561
-    path: /eligibility-land-registered
+  # 1. Work items needed
+  - title: What eligibility items and work does your project need?
+    id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
+    path: /work-items-needed
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
-      - name: landRegisteredWithRpa
-        id: b8599bdd-1967-4c3b-89af-41903eced8af
-        type: YesNoField
-        title: Is all the land in your application registered with the Rural Payments service?
+      - name: workItemsNeeded
+        id: 7af61365-6933-40c1-bdd2-8dce5960a8eb
+        title: Select all that apply
+        hint: The reference amounts shown next to each item or work are the maximum amounts RPA will fund.
+        type: CheckboxesField
+        list: 8c0a3d2c-9572-4512-9226-7800ff471010
         options:
           required: true
           classes: govuk-radios
-        shortDescription: All land registered
+        shortDescription: Work items needed
 
   # ==========================================
   # Section 4: Check your answers
   # ==========================================
-
-  # 1. Land registered
-  - title: Is all the land in your application registered with the Rural Payments service?
-    id: 7f7f07a3-9e40-4a96-b06b-5ddcca66fa13
-    path: /eligibility-land-registered
+  # 1. Check answers
+  - title: Check your answers
+    id: d489e351-3873-4f06-9f7c-88984f56088c
+    path: /check-answers
     section: 732a6b24-f219-4016-b322-5694a7add213
     controller: TaskPageController
     components:
-      - name: landRegisteredWithRpa
-        id: b8599bdd-1967-4c3b-89af-41903eced8af
+      - name: yourAnswers
+        id: a317b71c-79af-4f2a-bf72-a44e3123e7d8
+        title: Your answers
         type: YesNoField
-        title: Is all the land in your application registered with the Rural Payments service?
         options:
           required: true
           classes: govuk-radios
-        shortDescription: All land registered
+        shortDescription: Your answers
 
   # ==========================================
   # Section 5: Submit your application
   # ==========================================
-
-  # 1. Land registered
-  - title: Is all the land in your application registered with the Rural Payments service?
-    id: f68ee46f-ce7f-4939-9a3a-f5b7f3a37e68
-    path: /eligibility-land-registered
+  # 1. Submit application
+  - title: Submit your application
+    id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
+    path: /submit-application
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: TaskPageController
     components:
-      - name: landRegisteredWithRpa
-        id: b8599bdd-1967-4c3b-89af-41903eced8af
+      - name: submitApplication
+        id: db8c4eb0-220e-47ef-8310-3023f2600b30
         type: YesNoField
-        title: Is all the land in your application registered with the Rural Payments service?
+        title: Submit application
         options:
           required: true
           classes: govuk-radios
-        shortDescription: All land registered
+        shortDescription: Submit application
 
   # ==========================================
   # Landing page for return to customer
@@ -399,6 +404,14 @@ lists:
       - text: No, we have not done any work on this project yet
         value: NO_WORK_YET
         id: 7407e193-c144-49e9-a1c6-016d5ccb56bd
+  - title: Work items needed list
+    id: 8c0a3d2c-9572-4512-9226-7800ff471010
+    name: workItemsNeededList
+    type: string
+    items:
+      - text: Construction and reservoir walls
+        value: CONSTRUCTION_AND_RESERVOIR_WALLS
+        id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
 
 conditions:
   # Land not registered (landRegistered = false) -> exit page
