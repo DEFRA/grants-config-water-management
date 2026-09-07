@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.2
+
+### Patch Changes
+
+- b122732: update grants-ui config, duplicate ids fix
+
 ## 0.2.1
 
 ### Patch Changes
