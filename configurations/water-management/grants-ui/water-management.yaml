@@ -280,6 +280,7 @@ pages:
         type: TextField
         options:
           required: true
+          classes: govuk-!-width-one-third
         shortDescription: Reservoir postcode
         id: 9ccd42b8-54e0-4855-8d78-00f87a0d755f
   # 3. Work started yet
@@ -342,7 +343,7 @@ pages:
     components:
       - name: scoreResults
         id: b9628a02-e028-4892-b262-e21b33bd3461
-        title: Score results
+        title: Score results (should be hidden and populated with AVERAGE)
         type: TextField
         options:
           required: true
@@ -499,6 +500,7 @@ pages:
         title: When do you expect the project work to start?
         hint: >-
           This is when you expect to start digging, signing contracts or placing orders.
+
           For example, 27 3 2027
         type: DatePartsField
         options:
@@ -526,6 +528,57 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Work items needed
+  # 2. Total estimated cost
+  - title: What is the total estimated cost of the items?
+    id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
+    path: /total-estimated-cost
+    section: a858ec85-1506-427d-a095-6ac93d959af6
+    controller: TaskPageController
+    components:
+      - name: totalEstimatedCost
+        id: eedadad3-84e1-46a9-be88-7a7a11e5228d
+        title: What is the total estimated cost of the items?
+        hint: >-
+          You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000.
+
+          Do not include VAT.
+
+          Enter amount, for example £90,000
+        type: NumberField
+        options:
+          required: true
+          autocomplete: off
+          classes: govuk-!-width-one-third
+        schema:
+          precision: 0
+        shortDescription: Total estimated cost
+  # 3. Potential grant funding
+  - title: Potential grant funding
+    id: 493756e7-b083-4bed-9727-205208366b1a
+    path: /potential-grant-funding
+    section: a858ec85-1506-427d-a095-6ac93d959af6
+    controller: TaskPageController
+    components:
+      - name: potentialGrantFundingInfo
+        id: 68342054-a3cc-44b3-860e-61aab15c2798
+        type: Html
+        content: >
+          <p class="govuk-body">You may be able to apply for a grant of up to £X,000, based on the estimated cost of £Y,000.</p>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              There's no guarantee the project will receive a grant.
+            </strong>
+          </div>
+      - name: canYouPayTheRemainingCosts
+        id: 3cbba3b6-7542-4602-88f8-2d73e5e278db
+        title: Can you pay the remaining costs of £Z,000?
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Can you pay the remaining costs
 
   # ==========================================
   # Section 4: Check your answers
@@ -614,6 +667,43 @@ lists:
       - text: Borehole / aquifer
         value: BOREHOLE_AQUIFER
         id: 74eaff0f-4438-4fac-9f15-fe732935930a
+  - title: Need abstraction licence list
+    id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
+    name: needAbstractionLicenceList
+    type: string
+    items:
+      - text: Licence not needed
+        value: LICENSE_NOT_NEEDED
+        id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
+      - text: Licence already secured
+        value: LICENSE_ALREADY_SECURED
+        id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
+      - text: Licence needed but not yet secured
+        value: LICENSE_NEEDED_BUT_NOT_SECURED
+        id: 16dc7d87-c73f-4fd5-b350-082d32385b09
+  - title: Supplying other farms list
+    id: 6b2f167b-5564-4671-b987-053828151926
+    name: supplyingOtherFarmsList
+    type: string
+    items:
+      - text: None
+        value: "0"
+        id: a041a0f6-c437-4a49-b798-69bdc802cc23
+      - text: "1"
+        value: "1"
+        id: 1a8d9ef6-b69e-4295-bd5a-f9a609bFEBFF
+      - text: "2"
+        value: "2"
+        id: 1d5f1c83-9e11-4174-a184-5df8b9caf684
+      - text: "3"
+        value: "3"
+        id: 67079a58-78a2-4c80-ab9c-724256b99729
+      - text: "4"
+        value: "4"
+        id: 3ecdb5ec-b7bb-4cef-ae04-0112a1cd5c1d
+      - text: 5 or more
+        value: 5_OR_MORE
+        id: 19bb51b4-bd2e-4fb8-8e00-06b67aed9bdb
   - title: Work items needed list
     id: 8c0a3d2c-9572-4512-9226-7800ff471010
     name: workItemsNeededList
@@ -652,43 +742,6 @@ lists:
       - text: Water meter
         value: WATER_METER
         id: ea5f4c58-c484-42fe-b1d4-d18c85b1b668
-  - title: Need abstraction licence list
-    id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
-    name: needAbstractionLicenceList
-    type: string
-    items:
-      - text: Licence not needed
-        value: LICENSE_NOT_NEEDED
-        id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
-      - text: Licence already secured
-        value: LICENSE_ALREADY_SECURED
-        id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
-      - text: Licence needed but not yet secured
-        value: LICENSE_NEEDED_BUT_NOT_SECURED
-        id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-  - title: Supplying other farms list
-    id: 6b2f167b-5564-4671-b987-053828151926
-    name: supplyingOtherFarmsList
-    type: string
-    items:
-      - text: None
-        value: "0"
-        id: a041a0f6-c437-4a49-b798-69bdc802cc23
-      - text: "1"
-        value: "1"
-        id: 1a8d9ef6-b69e-4295-bd5a-f9a609bFEBFF
-      - text: "2"
-        value: "2"
-        id: 1d5f1c83-9e11-4174-a184-5df8b9caf684
-      - text: "3"
-        value: "3"
-        id: 67079a58-78a2-4c80-ab9c-724256b99729
-      - text: "4"
-        value: "4"
-        id: 3ecdb5ec-b7bb-4cef-ae04-0112a1cd5c1d
-      - text: 5 or more
-        value: 5_OR_MORE
-        id: 19bb51b4-bd2e-4fb8-8e00-06b67aed9bdb
 
 conditions:
   # Crops growing is something else -> exit page
