@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.20
+
+### Patch Changes
+
+- 7a4e405: Update grants-ui config, value lookup
+
 ## 0.2.19
 
 ### Patch Changes
