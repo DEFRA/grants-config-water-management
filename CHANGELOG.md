@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.4
+
+### Patch Changes
+
+- ae91a64: update grants-ui config, check-before-you-start section
+
 ## 0.2.3
 
 ### Patch Changes
