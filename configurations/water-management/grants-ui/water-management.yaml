@@ -593,8 +593,8 @@ pages:
     config:
       width: full
     components:
-      - name: potentialGrantFundingInfo
-        id: 68342054-a3cc-44b3-860e-61aab15c2798
+      - name: checkYourAnswersInfo
+        id: feab16d6-89e4-4b22-9dc1-66ffd96c5ae6
         type: Html
         content: >
           <p class="govuk-body">Test</p>
