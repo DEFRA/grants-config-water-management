@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.11
+
+### Patch Changes
+
+- 60df729: Update grants-ui config, submit-your-application section
+
 ## 0.2.10
 
 ### Patch Changes
