@@ -280,7 +280,7 @@ pages:
         type: TextField
         options:
           required: true
-          classes: govuk-!-width-one-third
+          classes: govuk-input--width-10
         shortDescription: Reservoir postcode
         id: 9ccd42b8-54e0-4855-8d78-00f87a0d755f
   # 3. Work started yet
@@ -547,6 +547,7 @@ pages:
         type: NumberField
         options:
           required: true
+          suffix: £
           autocomplete: off
           classes: govuk-!-width-one-third
         schema:
@@ -605,18 +606,28 @@ pages:
   # 1. Submit application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
-    path: /submit-application
+    path: /declaration
     section: b7006592-79e9-442b-a371-36fa95042c68
-    controller: TaskPageController
+    controller: DeclarationPageController
+    config:
+      submitButtonText: Confirm and submit
+      showSupportDetails: true
+      hiddenFields:
+        guidanceRead: 'true'
+        applicationConfirmation: 'true'
     components:
-      - name: submitApplication
-        id: db8c4eb0-220e-47ef-8310-3023f2600b30
-        type: YesNoField
-        title: Submit application
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Submit application
+      - name: declarationContent
+        id: fbcc6123-3d73-4363-8298-042b27389423
+        type: Html
+        content: |
+          <p class="govuk-body">By submitting your application, you confirm that:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the information you have provided is correct to the best of your knowledge</li>
+            <li>you have read and understand the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">PA3: Water management guidance (opens in new tab)</a> about this application</li>
+            <li>you are capable of fulfilling the obligations which will be required of you if your application is successful</li>
+            <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
+            <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
+          </ul>
 
   # ==========================================
   # Landing page for return to customer
