@@ -338,13 +338,15 @@ pages:
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
     path: /score-results
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: DeclarationPageController
-    config:
-      submitButtonText: Confirm and submit
-      showSupportDetails: false
-      hiddenFields:
-        scoreResults: 'AVERAGE'
+    controller: TaskPageController
     components:
+      - name: scoreResults
+        id: b9628a02-e028-4892-b262-e21b33bd3461
+        title: Score results (should be hidden and populated with AVERAGE)
+        type: TextField
+        options:
+          required: true
+        shortDescription: Score results
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
