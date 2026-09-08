@@ -421,7 +421,7 @@ pages:
           min: 1
           max: 999999
           precision: 0
-        shortDescription: How much water
+        shortDescription: How much water (m3)
   # 2. Where water will come from
   - title: Where will the water to fill your reservoir come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
@@ -500,7 +500,6 @@ pages:
         title: When do you expect the project work to start?
         hint: >
           This is when you expect to start digging, signing contracts or placing orders.
-          <br/><br/>
           For example, 27 3 2027
         type: DatePartsField
         options:
@@ -540,9 +539,7 @@ pages:
         title: What is the total estimated cost of the items?
         hint: >
           You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000.
-          <br/><br/>
           Do not include VAT.
-          <br/><br/>
           Enter amount, for example £90,000
         type: NumberField
         options:
@@ -552,7 +549,7 @@ pages:
           classes: govuk-!-width-one-third
         schema:
           precision: 0
-        shortDescription: Total estimated cost
+        shortDescription: Total estimated cost (£)
   # 3. Potential grant funding
   - title: Potential grant funding
     id: 493756e7-b083-4bed-9727-205208366b1a
@@ -564,7 +561,7 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">You may be able to apply for a grant of up to £X,000, based on the estimated cost of £Y,000.</p>
+          <p class="govuk-body">You may be able to apply for a grant of up to £{{ Math.ceil(totalEstimatedCost * 0.4) }}, based on the estimated cost of £{{ totalEstimatedCost }}.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
@@ -574,7 +571,7 @@ pages:
           </div>
       - name: canYouPayTheRemainingCosts
         id: 3cbba3b6-7542-4602-88f8-2d73e5e278db
-        title: Can you pay the remaining costs of £Z,000?
+        title: Can you pay the remaining costs of £{{ Math.ceil(totalEstimatedCost * 0.6) }}?
         type: YesNoField
         options:
           required: true
@@ -592,12 +589,6 @@ pages:
     controller: CheckResponsesPageController
     config:
       width: full
-    components:
-      - name: checkYourAnswersInfo
-        id: feab16d6-89e4-4b22-9dc1-66ffd96c5ae6
-        type: Html
-        content: >
-          <p class="govuk-body">Test</p>
 
   # ==========================================
   # Section 5: Submit your application
