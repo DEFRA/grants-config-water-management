@@ -498,9 +498,9 @@ pages:
       - name: expectedProjectStartDate
         id: 331371cf-61c9-4753-b8c6-a0238ae1375b
         title: When do you expect the project work to start?
-        hint: >-
+        hint: >
           This is when you expect to start digging, signing contracts or placing orders.
-
+          <br/><br/>
           For example, 27 3 2027
         type: DatePartsField
         options:
@@ -538,11 +538,11 @@ pages:
       - name: totalEstimatedCost
         id: eedadad3-84e1-46a9-be88-7a7a11e5228d
         title: What is the total estimated cost of the items?
-        hint: >-
+        hint: >
           You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000.
-
+          <br/><br/>
           Do not include VAT.
-
+          <br/><br/>
           Enter amount, for example £90,000
         type: NumberField
         options:
@@ -584,21 +584,20 @@ pages:
   # ==========================================
   # Section 4: Check your answers
   # ==========================================
-  # 1. Check answers
+  # 1. Check your answers
   - title: Check your answers
     id: d489e351-3873-4f06-9f7c-88984f56088c
-    path: /check-answers
+    path: /summary
     section: 732a6b24-f219-4016-b322-5694a7add213
-    controller: TaskPageController
+    controller: CheckResponsesPageController
+    config:
+      width: full
     components:
-      - name: yourAnswers
-        id: a317b71c-79af-4f2a-bf72-a44e3123e7d8
-        title: Your answers
-        type: YesNoField
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Your answers
+      - name: checkYourAnswersInfo
+        id: feab16d6-89e4-4b22-9dc1-66ffd96c5ae6
+        type: Html
+        content: >
+          <p class="govuk-body">Test</p>
 
   # ==========================================
   # Section 5: Submit your application
