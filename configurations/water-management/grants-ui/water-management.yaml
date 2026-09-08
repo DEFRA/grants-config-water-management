@@ -340,6 +340,21 @@ pages:
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
+      - name: scoreResults
+        id: b9628a02-e028-4892-b262-e21b33bd3461
+        title: Score results
+        type: HiddenField
+        options:
+          required: false
+          value: AVERAGE
+        shortDescription: Score results
+      - name: testScoreResults
+        id: 16ea5f22-472a-48c2-b96f-e2006970e283
+        type: TextField
+        title: Test score results
+        options:
+          required: false
+        shortDescription: Test score results
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
