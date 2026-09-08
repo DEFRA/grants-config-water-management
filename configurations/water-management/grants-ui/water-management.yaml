@@ -335,7 +335,7 @@ pages:
             <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
           </div>
   # 4. Score results
-  - title: Score results
+  - title: Score results (should be hidden)
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
     path: /score-results
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -343,11 +343,11 @@ pages:
     components:
       - name: scoreResults
         id: b9628a02-e028-4892-b262-e21b33bd3461
-        title: Score results (should be hidden and populated with AVERAGE)
+        title: Score results (should be hidden)
         type: TextField
         options:
           required: true
-        shortDescription: Score results
+        shortDescription: Score results (should be hidden)
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
@@ -557,13 +557,25 @@ pages:
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
+      - name: fortyPercentEstimatedCost
+        id: 04527ad5-7e75-4bc2-8965-e3848b1329e1
+        title: fortyPercentEstimatedCost (should be hidden)
+        type: TextField
+        options:
+          required: true
+        shortDescription: fortyPercentEstimatedCost (should be hidden)
+      - name: sixtyPercentEstimatedCost
+        id: 8806ae73-ad04-4a65-a628-654249726868
+        title: sixtyPercentEstimatedCost (should be hidden)
+        type: TextField
+        options:
+          required: true
+        shortDescription: sixtyPercentEstimatedCost (should be hidden)
       - name: potentialGrantFundingInfo
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          {% set fortyPercent = totalEstimatedCost * 0.4 | round %}
-          {% set sixtyPercent = totalEstimatedCost - fortyPercent %}
-          <p class="govuk-body">You may be able to apply for a grant of up to {{ fortyPercent | formatCurrency }}, based on the estimated cost of {{ totalEstimatedCost | formatCurrency }}.</p>
+          <p class="govuk-body">You may be able to apply for a grant of up to {{ fortyPercentEstimatedCost | formatCurrency }}, based on the estimated cost of {{ totalEstimatedCost | formatCurrency }}.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
@@ -573,7 +585,7 @@ pages:
           </div>
       - name: canYouPayTheRemainingCosts
         id: 3cbba3b6-7542-4602-88f8-2d73e5e278db
-        title: Can you pay the remaining costs of {{ sixtyPercent | formatCurrency }}?
+        title: Can you pay the remaining costs of {{ sixtyPercentEstimatedCost | formatCurrency }}?
         type: YesNoField
         options:
           required: true
