@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.8
+
+### Patch Changes
+
+- b50e7ac: Update grants-ui config, check-before-you-start section TEMP
+
 ## 0.2.7
 
 ### Patch Changes
