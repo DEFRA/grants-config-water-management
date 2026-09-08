@@ -561,7 +561,7 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">You may be able to apply for a grant of up to £{{ totalEstimatedCost }}, based on the estimated cost of £{{ totalEstimatedCost }}.</p>
+          <p class="govuk-body">You may be able to apply for a grant of up to £{{ (totalEstimatedCost * 0.4) | round }}, based on the estimated cost of £{{ totalEstimatedCost }}.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
@@ -571,7 +571,7 @@ pages:
           </div>
       - name: canYouPayTheRemainingCosts
         id: 3cbba3b6-7542-4602-88f8-2d73e5e278db
-        title: Can you pay the remaining costs of £{{ totalEstimatedCost }}?
+        title: Can you pay the remaining costs of £{{ totalEstimatedCost - ((totalEstimatedCost * 0.4) | round) }}?
         type: YesNoField
         options:
           required: true
