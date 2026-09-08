@@ -342,7 +342,7 @@ pages:
     components:
       - name: scoreResults
         id: b9628a02-e028-4892-b262-e21b33bd3461
-        title: Score results (should be hidden and populated with AVERAGE)
+        title: Score results
         type: TextField
         options:
           required: true
@@ -405,6 +405,7 @@ pages:
       - name: howMuchWater
         id: 26208f72-951c-4944-869c-2bdd60401433
         title: How much water will your reservoir hold when full, in meters cubed (m3)?
+        hint: Enter a whole number.
         type: NumberField
         options:
           required: true
@@ -420,6 +421,90 @@ pages:
           max: 999999
           precision: 0
         shortDescription: How much water
+  # 2. Where water will come from
+  - title: Where will the water to fill your reservoir come from?
+    id: 73de8e2c-4ada-4418-9278-81360a547381
+    path: /where-water-will-come-from
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TaskPageController
+    components:
+      - name: whereWaterWillComeFrom
+        id: e40f6766-225f-4dc9-b2ed-d0cf4c858434
+        title: Where will the water to fill your reservoir come from?
+        hint: Select all that apply
+        type: CheckboxesField
+        list: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Where water will come from
+  # 3. Have planning permission
+  - title: Do you already have planning permission for your project?
+    id: abfbde5b-c983-47f1-9b24-4586d0568171
+    path: /have-planning-permission
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TaskPageController
+    components:
+      - name: havePlanningPermission
+        id: 85957609-1ab7-4921-ad8f-5707b455784b
+        title: Do you already have planning permission for your project?
+        hint: If you are invited to proceed, you will need to provide evidence of planning permission before being offered a grant funding agreement.
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Have planning permission
+  # 4. Need abstraction licence
+  - title: Does the project need an abstraction licence or a variation of one?
+    id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
+    path: /need-abstraction-licence
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TaskPageController
+    components:
+      - name: needAbstractionLicence
+        id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
+        title: Does the project need an abstraction licence or a variation of one?
+        hint: If you are invited to proceed, you will need to provide evidence of the appropriate licence before being offered a grant funding agreement.
+        type: RadiosField
+        list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Need abstraction licence
+  # 5. Supplying other farms
+  - title: How many other farms will the project supply water to?
+    id: 263d9805-288e-4149-b22f-6b403763be1c
+    path: /supplying-other-farms
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TaskPageController
+    components:
+      - name: supplyingOtherFarms
+        id: 6e30957f-74f3-4717-aeea-284898e25b1b
+        title: How many other farms will the project supply water to?
+        hint: If you are invited to proceed, you will need to provide letters of support from any farms other than your own that will be provided with water before being offered a grant funding agreement.
+        type: SelectField
+        list: 6b2f167b-5564-4671-b987-053828151926
+        options:
+          required: true
+        shortDescription: Supplying other farms
+  # 6. Expected project start date
+  - title: When do you expect the project work to start?
+    id: 7cb1a024-1ce6-45ac-b9ca-009f4848b5e5
+    path: /expected-project-start-date
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TaskPageController
+    components:
+      - name: expectedProjectStartDate
+        id: 331371cf-61c9-4753-b8c6-a0238ae1375b
+        title: When do you expect the project work to start?
+        hint: >-
+          This is when you expect to start digging, signing contracts or placing orders.
+          For example, 27 3 2027
+        type: DatePartsField
+        options:
+          required: true
+          autocomplete: off
+        shortDescription: Expected project start date
 
   # ==========================================
   # Section 3: Costs and timescales
@@ -515,6 +600,20 @@ lists:
       - text: No, we have not done any work on this project yet
         value: NO_WORK_YET
         id: 7407e193-c144-49e9-a1c6-016d5ccb56bd
+  - title: Where water will come from list
+    id: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
+    name: whereWaterWillComeFromList
+    type: string
+    items:
+      - text: Winter peak-flow abstraction
+        value: WINTER_PEAKFLOW_ABSTRACTION
+        id: 1d5ee2ac-46aa-4041-b2d8-a051b6ff6ac7
+      - text: Rain water harvesting
+        value: RAIN_WATER_HARVESTING
+        id: b51f11ca-331e-4da9-b26c-35a29e2389d9
+      - text: Borehole / aquifer
+        value: BOREHOLE_AQUIFER
+        id: 74eaff0f-4438-4fac-9f15-fe732935930a
   - title: Work items needed list
     id: 8c0a3d2c-9572-4512-9226-7800ff471010
     name: workItemsNeededList
@@ -523,6 +622,73 @@ lists:
       - text: Construction and reservoir walls
         value: CONSTRUCTION_AND_RESERVOIR_WALLS
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
+      - text: Overflow/spillway
+        value: OVERFLOW_SPILLWAY
+        id: 21b0efbb-faab-4245-84d4-47ceb3feb101
+      - text: Synthetic liner
+        value: SYNTHETIC_LINER
+        id: 0ab42980-c9b8-49e7-ab53-3496883ce68e
+      - text: Abstraction point including pump
+        value: ABSTRACTION_POINT
+        id: 544b8f79-973d-42d3-8053-f049fb351e6e
+      - text: Fencing for synthetic lined reservoir
+        value: FENCING_FOR_RESERVOIR
+        id: bec99c3f-59e4-43e9-aaa3-24fb3f872f6a
+      - text: Filtration equipment
+        value: FILTRATION_EQUIPMENT
+        id: 6d01c74d-9dcf-4746-a978-b8c0e5ed8224
+      - text: Pipework to fill the reservoir
+        value: PIPEWORK_TO_FILL_RESERVOIR
+        id: 18497344-afbe-4cad-9f28-ab4a98634a36
+      - text: Pumphouse
+        value: PUMPHOUSE
+        id: 810d9808-48d9-405b-9589-1e5264362165
+      - text: Underground water distribution mains and hydrants
+        value: UNDERGROUND_MAINS_HYDRANTS
+        id: 386f026b-1bbe-4d3a-be38-970c5466ade5
+      - text: Electricity installation for pumphouse
+        value: ELECTRICITY_FOR_PUMPHOUSE
+        id: f62f1a89-7be3-430f-88de-26ab72c98163
+      - text: Water meter
+        value: WATER_METER
+        id: ea5f4c58-c484-42fe-b1d4-d18c85b1b668
+  - title: Need abstraction licence list
+    id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
+    name: needAbstractionLicenceList
+    type: string
+    items:
+      - text: Licence not needed
+        value: LICENSE_NOT_NEEDED
+        id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
+      - text: Licence already secured
+        value: LICENSE_ALREADY_SECURED
+        id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
+      - text: Licence needed but not yet secured
+        value: LICENSE_NEEDED_BUT_NOT_SECURED
+        id: 16dc7d87-c73f-4fd5-b350-082d32385b09
+  - title: Supplying other farms list
+    id: 6b2f167b-5564-4671-b987-053828151926
+    name: supplyingOtherFarmsList
+    type: string
+    items:
+      - text: None
+        value: "0"
+        id: a041a0f6-c437-4a49-b798-69bdc802cc23
+      - text: "1"
+        value: "1"
+        id: 1a8d9ef6-b69e-4295-bd5a-f9a609bFEBFF
+      - text: "2"
+        value: "2"
+        id: 1d5f1c83-9e11-4174-a184-5df8b9caf684
+      - text: "3"
+        value: "3"
+        id: 67079a58-78a2-4c80-ab9c-724256b99729
+      - text: "4"
+        value: "4"
+        id: 3ecdb5ec-b7bb-4cef-ae04-0112a1cd5c1d
+      - text: 5 or more
+        value: 5_OR_MORE
+        id: 19bb51b4-bd2e-4fb8-8e00-06b67aed9bdb
 
 conditions:
   # Crops growing is something else -> exit page
