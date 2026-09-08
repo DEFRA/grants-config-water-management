@@ -267,21 +267,21 @@ pages:
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
-      - name: ukAddressFieldInfo
-        title: Html
-        type: Html
-        content: <p class="govuk-body">Confirm where the reservoir will be located</p>
-        id: 3db16c35-600e-4985-b436-d5b0de9a4514
-        options: {}
-        schema: {}
-      - name: ukAddressField
+      - name: businessAddress
         title: Business address
         type: UkAddressField
         options:
           required: true
         shortDescription: Business address
         id: 481d56be-e9fc-4b2a-89d2-06c5bf93e633
-        schema: {}
+      - name: reservoirPostcode
+        title: Reservoir postcode
+        hint: The postcode of the site where the reservoir will be located.
+        type: TextField
+        options:
+          required: true
+        shortDescription: Reservoir postcode
+        id: 9ccd42b8-54e0-4855-8d78-00f87a0d755f
   # 3. Work started yet
   - title: Have you already started work on the project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
@@ -298,6 +298,92 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Work started yet
+      - name: eligibilityContent
+        id: 4cd0820a-3f0a-4fbd-87aa-6830dcf25963
+        type: Html
+        content: |
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Eligibility
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">You will invalidate your application if start the project or commit to any costs (such as placing any orders) before you receive a funding agreement.</p>
+              <p class="govuk-body">Before you start the project, you can:</p>
+              <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+                <li>get quotes from suppliers</li>
+                <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
+              </ul>
+            </div>
+          </details>
+  # 3.1. EXIT work-started-yet: when 'Yes, we have begun project work' is selected
+  - title: You cannot apply for a grant from this scheme
+    id: aecbebef-7b1b-4d94-b355-3ad52d776876
+    path: /exit-work-started-yet-begunwork
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TerminalPageController
+    condition: b97db953-3321-4262-bf2f-f72945f26e85
+    components:
+      - name: workStartedYetBegunWorkInfo
+        id: 226da8d4-0485-4ee3-8df6-0434c11bec3a
+        type: Html
+        content: >
+          <p class="govuk-body">You cannot apply for a grant if you have already started work on your project.</p>
+          <div class="govuk-inset-text">
+            <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
+          </div>
+  # 4. Score results
+  - title: Score results
+    id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
+    path: /score-results
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: scoreResultsContent
+        id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
+        type: Html
+        content: |
+          <p class="govuk-body">Based on your answers, your project score is:</p>
+          <div class="govuk-inset-text">
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Average</p>
+            <p class="govuk-body">This means your project might be successful.</p>
+          </div>
+          <div class="govuk-summary-card__title-wrapper govuk-!-margin-bottom-6">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Strong
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Based on your answers, a grant application is likely to be successful.
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Average
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Based on your answers, a grant application might be successful.
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Weak
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Based on your answers, a grant application is unlikely to be successful.
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">i</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              The likelihood of a full application being successful will also depend on the number and value of applications we receive.
+            </strong>
+          </div>
 
   # ==========================================
   # Section 2: Project details
@@ -412,9 +498,11 @@ lists:
     type: string
     items:
       - text: Yes, preparatory work
+        description: For example quotes from suppliers, applying for planning permission
         value: YES_PREPARATORY_WORK
         id: 7fecf507-95e0-46e4-b810-8a1b49730f46
       - text: Yes, we have begun project work
+        description: For example digging, signing contracts, placing orders
         value: YES_PROJECT_WORK
         id: 92a51829-3be0-42eb-b1c7-d910833e84ca
       - text: No, we have not done any work on this project yet
@@ -441,6 +529,17 @@ conditions:
         value:
           listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
           itemId: f2ffdd8a-da39-441a-8be8-f30accdd3397
+  # Work started yet is begun work -> exit page
+  - id: b97db953-3321-4262-bf2f-f72945f26e85
+    displayName: cropsGrowingSomethingElse
+    items:
+      - id: 04a7f2cd-c2dc-4459-8318-b37f11ada880
+        componentId: 6d91fee3-d23c-4e05-aa1e-89f23b5f0a1f
+        operator: is
+        type: ListItemRef
+        value:
+          listId: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
+          itemId: 92a51829-3be0-42eb-b1c7-d910833e84ca
 
 startPage: /check-details
 schema: 2
