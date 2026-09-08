@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.10
+
+### Patch Changes
+
+- e381526: Update grants-ui config, costs-and-timescales section
+
 ## 0.2.9
 
 ### Patch Changes
