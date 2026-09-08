@@ -547,7 +547,7 @@ pages:
         type: NumberField
         options:
           required: true
-          suffix: £
+          prefix: £
           autocomplete: off
           classes: govuk-!-width-one-third
         schema:
@@ -611,7 +611,7 @@ pages:
     controller: DeclarationPageController
     config:
       submitButtonText: Confirm and submit
-      showSupportDetails: true
+      showSupportDetails: false
       hiddenFields:
         guidanceRead: 'true'
         applicationConfirmation: 'true'
@@ -623,11 +623,59 @@ pages:
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>the information you have provided is correct to the best of your knowledge</li>
-            <li>you have read and understand the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">PA3: Water management guidance (opens in new tab)</a> about this application</li>
+            <li>you have read and understand the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water management guidance (opens in new tab)</a> about this application</li>
             <li>you are capable of fulfilling the obligations which will be required of you if your application is successful</li>
             <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
             <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
           </ul>
+  # 2. Confirmation
+  - title: Confirmation
+    id: ae9f2211-7278-4071-bb66-a7f56f4194df
+    path: /confirmation
+    section: b7006592-79e9-442b-a371-36fa95042c68
+    controller: ConfirmationPageController
+    config:
+      panelTitle: 'Application submitted'
+      panelText: 'Your application number'
+    components:
+      - name: confirmationContent
+        id: f09c9010-6c65-42c3-9afc-b7d6339d955d
+        type: Html
+        content: |
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">Thank you for submitting an application for a Water Management grant.</p>
+          <p class="govuk-body">If your application meets RPA funding priorities you may be asked to provide the following evidence before being offered a grant funding agreement:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+            <li>Evidence of planning permission</li>
+            <li>A plan showing existing and proposed irrigation systems</li>
+            <li>Evidence of a water-abstraction licence, if necessary for the project</li>
+            <li>Letters of support from any other farms the project will supply water to</li>
+            <li>A letter from your accountant confirming you can pay the remaining costs of the project</li>
+          </ul>
+
+          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                If you have a question
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">Contact the Rural Payments Agency if you have a query.</p>
+              <p class="govuk-body">
+                Telephone: 03000 200 301<br>
+                Monday to Friday, 8:30am to 5pm (except bank holidays)</p>
+              <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/call-charges" target="_blank">Find out about call charges (opens in new tab)</a></p>
+              <p class="govuk-body">Email: <a class="govuk-link" href="mailto:ruralpayments@defra.gov.uk">ruralpayments@defra.gov.uk</a></p>
+            </div>
+          </details>
+  # 3. Print application
+  - title: PrintSubmittedApplication
+    id: 3a5aafef-e492-4db2-9111-42c2e3922aba
+    path: /print-submitted-application
+    section: b7006592-79e9-442b-a371-36fa95042c68
+    controller: PrintSubmittedApplicationController
 
   # ==========================================
   # Landing page for return to customer
