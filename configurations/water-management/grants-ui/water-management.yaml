@@ -277,7 +277,7 @@ pages:
       - name: reservoirPostcode
         title: Reservoir postcode
         hint: The postcode of the site where the reservoir will be located.
-        type: TextField
+        type: ukAddressField__postcode
         options:
           required: true
           classes: govuk-input--width-10
@@ -547,7 +547,13 @@ pages:
           prefix: £
           autocomplete: off
           classes: govuk-!-width-one-third
+          customValidationMessages:
+            any.required: Enter value to the nearest pound
+            number.max: Enter a value less than or equal to £1,250,000
+            number.min: Enter a value of £87,500 or more
         schema:
+          min: 87500
+          max: 1250000
           precision: 0
         shortDescription: Total estimated cost (£)
   # 3. Potential grant funding
@@ -638,7 +644,6 @@ pages:
     path: /confirmation
     controller: ConfirmationPageController
     config:
-      showSupportDetails: false
       panelTitle: 'Application submitted'
       panelText: 'Your application number'
     components:
@@ -658,22 +663,6 @@ pages:
           </ul>
 
           <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
-
-          <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                If you have a question
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              <p class="govuk-body">Contact the Rural Payments Agency if you have a query.</p>
-              <p class="govuk-body">
-                Telephone: 03000 200 301<br>
-                Monday to Friday, 8:30am to 5pm (except bank holidays)</p>
-              <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/call-charges" target="_blank">Find out about call charges (opens in new tab)</a></p>
-              <p class="govuk-body">Email: <a class="govuk-link" href="mailto:ruralpayments@defra.gov.uk">ruralpayments@defra.gov.uk</a></p>
-            </div>
-          </details>
   # 3. Print application
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
