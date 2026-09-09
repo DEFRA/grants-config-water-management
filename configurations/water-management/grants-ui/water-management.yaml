@@ -1,9 +1,9 @@
 engine: V2
-name: Apply for a water management grant
+name: Apply for a Water Management grant
 metadata:
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
   surveyLabel: Water Management Grant
-  description: TODO water management grant description.
+  description: Apply for a Water Management grant
   referenceNumberPrefix: WMG
   submission:
     grantCode: water-management
@@ -161,12 +161,12 @@ metadata:
     showCompletionStatus: false
     showQuestions: false
     statuses:
-      cannotStart:
-        text: 'Cannot start yet'
-        classes: 'govuk-tag--grey'
       notStarted:
         text: 'Not started'
         classes: 'govuk-tag--yellow'
+      cannotStart:
+        text: 'Cannot start yet'
+        classes: 'govuk-tag--grey'
       inProgress:
         text: 'In progress'
         classes: 'govuk-tag--blue'
@@ -181,7 +181,7 @@ metadata:
   incorrectDetailsContent:
     heading: Update your details
     paragraphs:
-      - Make sure your details are correct before you apply for a water management grant.
+      - Make sure your details are correct before you apply for a Water Management grant.
       - textBefore: 'To update your details follow our '
         link:
           text: Register and update your details with the Rural Payments Agency guidance
@@ -189,7 +189,7 @@ metadata:
         textAfter: '.'
     showRpaSupport: false
   options:
-    submitButtonText: Confirm and submit
+    submitButtonText: Continue
 
 sections:
   - name: check-before-you-start
@@ -199,7 +199,7 @@ sections:
     title: Project details
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
   - name: costs-and-timescales
-    title: Costs and timescales
+    title: Costs and Timescales
     id: a858ec85-1506-427d-a095-6ac93d959af6
   - name: check-your-answers
     title: Check your answers
@@ -218,7 +218,7 @@ pages:
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Task list page
-  - title: Apply for a water management grant
+  - title: Apply for a Water Management grant
     path: /tasks
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
@@ -508,7 +508,7 @@ pages:
         shortDescription: Expected project start date
 
   # ==========================================
-  # Section 3: Costs and timescales
+  # Section 3: Costs and Timescales
   # ==========================================
   # 1. Work items needed
   - title: What eligibility items and work does your project need?
@@ -627,7 +627,7 @@ pages:
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>the information you have provided is correct to the best of your knowledge</li>
-            <li>you have read and understand the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water management guidance (opens in new tab)</a> about this application</li>
+            <li>you have read and understand the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management guidance (opens in new tab)</a> about this application</li>
             <li>you are capable of fulfilling the obligations which will be required of you if your application is successful</li>
             <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
             <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
