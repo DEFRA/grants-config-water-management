@@ -1,0 +1,78 @@
+{
+  "code": "water-management",
+  "metadata": {
+    "description": "Water Management grant",
+    "startDate": {
+      "$date": "2100-01-01T00:00:00Z"
+    }
+  },
+  "actions": [],
+  "amendablePositions": ["PHASE_PRE_AWARD"],
+  "entitlementTemplates": [],
+  "phases": [
+    {
+      "code": "PHASE_PRE_AWARD",
+      "name": "Pre-award",
+      "description": "Pre-award phase",
+      "questions": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "businessDetailsUpToDate": {
+            "type": "boolean",
+            "const": true
+          },
+          "applicant": {
+            "type": "object",
+            "properties": {
+              "business": {
+                "type": "object"
+              },
+              "customer": {
+                "type": "object"
+              }
+            },
+            "required": ["business", "customer"]
+          },
+          "detailsConfirmedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "totalEstimatedCost": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "guidanceRead": {
+            "type": "boolean",
+            "const": true
+          },
+          "applicationConfirmation": {
+            "type": "boolean",
+            "const": true
+          }
+        },
+        "required": [
+          "businessDetailsUpToDate",
+          "totalEstimatedCost",
+          "guidanceRead",
+          "applicationConfirmation"
+        ]
+      },
+      "stages": [
+        {
+          "code": "STAGE_REVIEWING_APPLICATION",
+          "name": "Reviewing application",
+          "description": "Application received and being reviewed; agreement generation triggered on approval",
+          "statuses": [
+            {
+              "code": "STATUS_APPLICATION_RECEIVED",
+              "validFrom": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "externalStatusMap": {},
+  "pages": {}
+}
