@@ -268,21 +268,23 @@ pages:
     controller: TaskPageController
     components:
       - name: businessAddress
+        id: 481d56be-e9fc-4b2a-89d2-06c5bf93e633
         title: Business address
         type: UkAddressField
         options:
           required: true
         shortDescription: Business address
-        id: 481d56be-e9fc-4b2a-89d2-06c5bf93e633
       - name: reservoirPostcode
+        id: 9ccd42b8-54e0-4855-8d78-00f87a0d755f
         title: Reservoir postcode
         hint: The postcode of the site where the reservoir will be located.
-        type: ukAddressField__postcode
+        type: TextField
         options:
           required: true
           classes: govuk-input--width-10
+        schema:
+          regex: ^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$
         shortDescription: Reservoir postcode
-        id: 9ccd42b8-54e0-4855-8d78-00f87a0d755f
   # 3. Work started yet
   - title: Have you already started work on the project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
