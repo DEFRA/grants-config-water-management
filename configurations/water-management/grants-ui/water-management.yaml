@@ -549,7 +549,7 @@ pages:
           classes: govuk-!-width-one-third
           customValidationMessages:
             any.required: Enter value to the nearest pound
-            number.max: Enter a value less than £1,250,000
+            number.max: Enter a value less than or equal to £1,250,000
             number.min: Enter a value of £87,500 or more
         schema:
           min: 87500
