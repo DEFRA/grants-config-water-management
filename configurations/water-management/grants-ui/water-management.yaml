@@ -636,9 +636,9 @@ pages:
   - title: Confirmation
     id: ae9f2211-7278-4071-bb66-a7f56f4194df
     path: /confirmation
-    section: b7006592-79e9-442b-a371-36fa95042c68
     controller: ConfirmationPageController
     config:
+      showSupportDetails: false
       panelTitle: 'Application submitted'
       panelText: 'Your application number'
     components:
@@ -678,7 +678,6 @@ pages:
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
     path: /print-submitted-application
-    section: b7006592-79e9-442b-a371-36fa95042c68
     controller: PrintSubmittedApplicationController
 
   # ==========================================
