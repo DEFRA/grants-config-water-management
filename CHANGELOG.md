@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.23
+
+### Patch Changes
+
+- 44dc38d: Add gas config, minimum
+
 ## 0.2.22
 
 ### Patch Changes
