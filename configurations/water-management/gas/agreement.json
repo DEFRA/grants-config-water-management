@@ -1,13 +1,13 @@
 {
-  "agreementNumberPrefix": "WAM",
+  "agreementNumberPrefix": "WMG",
   "code": "water-management",
   "processDefinitions": {},
   "create": {
     "target": "offered",
     "application": "$.input.answers",
     "values": {
-      "schemeCode": "WAM",
-      "name": "jsonata:$trim($.application.reservoirPostcode) & ' WAM'",
+      "schemeCode": "WMG",
+      "name": "jsonata:$trim($.application.reservoirPostcode) & ' WMG'",
       "applicant": {
         "business": {
           "name": "$.application.applicant.business.name",

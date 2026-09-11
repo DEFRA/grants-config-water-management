@@ -2,7 +2,7 @@ engine: V2
 name: Apply for a Water Management grant
 metadata:
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
-  surveyLabel: Water Management Grant
+  surveyLabel: Water Management grant
   description: Apply for a Water Management grant
   referenceNumberPrefix: WMG
   submission:
@@ -565,25 +565,11 @@ pages:
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
-      - name: fortyPercentEstimatedCost
-        id: 04527ad5-7e75-4bc2-8965-e3848b1329e1
-        title: fortyPercentEstimatedCost (should be hidden)
-        type: TextField
-        options:
-          required: true
-        shortDescription: fortyPercentEstimatedCost (should be hidden)
-      - name: sixtyPercentEstimatedCost
-        id: 8806ae73-ad04-4a65-a628-654249726868
-        title: sixtyPercentEstimatedCost (should be hidden)
-        type: TextField
-        options:
-          required: true
-        shortDescription: sixtyPercentEstimatedCost (should be hidden)
       - name: potentialGrantFundingInfo
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">You may be able to apply for a grant of up to {{ fortyPercentEstimatedCost | formatCurrency }}, based on the estimated cost of {{ totalEstimatedCost | formatCurrency }}.</p>
+          <p class="govuk-body">You may be able to apply for a grant of up to {{ totalEstimatedCost | times: 0.4 | floor | formatCurrency }}, based on the estimated cost of {{ totalEstimatedCost | formatCurrency }}.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
@@ -593,7 +579,8 @@ pages:
           </div>
       - name: canYouPayTheRemainingCosts
         id: 3cbba3b6-7542-4602-88f8-2d73e5e278db
-        title: Can you pay the remaining costs of {{ sixtyPercentEstimatedCost | formatCurrency }}?
+        title: >
+          Can you pay the remaining costs of {{ totalEstimatedCost | times: 0.6 | ceil | formatCurrency }}?
         type: YesNoField
         options:
           required: true
