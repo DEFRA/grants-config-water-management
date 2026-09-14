@@ -583,7 +583,10 @@ pages:
           <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>Reservoir - clay lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
+            {% assign projectDelivers = "," | append: whatProjectDelivers | append: "," %}
+            {% if projectDelivers contains ",RESERVOIR_CLAY_LINED," %}
+              <li>Reservoir - clay lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
+            {% endif %}
             <li>Reservoir - synthetic lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
             <li>Water distribution network: {{ waterDistributionLength }}m at £5.00 per m = {{ waterDistributionLength | times: 5 | formatCurrency }}</li>
             <li>Water storage tank(s): {{ waterStorageCapacity }}l at £1.50 per l = {{ waterStorageCapacity | times: 1.5 | formatCurrency }}</li>
