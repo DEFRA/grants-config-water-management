@@ -585,14 +585,14 @@ pages:
           <p class="govuk-body">Based on your answers, your project score is</p>
           <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4">{{ scoreResults }}</strong>
           <p class="govuk-body">This means your project might be successful in receiving a grant.</p>
-      - name: dummyToMarkSectionComplete2
+      - name: dummyToMarkSectionComplete
         id: 9bfb0bff-d24e-4fa9-95b0-29afcfae2a21
-        title: Dummy field to mark section complete 2
+        title: Dummy field to mark section complete
         type: YesNoField
         options:
           required: true
           classes: govuk-radios
-        shortDescription: Dummy to mark section complete 2
+        shortDescription: Dummy to mark section complete
 
   # ==========================================
   # Section 5: Submit your application
