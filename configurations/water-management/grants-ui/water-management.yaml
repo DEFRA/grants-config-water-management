@@ -333,13 +333,6 @@ pages:
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
-      - name: scoreResults
-        id: b9628a02-e028-4892-b262-e21b33bd3461
-        title: Score results (should be hidden)
-        type: TextField
-        options:
-          required: true
-        shortDescription: Score results (should be hidden)
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
@@ -384,12 +377,19 @@ pages:
               The likelihood of a full application being successful will also depend on the number and value of applications we receive.
             </strong>
           </div>
+      - name: scoreResults
+        id: b9628a02-e028-4892-b262-e21b33bd3461
+        title: Score results (should be hidden)
+        type: TextField
+        options:
+          required: true
+        shortDescription: Score results (should be hidden)
 
   # ==========================================
   # Section 2: Project details
   # ==========================================
   # 1. How much water
-  - title: How much water will your reservoir hold when full, in meters cubed (m3)?
+  - title: How much water will your reservoir hold when full, in meters cubed (m³)?
     id: a5fd52b7-0dc1-4bce-bc5f-a7598f62cd91
     path: /how-much-water
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -397,23 +397,23 @@ pages:
     components:
       - name: howMuchWater
         id: 26208f72-951c-4944-869c-2bdd60401433
-        title: How much water will your reservoir hold when full, in meters cubed (m3)?
+        title: How much water will your reservoir hold when full, in meters cubed (m³)?
         hint: Enter a whole number.
         type: NumberField
         options:
           required: true
           classes: govuk-!-width-one-third
-          suffix: m3
+          suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in meters cubed (m3)
-            number.max: Enter a value less than one million meters cubed (m3)
-            number.min: Enter a value of one meter cubed (m3) or more
+            any.required: Enter value in meters cubed (m³)
+            number.max: Enter a value less than one million meters cubed (m³)
+            number.min: Enter a value of one meter cubed (m³) or more
         schema:
           min: 1
           max: 999999
           precision: 0
-        shortDescription: How much water (m3)
+        shortDescription: How much water (m³)
   # 2. Where water will come from
   - title: Where will the water to fill your reservoir come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
@@ -502,80 +502,53 @@ pages:
   # ==========================================
   # Section 3: Estimated costs
   # ==========================================
-  # 1. Work items needed
-  - title: What eligibility items and work does your project need?
+  # 1. What project delivers
+  - title: What will your project deliver?
     id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
-    path: /work-items-needed
+    path: /what-project-delivers
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
-      - name: workItemsNeeded
+      - name: whatProjectDelivers
         id: 7af61365-6933-40c1-bdd2-8dce5960a8eb
-        title: Select all that apply
-        hint: The reference amounts shown next to each item or work are the maximum amounts RPA will fund.
+        title: What will your project deliver?
+        hint: Choose all that apply.
         type: CheckboxesField
         list: 8c0a3d2c-9572-4512-9226-7800ff471010
         options:
           required: true
           classes: govuk-radios
-        shortDescription: Work items needed
+        shortDescription: What project delivers
+  # 1.1 Water distribution length
+  # 1.2 Water storage capacity
   # 2. Total estimated cost
-  - title: What is the total estimated cost of the items?
+  - title: Total estimated cost
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
     path: /total-estimated-cost
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
-      - name: totalEstimatedCost
-        id: eedadad3-84e1-46a9-be88-7a7a11e5228d
-        title: What is the total estimated cost of the items?
-        hint: >
-          You can only apply for a grant of up to 40% of the estimated costs. The minimum grant you can apply for this project is £35,000 (40% of £87,500). The maximum grant is £500,000.
-          Do not include VAT.
-          Enter amount, for example £90,000
-        type: NumberField
-        options:
-          required: true
-          prefix: £
-          autocomplete: off
-          classes: govuk-!-width-one-third
-          customValidationMessages:
-            any.required: Enter value to the nearest pound
-            number.max: Enter a value less than or equal to £1,250,000
-            number.min: Enter a value of £87,500 or more
-        schema:
-          min: 87500
-          max: 1250000
-          precision: 0
-        shortDescription: Total estimated cost (£)
-  # 3. Potential grant funding
-  - title: Potential grant funding
-    id: 493756e7-b083-4bed-9727-205208366b1a
-    path: /potential-grant-funding
-    section: a858ec85-1506-427d-a095-6ac93d959af6
-    controller: TaskPageController
-    components:
-      - name: potentialGrantFundingInfo
+      - name: totalEstimatedCostInfo
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">You may be able to apply for a grant of up to {{ totalEstimatedCost | times: 0.4 | floor | formatCurrency }}, based on the estimated cost of {{ totalEstimatedCost | formatCurrency }}.</p>
-          <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-visually-hidden">Warning</span>
-              There's no guarantee the project will receive a grant.
-            </strong>
-          </div>
-      - name: canYouPayTheRemainingCosts
-        id: 3cbba3b6-7542-4602-88f8-2d73e5e278db
-        title: >
-          Can you pay the remaining costs of {{ totalEstimatedCost | times: 0.6 | ceil | formatCurrency }}?
-        type: YesNoField
+          <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
+          <p class="govuk-body">The total estimated costs are as follows:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Reservoir - clay lined: Xm³ at £2.50 per m³ = £X,000</li>
+            <li>Reservoir - synthetic lined: Xm³ at £2.50 per m³ = £X,000</li>
+            <li>Water distribution network: X,000m at £5.00 per m = £X,000</li>
+            <li>Water storage tank(s): X,000l at £Y.00 per l = £X,000</li>
+          </ul>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          <p class="govuk-body"><strong>Total estimated cost = {{ totalEstimatedCost | formatCurrency }}</strong></p>
+      - name: totalEstimatedCost
+        id: 9fdf6cbe-d275-4247-bb06-aeb7955be84d
+        title: Total estimated cost (should be hidden)
+        type: TextField
         options:
           required: true
-          classes: govuk-radios
-        shortDescription: Can you pay the remaining costs
+        shortDescription: Total estimated cost (should be hidden)
 
   # ==========================================
   # Section 4: Check your answers
@@ -610,8 +583,16 @@ pages:
           </div>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body">Based on your answers, your project score is</p>
-          <strong class="govuk-tag govuk-tag--yellow">{{ scoreResults }}</strong>
+          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4">{{ scoreResults }}</strong>
           <p class="govuk-body">This means your project might be successful in receiving a grant.</p>
+      - name: dummyToMarkSectionComplete2
+        id: 9bfb0bff-d24e-4fa9-95b0-29afcfae2a21
+        title: Dummy field to mark section complete 2
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Dummy to mark section complete 2
 
   # ==========================================
   # Section 5: Submit your application
@@ -1057,44 +1038,23 @@ lists:
       - text: 5 or more
         value: 5_OR_MORE
         id: 19bb51b4-bd2e-4fb8-8e00-06b67aed9bdb
-  - title: Work items needed list
+  - title: What project delivers list
     id: 8c0a3d2c-9572-4512-9226-7800ff471010
-    name: workItemsNeededList
+    name: whatProjectDeliversList
     type: string
     items:
-      - text: Construction and reservoir walls
-        value: CONSTRUCTION_AND_RESERVOIR_WALLS
+      - text: Reservoir - clay lined
+        value: RESERVOIR_CLAY_LINED
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
-      - text: Overflow/spillway
-        value: OVERFLOW_SPILLWAY
+      - text: Reservoir - synthetic lined
+        value: RESERVOIR_SYNTHETIC_LINED
         id: 21b0efbb-faab-4245-84d4-47ceb3feb101
-      - text: Synthetic liner
-        value: SYNTHETIC_LINER
+      - text: Water distribution network
+        value: WATER_DISTRIBUTION_NETWORK
         id: 0ab42980-c9b8-49e7-ab53-3496883ce68e
-      - text: Abstraction point including pump
-        value: ABSTRACTION_POINT
+      - text: Water storage tank(s)
+        value: WATER_STORAGE_TANKS
         id: 544b8f79-973d-42d3-8053-f049fb351e6e
-      - text: Fencing for synthetic lined reservoir
-        value: FENCING_FOR_RESERVOIR
-        id: bec99c3f-59e4-43e9-aaa3-24fb3f872f6a
-      - text: Filtration equipment
-        value: FILTRATION_EQUIPMENT
-        id: 6d01c74d-9dcf-4746-a978-b8c0e5ed8224
-      - text: Pipework to fill the reservoir
-        value: PIPEWORK_TO_FILL_RESERVOIR
-        id: 18497344-afbe-4cad-9f28-ab4a98634a36
-      - text: Pumphouse
-        value: PUMPHOUSE
-        id: 810d9808-48d9-405b-9589-1e5264362165
-      - text: Underground water distribution mains and hydrants
-        value: UNDERGROUND_MAINS_HYDRANTS
-        id: 386f026b-1bbe-4d3a-be38-970c5466ade5
-      - text: Electricity installation for pumphouse
-        value: ELECTRICITY_FOR_PUMPHOUSE
-        id: f62f1a89-7be3-430f-88de-26ab72c98163
-      - text: Water meter
-        value: WATER_METER
-        id: ea5f4c58-c484-42fe-b1d4-d18c85b1b668
 
 conditions:
   # Crops growing is something else -> exit page
