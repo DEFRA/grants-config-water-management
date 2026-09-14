@@ -389,7 +389,7 @@ pages:
   # Section 2: Project details
   # ==========================================
   # 1. How much water
-  - title: How much water will your reservoir hold when full, in meters cubed (m3)?
+  - title: How much water will your reservoir hold when full, in meters cubed (m³)?
     id: a5fd52b7-0dc1-4bce-bc5f-a7598f62cd91
     path: /how-much-water
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -397,23 +397,23 @@ pages:
     components:
       - name: howMuchWater
         id: 26208f72-951c-4944-869c-2bdd60401433
-        title: How much water will your reservoir hold when full, in meters cubed (m3)?
+        title: How much water will your reservoir hold when full, in meters cubed (m³)?
         hint: Enter a whole number.
         type: NumberField
         options:
           required: true
           classes: govuk-!-width-one-third
-          suffix: m3
+          suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in meters cubed (m3)
-            number.max: Enter a value less than one million meters cubed (m3)
-            number.min: Enter a value of one meter cubed (m3) or more
+            any.required: Enter value in meters cubed (m³)
+            number.max: Enter a value less than one million meters cubed (m³)
+            number.min: Enter a value of one meter cubed (m³) or more
         schema:
           min: 1
           max: 999999
           precision: 0
-        shortDescription: How much water (m3)
+        shortDescription: How much water (m³)
   # 2. Where water will come from
   - title: Where will the water to fill your reservoir come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
