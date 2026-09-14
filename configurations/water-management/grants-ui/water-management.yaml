@@ -327,7 +327,7 @@ pages:
             <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
           </div>
   # 4. Score results
-  - title: Score results (should be hidden)
+  - title: Score results
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
     path: /score-results
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -583,10 +583,10 @@ pages:
           <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>Reservoir - clay lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times 2.5 | formatCurrency }}</li>
-            <li>Reservoir - synthetic lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times 2.5 | formatCurrency }}</li>
-            <li>Water distribution network: {{ waterDistributionLength }}m at £5.00 per m = {{ waterDistributionLength | times 5 | formatCurrency }}</li>
-            <li>Water storage tank(s): {{ waterStorageCapacity }}l at £1.50 per l = {{ waterStorageCapacity | times 1.5 | formatCurrency }}</li>
+            <li>Reservoir - clay lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
+            <li>Reservoir - synthetic lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
+            <li>Water distribution network: {{ waterDistributionLength }}m at £5.00 per m = {{ waterDistributionLength | times: 5 | formatCurrency }}</li>
+            <li>Water storage tank(s): {{ waterStorageCapacity }}l at £1.50 per l = {{ waterStorageCapacity | times: 1.5 | formatCurrency }}</li>
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body"><strong>Total estimated cost = {{ totalEstimatedCost | formatCurrency }}</strong></p>
