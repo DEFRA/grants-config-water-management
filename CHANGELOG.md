@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.30
+
+### Patch Changes
+
+- e50982b: Update grants-ui config, design changes 1
+
 ## 0.2.29
 
 ### Patch Changes
