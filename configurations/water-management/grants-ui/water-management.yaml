@@ -198,8 +198,8 @@ sections:
   - name: project-details
     title: Project details
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
-  - name: costs-and-timescales
-    title: Costs and Timescales
+  - name: estimated-costs
+    title: Estimated costs
     id: a858ec85-1506-427d-a095-6ac93d959af6
   - name: check-your-answers
     title: Check your answers
@@ -260,31 +260,21 @@ pages:
             <li>nurseries growing ornamentals</li>
             <li>forestry nurseries</li>
           </ul>
-  # 2. Reservoir location
-  - title: Confirm where the reservoir will be located
+  # 2. County project located
+  - title: Which county is your project located in?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
-    path: /reservoir-location
+    path: /county-project-located
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
-      - name: businessAddress
-        id: 481d56be-e9fc-4b2a-89d2-06c5bf93e633
-        title: Business address
-        type: UkAddressField
-        options:
-          required: true
-        shortDescription: Business address
-      - name: reservoirPostcode
+      - name: countyProjectLocated
         id: 9ccd42b8-54e0-4855-8d78-00f87a0d755f
-        title: Reservoir postcode
-        hint: The postcode of the site where the reservoir will be located.
-        type: TextField
+        title: Which county is your project located in?
+        type: SelectField
+        list: 1e943f43-f1b3-49a2-a1c6-1d1b5cced79e
         options:
           required: true
-          classes: govuk-input--width-10
-        schema:
-          regex: ^[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$
-        shortDescription: Reservoir postcode
+        shortDescription: County project located
   # 3. Work started yet
   - title: Have you already started work on the project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
@@ -356,7 +346,7 @@ pages:
         content: |
           <p class="govuk-body">Based on your answers, your project score is:</p>
           <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">Average</p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ scoreResults }}</p>
             <p class="govuk-body">This means your project might be successful.</p>
           </div>
           <div class="govuk-summary-card__title-wrapper govuk-!-margin-bottom-6">
@@ -502,15 +492,15 @@ pages:
         title: When do you expect the project work to start?
         hint: >
           This is when you expect to start digging, signing contracts or placing orders.
-          For example, 27 3 2027
-        type: DatePartsField
+          For example, 3 2027
+        type: MonthYearField
         options:
           required: true
           autocomplete: off
         shortDescription: Expected project start date
 
   # ==========================================
-  # Section 3: Costs and Timescales
+  # Section 3: Estimated costs
   # ==========================================
   # 1. Work items needed
   - title: What eligibility items and work does your project need?
@@ -598,6 +588,30 @@ pages:
     controller: CheckResponsesPageController
     config:
       width: full
+  # 2. Potential funding
+  - title: Potential grant funding
+    id: c78a90a0-91be-4c93-976c-ae18378e4996
+    path: /potential-funding
+    section: 732a6b24-f219-4016-b322-5694a7add213
+    controller: TaskPageController
+    components:
+      - name: potentialFundingContent
+        id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
+        type: Html
+        content: |
+          <p class="govuk-body">You may be able to apply for a grant of up to <strong>{{ totalEstimatedCost | times: 0.4 | floor | formatCurrency }}</strong>, based on an estimated cost of <strong>{{ totalEstimatedCost | formatCurrency }}</strong>.</p>
+          <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              There's no guarantee the project will receive a grant
+            </strong>
+          </div>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          <p class="govuk-body">Based on your answers, your project score is</p>
+          <strong class="govuk-tag govuk-tag--yellow">{{ scoreResults }}</strong>
+          <p class="govuk-body">This means your project might be successful in receiving a grant.</p>
 
   # ==========================================
   # Section 5: Submit your application
@@ -677,6 +691,305 @@ lists:
       - text: Something else
         value: SOMETHING_ELSE
         id: f2ffdd8a-da39-441a-8be8-f30accdd3397
+  - title: County project located list
+    id: 1e943f43-f1b3-49a2-a1c6-1d1b5cced79e
+    name: countyProjectLocatedList
+    type: string
+    items:
+      - text: Aberdeenshire
+        value: ABERDEENSHIRE
+        id: 075384e5-c3b5-433b-91cf-8272556c900e
+      - text: Angus
+        value: ANGUS
+        id: c50415ff-e982-4ded-b1ca-103b2c6cac27
+      - text: Antrim
+        value: ANTRIM
+        id: 8c1dfaf7-0d76-4b0a-ad38-ccd158bfef0e
+      - text: Argyll
+        value: ARGYLL
+        id: a1e396e2-71e5-48fb-9026-28ea600a2932
+      - text: Armagh
+        value: ARMAGH
+        id: 0b746ac0-a753-41e4-a8e7-6a2c4999b5d4
+      - text: Ayrshire
+        value: AYRSHIRE
+        id: c76bd891-a611-4517-b2cc-457a3cd1780d
+      - text: Banffshire
+        value: BANFFSHIRE
+        id: 3725643f-5b7b-4673-b8fa-c6dbbf6f1673
+      - text: Bedfordshire
+        value: BEDFORDSHIRE
+        id: 0dc07453-ddc6-45df-b587-54d43a1f7819
+      - text: Berkshire
+        value: BERKSHIRE
+        id: eafa0295-2741-41a6-9759-54b83bb9d635
+      - text: Berwickshire
+        value: BERWICKSHIRE
+        id: 259585b2-e4b7-417b-a872-8ef96b3149b9
+      - text: Buckinghamshire
+        value: BUCKINGHAMSHIRE
+        id: 93ebc3ea-1f5f-4b99-9a78-814064e3cc67
+      - text: Buteshire
+        value: BUTESHIRE
+        id: 60634178-96e3-4745-9c0d-b916d23c8b4a
+      - text: Caithness
+        value: CAITHNESS
+        id: 3a773be9-35ad-43df-acea-df40a8a4ad56
+      - text: Cambridgeshire
+        value: CAMBRIDGESHIRE
+        id: 37170760-b990-4955-8c87-c482ef42d5fc
+      - text: Cheshire
+        value: CHESHIRE
+        id: 7f1e33bd-0101-4220-b625-037666ceeeaa
+      - text: Clackmannanshire
+        value: CLACKMANNANSHIRE
+        id: 94a75b61-4c3f-4f7d-b994-43e488a09ece
+      - text: Clwyd
+        value: CLWYD
+        id: 15b4db42-ac31-4f56-a764-d930404a8c4c
+      - text: Cornwall
+        value: CORNWALL
+        id: 4b5b3dc6-9bb5-4fc2-9149-5c7fae51ad84
+      - text: Cromartyshire
+        value: CROMARTYSHIRE
+        id: 401e2bea-89a8-4e1f-974b-ecda7f2f9c7c
+      - text: Cumberland
+        value: CUMBERLAND
+        id: 7f99d2db-fcf2-4e7b-8d42-145c069ec53d
+      - text: Cumbria
+        value: CUMBRIA
+        id: b555fb24-c087-40c8-a648-cf0af17bea9d
+      - text: Denbighshire
+        value: DENBIGHSHIRE
+        id: 9cf1edb1-405a-46c2-a419-a4c6be7be4db
+      - text: Derbyshire
+        value: DERBYSHIRE
+        id: 631d2d02-b6f0-40af-ae3d-d2c9b4b67874
+      - text: Devon
+        value: DEVON
+        id: cae1d55a-3752-407c-a9e1-3f803de2f4bf
+      - text: Dorset
+        value: DORSET
+        id: 7e2e0227-d799-4b0f-bc82-8cec5193fdec
+      - text: Down
+        value: DOWN
+        id: 7433f181-9d0e-4e7d-b769-5661ce23c188
+      - text: Dumfriesshire
+        value: DUMFRIESSHIRE
+        id: 84b0410c-af11-49f6-964c-9424b132e7b5
+      - text: Dunbartonshire
+        value: DUNBARTONSHIRE
+        id: d3b13a7d-3c33-4e9b-9e3f-2e15a23ace4e
+      - text: Durham
+        value: DURHAM
+        id: b46782a9-85e1-4cc1-95c0-977731d78bdc
+      - text: East Lothian
+        value: EAST_LOTHIAN
+        id: f20942ee-4b5b-4aa0-b331-cf0d2e55a715
+      - text: East Sussex
+        value: EAST_SUSSEX
+        id: a787bfbd-ef3a-49ef-be3f-b8a1ce8e8b54
+      - text: East Yorkshire
+        value: EAST_YORKSHIRE
+        id: 84cd5b9e-97be-44ac-98c8-d0663591adbf
+      - text: Essex
+        value: ESSEX
+        id: 61d8aa7e-d0b2-4805-b75f-1caadb8fd4d1
+      - text: Fermanagh
+        value: FERMANAGH
+        id: c84f5f02-5c99-45b5-8fff-899b3ec8e7a8
+      - text: Fife
+        value: FIFE
+        id: 4d97cafa-e2e0-4431-9fa5-918152af5dd9
+      - text: Flintshire
+        value: FLINTSHIRE
+        id: 657cde15-dfc2-4792-9d60-3e1960cd9f44
+      - text: Glamorgan
+        value: GLAMORGAN
+        id: d10e9a3b-69d8-4466-98f8-6e8fce80b40e
+      - text: Gloucestershire
+        value: GLOUCESTERSHIRE
+        id: b0a4366c-58eb-4f55-a96a-0bd2adecf854
+      - text: Greater London
+        value: GREATER_LONDON
+        id: 22972c42-44a1-410d-a2a7-4fc790293615
+      - text: Greater Manchester
+        value: GREATER_MANCHESTER
+        id: 88f236a3-87c0-4007-a608-fd1860f0aa81
+      - text: Gwent
+        value: GWENT
+        id: cd9eb7c6-78b6-4dff-b437-7559910368b5
+      - text: Gwynedd
+        value: GWYNEDD
+        id: e9e18615-6db0-4d80-bfa3-7bc440246d57
+      - text: Hampshire
+        value: HAMPSHIRE
+        id: e60fd4a6-1fa4-4225-9311-cb76f8825638
+      - text: Herefordshire
+        value: HEREFORDSHIRE
+        id: 98339b03-97e5-4128-84b6-7264ad2995ee
+      - text: Hertfordshire
+        value: HERTFORDSHIRE
+        id: f5b66e02-6966-488c-89c5-29967a1f26ef
+      - text: Huntingdonshire
+        value: HUNTINGDONSHIRE
+        id: 3a99daf9-64c9-440b-8f78-fd9023ffd9ed
+      - text: Inverness-shire
+        value: INVERNESS_SHIRE
+        id: 9c965c8b-9888-445f-869a-470b0df20582
+      - text: Isle of Wight
+        value: ISLE_OF_WIGHT
+        id: e38bb729-d094-4bf2-9f59-27efa27548bf
+      - text: Kent
+        value: KENT
+        id: 31b2c8a1-78f7-4965-89c0-97bbd44ae6f4
+      - text: Kincardineshire
+        value: KINCARDINESHIRE
+        id: 5c2b9d86-2e75-4462-b708-09fb1a403e66
+      - text: Kinross-shire
+        value: KINROSS_SHIRE
+        id: 29fe85a7-ca39-4c71-bb95-c1ed3fcf65c2
+      - text: Kirkcudbrightshire
+        value: KIRKCUDBRIGHTSHIRE
+        id: 6d163578-36d7-4d4e-966c-ac44bf884a89
+      - text: Lanarkshire
+        value: LANARKSHIRE
+        id: 5e7cbec3-90af-41a5-87b7-affc0b25bfc3
+      - text: Lancashire
+        value: LANCASHIRE
+        id: f18dda4e-fa7f-44f0-88eb-f56c4700637e
+      - text: Leicestershire
+        value: LEICESTERSHIRE
+        id: 17fabb6f-9d8f-49d9-a8cb-5151953aeae4
+      - text: Lincolnshire
+        value: LINCOLNSHIRE
+        id: 7954f65e-e8d7-40f4-8ebd-1f46aa0e8bc9
+      - text: Londonderry
+        value: LONDONDERRY
+        id: 58427493-46b4-4213-be05-ff411822c92f
+      - text: Merseyside
+        value: MERSEYSIDE
+        id: c972779b-8cdb-47ab-84e1-827bc11f2b01
+      - text: Midlothian
+        value: MIDLOTHIAN
+        id: b1f6b02a-3e0e-4935-b911-de3751696bb7
+      - text: Monmouthshire
+        value: MONMOUTHSHIRE
+        id: 6ea0bac4-08e6-4b72-8d26-5e95163bdcd9
+      - text: Morayshire
+        value: MORAYSHIRE
+        id: e7f28602-1e88-44c6-8db7-7f737a3b2710
+      - text: Nairnshire
+        value: NAIRNSHIRE
+        id: dacfaeef-2017-4fee-a1fd-2d32ddc1e3cc
+      - text: Norfolk
+        value: NORFOLK
+        id: d9bab6e5-f451-4bc5-bda0-18cf68fc4bfb
+      - text: North Yorkshire
+        value: NORTH_YORKSHIRE
+        id: 663df805-42e6-4ed9-b67b-43879fa9e0f6
+      - text: Northamptonshire
+        value: NORTHAMPTONSHIRE
+        id: 715bd7f2-214a-40f4-bca6-d3144f2e76c9
+      - text: Northumberland
+        value: NORTHUMBERLAND
+        id: a9cbf44b-41aa-44c0-9e92-e75740fc6b00
+      - text: Nottinghamshire
+        value: NOTTINGHAMSHIRE
+        id: 615ebac3-bbe9-4f11-9e10-632068d87b84
+      - text: Orkney
+        value: ORKNEY
+        id: dbabca16-b64e-4ba4-9218-473a1213adcd
+      - text: Oxfordshire
+        value: OXFORDSHIRE
+        id: 4d6e3d0c-550f-47c3-abdc-32d5facc3a28
+      - text: Peeblesshire
+        value: PEEBLESSHIRE
+        id: c4a45712-2bea-4f1c-a6a6-77b6266149ed
+      - text: Pembroke
+        value: PEMBROKE
+        id: 01cd74d9-30af-47f8-92a2-9709f960b845
+      - text: Perthshire
+        value: PERTHSHIRE
+        id: 2a5b005e-4895-49af-a7ba-f4bcb267b944
+      - text: Powys
+        value: POWYS
+        id: 8b47dd1e-d6ed-4b69-bd21-228d7e6a902e
+      - text: Renfrewshire
+        value: RENFREWSHIRE
+        id: 53560902-9d85-4a7f-a8b0-43eb4168e74b
+      - text: Ross-shire
+        value: ROSS_SHIRE
+        id: 740d40ba-6a0d-436c-9faa-f33ee12f5c93
+      - text: Roxburghshire
+        value: ROXBURGHSHIRE
+        id: 2d51ae5a-b896-4b88-8ef4-e45423a81317
+      - text: Rutland
+        value: RUTLAND
+        id: b16e6b7b-b489-4543-8a87-b00b425d4a5a
+      - text: Selkirkshire
+        value: SELKIRKSHIRE
+        id: d533d168-b772-4d61-bc6c-b6a69da2cda0
+      - text: Shetland
+        value: SHETLAND
+        id: 6a978b17-2576-4a17-ab6c-466182bfdcf6
+      - text: Shropshire
+        value: SHROPSHIRE
+        id: 87fb3a7e-612b-4664-aee0-dac5db142b76
+      - text: Somerset
+        value: SOMERSET
+        id: 64a5952e-6fde-4c01-a8cd-0b03151a6aa9
+      - text: South Yorkshire
+        value: SOUTH_YORKSHIRE
+        id: fd96befa-d1d1-443f-afe8-c3d81fb1f8ac
+      - text: Staffordshire
+        value: STAFFORDSHIRE
+        id: 4ac3b3a2-fea5-4bb1-a053-80450d40006e
+      - text: Stirlingshire
+        value: STIRLINGSHIRE
+        id: 2c0671a0-ccfc-4943-9fc0-8f55ccdadf95
+      - text: Suffolk
+        value: SUFFOLK
+        id: 04122f34-d71e-4c3b-a1d5-b362b6b688e3
+      - text: Surrey
+        value: SURREY
+        id: 245fe80a-04b2-45cb-be3e-6ff4e5d638ee
+      - text: Sutherland
+        value: SUTHERLAND
+        id: 4f3a71fb-3ff7-4f63-b6a3-881abc8492b2
+      - text: Tyne and Wear
+        value: TYNE_AND_WEAR
+        id: 6a9bd58b-e9e2-4679-8b17-f46b048bef43
+      - text: Tyrone
+        value: TYRONE
+        id: 381f6a52-c59c-4154-a502-eeca593ff1ab
+      - text: Warwickshire
+        value: WARWICKSHIRE
+        id: 3ea42ce6-b420-407f-91c6-46b28ee23cb9
+      - text: West Lothian
+        value: WEST_LOTHIAN
+        id: c7a49a44-db1f-4487-b5cb-27352ce22307
+      - text: West Midlands
+        value: WEST_MIDLANDS
+        id: 3200bf10-c445-4273-900b-e05974a5701e
+      - text: West Sussex
+        value: WEST_SUSSEX
+        id: 1a591651-20b9-44e4-b47b-f52da78173ed
+      - text: West Yorkshire
+        value: WEST_YORKSHIRE
+        id: 9c9f446d-f695-4b0b-b9d8-d551ddb12f76
+      - text: Wigtownshire
+        value: WIGTOWNSHIRE
+        id: f687b0a8-8cae-47ff-baac-cdc7d1f70e49
+      - text: Wiltshire
+        value: WILTSHIRE
+        id: 9e1772b8-a8e6-4a65-b336-77cd43089bd1
+      - text: Worcestershire
+        value: WORCESTERSHIRE
+        id: 220f7c0b-00df-4ed6-894d-e27be7ac47c6
+      - text: Yorkshire
+        value: YORKSHIRE
+        id: 89d6b1c4-ea6c-4189-9690-c589afcfe145
   - title: Already started work list
     id: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
     name: alreadyStartedWorkList
