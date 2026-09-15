@@ -1,6 +1,6 @@
 {
   "name": "grants-config-water-management",
-  "version": "0.2.34",
+  "version": "0.2.35",
   "description": "grants-config-water-management",
   "main": "src/index.js",
   "type": "module",
