@@ -580,26 +580,36 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
+          {% assign totalEstimatedCost = 0 %}
           <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
-            {% assign projectDelivers = "," | append: whatProjectDelivers | append: "," %}
-            {% if projectDelivers contains ",RESERVOIR_CLAY_LINED," %}
+            {% if whatProjectDelivers contains "RESERVOIR_CLAY_LINED" %}
+              {% assign totalEstimatedCost = howMuchWater | times: 2.5 | plus: totalEstimatedCost %}
               <li>Reservoir - clay lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
             {% endif %}
-            <li>Reservoir - synthetic lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
-            <li>Water distribution network: {{ waterDistributionLength }}m at £5.00 per m = {{ waterDistributionLength | times: 5 | formatCurrency }}</li>
-            <li>Water storage tank(s): {{ waterStorageCapacity }}l at £1.50 per l = {{ waterStorageCapacity | times: 1.5 | formatCurrency }}</li>
+            {% if whatProjectDelivers contains "RESERVOIR_SYNTHETIC_LINED" %}
+              {% assign totalEstimatedCost = howMuchWater | times: 2.5 | plus: totalEstimatedCost %}
+              <li>Reservoir - synthetic lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
+            {% endif %}
+            {% if whatProjectDelivers contains "WATER_DISTRIBUTION_NETWORK" %}
+              {% assign totalEstimatedCost = waterDistributionLength | times: 5 | plus: totalEstimatedCost %}
+              <li>Water distribution network: {{ waterDistributionLength }}m at £5.00 per m = {{ waterDistributionLength | times: 5 | formatCurrency }}</li>
+            {% endif %}
+            {% if whatProjectDelivers contains "WATER_STORAGE_TANKS" %}
+              {% assign totalEstimatedCost = waterStorageCapacity | times: 1.5 | plus: totalEstimatedCost %}
+              <li>Water storage tank(s): {{ waterStorageCapacity }}l at £1.50 per l = {{ waterStorageCapacity | times: 1.5 | formatCurrency }}</li>
+            {% endif %}
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body"><strong>Total estimated cost = {{ totalEstimatedCost | formatCurrency }}</strong></p>
-      - name: totalEstimatedCost
+      - name: tempEstimatedCost
         id: 9fdf6cbe-d275-4247-bb06-aeb7955be84d
-        title: Total estimated cost (should be hidden)
+        title: Temp estimated cost (will remove)
         type: TextField
         options:
           required: true
-        shortDescription: Total estimated cost (should be hidden)
+        shortDescription: Temp estimated cost (will remove)
 
   # ==========================================
   # Section 4: Check your answers
