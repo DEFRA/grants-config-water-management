@@ -519,7 +519,25 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: What project delivers
-  # 1.1 Reservoir lining
+  # 1.1 EXIT Project provides none of these
+  - title: You cannot apply for a grant from this scheme
+    id: ffe4aacf-d443-463a-8372-6e932f0b2e15
+    path: /exit-project-provides-none-of-these
+    section: a858ec85-1506-427d-a095-6ac93d959af6
+    controller: TerminalPageController
+    condition: 148957c1-24d0-493e-bde4-0a4e95f068b0
+    components:
+      - name: projectProvidesNoneOfTheseInfo
+        id: 7db39634-0f9b-4e8c-a695-486772d62919
+        type: Html
+        content: >
+          <p class="govuk-body">This grant is only available for farms planning to install one or more of:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a reservoir</li>
+            <li>a water distribution network</li>
+            <li>water storage tank(s)</li>
+          </ul>
+  # 1.2 Reservoir lining
   - title: What type of lining will you install in the reservoir?
     id: 9302f6d6-394f-410c-9845-6aea43674523
     path: /reservoir-lining
@@ -536,7 +554,7 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Reservoir lining
-  # 1.2 Water distribution length
+  # 1.3 Water distribution length
   - title: How long will the water distribution network be, in metres (m)?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
     path: /water-distribution-length
@@ -561,7 +579,7 @@ pages:
           min: 1
           precision: 0
         shortDescription: Water distribution length (m)
-  # 1.3 Water storage capacity
+  # 1.4 Water storage capacity
   - title: What will the total storage capacity of water storage tank(s) be, in litres (l)?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /water-storage-capacity
@@ -647,10 +665,7 @@ pages:
         type: Html
         content: |
           {% assign totalEstimatedCost = 0 %}
-          {% if whatProjectDelivers contains "RESERVOIR_CLAY_LINED" %}
-            {% assign totalEstimatedCost = howMuchWater | times: 2.5 | plus: totalEstimatedCost %}
-          {% endif %}
-          {% if whatProjectDelivers contains "RESERVOIR_SYNTHETIC_LINED" %}
+          {% if whatProjectDelivers contains "RESERVOIR" %}
             {% assign totalEstimatedCost = howMuchWater | times: 2.5 | plus: totalEstimatedCost %}
           {% endif %}
           {% if whatProjectDelivers contains "WATER_DISTRIBUTION_NETWORK" %}
@@ -1026,6 +1041,17 @@ conditions:
         value:
           listId: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
           itemId: 92a51829-3be0-42eb-b1c7-d910833e84ca
+  # Project delivers none of these -> exit page
+  - id: 148957c1-24d0-493e-bde4-0a4e95f068b0
+    displayName: projectDeliversNone
+    items:
+      - id: 52b37819-30a8-4118-9401-3009a55b5f90
+        componentId: 7af61365-6933-40c1-bdd2-8dce5960a8eb
+        operator: contains
+        type: ListItemRef
+        value:
+          listId: 8c0a3d2c-9572-4512-9226-7800ff471010
+          itemId: aa2bbec4-477c-4af6-b68b-4fdb6ddb2d28
   # Project delivers reservoir
   - id: 3f416796-e237-4a41-86e2-17c2b9b4f03e
     displayName: projectDeliversReservoir
