@@ -502,23 +502,23 @@ pages:
   # ==========================================
   # Section 3: Estimated costs
   # ==========================================
-  # 1. What project delivers
-  - title: What will your project deliver?
+  # 1. Items planning to install
+  - title: What type of items are you planning to install?
     id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
-    path: /what-project-delivers
+    path: /items-planning-to-install
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
       - name: whatProjectDelivers
         id: 7af61365-6933-40c1-bdd2-8dce5960a8eb
-        title: What will your project deliver?
-        hint: Choose all that apply.
+        title: What type of items are you planning to install?
+        hint: Select all that apply
         type: CheckboxesField
         list: 8c0a3d2c-9572-4512-9226-7800ff471010
         options:
           required: true
           classes: govuk-radios
-        shortDescription: What project delivers
+        shortDescription: Items planning to install
   # 1.1 EXIT Project provides none of these
   - title: You cannot apply for a grant from this scheme
     id: ffe4aacf-d443-463a-8372-6e932f0b2e15
@@ -640,7 +640,6 @@ pages:
         type: TextField
         options:
           required: true
-        shortDescription: Will remove soon
 
   # ==========================================
   # Section 4: Check your answers
