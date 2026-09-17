@@ -199,6 +199,9 @@ sections:
   - name: check-your-eligibility
     title: Check your eligibility
     id: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+  - name: business-details
+    title: Business details
+    id: 44a6642a-88ac-4059-a28a-6cb0203e033d
   - name: project-details
     title: Project details
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -354,7 +357,7 @@ pages:
         id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
         type: Html
         content: >
-          <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and Water Management companies.</p>
+          <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and Water Management Companies.</p>
   # 5. Score results
   - title: Score results
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
@@ -423,7 +426,47 @@ pages:
           required: true
 
   # ==========================================
-  # Section 2: Project details
+  # Section 2: Business details
+  # ==========================================
+  # 1. Organisation type
+  - title: What type of organisation are you applying on behalf of?
+    id: f9ca590d-169c-46cc-8819-4be089a30eb9
+    path: /organisation-type
+    section: 44a6642a-88ac-4059-a28a-6cb0203e033d
+    controller: TaskPageController
+    components:
+      - name: organisationType
+        id: 7a52568c-6927-432a-8eb4-65ba36f14283
+        title: What type of organisation are you applying on behalf of?
+        type: RadiosField
+        list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Organisation type
+  # 2. Have management control
+  - title: Will you have management control of the land your project is on for 5 years from the start of the agreement?
+    id: 70c01819-e87d-463f-97ca-951434b0fed1
+    path: /have-management-control
+    section: 44a6642a-88ac-4059-a28a-6cb0203e033d
+    controller: TaskPageController
+    components:
+      - name: haveManagementControl
+        id: 4b9a1501-d0b0-4eb0-8e52-4e7f0205cfcb
+        title: Will you have management control of the land your project is on for 5 years from the start of the agreement?
+        hint: >
+          Having management control means you're the person actively managing the land your project is situated on.
+
+          You must have management control of the land for 5 years from the agreement start date.
+          If you do not meet this requirement, you must get the written consent of all other parties who have management control.
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Have management control
+
+  # ==========================================
+  # Section 3: Project details
   # ==========================================
   # 1. How much water
   - title: How much water will your reservoir hold when full, in metres cubed (m³)?
@@ -537,7 +580,7 @@ pages:
         shortDescription: Expected project start date
 
   # ==========================================
-  # Section 3: Estimated costs
+  # Section 4: Estimated costs
   # ==========================================
   # 1. Items planning to install
   - title: What type of items are you planning to install?
@@ -675,7 +718,7 @@ pages:
           required: true
 
   # ============================================
-  # Section 4: Check and submit your application
+  # Section 5: Check and submit your application
   # ============================================
   # 1. Check your answers
   - title: Check your answers
@@ -957,6 +1000,23 @@ lists:
       - text: No, we have not done any work on this project yet
         value: NO_WORK_YET
         id: 7407e193-c144-49e9-a1c6-016d5ccb56bd
+  - title: Organisation type list
+    id: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+    name: organisationTypeList
+    type: string
+    items:
+      - text: Farm owner
+        value: FARM_OWNER
+        id: 3057ad78-5357-4d0c-a23a-80e15602a124
+      - text: Farm tenant
+        value: FARM_TENANT
+        id: a078d35c-92c8-46c3-99dc-224870b71a98
+      - text: Landlord
+        value: LANDLORD
+        id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
+      - text: Water Management Company
+        value: WATER_MANAGEMENT_COMPANY
+        id: aef62824-765a-4722-99f4-c32bfb641279
   - title: Where water will come from list
     id: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
     name: whereWaterWillComeFromList
