@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.38
+
+### Patch Changes
+
+- ae0bee6: Update grants-ui config, use score-result and estimated-cost controllers
+
 ## 0.2.37
 
 ### Patch Changes
