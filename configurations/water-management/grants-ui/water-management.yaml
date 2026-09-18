@@ -298,7 +298,7 @@ pages:
       - name: eligibilityContent
         id: 4cd0820a-3f0a-4fbd-87aa-6830dcf25963
         type: Html
-        content: |
+        content: >
           <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
               <span class="govuk-details__summary-text">
@@ -368,7 +368,7 @@ pages:
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
-        content: |
+        content: >
           <p class="govuk-body">Based on your answers, your project score is:</p>
           <div class="govuk-inset-text">
             <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.scoreResults }}</p>
@@ -418,7 +418,6 @@ pages:
               The likelihood of a full application being successful will also depend on the number and value of applications we receive.
             </strong>
           </div>
-
 
   # ==========================================
   # Section 2: Business details
@@ -706,7 +705,6 @@ pages:
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body"><strong>Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong></p>
 
-
   # ============================================
   # Section 5: Check and submit your application
   # ============================================
@@ -728,8 +726,8 @@ pages:
       - name: potentialFundingContent
         id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
         type: Html
-        content: |
-          <p class="govuk-body">You may be able to apply for a grant of up to <strong>{{ context.state.additionalAnswers.totalEstimatedCost | times: 0.4 | floor | formatCurrency }}</strong>, based on an estimated cost of <strong>{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong>.</p>
+        content: >
+          <p class="govuk-body">You may be able to apply for a grant of up to <strong>{{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency }}</strong>, based on an estimated cost of <strong>{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong>.</p>
           <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -766,7 +764,7 @@ pages:
       - name: declarationContent
         id: fbcc6123-3d73-4363-8298-042b27389423
         type: Html
-        content: |
+        content: >
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>the information you have provided is correct to the best of your knowledge</li>
@@ -787,7 +785,7 @@ pages:
       - name: confirmationContent
         id: f09c9010-6c65-42c3-9afc-b7d6339d955d
         type: Html
-        content: |
+        content: >
           <h2 class="govuk-heading-m">What happens next</h2>
           <p class="govuk-body">Thank you for submitting an application for a Water Management grant.</p>
           <p class="govuk-body">If your application meets RPA funding priorities you may be asked to provide the following evidence before being offered a grant funding agreement:</p>
