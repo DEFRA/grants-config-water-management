@@ -188,24 +188,28 @@ metadata:
           href: https://www.gov.uk/guidance/update-personal-and-business-details-in-the-rural-payments-service#what-personal-details-you-can-update
         textAfter: '.'
     showRpaSupport: false
+  totalEstimatedCostsPage:
+    reservoirCostPerUnit: 2.5
+    distNetworkCostPerUnit: 5
+    tanksCostPerUnit: 1.5
   options:
     submitButtonText: Continue
 
 sections:
-  - name: check-before-you-start
-    title: Check before you start
+  - name: check-your-eligibility
+    title: Check your eligibility
     id: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+  - name: business-details
+    title: Business details
+    id: 44a6642a-88ac-4059-a28a-6cb0203e033d
   - name: project-details
     title: Project details
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
   - name: estimated-costs
     title: Estimated costs
     id: a858ec85-1506-427d-a095-6ac93d959af6
-  - name: check-your-answers
-    title: Check your answers
-    id: 732a6b24-f219-4016-b322-5694a7add213
-  - name: submit-your-application
-    title: Submit your application
+  - name: check-and-submit-your-application
+    title: Check and submit your application
     id: b7006592-79e9-442b-a371-36fa95042c68
 
 pages:
@@ -326,7 +330,35 @@ pages:
           <div class="govuk-inset-text">
             <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
           </div>
-  # 4. Score results
+  # 4. Eligible organisation
+  - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
+    id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
+    path: /eligible-organisation
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: eligibleOrganisation
+        id: 072ea72d-4330-4944-9d85-d0e7655cfcff
+        title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Eligible organisation
+  # 4.1. EXIT eligible-organisation: when 'No' is selected
+  - title: You cannot apply for a grant from this scheme
+    id: b7ad30b6-c36e-490c-95d6-b44ef4989667
+    path: /exit-eligible-organisation-no
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TerminalPageController
+    condition: bd8c3d1a-c70c-4b05-a8b0-b3afad12d79c
+    components:
+      - name: eligibleOrganisationNoInfo
+        id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
+        type: Html
+        content: >
+          <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and Water Management Companies.</p>
+  # 5. Score results
   - title: Score results
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
     path: /score-results
@@ -339,8 +371,17 @@ pages:
         content: |
           <p class="govuk-body">Based on your answers, your project score is:</p>
           <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ scoreResults }}</p>
-            <p class="govuk-body">This means your project might be successful.</p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.scoreResults }}</p>
+            <p class="govuk-body">
+              {% case context.state.additionalAnswers.scoreResults %}
+                {% when "Average" %}
+                  This means your project might be successful.
+                {% when "Strong" %}
+                  This means your project will likely be successful.
+                {% when "Weak" %}
+                  This means your project will unlikely be successful.
+              {% endcase %}
+            </p>
           </div>
           <div class="govuk-summary-card__title-wrapper govuk-!-margin-bottom-6">
             <dl class="govuk-summary-list">
@@ -377,16 +418,55 @@ pages:
               The likelihood of a full application being successful will also depend on the number and value of applications we receive.
             </strong>
           </div>
-      - name: scoreResults
+      - name: tempOne
         id: b9628a02-e028-4892-b262-e21b33bd3461
-        title: Score results (should be hidden)
+        title: temp
         type: TextField
         options:
           required: true
-        shortDescription: Score results (should be hidden)
 
   # ==========================================
-  # Section 2: Project details
+  # Section 2: Business details
+  # ==========================================
+  # 1. Organisation type
+  - title: What type of organisation are you applying on behalf of?
+    id: f9ca590d-169c-46cc-8819-4be089a30eb9
+    path: /organisation-type
+    section: 44a6642a-88ac-4059-a28a-6cb0203e033d
+    controller: TaskPageController
+    components:
+      - name: organisationType
+        id: 7a52568c-6927-432a-8eb4-65ba36f14283
+        title: What type of organisation are you applying on behalf of?
+        type: RadiosField
+        list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Organisation type
+  # 2. Have management control
+  - title: Will you have management control of the land your project is on for 5 years from the start of the agreement?
+    id: 70c01819-e87d-463f-97ca-951434b0fed1
+    path: /have-management-control
+    section: 44a6642a-88ac-4059-a28a-6cb0203e033d
+    controller: TaskPageController
+    components:
+      - name: haveManagementControl
+        id: 4b9a1501-d0b0-4eb0-8e52-4e7f0205cfcb
+        title: Will you have management control of the land your project is on for 5 years from the start of the agreement?
+        hint: >
+          Having management control means you're the person actively managing the land your project is situated on.
+
+          You must have management control of the land for 5 years from the agreement start date.
+          If you do not meet this requirement, you must get the written consent of all other parties who have management control.
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Have management control
+
+  # ==========================================
+  # Section 3: Project details
   # ==========================================
   # 1. How much water
   - title: How much water will your reservoir hold when full, in metres cubed (m³)?
@@ -500,7 +580,7 @@ pages:
         shortDescription: Expected project start date
 
   # ==========================================
-  # Section 3: Estimated costs
+  # Section 4: Estimated costs
   # ==========================================
   # 1. Items planning to install
   - title: What type of items are you planning to install?
@@ -509,7 +589,7 @@ pages:
     section: a858ec85-1506-427d-a095-6ac93d959af6
     controller: TaskPageController
     components:
-      - name: whatProjectDelivers
+      - name: itemsPlanningToInstall
         id: 7af61365-6933-40c1-bdd2-8dce5960a8eb
         title: What type of items are you planning to install?
         hint: Select all that apply
@@ -615,40 +695,36 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          {% assign totalEstimatedCost = 0 %}
           <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
-            {% if whatProjectDelivers contains "RESERVOIR" %}
-              {% assign totalEstimatedCost = howMuchWater | times: 2.5 | plus: totalEstimatedCost %}
-              <li>Reservoir - {{ reservoirLining }} lined: {{ howMuchWater }}m³ at £2.50 per m³ = {{ howMuchWater | times: 2.5 | formatCurrency }}</li>
+            {% if itemsPlanningToInstall contains "RESERVOIR" %}
+              <li>Reservoir - {{ reservoirLining }} lined: {{ howMuchWater }}m³ at {{ context.state.additionalAnswers.reservoirCostPerUnit | formatCurrency }} per m³ = {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}</li>
             {% endif %}
-            {% if whatProjectDelivers contains "WATER_DISTRIBUTION_NETWORK" %}
-              {% assign totalEstimatedCost = waterDistributionLength | times: 5 | plus: totalEstimatedCost %}
-              <li>Water distribution network: {{ waterDistributionLength }}m at £5.00 per m = {{ waterDistributionLength | times: 5 | formatCurrency }}</li>
+            {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
+              <li>Water distribution network: {{ waterDistributionLength }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency }} per m = {{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency }}</li>
             {% endif %}
-            {% if whatProjectDelivers contains "WATER_STORAGE_TANKS" %}
-              {% assign totalEstimatedCost = waterStorageCapacity | times: 1.5 | plus: totalEstimatedCost %}
-              <li>Water storage tank(s): {{ waterStorageCapacity }}l at £1.50 per l = {{ waterStorageCapacity | times: 1.5 | formatCurrency }}</li>
+            {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
+              <li>Water storage tank(s): {{ waterStorageCapacity }}l at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency }} per l = {{ context.state.additionalAnswers.waterTanksCost | formatCurrency }}</li>
             {% endif %}
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body"><strong>Total estimated cost = {{ totalEstimatedCost | formatCurrency }}</strong></p>
-      - name: tempOne
+          <p class="govuk-body"><strong>Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong></p>
+      - name: tempTwo
         id: b9628a02-e028-4892-b262-e21b33bd3462
-        title: Will remove soon
+        title: temp
         type: TextField
         options:
           required: true
 
-  # ==========================================
-  # Section 4: Check your answers
-  # ==========================================
+  # ============================================
+  # Section 5: Check and submit your application
+  # ============================================
   # 1. Check your answers
   - title: Check your answers
     id: d489e351-3873-4f06-9f7c-88984f56088c
     path: /summary
-    section: 732a6b24-f219-4016-b322-5694a7add213
+    section: b7006592-79e9-442b-a371-36fa95042c68
     controller: CheckResponsesPageController
     config:
       width: full
@@ -656,24 +732,14 @@ pages:
   - title: Potential grant funding
     id: c78a90a0-91be-4c93-976c-ae18378e4996
     path: /potential-funding
-    section: 732a6b24-f219-4016-b322-5694a7add213
-    controller: PageController
+    section: b7006592-79e9-442b-a371-36fa95042c68
+    controller: TaskPageController
     components:
       - name: potentialFundingContent
         id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
         type: Html
         content: |
-          {% assign totalEstimatedCost = 0 %}
-          {% if whatProjectDelivers contains "RESERVOIR" %}
-            {% assign totalEstimatedCost = howMuchWater | times: 2.5 | plus: totalEstimatedCost %}
-          {% endif %}
-          {% if whatProjectDelivers contains "WATER_DISTRIBUTION_NETWORK" %}
-            {% assign totalEstimatedCost = waterDistributionLength | times: 5 | plus: totalEstimatedCost %}
-          {% endif %}
-          {% if whatProjectDelivers contains "WATER_STORAGE_TANKS" %}
-            {% assign totalEstimatedCost = waterStorageCapacity | times: 1.5 | plus: totalEstimatedCost %}
-          {% endif %}
-          <p class="govuk-body">You may be able to apply for a grant of up to <strong>{{ totalEstimatedCost | times: 0.4 | floor | formatCurrency }}</strong>, based on an estimated cost of <strong>{{ totalEstimatedCost | formatCurrency }}</strong>.</p>
+          <p class="govuk-body">You may be able to apply for a grant of up to <strong>{{ context.state.additionalAnswers.totalEstimatedCost | times: 0.4 | floor | formatCurrency }}</strong>, based on an estimated cost of <strong>{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong>.</p>
           <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -684,20 +750,17 @@ pages:
           </div>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body">Based on your answers, your project score is</p>
-          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4 govuk-!-font-weight-bold">{{ scoreResults }}</strong>
-          <p class="govuk-body">This means your project might be successful in receiving a grant.</p>
-      - name: tempTwo
-        id: b9628a02-e028-4892-b262-e21b33bd3463
-        title: Will remove soon
-        type: TextField
-        options:
-          required: false
-        shortDescription: Will remove soon
+          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.scoreResults }}</strong>
+          {% case context.state.additionalAnswers.scoreResults %}
+            {% when "Average" %}
+              <p class="govuk-body">This means your project might be successful in receiving a grant.</p>
+            {% when "Strong" %}
+              <p class="govuk-body">This means your project will likely be successful in receiving a grant.</p>
+            {% when "Weak" %}
+              <p class="govuk-body">This means your project will unlikely be successful in receiving a grant.</p>
+          {% endcase %}
 
-  # ==========================================
-  # Section 5: Submit your application
-  # ==========================================
-  # 1. Submit application
+  # 3. Submit application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
     path: /declaration
@@ -722,7 +785,7 @@ pages:
             <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
             <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
           </ul>
-  # 2. Confirmation
+  # 4. Confirmation
   - title: Confirmation
     id: ae9f2211-7278-4071-bb66-a7f56f4194df
     path: /confirmation
@@ -747,7 +810,7 @@ pages:
           </ul>
 
           <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
-  # 3. Print application
+  # 5. Print application
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
     path: /print-submitted-application
@@ -937,6 +1000,23 @@ lists:
       - text: No, we have not done any work on this project yet
         value: NO_WORK_YET
         id: 7407e193-c144-49e9-a1c6-016d5ccb56bd
+  - title: Organisation type list
+    id: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+    name: organisationTypeList
+    type: string
+    items:
+      - text: Farm owner
+        value: FARM_OWNER
+        id: 3057ad78-5357-4d0c-a23a-80e15602a124
+      - text: Farm tenant
+        value: FARM_TENANT
+        id: a078d35c-92c8-46c3-99dc-224870b71a98
+      - text: Landlord
+        value: LANDLORD
+        id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
+      - text: Water Management Company
+        value: WATER_MANAGEMENT_COMPANY
+        id: aef62824-765a-4722-99f4-c32bfb641279
   - title: Where water will come from list
     id: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
     name: whereWaterWillComeFromList
@@ -988,9 +1068,9 @@ lists:
       - text: 5 or more
         value: 5_OR_MORE
         id: 19bb51b4-bd2e-4fb8-8e00-06b67aed9bdb
-  - title: What project delivers list
+  - title: Items planning to install list
     id: 8c0a3d2c-9572-4512-9226-7800ff471010
-    name: whatProjectDeliversList
+    name: itemsPlanningToInstallList
     type: string
     items:
       - text: Reservoir
@@ -1040,6 +1120,15 @@ conditions:
         value:
           listId: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
           itemId: 92a51829-3be0-42eb-b1c7-d910833e84ca
+  # Eligible organisation no -> exit page
+  - id: bd8c3d1a-c70c-4b05-a8b0-b3afad12d79c
+    displayName: eligibleOrganisationNo
+    items:
+      - id: 5a2a4fbc-7953-48b4-8ef5-405cb97c8cda
+        componentId: 072ea72d-4330-4944-9d85-d0e7655cfcff
+        operator: is
+        type: BooleanValue
+        value: false
   # Project delivers none of these -> exit page
   - id: 148957c1-24d0-493e-bde4-0a4e95f068b0
     displayName: projectDeliversNone
@@ -1084,7 +1173,6 @@ conditions:
         value:
           listId: 8c0a3d2c-9572-4512-9226-7800ff471010
           itemId: 544b8f79-973d-42d3-8053-f049fb351e6e
-
 
 startPage: /check-details
 schema: 2
