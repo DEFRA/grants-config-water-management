@@ -418,6 +418,12 @@ pages:
               The likelihood of a full application being successful will also depend on the number and value of applications we receive.
             </strong>
           </div>
+      - name: tempOne
+        id: b9628a02-e028-4892-b262-e21b33bd3461
+        title: temp
+        type: TextField
+        options:
+          required: true
 
   # ==========================================
   # Section 2: Business details
@@ -704,6 +710,12 @@ pages:
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body"><strong>Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong></p>
+      - name: tempTwo
+        id: b9628a02-e028-4892-b262-e21b33bd3462
+        title: temp
+        type: TextField
+        options:
+          required: true
 
   # ============================================
   # Section 5: Check and submit your application
