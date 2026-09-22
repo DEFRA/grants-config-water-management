@@ -371,9 +371,9 @@ pages:
         content: >
           <p class="govuk-body">Based on your answers, your project score is:</p>
           <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.scoreResults }}</p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.eligibilityBand }}</p>
             <p class="govuk-body">
-              {% case context.state.additionalAnswers.scoreResults %}
+              {% case context.state.additionalAnswers.eligibilityBand %}
                 {% when "Average" %}
                   This means your project might be successful.
                 {% when "Strong" %}
@@ -750,8 +750,8 @@ pages:
           </div>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body">Based on your answers, your project score is</p>
-          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.scoreResults }}</strong>
-          {% case context.state.additionalAnswers.scoreResults %}
+          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.eligibilityBand }}</strong>
+          {% case context.state.additionalAnswers.eligibilityBand %}
             {% when "Average" %}
               <p class="govuk-body">This means your project might be successful in receiving a grant.</p>
             {% when "Strong" %}
