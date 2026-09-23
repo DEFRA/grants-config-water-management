@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.3.0
+
+### Minor Changes
+
+- 66dc538: Rename surveyLabel to shortName in config. Updated description.
+
 ## 0.2.40
 
 ### Patch Changes
