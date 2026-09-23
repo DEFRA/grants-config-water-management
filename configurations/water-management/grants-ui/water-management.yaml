@@ -35,7 +35,6 @@ metadata:
       csAgreements:
         pageTitle: You cannot submit this claim
         content: |
-          <p class="govuk-body">Your progress has been saved.</p>
           <p class="govuk-body">You do not have permission to submit the claim.</p>
           <p class="govuk-body">Contact a person in your business to review and submit the claim.</p>
   supportEmail: ruralpayments@defra.gov.uk
