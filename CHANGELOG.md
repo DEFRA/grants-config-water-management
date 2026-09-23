@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.2.40
+
+### Patch Changes
+
+- cbee2b4: Update claim permission page copy
+
 ## 0.2.39
 
 ### Patch Changes
