@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.3.1
+
+### Patch Changes
+
+- bde2219: Version bump to test ingestion process in grants-ui-backend
+
 ## 0.3.0
 
 ### Minor Changes
