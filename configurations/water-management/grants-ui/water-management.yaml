@@ -36,7 +36,7 @@ metadata:
         pageTitle: You cannot submit this claim
         content: |
           <p class="govuk-body">You do not have permission to submit the claim.</p>
-          <p class="govuk-body">Contact an authorised person from your business to review and submit the claim.</p>
+          <p class="govuk-body">Contact a person in your business to review and submit the claim.</p>
   supportEmail: ruralpayments@defra.gov.uk
   detailsPage:
     confirmationFieldName: businessDetailsUpToDate
@@ -1051,19 +1051,19 @@ lists:
     type: string
     items:
       - text: None
-        value: "0"
+        value: '0'
         id: a041a0f6-c437-4a49-b798-69bdc802cc23
-      - text: "1"
-        value: "1"
+      - text: '1'
+        value: '1'
         id: 1a8d9ef6-b69e-4295-bd5a-f9a609bFEBFF
-      - text: "2"
-        value: "2"
+      - text: '2'
+        value: '2'
         id: 1d5f1c83-9e11-4174-a184-5df8b9caf684
-      - text: "3"
-        value: "3"
+      - text: '3'
+        value: '3'
         id: 67079a58-78a2-4c80-ab9c-724256b99729
-      - text: "4"
-        value: "4"
+      - text: '4'
+        value: '4'
         id: 3ecdb5ec-b7bb-4cef-ae04-0112a1cd5c1d
       - text: 5 or more
         value: 5_OR_MORE
