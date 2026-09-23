@@ -2,8 +2,8 @@ engine: V2
 name: Apply for a Water Management grant
 metadata:
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
-  surveyLabel: Water Management grant
-  description: Apply for a Water Management grant
+  shortName: Water Management Grant
+  description: Build on-farm reservoirs to improve water storage for crop irrigation
   referenceNumberPrefix: WMG
   submission:
     grantCode: water-management
