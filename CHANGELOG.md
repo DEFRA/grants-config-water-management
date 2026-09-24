@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.4.0
+
+### Minor Changes
+
+- 917819b: Support new dervied state and additional sections features
+
 ## 0.3.1
 
 ### Patch Changes
