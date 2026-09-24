@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.4.1
+
+### Patch Changes
+
+- fc68f4e: Permissions pages - copy change
+
 ## 0.4.0
 
 ### Minor Changes
