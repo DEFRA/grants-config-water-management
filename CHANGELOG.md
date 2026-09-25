@@ -1,5 +1,35 @@
 # grants-config-water-management
 
+## 0.4.1
+
+### Patch Changes
+
+- fc68f4e: Permissions pages - copy change
+
+## 0.4.0
+
+### Minor Changes
+
+- 917819b: Support new dervied state and additional sections features
+
+## 0.3.1
+
+### Patch Changes
+
+- bde2219: Version bump to test ingestion process in grants-ui-backend
+
+## 0.3.0
+
+### Minor Changes
+
+- 66dc538: Rename surveyLabel to shortName in config. Updated description.
+
+## 0.2.40
+
+### Patch Changes
+
+- cbee2b4: Update claim permission page copy
+
 ## 0.2.39
 
 ### Patch Changes
