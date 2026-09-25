@@ -222,7 +222,6 @@ pages:
     path: /tasks
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
-
   # ==========================================
   # Section 1: Check before you start
   # ==========================================
@@ -362,6 +361,11 @@ pages:
     controller: ScoreResultsTaskPageController
     config:
       excludeFromTaskCompletion: true
+      derivedState:
+        stateKeys:
+          - eligibilityScore
+          - eligibilityBand
+        requiresAcknowledgement: true
     components:
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
@@ -416,7 +420,6 @@ pages:
               The likelihood of a full application being successful will also depend on the number and value of applications we receive.
             </strong>
           </div>
-
   # ==========================================
   # Section 2: Business details
   # ==========================================
@@ -456,7 +459,6 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Have management control
-
   # ==========================================
   # Section 3: Project details
   # ==========================================
@@ -570,7 +572,6 @@ pages:
           required: true
           autocomplete: off
         shortDescription: Expected project start date
-
   # ==========================================
   # Section 4: Estimated costs
   # ==========================================
@@ -720,7 +721,6 @@ pages:
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body"><strong>Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong></p>
-
   # ============================================
   # Section 5: Check and submit your application
   # ============================================
@@ -733,12 +733,13 @@ pages:
     config:
       width: full
       derivedStatePages:
+        - /score-results
         - /total-estimated-cost
       additionalSections:
         - page: /score-results
           items:
             - title: Score
-              stateValue: additionalAnswers.scoreResults
+              stateValue: additionalAnswers.eligibilityBand
         - page: /total-estimated-cost
           items:
             - title: Total Estimated Cost (£)
@@ -830,7 +831,6 @@ pages:
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
     path: /print-submitted-application
     controller: PrintSubmittedApplicationController
-
   # ==========================================
   # Landing page for return to customer
   # ==========================================
