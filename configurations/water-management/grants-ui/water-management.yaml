@@ -697,11 +697,6 @@ pages:
           - waterTanksCost
           - totalEstimatedCost
           - estimatedMaxGrant
-        calculationInputs:
-          - itemsPlanningToInstall
-          - howMuchWater
-          - waterDistributionLength
-          - waterStorageCapacity
         requiresAcknowledgement: true
       costs:
         reservoirCostPerUnit: 2.5
