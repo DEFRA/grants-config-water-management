@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.5.0
+
+### Minor Changes
+
+- 8f0a2ce: Update grants-ui config, use grants-scoring-api (via grants-ui service)
+
 ## 0.4.1
 
 ### Patch Changes
