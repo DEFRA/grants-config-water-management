@@ -264,7 +264,7 @@ pages:
             <li>nurseries growing ornamentals</li>
             <li>forestry nurseries</li>
           </ul>
-  # 2. County project located
+  # 2. Project located easting and northing
   - title: Which county is your project located in?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
     path: /project-located
