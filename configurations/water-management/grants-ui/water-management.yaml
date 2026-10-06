@@ -271,7 +271,7 @@ pages:
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
-      - name: eastingNorthingProjectLocated
+      - name: projectLocated
         id: 9e3b7d5a-4c4f-4d7e-9f2a-ab8c9d5e6f70
         title: Easting and northing project located
         hint: British National Grid coordinates. Easting 0 to 700000, northing 0 to 1300000.
@@ -375,8 +375,8 @@ pages:
           - planningAbstractionScore
         calculationInputs:
           - sectorsIrrigated
-          - eastingNorthingProjectLocated__easting
-          - eastingNorthingProjectLocated__northing
+          - projectLocated__easting
+          - projectLocated__northing
           - businessesUsingWater
           - planning
           - abstraction
