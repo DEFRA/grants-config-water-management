@@ -709,6 +709,7 @@ pages:
           - waterDistributionNetworkCost
           - waterTanksCost
           - totalEstimatedCost
+          - estimatedMaxGrantBeforeReduction
           - estimatedMaxGrant
           - minGrantReached
           - maxGrantReached
