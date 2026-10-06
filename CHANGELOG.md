@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.5.1
+
+### Patch Changes
+
+- acaf9a1: Update grants-ui config, costs and minor change to contact and scoring
+
 ## 0.5.0
 
 ### Minor Changes
