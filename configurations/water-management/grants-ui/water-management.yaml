@@ -694,6 +694,22 @@ pages:
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
           <p class="govuk-body"><strong>Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong></p>
+  # 2.1. EXIT total-estimated-cost: when minGrantReached=false
+  - title: You cannot apply for a grant from this scheme
+    id: a57dd815-7b9f-4434-bf27-2d7145e3a4f6
+    path: /exit-total-estimated-cost
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TerminalPageController
+    condition: 12e0a793-1929-4931-ad20-e5eb76d1d95c # reused crops irrigated condition that can't possibly be true if we get to this page
+    components:
+      - name: totalEstimatedCostMinNotReachedInfo
+        id: 0ea6b5ac-be67-4e14-89dc-cfa26bf37e11
+        type: Html
+        content: >
+          <p class="govuk-body">You cannot apply for a grant if you have already started work on your project.</p>
+          <div class="govuk-inset-text">
+            <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
+          </div>
   # ============================================
   # Section 5: Check and submit your application
   # ============================================
