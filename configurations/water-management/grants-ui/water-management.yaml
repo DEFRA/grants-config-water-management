@@ -198,18 +198,12 @@ metadata:
     submitButtonText: Continue
 
 sections:
-  - name: check-your-eligibility
-    title: Check your eligibility
+  - name: check-project-eligibility
+    title: Check project eligibility
     id: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-  - name: business-details
-    title: Business details
-    id: 44a6642a-88ac-4059-a28a-6cb0203e033d
-  - name: project-details
-    title: Project details
+  - name: project-details-estimated-costs
+    title: Project details and estimated costs
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
-  - name: estimated-costs
-    title: Estimated costs
-    id: a858ec85-1506-427d-a095-6ac93d959af6
   - name: check-and-submit-your-application
     title: Check and submit your application
     id: b7006592-79e9-442b-a371-36fa95042c68
@@ -229,7 +223,7 @@ pages:
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
   # ==========================================
-  # Section 1: Check before you start
+  # Section 1: Check project eligibility
   # ==========================================
   # 1. Sectors irrigated using water
   - title: What crops will be irrigated using the water from this project?
@@ -264,21 +258,21 @@ pages:
             <li>nurseries growing ornamentals</li>
             <li>forestry nurseries</li>
           </ul>
-  # 2. Project located easting and northing
-  - title: Which county is your project located in?
+  # 2. Where project located
+  - title: Where is the project located?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
-    path: /project-located
+    path: /where-project-located
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
       - name: projectLocated
         id: 9e3b7d5a-4c4f-4d7e-9f2a-ab8c9d5e6f70
-        title: Easting and northing project located
-        hint: British National Grid coordinates. Easting 0 to 700000, northing 0 to 1300000.
+        title: Where is the project located?
+        hint: Click on the map below to indicate the centre of the project (for example the centre of the reservoir or underground water distribution main).
         type: EastingNorthingField
         options:
           required: true
-        shortDescription: Easting and northing project located
+        shortDescription: Where project located
   # 3. Work started yet
   - title: Have you already started work on the project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
@@ -293,7 +287,6 @@ pages:
         list: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
         options:
           required: true
-          classes: govuk-radios
         shortDescription: Work started yet
       - name: eligibilityContent
         id: 4cd0820a-3f0a-4fbd-87aa-6830dcf25963
@@ -358,8 +351,113 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and Water Management Companies.</p>
-  # 5. Score results
-  - title: Score results
+  # 5. Organisation type
+  - title: What type of organisation are you applying on behalf of?
+    id: f9ca590d-169c-46cc-8819-4be089a30eb9
+    path: /organisation-type
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: organisationType
+        id: 7a52568c-6927-432a-8eb4-65ba36f14283
+        title: What type of organisation are you applying on behalf of?
+        type: RadiosField
+        list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+        options:
+          required: true
+        shortDescription: Organisation type
+  # 5.1. ORG TYPE TENANT: Have tenancy agreement
+  - title: Do you have a tenancy agreement for at least the next 5 years?
+    id: 70c01819-e87d-463f-97ca-951434b0fed1
+    path: /have-tenancy-agreement
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: 8e1b9ba9-494e-473b-909e-7055fa25315c
+    components:
+      - name: haveManagementControl
+        id: 4b9a1501-d0b0-4eb0-8e52-4e7f0205cfcb
+        title: Do you have a tenancy agreement for at least the next 5 years?
+        hint: If you don't have a tenancy agreement for at least the next 5 years, you'll need to prove you have an arrangement with your landlord to proceed with this project.
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: Have tenancy agreement
+  # 6. How many businesses will use the water
+  - title: How many businesses will use the water from this project for irrigation?
+    id: 263d9805-288e-4149-b22f-6b403763be1c
+    path: /how-many-businesses-will-use-the-water
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: businessesUsingWater
+        id: 6e30957f-74f3-4717-aeea-284898e25b1b
+        title: How many businesses will use the water from this project for irrigation?
+        hint: If the business you are applying on behalf of will use also use the water for irrigation then include this in the total.
+        type: RadiosField
+        list: 6b2f167b-5564-4671-b987-053828151926
+        options:
+          required: true
+        shortDescription: How many businesses will use the water
+  # 7. Where water will come from
+  - title: Where will the water come from to fill your reservoir or transfer via the distribution main?
+    id: 73de8e2c-4ada-4418-9278-81360a547381
+    path: /where-water-will-come-from
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: whereWaterWillComeFrom
+        id: e40f6766-225f-4dc9-b2ed-d0cf4c858434
+        title: Where will the water come from to fill your reservoir or transfer via the distribution main?
+        hint: Select all that apply
+        type: CheckboxesField
+        list: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
+        options:
+          required: true
+        shortDescription: Where water will come from
+  # 7.1. EXIT where-water-will-come-from: when 'Other' is selected
+  # TODO: Add a new page for this
+  # 8. Have planning permission
+  - title: Do you already have planning permission for this project confirmed by your Local Planning Authority?
+    id: abfbde5b-c983-47f1-9b24-4586d0568171
+    path: /have-planning-permission
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: havePlanningPermission
+        id: 85957609-1ab7-4921-ad8f-5707b455784b
+        title: Do you already have planning permission for this project confirmed by your Local Planning Authority?
+        hint: >
+          If you are building a reservoir you will need to apply for and receive the relevant permission from your Local Planning Authority in advance of starting construction of your project.
+
+          This could be through the prior notification or full planning permission process.
+
+          If you are applying for a water storage tank you should consult your Local Planning Authority regarding the type of consent you will need.
+        type: RadiosField
+        list: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
+        options:
+          required: true
+        shortDescription: Have planning permission
+  # TODO: Add planning permission pages
+  # 9. Need abstraction licence
+  - title: Does the project need an abstraction licence or a variation of one?
+    id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
+    path: /need-abstraction-licence
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    components:
+      - name: haveAbstractionLicence
+        id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
+        title: Does the project need an abstraction licence or a variation of one?
+        hint: If you are invited to proceed, you will need to provide evidence of the appropriate licence before submitting a claim.
+        type: RadiosField
+        list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
+        options:
+          required: true
+        shortDescription: Need abstraction licence
+  # TODO: Add abstraction licence pages
+  # 10. Score results
+  - title: Your eligibility score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
     path: /score-results
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -378,104 +476,27 @@ pages:
           - projectLocated__easting
           - projectLocated__northing
           - businessesUsingWater
-          - planning
-          - abstraction
+          - havePlanningPermission
+          - haveAbstractionLicence
         requiresAcknowledgement: true
     components:
       - name: scoreResultsContent
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
         content: >
-          <p class="govuk-body">Based on your answers, your project score is:</p>
+          <p class="govuk-body">Based on the answers provided, your project has scored</p>
           <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }}</p>
-            <p class="govuk-body">
-              {% assign score = context.state.additionalAnswers.totalScore %}
-              {% if score >= 75 %}
-                This means your project will likely be successful.
-              {% elsif score <= 25 %}
-                This means your project will unlikely be successful.
-              {% else %}
-                This means your project might be successful.
-              {% endif %}
-            </p>
-          </div>
-          <div class="govuk-summary-card__title-wrapper govuk-!-margin-bottom-6">
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Strong
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Based on your answers, a grant application is likely to be successful.
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Average
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Based on your answers, a grant application might be successful.
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Weak
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Based on your answers, a grant application is unlikely to be successful.
-                </dd>
-              </div>
-            </dl>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }} out of 100</p>
           </div>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">i</span>
             <strong class="govuk-warning-text__text">
               <span class="govuk-visually-hidden">Warning</span>
-              The likelihood of a full application being successful will also depend on the number and value of applications we receive.
+              The likelihood of your application being successful will depend on the total number of applications received for this grant, and the relative scores of all projects as they relate to RPA's policy objectives and budget.
             </strong>
           </div>
   # ==========================================
-  # Section 2: Business details
-  # ==========================================
-  # 1. Organisation type
-  - title: What type of organisation are you applying on behalf of?
-    id: f9ca590d-169c-46cc-8819-4be089a30eb9
-    path: /organisation-type
-    section: 44a6642a-88ac-4059-a28a-6cb0203e033d
-    controller: TaskPageController
-    components:
-      - name: organisationType
-        id: 7a52568c-6927-432a-8eb4-65ba36f14283
-        title: What type of organisation are you applying on behalf of?
-        type: RadiosField
-        list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Organisation type
-  # 2. Have management control
-  - title: Will you have management control of the land your project is on for 5 years from the start of the agreement?
-    id: 70c01819-e87d-463f-97ca-951434b0fed1
-    path: /have-management-control
-    section: 44a6642a-88ac-4059-a28a-6cb0203e033d
-    controller: TaskPageController
-    components:
-      - name: haveManagementControl
-        id: 4b9a1501-d0b0-4eb0-8e52-4e7f0205cfcb
-        title: Will you have management control of the land your project is on for 5 years from the start of the agreement?
-        hint: >
-          Having management control means you're the person actively managing the land your project is situated on.
-
-          You must have management control of the land for 5 years from the agreement start date.
-          If you do not meet this requirement, you must get the written consent of all other parties who have management control.
-        type: YesNoField
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Have management control
-  # ==========================================
-  # Section 3: Project details
+  # Section 3: Project details and estimated costs
   # ==========================================
   # 1. How much water
   - title: How much water will your reservoir hold when full, in metres cubed (m³)?
@@ -503,71 +524,6 @@ pages:
           max: 999999
           precision: 0
         shortDescription: How much water (m³)
-  # 2. Where water will come from
-  - title: Where will the water to fill your reservoir come from?
-    id: 73de8e2c-4ada-4418-9278-81360a547381
-    path: /where-water-will-come-from
-    section: 922947cc-6c6a-4fe5-b831-da27251663a9
-    controller: TaskPageController
-    components:
-      - name: whereWaterWillComeFrom
-        id: e40f6766-225f-4dc9-b2ed-d0cf4c858434
-        title: Where will the water to fill your reservoir come from?
-        hint: Select all that apply
-        type: CheckboxesField
-        list: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
-        options:
-          required: true
-        shortDescription: Where water will come from
-  # 3. Have planning permission
-  - title: Do you already have planning permission for your project?
-    id: abfbde5b-c983-47f1-9b24-4586d0568171
-    path: /have-planning-permission
-    section: 922947cc-6c6a-4fe5-b831-da27251663a9
-    controller: TaskPageController
-    components:
-      - name: havePlanningPermission
-        id: 85957609-1ab7-4921-ad8f-5707b455784b
-        title: Do you already have planning permission for your project?
-        hint: If you are invited to proceed, you will need to provide evidence of planning permission before being offered a grant funding agreement.
-        type: YesNoField
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Have planning permission
-  # 4. Need abstraction licence
-  - title: Does the project need an abstraction licence or a variation of one?
-    id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
-    path: /need-abstraction-licence
-    section: 922947cc-6c6a-4fe5-b831-da27251663a9
-    controller: TaskPageController
-    components:
-      - name: needAbstractionLicence
-        id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
-        title: Does the project need an abstraction licence or a variation of one?
-        hint: If you are invited to proceed, you will need to provide evidence of the appropriate licence before being offered a grant funding agreement.
-        type: RadiosField
-        list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Need abstraction licence
-  # 5. Supplying other farms
-  - title: How many other farms will the project supply water to?
-    id: 263d9805-288e-4149-b22f-6b403763be1c
-    path: /supplying-other-farms
-    section: 922947cc-6c6a-4fe5-b831-da27251663a9
-    controller: TaskPageController
-    components:
-      - name: supplyingOtherFarms
-        id: 6e30957f-74f3-4717-aeea-284898e25b1b
-        title: How many other farms will the project supply water to?
-        hint: If you are invited to proceed, you will need to provide letters of support from any farms other than your own that will be provided with water before being offered a grant funding agreement.
-        type: SelectField
-        list: 6b2f167b-5564-4671-b987-053828151926
-        options:
-          required: true
-        shortDescription: Supplying other farms
   # 6. Expected project start date
   - title: When do you expect the project work to start?
     id: 7cb1a024-1ce6-45ac-b9ca-009f4848b5e5
@@ -586,14 +542,11 @@ pages:
           required: true
           autocomplete: off
         shortDescription: Expected project start date
-  # ==========================================
-  # Section 4: Estimated costs
-  # ==========================================
   # 1. Items planning to install
   - title: What type of items are you planning to install?
     id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
     path: /items-planning-to-install
-    section: a858ec85-1506-427d-a095-6ac93d959af6
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     components:
       - name: itemsPlanningToInstall
@@ -610,7 +563,7 @@ pages:
   - title: You cannot apply for a grant from this scheme
     id: ffe4aacf-d443-463a-8372-6e932f0b2e15
     path: /exit-project-provides-none-of-these
-    section: a858ec85-1506-427d-a095-6ac93d959af6
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TerminalPageController
     condition: 148957c1-24d0-493e-bde4-0a4e95f068b0
     components:
@@ -628,7 +581,7 @@ pages:
   - title: What type of lining will you install in the reservoir?
     id: 9302f6d6-394f-410c-9845-6aea43674523
     path: /reservoir-lining
-    section: a858ec85-1506-427d-a095-6ac93d959af6
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     condition: 3f416796-e237-4a41-86e2-17c2b9b4f03e
     components:
@@ -639,13 +592,12 @@ pages:
         list: f1ea3032-da6f-4e35-bc75-24d22feb8656
         options:
           required: true
-          classes: govuk-radios
         shortDescription: Reservoir lining
   # 1.3 Water distribution length
   - title: How long will the water distribution network be, in metres (m)?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
     path: /water-distribution-length
-    section: a858ec85-1506-427d-a095-6ac93d959af6
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     condition: d1da14c4-a8da-49c1-b3c2-d9555e5f223f
     components:
@@ -670,7 +622,7 @@ pages:
   - title: What will the total storage capacity of water storage tank(s) be, in metres cubed (m³)?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /water-storage-capacity
-    section: a858ec85-1506-427d-a095-6ac93d959af6
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     condition: 89a11523-dff8-44c2-82e4-073e4b22f4cc
     components:
@@ -695,7 +647,7 @@ pages:
   - title: Total estimated cost
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
     path: /total-estimated-cost
-    section: a858ec85-1506-427d-a095-6ac93d959af6
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TotalEstimatedCostTaskPageController
     config:
       excludeFromTaskCompletion: true
@@ -913,14 +865,14 @@ lists:
     name: organisationTypeList
     type: string
     items:
-      - text: Farm owner
-        value: FARM_OWNER
+      - text: Landowner/landlord
+        value: LANDOWNER_LANDLORD
         id: 3057ad78-5357-4d0c-a23a-80e15602a124
-      - text: Farm tenant
-        value: FARM_TENANT
+      - text: Landowner/owner occupier
+        value: LANDOWNER_OWNER_OCCUPIER
         id: a078d35c-92c8-46c3-99dc-224870b71a98
-      - text: Landlord
-        value: LANDLORD
+      - text: Tenant
+        value: TENANT
         id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
       - text: Water Management Company
         value: WATER_MANAGEMENT_COMPANY
@@ -930,52 +882,60 @@ lists:
     name: whereWaterWillComeFromList
     type: string
     items:
-      - text: Winter peak-flow abstraction
-        value: WINTER_PEAKFLOW_ABSTRACTION
+      - text: Surface water abstraction for storage
+        value: SURFACE_WATER_ABSTRACTION_FOR_STORAGE
         id: 1d5ee2ac-46aa-4041-b2d8-a051b6ff6ac7
-      - text: Rain water harvesting
-        value: RAIN_WATER_HARVESTING
+      - text: Rainwater harvesting
+        value: RAINWATER_HARVESTING
         id: b51f11ca-331e-4da9-b26c-35a29e2389d9
       - text: Borehole / aquifer
         value: BOREHOLE_AQUIFER
         id: 74eaff0f-4438-4fac-9f15-fe732935930a
+      - text: Something else
+        value: SOMETHING_ELSE
+        id: e73bc54c-cd1c-4aa8-b5f0-30f87115a049
+  - title: Need planning permission list
+    id: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
+    name: needPlanningPermissionList
+    type: string
+    items:
+      - text: Yes
+        value: Y
+        id: f06c96df-95df-4aed-9c29-2c1feed059db
+      - text: No
+        value: N
+        id: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
+      - text: Not Needed
+        value: NN
+        id: dba6504e-f262-46a9-888c-1f418406b99e
   - title: Need abstraction licence list
     id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
     name: needAbstractionLicenceList
     type: string
     items:
       - text: Licence not needed
-        value: LICENSE_NOT_NEEDED
+        value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
       - text: Licence already secured
-        value: LICENSE_ALREADY_SECURED
+        value: Y
         id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
       - text: Licence needed but not yet secured
-        value: LICENSE_NEEDED_BUT_NOT_SECURED
+        value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-  - title: Supplying other farms list
+  - title: How many businesses will use the water
     id: 6b2f167b-5564-4671-b987-053828151926
-    name: supplyingOtherFarmsList
+    name: howManyBusinessesWillUseTheWaterList
     type: string
     items:
-      - text: None
-        value: '0'
+      - text: One
+        value: ONE
         id: a041a0f6-c437-4a49-b798-69bdc802cc23
-      - text: '1'
-        value: '1'
+      - text: Two to four
+        value: TWO_TO_FOUR
         id: 1a8d9ef6-b69e-4295-bd5a-f9a609bFEBFF
-      - text: '2'
-        value: '2'
+      - text: Five or move
+        value: FIVE_OR_MORE
         id: 1d5f1c83-9e11-4174-a184-5df8b9caf684
-      - text: '3'
-        value: '3'
-        id: 67079a58-78a2-4c80-ab9c-724256b99729
-      - text: '4'
-        value: '4'
-        id: 3ecdb5ec-b7bb-4cef-ae04-0112a1cd5c1d
-      - text: 5 or more
-        value: 5_OR_MORE
-        id: 19bb51b4-bd2e-4fb8-8e00-06b67aed9bdb
   - title: Items planning to install list
     id: 8c0a3d2c-9572-4512-9226-7800ff471010
     name: itemsPlanningToInstallList
@@ -1006,17 +966,81 @@ lists:
         id: e2ed4727-0acb-42e7-810c-bd447a99e6a0
 
 conditions:
-  # Crops irrigated is something else -> exit page
+  # Crops irrigated is ONLY something else -> exit page
   - id: 12e0a793-1929-4931-ad20-e5eb76d1d95c
-    displayName: sectorsIrrigatedSomethingElse
+    displayName: sectorsIrrigatedOnlySomethingElse
     items:
       - id: ff699da9-9489-46dc-bf8e-6e41076f320f
         componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
-        operator: is
+        operator: contains
         type: ListItemRef
         value:
           listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
           itemId: f2ffdd8a-da39-441a-8be8-f30accdd3397
+      - id: f47019ef-c448-48e6-9b24-8fa9400ec8f5
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 583a9706-4c13-45d8-a279-4bc6ea6b0669
+      - id: 7e546c28-b1de-441f-b1a5-a8ebce0fe66a
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 9034c3c3-e0be-4970-a85a-5befdd63ef89
+      - id: 3553acbb-7987-452b-9126-371c5d3543f0
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 94114a05-296c-4c89-a7cc-560dadc02ee3
+      - id: 02ce02f4-c601-4191-ae2c-b5cd22b36d91
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: abb227ff-1174-497e-a29d-084048bda098
+      - id: 9dadabcb-1749-4a3a-83c8-16eb58138356
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: c6bad1ef-a697-4ae3-8a69-59b6e7b70327
+      - id: f8226983-07c8-47a9-a319-8fe40b36a517
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 22a26b9d-8b48-49ba-ae77-299b12fd2d5c
+      - id: 77b49c52-b4f1-4f7c-89fb-78b83f0190aa
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 32eacc46-e385-4022-9738-ecb363ef7675
+      - id: 73c62827-7976-4371-8a5f-771246917df5
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 59439dfe-d559-47e2-aea9-a4dc967fb9ff
+      - id: 11c197b8-918e-430c-86c2-bc7268006332
+        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
+          itemId: 7c3533d8-aead-4d57-9125-82805b7a73e7
+    coordinator: and
   # Work started yet is begun work -> exit page
   - id: b97db953-3321-4262-bf2f-f72945f26e85
     displayName: workStartedYetBegunWork
@@ -1037,6 +1061,17 @@ conditions:
         operator: is
         type: BooleanValue
         value: false
+  # Organisation type tenant -> tenancy agreement page
+  - id: 8e1b9ba9-494e-473b-909e-7055fa25315c
+    displayName: organisationTypeTenant
+    items:
+      - id: 6f8d2b5f-97ab-48db-97c2-f0cfbc95ed27
+        componentId: 7a52568c-6927-432a-8eb4-65ba36f14283
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+          itemId: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
   # Project delivers none of these -> exit page
   - id: 148957c1-24d0-493e-bde4-0a4e95f068b0
     displayName: projectDeliversNone
