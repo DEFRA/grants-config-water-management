@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.5.2
+
+### Patch Changes
+
+- f6e9389: grants-ui config, latest designs and scoring changes
+
 ## 0.5.1
 
 ### Patch Changes
