@@ -483,8 +483,41 @@ pages:
         id: 91a18bfd-2a00-498b-b388-14c4bc3e9682
         type: Html
         content: >
-          <p class="govuk-body">TODO</p>
-  # TODO: Add planning permission pages
+          <p class="govuk-body">You can continue with this application for grant funding.</p>
+          <p class="govuk-body">You will need to provide evidence that planning permission has been received in the next stage of the application process.</p>
+          <p class="govuk-body">If planning permission is not needed, you will need to confirm why this is the case.</p>
+  # 1.8.3 Planning permission why not needed, havePlanningPermission=NN
+  - title: Tell us why planning permission is not needed for this project
+    id: 9cb8bf96-2a38-41a6-85e4-9369302c8cd4
+    path: /planning-permission-why-not-needed
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: 597a6652-dd98-469b-a860-a84b171a2808
+    components:
+      - name: planningPermissionWhyNotNeeded
+        id: f26d9d1d-0596-49f5-8cd0-911bf658d76f
+        title: Tell us why planning permission is not needed for this project
+        hint: Select all reasons that apply
+        type: CheckboxesField
+        list: 57ca866c-7ade-4d29-9109-39883c74a6d6
+        options:
+          required: true
+        shortDescription: Plan permission why not needed
+  # 1.8.3.1 Planning permission details why not needed, havePlanningPermission=NN
+  - title: Provide more details as to why planning permission is not needed for this project
+    id: af7862dc-28a5-410d-91d2-2692016e03a3
+    path: /details-planning-permission-why-not-needed
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: 597a6652-dd98-469b-a860-a84b171a2808
+    components:
+      - name: detailsPlanningPermissionWhyNotNeeded
+        id: 39d9285e-c3d3-4202-b485-e4b76fde7312
+        title: Provide more details as to why planning permission is not needed for this project
+        type: MultilineTextField
+        options:
+          required: true
+        shortDescription: Details planning permission why not needed
   # 1.9 Need abstraction licence
   - title: Does the project need an abstraction licence or a variation of one?
     id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
@@ -501,22 +534,39 @@ pages:
         options:
           required: true
         shortDescription: Need abstraction licence
-  # 1.9.1 Why licence is not needed, needAbstractionLicenceList=NN TODO confirm new title
-  - title: Provide more details as to why an abstraction licence is not needed for this project
-    id: 273737bb-0627-4797-8dd4-d5c449f53c28
-    path: /why-licence-is-not-needed
+  # 1.9.1 Abstraction licence why not needed, needAbstractionLicenceList=NN
+  - title: Tell us why an abstraction licence is not needed for this project
+    id: 68c4d850-dea8-4594-8a68-a946d636113d
+    path: /why-abstraction-licence-is-not-needed
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
     components:
       - name: whyAbstractionLicenceIsNotNeeded
+        id: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
+        title: Tell us why an abstraction licence is not needed for this project
+        hint: Select all reasons that apply
+        type: CheckboxesField
+        list: 38d9e3c7-6d20-4f53-9322-b94a82007edd
+        options:
+          required: true
+        shortDescription: Why abstraction licence is not needed
+  # 1.9.2 Abstraction licence details why not needed, needAbstractionLicenceList=NN
+  - title: Provide more details as to why an abstraction licence is not needed for this project
+    id: 273737bb-0627-4797-8dd4-d5c449f53c28
+    path: /details-why-abstraction-licence-is-not-needed
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
+    components:
+      - name: detailsWhyAbstractionLicenceIsNotNeeded
         id: 1ed3247d-3842-4d8b-bf1a-a212dd685a10
         title: Provide more details as to why an abstraction licence is not needed for this project
         type: MultilineTextField
         options:
           required: true
-        shortDescription: Why licence is not needed
-  # 1.9.2 Abstraction licence consent number, needAbstractionLicenceList=Y
+        shortDescription: Details why abstraction licence is not needed
+  # 1.9.3 Abstraction licence consent number, needAbstractionLicenceList=Y
   - title: Please confirm the licence consent number
     id: 6539b617-cbc6-4d80-af6f-10f71593758a
     path: /abstraction-licence-consent-number
@@ -531,21 +581,22 @@ pages:
         options:
           required: true
         shortDescription: Abstraction licence consent number
-  # 1.9.3 Why licence is not yet secured, needAbstractionLicenceList=N TODO add list of reasons and confirm new title
-  - title: Tell us why a licence is not yet secured for this project
+  # 1.9.4 Why licence is not yet secured, needAbstractionLicenceList=N
+  - title: You will need to receive an abstraction licence from the Environment Agency before starting construction work on your project
     id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
-    path: /why-licence-is-not-yet-secured
+    path: /abstraction-licence-is-not-yet-secured
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: bf7b6185-f370-43b1-9b20-691f15ff3f8a
+    config:
+      excludeFromTaskCompletion: true
     components:
-      - name: whyAbstractionLicenceIsNotYetSecured
+      - name: abstractionLicenceIsNotYetSecuredInfo
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
-        title: Tell us why a licence is not yet secured for this project
-        type: TextField
-        options:
-          required: true
-        shortDescription: Why licence is not yet secured
+        type: Html
+        content: >
+          <p class="govuk-body">You can continue with this application for grant funding.</p>
+          <p class="govuk-body">You will need to provide evidence that an abstraction licence has been received in the next stage of the application process.</p>
   # 1.10 Score results
   - title: Your eligibility score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
@@ -979,6 +1030,29 @@ lists:
       - text: Not Needed
         value: NN
         id: dba6504e-f262-46a9-888c-1f418406b99e
+  - title: Planning permission why not needed list
+    id: 57ca866c-7ade-4d29-9109-39883c74a6d6
+    name: planningPermissionWhyNotNeededList
+    type: string
+    items:
+      - text: Exemption under General Permitted Development Order 2015
+        value: GENERAL_PERMITTED_ORDER_2015
+        id: 4ecce527-5d85-4680-b2ed-b35ef548edc0
+      - text: Something else
+        value: SOMETHING_ELSE
+        id: 3538eea0-827d-43a7-becc-ac83ec888fca
+  # TODO add items
+  - title: Abstraction licence why not needed list
+    id: 38d9e3c7-6d20-4f53-9322-b94a82007edd
+    name: abstractionLicenceWhyNotNeededList
+    type: string
+    items:
+      - text: TODO
+        value: TODO
+        id: 32515aad-79b5-4cd4-94ae-09819dca2d6c
+      - text: Something else
+        value: SOMETHING_ELSE
+        id: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
   - title: Need abstraction licence list
     id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
     name: needAbstractionLicenceList
