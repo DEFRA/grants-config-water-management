@@ -1,6 +1,6 @@
 {
   "code": "water-management",
-  "schemeName": "Water Management grant round 3",
+  "schemeName": "Water Management grant round 3 (WMG R3)",
   "requiredRoles": {
     "allOf": ["ROLE_WMG"],
     "anyOf": []
