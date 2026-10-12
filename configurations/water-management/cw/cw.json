@@ -1,0 +1,74 @@
+{
+  "code": "water-management",
+  "schemeName": "Water Management grant round 3 (WMG R3)",
+  "requiredRoles": {
+    "allOf": ["ROLE_WMG"],
+    "anyOf": []
+  },
+  "templates": {},
+  "definitions": {},
+  "endpoints": [],
+  "externalActions": [],
+  "pages": {
+    "cases": {
+      "details": {
+        "banner": {
+          "title": {
+            "text": "$.payload.answers.applicant.business.name",
+            "type": "string"
+          },
+          "summary": {
+            "scheme": {
+              "label": "Scheme",
+              "text": "$.schemeName",
+              "type": "string"
+            },
+            "applicationId": {
+              "label": "Application ID",
+              "text": "$.caseRef",
+              "type": "string"
+            },
+            "sbi": {
+              "label": "SBI",
+              "text": "$.payload.identifiers.sbi",
+              "type": "string"
+            },
+            "status": {
+              "label": "Status",
+              "text": "$.currentStatusName",
+              "type": "string"
+            }
+          }
+        },
+        "tabs": {}
+      }
+    }
+  },
+  "phases": [
+    {
+      "code": "PHASE_PRE_AWARD",
+      "name": "Pre-award",
+      "stages": [
+        {
+          "code": "STAGE_REVIEW_APPLICATION",
+          "name": "Tasks",
+          "description": "Review the application for sorting and ranking",
+          "statuses": [
+            {
+              "code": "STATUS_APPLICATION_RECEIVED",
+              "name": "Application Received",
+              "theme": "NEUTRAL",
+              "description": "Application received and pending ranking",
+              "interactive": false,
+              "closes": false,
+              "transitions": []
+            }
+          ],
+          "taskGroups": [],
+          "beforeContent": []
+        }
+      ]
+    }
+  ],
+  "version": "0.0.0"
+}
