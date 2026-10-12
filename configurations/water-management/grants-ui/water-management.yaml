@@ -1,9 +1,9 @@
 engine: V2
-name: Apply for a Water Management grant
+name: Apply for a Water Management grant round 3 (WMG R3)
 metadata:
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
   referenceNumberPrefix: WMG
-  shortName: Water Management Grant
+  shortName: Water Management grant round 3 (WMG R3)
   description: Build on-farm reservoirs to improve water storage for crop irrigation
   submission:
     grantCode: water-management
@@ -187,7 +187,7 @@ metadata:
   incorrectDetailsContent:
     heading: Update your details
     paragraphs:
-      - Make sure your details are correct before you apply for a Water Management grant.
+      - Make sure your details are correct before you apply for a Water Management grant round 3 (WMG R3).
       - textBefore: 'To update your details follow our '
         link:
           text: Register and update your details with the Rural Payments Agency guidance
@@ -218,7 +218,7 @@ pages:
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Task list page
-  - title: Apply for a Water Management grant
+  - title: Apply for a Water Management grant round 3 (WMG R3)
     path: /tasks
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
@@ -891,7 +891,7 @@ pages:
         type: Html
         content: >
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">Thank you for submitting an application for a Water Management grant.</p>
+          <p class="govuk-body">Thank you for submitting an application for a Water Management grant round 3 (WMG R3).</p>
           <p class="govuk-body">If your application meets RPA funding priorities you may be asked to provide the following evidence before being offered a grant funding agreement:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
             <li>Evidence of planning permission</li>
