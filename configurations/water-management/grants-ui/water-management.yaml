@@ -712,7 +712,7 @@ pages:
       - name: waterDistributionLength
         id: a1ff4fd2-95a9-46f4-b7b8-1d6ad0a6ec21
         title: How long will the water distribution network be, in metres (m)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £30.00 per metre. Enter a whole number (no decimal places).
+        hint: Your total estimated cost will be calculated based on a standard cost of £25.00 per metre. Enter a whole number (no decimal places).
         type: NumberField
         options:
           required: true
@@ -737,7 +737,7 @@ pages:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
         title: What will the total storage capacity of water storage tank(s) be, in metres cubed (m³)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £71 per metres cubed (m³). Enter a whole number (no decimal places).
+        hint: Your total estimated cost will be calculated based on a standard cost of £50.00 per metres cubed (m³). Enter a whole number (no decimal places).
         type: NumberField
         options:
           required: true
@@ -775,12 +775,12 @@ pages:
           - maxGrantReached
         requiresAcknowledgement: true
       costs:
-        reservoirClayHighCostPerUnit: 9
-        reservoirClayLowCostPerUnit: 2.25
-        reservoirSyntheticHighCostPerUnit: 11
-        reservoirSyntheticLowCostPerUnit: 2.75
-        distNetworkCostPerUnit: 30
-        tanksCostPerUnit: 71
+        reservoirClayHighCostPerUnit: 10
+        reservoirClayLowCostPerUnit: 2
+        reservoirSyntheticHighCostPerUnit: 10
+        reservoirSyntheticLowCostPerUnit: 2
+        distNetworkCostPerUnit: 25
+        tanksCostPerUnit: 50
         grantMaxRate: 0.4
     components:
       - name: totalEstimatedCostInfo
