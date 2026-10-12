@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.5.3
+
+### Patch Changes
+
+- ee1f94d: grants-ui config, temp costs update for UR
+
 ## 0.5.2
 
 ### Patch Changes
