@@ -790,7 +790,7 @@ pages:
           <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
-            {% if itemsPlanningToInstall contains "CLAY_LINED_RESERVOIR" %}
+            {% if itemsPlanningToInstall contains "RESERVOIR" %}
               <li>Reservoir – clay lined: {{ howMuchWater }} m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
@@ -1087,7 +1087,7 @@ lists:
     type: string
     items:
       - text: Clay lined reservoir
-        value: CLAY_LINED_RESERVOIR
+        value: RESERVOIR
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
       - text: Synthetic lined reservoir
         value: SYNTHETIC_LINED_RESERVOIR
