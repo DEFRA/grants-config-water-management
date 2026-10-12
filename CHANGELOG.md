@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.6.0
+
+### Minor Changes
+
+- 740de08: Add CW definition, ensure GAS matches it
+
 ## 0.5.3
 
 ### Patch Changes
