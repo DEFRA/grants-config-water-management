@@ -1,9 +1,9 @@
 engine: V2
-name: Apply for a Water Management grant
+name: Apply for a Water Management grant round 3 (WMG R3)
 metadata:
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
   referenceNumberPrefix: WMG
-  shortName: Water Management Grant
+  shortName: Water Management grant round 3 (WMG R3)
   description: Build on-farm reservoirs to improve water storage for crop irrigation
   submission:
     grantCode: water-management
@@ -187,7 +187,7 @@ metadata:
   incorrectDetailsContent:
     heading: Update your details
     paragraphs:
-      - Make sure your details are correct before you apply for a Water Management grant.
+      - Make sure your details are correct before you apply for a Water Management grant round 3 (WMG R3).
       - textBefore: 'To update your details follow our '
         link:
           text: Register and update your details with the Rural Payments Agency guidance
@@ -218,7 +218,7 @@ pages:
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Task list page
-  - title: Apply for a Water Management grant
+  - title: Apply for a Water Management grant round 3 (WMG R3)
     path: /tasks
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
@@ -712,7 +712,7 @@ pages:
       - name: waterDistributionLength
         id: a1ff4fd2-95a9-46f4-b7b8-1d6ad0a6ec21
         title: How long will the water distribution network be, in metres (m)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £30.00 per metre. Enter a whole number (no decimal places).
+        hint: Your total estimated cost will be calculated based on a standard cost of £25.00 per metre. Enter a whole number (no decimal places).
         type: NumberField
         options:
           required: true
@@ -737,7 +737,7 @@ pages:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
         title: What will the total storage capacity of water storage tank(s) be, in metres cubed (m³)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £71 per metres cubed (m³). Enter a whole number (no decimal places).
+        hint: Your total estimated cost will be calculated based on a standard cost of £50.00 per metres cubed (m³). Enter a whole number (no decimal places).
         type: NumberField
         options:
           required: true
@@ -775,12 +775,12 @@ pages:
           - maxGrantReached
         requiresAcknowledgement: true
       costs:
-        reservoirClayHighCostPerUnit: 9
-        reservoirClayLowCostPerUnit: 2.25
-        reservoirSyntheticHighCostPerUnit: 11
-        reservoirSyntheticLowCostPerUnit: 2.75
-        distNetworkCostPerUnit: 30
-        tanksCostPerUnit: 71
+        reservoirClayHighCostPerUnit: 10
+        reservoirClayLowCostPerUnit: 2
+        reservoirSyntheticHighCostPerUnit: 10
+        reservoirSyntheticLowCostPerUnit: 2
+        distNetworkCostPerUnit: 25
+        tanksCostPerUnit: 50
         grantMaxRate: 0.4
     components:
       - name: totalEstimatedCostInfo
@@ -790,11 +790,11 @@ pages:
           <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
-            {% if itemsPlanningToInstall contains "CLAY_LINED_RESERVOIR" %}
-              <li>Reservoir – clay lined: {{ howMuchWater }} m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
+            {% if itemsPlanningToInstall contains "RESERVOIR" %}
+              <li>Reservoir – clay lined: {{ howMuchWater }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
-              <li>Reservoir – synthetic lined: {{ howMuchWater }} m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
+              <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of £0.00.</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
               <li>Water distribution network: {{ waterDistributionLength }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency }} per m = {{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency }}</li>
@@ -891,7 +891,7 @@ pages:
         type: Html
         content: >
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">Thank you for submitting an application for a Water Management grant.</p>
+          <p class="govuk-body">Thank you for submitting an application for a Water Management grant round 3 (WMG R3).</p>
           <p class="govuk-body">If your application meets RPA funding priorities you may be asked to provide the following evidence before being offered a grant funding agreement:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
             <li>Evidence of planning permission</li>
@@ -1087,7 +1087,7 @@ lists:
     type: string
     items:
       - text: Clay lined reservoir
-        value: CLAY_LINED_RESERVOIR
+        value: RESERVOIR
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
       - text: Synthetic lined reservoir
         value: SYNTHETIC_LINED_RESERVOIR
