@@ -128,8 +128,6 @@ metadata:
         fields:
           - label: Business name
             sourcePath: business.name
-          - label: Business type
-            sourcePath: business.type.type
           - label: Business address
             sourcePath: business.address
             format: address
@@ -138,6 +136,12 @@ metadata:
             format: phoneNumbers
           - label: Business email address
             sourcePath: business.email.address
+      - title: Business details
+        fields:
+          - label: Legal status
+            sourcePath: business.type.type
+          - label: Company number
+            sourcePath: business.reference # TODO correct?
       - title: Reference numbers
         fields:
           - label: Single Business Identifier (SBI)
@@ -199,10 +203,10 @@ metadata:
 
 sections:
   - name: check-project-eligibility
-    title: Check project eligibility
+    title: Check your project eligibility
     id: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
   - name: project-details-estimated-costs
-    title: Project details and estimated costs
+    title: Your project details and estimated costs
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
   - name: check-and-submit-your-application
     title: Check and submit your application
@@ -235,12 +239,13 @@ pages:
       - name: sectorsIrrigated
         id: 32b05b01-5940-40d0-b191-36b5028c01e5
         title: What crops will be irrigated using the water from this project?
+        hint: "To find out more about what crops are eligible for this grant read: 'Applicant's Guide: Water Management grant round 3 (opens in a new tab)'. Choose all that apply." # TODO add link
         type: CheckboxesField
         list: 1f2856d7-0706-4ea2-b382-07697ca7914c
         options:
           required: true
         shortDescription: Crops irrigated
-  # 1.1.1 EXIT sectors-irrigated: when 'Something else' is selected
+  # 1.1.1 EXIT sectors-irrigated: when ONLY 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: eb9b88ce-1c08-4461-9698-1cbbc794c159
     path: /exit-sectors-irrigated-somethingelse
@@ -259,7 +264,7 @@ pages:
             <li>forestry nurseries</li>
           </ul>
   # 1.2 Where project located
-  - title: Where is the project located?
+  - title: Where's the project located?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
     path: /where-project-located
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -267,14 +272,14 @@ pages:
     components:
       - name: projectLocated
         id: 9e3b7d5a-4c4f-4d7e-9f2a-ab8c9d5e6f70
-        title: Where is the project located?
-        hint: Click on the map below to indicate the centre of the project (for example the centre of the reservoir or underground water distribution main).
+        title: Where's the project located?
+        hint: Use the map to to indicate the location of your project (for example the centre of your reservoir). If your project will deliver multiple reservoirs, water storage tanks or underground distribution mains, then indicate a central location.
         type: EastingNorthingField
         options:
           required: true
         shortDescription: Where project located
   # 1.3 Work started yet
-  - title: Have you already started work on the project?
+  - title: Has work already started on this project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
     path: /work-started-yet
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -282,7 +287,7 @@ pages:
     components:
       - name: workStartedYet
         id: 6d91fee3-d23c-4e05-aa1e-89f23b5f0a1f
-        title: Have you already started work on the project?
+        title: Has work already started on this project?
         type: RadiosField
         list: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
         options:
@@ -317,12 +322,11 @@ pages:
     components:
       - name: workStartedYetBegunWorkInfo
         id: 226da8d4-0485-4ee3-8df6-0434c11bec3a
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">You cannot apply for a grant if you have already started work on your project.</p>
-          <div class="govuk-inset-text">
-            <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
-          </div>
+          <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
+          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.4 Eligible organisation
   - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
     id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
@@ -338,7 +342,7 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Eligible organisation
-  # 1.4.1 EXIT eligible-organisation: when 'No' is selected
+  # 1.4.1 EXIT eligible-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b7ad30b6-c36e-490c-95d6-b44ef4989667
     path: /exit-eligible-organisation-no
@@ -348,9 +352,10 @@ pages:
     components:
       - name: eligibleOrganisationNoInfo
         id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and Water Management Companies.</p>
+          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.5 Organisation type
   - title: What type of organisation are you applying on behalf of?
     id: f9ca590d-169c-46cc-8819-4be089a30eb9
@@ -366,23 +371,51 @@ pages:
         options:
           required: true
         shortDescription: Organisation type
-  # 1.5.1 ORG TYPE TENANT: Have tenancy agreement
-  - title: Do you have a tenancy agreement for at least the next 5 years?
+  # 1.5.1 ORG TYPE TENANT: What you need to do
+  - title: What you need to do
     id: 70c01819-e87d-463f-97ca-951434b0fed1
-    path: /have-tenancy-agreement
+    path: /what-tenants-need-to-do
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 8e1b9ba9-494e-473b-909e-7055fa25315c
+    config:
+      excludeFromTaskCompletion: true
     components:
-      - name: haveManagementControl
+      - name: whatTenantsNeedToDo
         id: 4b9a1501-d0b0-4eb0-8e52-4e7f0205cfcb
-        title: Do you have a tenancy agreement for at least the next 5 years?
-        hint: If you don't have a tenancy agreement for at least the next 5 years, you'll need to prove you have an arrangement with your landlord to proceed with this project.
-        type: YesNoField
-        options:
-          required: true
-          classes: govuk-radios
-        shortDescription: Have tenancy agreement
+        type: Html
+        content: >
+          <p class="govuk-body">Because you are a tenant farmer, grower or forester you should consult your landlord and make sure the correct permissions are in place.</p>
+  # 1.5.2 ORG TYPE LANDLORD NOT FARMING: What you need to do
+  - title: What you need to do
+    id: e5ba53d6-c017-4323-a45e-af04c6c209e9
+    path: /what-landlords-need-to-do
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: 8a7e18eb-3e36-44e9-87c0-5d0757d3b51a
+    config:
+      excludeFromTaskCompletion: true
+    components:
+      - name: whatLandlordsNeedToDo
+        id: f8c5c883-c9ec-4fb7-8ce8-58859b933484
+        type: Html
+        content: >
+          <p class="govuk-body">Because you are a landlord not farming or growing on the land, you should consult your tenants (if you have any) to ensure they agree to this project proceeding.</p>
+  # 1.5.3 ORG TYPE WATER COMPANY: What you need to do
+  - title: What you need to do
+    id: e61f7da3-b841-4560-9d0d-aa3d5cdd4c8e
+    path: /what-water-companys-need-to-do
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: a7f04050-d932-4c00-bdbe-1f446b9ac613
+    config:
+      excludeFromTaskCompletion: true
+    components:
+      - name: whatWaterCompanysNeedToDo
+        id: b00d59d6-5070-45ba-91f1-96a355c943c5
+        type: Html
+        content: >
+          <p class="govuk-body">Because you are a Water Management Company you must have the consent of any land owners and tenants in place before starting work on this project.</p>
   # 1.6 How many businesses will use the water
   - title: How many businesses will use the water from this project for irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
@@ -415,7 +448,7 @@ pages:
         options:
           required: true
         shortDescription: Where water will come from
-  # 1.7.1 EXIT where-water-will-come-from: when 'Other' is selected
+  # 1.7.1 EXIT where-water-will-come-from: when ONLY 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: 6e6c9ced-290e-420c-84f3-4763d7f266ee
     path: /exit-where-water-will-come-from
@@ -425,14 +458,10 @@ pages:
     components:
       - name: whereWaterWillComeFromSomethingElseInfo
         id: b1da8222-9e39-40ec-88d2-10ae5662da6c
-        type: Html
+        type: Html # TODO update link
         content: >
-          <p class="govuk-body">This grant is only available to:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>arable and horticultural farming businesses that supply the food industry</li>
-            <li>nurseries growing ornamentals</li>
-            <li>forestry nurseries</li>
-          </ul>
+          <p class="govuk-body">This grant will only fund projects that will store water from surface water abstraction, rainwater harvesting or a borehole/aquifer.</p>
+          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.8 Have planning permission
   - title: Do you already have planning permission for this project confirmed by your Local Planning Authority?
     id: abfbde5b-c983-47f1-9b24-4586d0568171
@@ -455,7 +484,7 @@ pages:
           required: true
         shortDescription: Have planning permission
   # 1.8.1 Planning permission reference number, havePlanningPermission=Y
-  - title: Please confirm the planning permission reference number for this project from your Local Planning Authority
+  - title: Confirm the planning permission reference number for this project
     id: 7d30df77-e814-49b4-a0ef-18205da9d630
     path: /planning-permission-reference-number
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -464,7 +493,8 @@ pages:
     components:
       - name: planningPermissionReferenceNumber
         id: cf6da572-13e3-4963-a37a-f81f8cf4e249
-        title: Please confirm the planning permission reference number for this project from your Local Planning Authority
+        title: Confirm the planning permission reference number for this project
+        hint: You will find this reference number on the information provided by your Local Planning Authority.
         type: TextField
         options:
           required: true
@@ -478,6 +508,7 @@ pages:
     condition: 8692829c-5473-40a4-92c3-02c687f0b587
     config:
       excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
     components:
       - name: planningPermissionIsNeeded
         id: 91a18bfd-2a00-498b-b388-14c4bc3e9682
@@ -503,13 +534,13 @@ pages:
         options:
           required: true
         shortDescription: Plan permission why not needed
-  # 1.8.3.1 Planning permission details why not needed, havePlanningPermission=NN
+  # 1.8.3.1 Planning permission details why not needed, havePlanningPermission=NN and why=SOMETHING_ELSE
   - title: Provide more details as to why planning permission is not needed for this project
     id: af7862dc-28a5-410d-91d2-2692016e03a3
     path: /details-planning-permission-why-not-needed
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
-    condition: 597a6652-dd98-469b-a860-a84b171a2808
+    condition: fdf85863-b1df-492b-8d4c-b3e124a68ce9
     components:
       - name: detailsPlanningPermissionWhyNotNeeded
         id: 39d9285e-c3d3-4202-b485-e4b76fde7312
@@ -534,7 +565,40 @@ pages:
         options:
           required: true
         shortDescription: Need abstraction licence
-  # 1.9.1 Abstraction licence why not needed, needAbstractionLicenceList=NN
+  # 1.9.1 Abstraction licence consent number, needAbstractionLicenceList=Y
+  - title: Confirm the licence consent number
+    id: 6539b617-cbc6-4d80-af6f-10f71593758a
+    path: /abstraction-licence-consent-number
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: 77637237-be69-4496-9933-e65fe134ae15
+    components:
+      - name: abstractionLicenceConsentNumber
+        id: da14005e-c930-4510-9b86-6e708c1e97b4
+        title: Confirm the licence consent number
+        hint: You will find this reference number on the information provided by the Environment Agency
+        type: TextField
+        options:
+          required: true
+        shortDescription: Abstraction licence consent number
+  # 1.9.2 Why licence is not yet secured, needAbstractionLicenceList=N
+  - title: You will need to receive an abstraction licence from the Environment Agency before starting construction work on your project
+    id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
+    path: /abstraction-licence-is-not-yet-secured
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TaskPageController
+    condition: bf7b6185-f370-43b1-9b20-691f15ff3f8a
+    config:
+      excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
+    components:
+      - name: abstractionLicenceIsNotYetSecuredInfo
+        id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
+        type: Html
+        content: >
+          <p class="govuk-body">You can continue with this application for grant funding.</p>
+          <p class="govuk-body">You will need to provide evidence that an abstraction licence has been received in the next stage of the application process.</p>
+  # 1.9.3 Abstraction licence why not needed, needAbstractionLicenceList=NN
   - title: Tell us why an abstraction licence is not needed for this project
     id: 68c4d850-dea8-4594-8a68-a946d636113d
     path: /why-abstraction-licence-is-not-needed
@@ -551,13 +615,13 @@ pages:
         options:
           required: true
         shortDescription: Why abstraction licence is not needed
-  # 1.9.2 Abstraction licence details why not needed, needAbstractionLicenceList=NN
+  # 1.9.3.1 Abstraction licence details why not needed, needAbstractionLicenceList=NN and why=SOMETHING_ELSE
   - title: Provide more details as to why an abstraction licence is not needed for this project
     id: 273737bb-0627-4797-8dd4-d5c449f53c28
     path: /details-why-abstraction-licence-is-not-needed
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
-    condition: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
+    condition: cc5f849d-2804-44bc-948f-0e02a941b020
     components:
       - name: detailsWhyAbstractionLicenceIsNotNeeded
         id: 1ed3247d-3842-4d8b-bf1a-a212dd685a10
@@ -566,37 +630,6 @@ pages:
         options:
           required: true
         shortDescription: Details why abstraction licence is not needed
-  # 1.9.3 Abstraction licence consent number, needAbstractionLicenceList=Y
-  - title: Please confirm the licence consent number
-    id: 6539b617-cbc6-4d80-af6f-10f71593758a
-    path: /abstraction-licence-consent-number
-    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
-    condition: 77637237-be69-4496-9933-e65fe134ae15
-    components:
-      - name: abstractionLicenceConsentNumber
-        id: da14005e-c930-4510-9b86-6e708c1e97b4
-        title: Please confirm the licence consent number
-        type: TextField
-        options:
-          required: true
-        shortDescription: Abstraction licence consent number
-  # 1.9.4 Why licence is not yet secured, needAbstractionLicenceList=N
-  - title: You will need to receive an abstraction licence from the Environment Agency before starting construction work on your project
-    id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
-    path: /abstraction-licence-is-not-yet-secured
-    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
-    condition: bf7b6185-f370-43b1-9b20-691f15ff3f8a
-    config:
-      excludeFromTaskCompletion: true
-    components:
-      - name: abstractionLicenceIsNotYetSecuredInfo
-        id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
-        type: Html
-        content: >
-          <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">You will need to provide evidence that an abstraction licence has been received in the next stage of the application process.</p>
   # 1.10 Score results
   - title: Your eligibility score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
@@ -685,7 +718,7 @@ pages:
       - name: howMuchWater
         id: 26208f72-951c-4944-869c-2bdd60401433
         title: How much water will your reservoir hold when full, in metres cubed (m³)?
-        hint: Enter a whole number.
+        hint: Must be a whole number (no decimals)
         type: NumberField
         options:
           required: true
@@ -702,7 +735,7 @@ pages:
           precision: 0
         shortDescription: Reservoir storage capacity (m³)
   # 2.2.2 Water distribution length
-  - title: How long will the water distribution network be, in metres (m)?
+  - title: How long will the underground water distribution main be, in metres (m)?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
     path: /water-distribution-length
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -711,8 +744,8 @@ pages:
     components:
       - name: waterDistributionLength
         id: a1ff4fd2-95a9-46f4-b7b8-1d6ad0a6ec21
-        title: How long will the water distribution network be, in metres (m)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £25.00 per metre. Enter a whole number (no decimal places).
+        title: How long will the underground water distribution main be, in metres (m)?
+        hint: Your total estimated cost will be calculated based on a standard cost of £25.00 per metre. Must be a whole number (no decimals)
         type: NumberField
         options:
           required: true
@@ -737,7 +770,7 @@ pages:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
         title: What will the total storage capacity of water storage tank(s) be, in metres cubed (m³)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £50.00 per metres cubed (m³). Enter a whole number (no decimal places).
+        hint: Your total estimated cost will be calculated based on a standard cost of £50.00 per metres cubed (m³). Must be a whole number (no decimals)
         type: NumberField
         options:
           required: true
@@ -787,7 +820,7 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">You can apply for a grant of up to 40% of the estimated costs of your project.</p>
+          <p class="govuk-body">You may be eligible for a grant of up to 40% of the total estimated costs of your project.</p>
           <p class="govuk-body">The total estimated costs are as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
             {% if itemsPlanningToInstall contains "RESERVOIR" %}
@@ -804,7 +837,7 @@ pages:
             {% endif %}
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body"><strong>Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong></p>
+          <p class="govuk-body">Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</p>
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 3: Check and submit your application
@@ -840,7 +873,7 @@ pages:
         id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
         type: Html
         content: >
-          <p class="govuk-body">You may be able to apply for a grant of up to <strong>{{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency }}</strong>, based on an estimated cost of <strong>{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</strong>.</p>
+          <p class="govuk-body">You may be eligible for a grant of {{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency }}, based on a total estimated cost of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}.</p>
           <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -942,22 +975,22 @@ lists:
       - text: Field scale vegetables
         value: FIELD_SCALE_VEGETABLES
         id: 9034c3c3-e0be-4970-a85a-5befdd63ef89
-      - text: Forest Nursery
+      - text: Forest nursery
         value: FOREST_NURSERY
         id: 94114a05-296c-4c89-a7cc-560dadc02ee3
-      - text: Grass - for feeding livestock, commercial turf
+      - text: Grass for feeding livestock or commercial turf
         value: GRASS_FEEDING_LIVESTOCK_COMMERCIAL_TURF
         id: abb227ff-1174-497e-a29d-084048bda098
-      - text: Protected edible crops
-        value: PROTECTED_EDIBLE_CROPS
-        id: c6bad1ef-a697-4ae3-8a69-59b6e7b70327
       - text: Ornamentals
         value: ORNAMENTALS
         id: 22a26b9d-8b48-49ba-ae77-299b12fd2d5c
-      - text: Soft & Cane Fruit
+      - text: Protected edible crops
+        value: PROTECTED_EDIBLE_CROPS
+        id: c6bad1ef-a697-4ae3-8a69-59b6e7b70327
+      - text: Soft and cane fruit
         value: SOFT_AND_CANE_FRUIT
         id: 32eacc46-e385-4022-9738-ecb363ef7675
-      - text: Top & Stone Fruit
+      - text: Top and stone fruit
         value: TOP_AND_STONE_FRUIT
         id: 59439dfe-d559-47e2-aea9-a4dc967fb9ff
       - text: Vineyards
@@ -979,7 +1012,7 @@ lists:
         description: For example digging, signing contracts, placing orders
         value: YES_PROJECT_WORK
         id: 92a51829-3be0-42eb-b1c7-d910833e84ca
-      - text: No, we have not done any work on this project yet
+      - text: No work has started yet
         value: NO_WORK_YET
         id: 7407e193-c144-49e9-a1c6-016d5ccb56bd
   - title: Organisation type list
@@ -987,13 +1020,13 @@ lists:
     name: organisationTypeList
     type: string
     items:
-      - text: Landowner/landlord
+      - text: Landowner - landlord, not farming
         value: LANDOWNER_LANDLORD
         id: 3057ad78-5357-4d0c-a23a-80e15602a124
-      - text: Landowner/owner occupier
+      - text: Landowner farmer, grower, forester etc.
         value: LANDOWNER_OWNER_OCCUPIER
         id: a078d35c-92c8-46c3-99dc-224870b71a98
-      - text: Tenant
+      - text: Tenant farmer, grower, forester etc.
         value: TENANT
         id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
       - text: Water Management Company
@@ -1038,35 +1071,37 @@ lists:
       - text: Exemption under General Permitted Development Order 2015
         value: GENERAL_PERMITTED_ORDER_2015
         id: 4ecce527-5d85-4680-b2ed-b35ef548edc0
+      - text: Project does not include a new reservoir
+        value: DOES_NOT_INCLUDE_NEW_RESERVOIR
+        id: 96f3266c-f079-41d8-a25c-b261af62dc85
       - text: Something else
         value: SOMETHING_ELSE
         id: 3538eea0-827d-43a7-becc-ac83ec888fca
-  # TODO add items
-  - title: Abstraction licence why not needed list
-    id: 38d9e3c7-6d20-4f53-9322-b94a82007edd
-    name: abstractionLicenceWhyNotNeededList
-    type: string
-    items:
-      - text: TODO
-        value: TODO
-        id: 32515aad-79b5-4cd4-94ae-09819dca2d6c
-      - text: Something else
-        value: SOMETHING_ELSE
-        id: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
   - title: Need abstraction licence list
     id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
     name: needAbstractionLicenceList
     type: string
     items:
-      - text: Licence not needed
-        value: NN
-        id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
-      - text: Licence already secured
+      - text: Yes, licence needed and already secured
         value: Y
         id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
-      - text: Licence needed but not yet secured
+      - text: Yes, licence needed but not yet secured
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
+      - text: No, licence not needed
+        value: NN
+        id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
+  - title: Abstraction licence why not needed list
+    id: 38d9e3c7-6d20-4f53-9322-b94a82007edd
+    name: abstractionLicenceWhyNotNeededList
+    type: string
+    items:
+      - text: Water will be sourced from rainwater harvesting only
+        value: RAINWATER_HARVESTING_ONLY
+        id: 32515aad-79b5-4cd4-94ae-09819dca2d6c
+      - text: Something else
+        value: SOMETHING_ELSE
+        id: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
   - title: How many businesses will use the water
     id: 6b2f167b-5564-4671-b987-053828151926
     name: howManyBusinessesWillUseTheWaterList
@@ -1199,14 +1234,14 @@ conditions:
           itemId: 92a51829-3be0-42eb-b1c7-d910833e84ca
   # Eligible organisation yes -> exit page
   - id: bd8c3d1a-c70c-4b05-a8b0-b3afad12d79c
-    displayName: eligibleOrganisationNo
+    displayName: eligibleOrganisationYes
     items:
       - id: 5a2a4fbc-7953-48b4-8ef5-405cb97c8cda
         componentId: 072ea72d-4330-4944-9d85-d0e7655cfcff
         operator: is
         type: BooleanValue
         value: true
-  # Organisation type tenant -> tenancy agreement page
+  # Organisation type tenant -> what you need to do page
   - id: 8e1b9ba9-494e-473b-909e-7055fa25315c
     displayName: organisationTypeTenant
     items:
@@ -1217,6 +1252,28 @@ conditions:
         value:
           listId: 67a7167d-3807-425e-a16a-d877e8ad4b1a
           itemId: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
+  # Organisation type landlord -> what you need to do page
+  - id: 8a7e18eb-3e36-44e9-87c0-5d0757d3b51a
+    displayName: organisationTypeLandlord
+    items:
+      - id: 4e751337-a271-4e3f-ab05-8ed0440251d8
+        componentId: 7a52568c-6927-432a-8eb4-65ba36f14283
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+          itemId: 3057ad78-5357-4d0c-a23a-80e15602a124
+  # Organisation type water company -> what you need to do page
+  - id: a7f04050-d932-4c00-bdbe-1f446b9ac613
+    displayName: organisationTypeWaterCompany
+    items:
+      - id: 8b6aaebb-9e08-4074-aeb3-feaa9ddf0656
+        componentId: 7a52568c-6927-432a-8eb4-65ba36f14283
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+          itemId: aef62824-765a-4722-99f4-c32bfb641279
   # Where water will come from is ONLY something else -> exit page
   - id: 8ebb93ee-f01e-4fb8-8d34-a48511cd0efc
     displayName: whereWaterWillComeFromOnlySomethingElse
@@ -1283,17 +1340,32 @@ conditions:
         value:
           listId: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
           itemId: dba6504e-f262-46a9-888c-1f418406b99e
-  # Abstraction licence not needed
-  - id: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
-    displayName: abstractionLicenceNotNeeded
+  # Planning permission not needed, and ONLY something else
+  - id: fdf85863-b1df-492b-8d4c-b3e124a68ce9
+    displayName: planningPermissionNNSomethingElse
     items:
-      - id: a11ebb2c-5782-409d-bc24-ffc5a03aca1d
-        componentId: 86e5ae73-ed7b-4720-8f71-5b461adbe382
-        operator: is
+      - id: 64535f4a-bfd2-445a-9513-d3c2f6180599
+        componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
+        operator: contains
         type: ListItemRef
         value:
-          listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
-          itemId: 077f18c8-d91c-4b18-8a8b-13997d5b867d
+          listId: 57ca866c-7ade-4d29-9109-39883c74a6d6
+          itemId: 3538eea0-827d-43a7-becc-ac83ec888fca
+      - id: 6d37e0e3-f7e8-4b81-a020-b0843d899341
+        componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 57ca866c-7ade-4d29-9109-39883c74a6d6
+          itemId: 4ecce527-5d85-4680-b2ed-b35ef548edc0
+      - id: e31e7e71-8e32-43e1-bccb-63fc50a61a09
+        componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 57ca866c-7ade-4d29-9109-39883c74a6d6
+          itemId: 96f3266c-f079-41d8-a25c-b261af62dc85
+    coordinator: and
   # Abstraction licence secured
   - id: 77637237-be69-4496-9933-e65fe134ae15
     displayName: abstractionLicenceSecured
@@ -1316,6 +1388,36 @@ conditions:
         value:
           listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
           itemId: 16dc7d87-c73f-4fd5-b350-082d32385b09
+  # Abstraction licence not needed
+  - id: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
+    displayName: abstractionLicenceNotNeeded
+    items:
+      - id: a11ebb2c-5782-409d-bc24-ffc5a03aca1d
+        componentId: 86e5ae73-ed7b-4720-8f71-5b461adbe382
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
+          itemId: 077f18c8-d91c-4b18-8a8b-13997d5b867d
+  # Abstraction licence not needed, and ONLY something else
+  - id: cc5f849d-2804-44bc-948f-0e02a941b020
+    displayName: abstractionLicenceNotNeededSomethingElse
+    items:
+      - id: 4cb5226e-ad6a-44d1-a76b-b6f844176901
+        componentId: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
+        operator: contains
+        type: ListItemRef
+        value:
+          listId: 38d9e3c7-6d20-4f53-9322-b94a82007edd
+          itemId: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
+      - id: 985f29ce-f165-4841-aa82-fd043bda38c9
+        componentId: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
+        operator: does not contain
+        type: ListItemRef
+        value:
+          listId: 38d9e3c7-6d20-4f53-9322-b94a82007edd
+          itemId: 32515aad-79b5-4cd4-94ae-09819dca2d6c
+    coordinator: and
   # Project delivers reservoir
   - id: 3f416796-e237-4a41-86e2-17c2b9b4f03e
     displayName: projectDeliversReservoir
