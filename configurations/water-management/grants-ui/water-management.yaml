@@ -380,6 +380,7 @@ pages:
     condition: 8e1b9ba9-494e-473b-909e-7055fa25315c
     config:
       excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
     components:
       - name: whatTenantsNeedToDo
         id: 4b9a1501-d0b0-4eb0-8e52-4e7f0205cfcb
@@ -395,6 +396,7 @@ pages:
     condition: 8a7e18eb-3e36-44e9-87c0-5d0757d3b51a
     config:
       excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
     components:
       - name: whatLandlordsNeedToDo
         id: f8c5c883-c9ec-4fb7-8ce8-58859b933484
@@ -410,6 +412,7 @@ pages:
     condition: a7f04050-d932-4c00-bdbe-1f446b9ac613
     config:
       excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
     components:
       - name: whatWaterCompanysNeedToDo
         id: b00d59d6-5070-45ba-91f1-96a355c943c5
