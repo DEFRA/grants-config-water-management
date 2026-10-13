@@ -341,7 +341,7 @@ pages:
         options:
           required: true
           classes: govuk-radios
-        shortDescription: Eligible organisation
+        shortDescription: Ineligible organisation
   # 1.4.1 EXIT eligible-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b7ad30b6-c36e-490c-95d6-b44ef4989667
