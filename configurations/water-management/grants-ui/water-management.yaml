@@ -199,7 +199,7 @@ metadata:
         textAfter: '.'
     showRpaSupport: false
   options:
-    submitButtonText: Continue
+    submitButtonText: Save and continue
 
 sections:
   - name: check-project-eligibility
@@ -255,7 +255,7 @@ pages:
     components:
       - name: sectorsIrrigatedSomethingElseInfo
         id: 6503008c-d3e0-4236-b0a6-09d409c2a818
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">This grant is only available to:</p>
           <ul class="govuk-list govuk-list--bullet">
@@ -263,6 +263,7 @@ pages:
             <li>nurseries growing ornamentals</li>
             <li>forestry nurseries</li>
           </ul>
+          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.2 Where project located
   - title: Where's the project located?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
@@ -641,6 +642,7 @@ pages:
     controller: ScoreResultsTaskPageController
     config:
       excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
           - totalScore
@@ -795,6 +797,7 @@ pages:
     controller: TotalEstimatedCostTaskPageController
     config:
       excludeFromTaskCompletion: true
+      submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
           - reservoirHighCostPerUnit
@@ -871,6 +874,8 @@ pages:
     path: /potential-funding
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: TaskPageController
+    config:
+      submitButtonText: Confirm and continue
     components:
       - name: potentialFundingContent
         id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
@@ -1063,7 +1068,7 @@ lists:
       - text: No
         value: N
         id: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
-      - text: Not Needed
+      - text: Not needed
         value: NN
         id: dba6504e-f262-46a9-888c-1f418406b99e
   - title: Planning permission why not needed list
@@ -1116,7 +1121,7 @@ lists:
       - text: Two to four
         value: TWO_TO_FOUR
         id: 1a8d9ef6-b69e-4295-bd5a-f9a609bFEBFF
-      - text: Five or move
+      - text: Five or more
         value: FIVE_OR_MORE
         id: 1d5f1c83-9e11-4174-a184-5df8b9caf684
   - title: Items planning to install list
