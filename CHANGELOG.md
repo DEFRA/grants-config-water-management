@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.6.4
+
+### Patch Changes
+
+- 0afa862: grants-ui config, save and continue buttons
+
 ## 0.6.3
 
 ### Patch Changes
