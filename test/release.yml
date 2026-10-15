@@ -1,0 +1,6 @@
+name: water-management
+version: 0.0.0
+notes: For journey tests
+environments:
+  - name: local
+    status: active
