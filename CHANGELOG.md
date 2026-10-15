@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.2
+
+### Patch Changes
+
+- bac7532: Show business reference numbers
+
 ## 0.7.1
 
 ### Patch Changes
