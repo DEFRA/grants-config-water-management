@@ -125,8 +125,10 @@ metadata:
         fields:
           - label: Legal status
             sourcePath: business.type.type
-          - label: Company number
-            sourcePath: business.reference # TODO correct?
+          - label: Company Registration Number
+            sourcePath: business.info.registrationNumbers.companiesHouse
+          - label: Registered Charity Number
+            sourcePath: business.info.registrationNumbers.charityCommission
       - title: Reference numbers
         fields:
           - label: Single Business Identifier (SBI)
