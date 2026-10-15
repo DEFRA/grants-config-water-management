@@ -172,20 +172,24 @@ metadata:
     showQuestions: false
     statuses:
       notStarted:
-        text: 'Not started'
-        classes: 'govuk-tag--yellow'
+        text: 'Incomplete'
+        classes: 'govuk-tag--blue'
       cannotStart:
         text: 'Cannot start yet'
-        classes: 'govuk-tag--grey'
       inProgress:
         text: 'In progress'
         classes: 'govuk-tag--blue'
       cannotContinue:
         text: 'On hold'
-        classes: 'govuk-tag--purple'
+        classes: 'govuk-tag--grey'
       completed:
         text: 'Completed'
-        classes: 'govuk-tag--green'
+    aboveComponents:
+      - name: tasklistInfo
+        id: 81b42eac-cc5a-48ff-a050-9af715c2e0ed
+        title: Task list info
+        type: Html
+        content: BH TEST
   printPage:
     showApplicantDetails: true
   incorrectDetailsContent:
@@ -209,7 +213,7 @@ sections:
     title: Your project details and estimated costs
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
   - name: check-and-submit-your-application
-    title: Check and submit your application
+    title: Check and submit your stage 1 application
     id: b7006592-79e9-442b-a371-36fa95042c68
 
 pages:
@@ -900,7 +904,7 @@ pages:
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: DeclarationPageController
     config:
-      submitButtonText: Confirm and submit
+      submitButtonText: Submit your application
       showSupportDetails: false
       hiddenFields:
         guidanceRead: 'true'
