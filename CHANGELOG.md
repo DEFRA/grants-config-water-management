@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.1
+
+### Patch Changes
+
+- d760d20: grants-ui config, UCD changes
+
 ## 0.7.0
 
 ### Minor Changes
