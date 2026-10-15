@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.0
+
+### Minor Changes
+
+- 6b6ed7f: Use BUSINESS_DETAILS permissions
+
 ## 0.6.4
 
 ### Patch Changes
