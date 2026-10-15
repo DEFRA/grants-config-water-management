@@ -176,20 +176,15 @@ metadata:
         classes: 'govuk-tag--blue'
       cannotStart:
         text: 'Cannot start yet'
+        classes: 'govuk-tag--grey'
       inProgress:
         text: 'In progress'
-        classes: 'govuk-tag--blue'
+        classes: 'govuk-tag--green'
       cannotContinue:
         text: 'On hold'
         classes: 'govuk-tag--grey'
       completed:
         text: 'Completed'
-    aboveComponents:
-      - name: tasklistInfo
-        id: 81b42eac-cc5a-48ff-a050-9af715c2e0ed
-        title: Task list info
-        type: Html
-        content: BH TEST
   printPage:
     showApplicantDetails: true
   incorrectDetailsContent:
@@ -994,7 +989,7 @@ lists:
       - text: Forest nursery
         value: FOREST_NURSERY
         id: 94114a05-296c-4c89-a7cc-560dadc02ee3
-      - text: Grass for feeding livestock or commercial turf
+      - text: Grass for commercial turf or feeding livestock
         value: GRASS_FEEDING_LIVESTOCK_COMMERCIAL_TURF
         id: abb227ff-1174-497e-a29d-084048bda098
       - text: Ornamentals
