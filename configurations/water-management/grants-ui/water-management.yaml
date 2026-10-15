@@ -157,20 +157,19 @@ metadata:
     showQuestions: false
     statuses:
       notStarted:
-        text: 'Not started'
-        classes: 'govuk-tag--yellow'
+        text: 'Incomplete'
+        classes: 'govuk-tag--blue'
       cannotStart:
         text: 'Cannot start yet'
         classes: 'govuk-tag--grey'
       inProgress:
         text: 'In progress'
-        classes: 'govuk-tag--blue'
+        classes: 'govuk-tag--green'
       cannotContinue:
         text: 'On hold'
-        classes: 'govuk-tag--purple'
+        classes: 'govuk-tag--grey'
       completed:
         text: 'Completed'
-        classes: 'govuk-tag--green'
   printPage:
     showApplicantDetails: true
   incorrectDetailsContent:
@@ -194,7 +193,7 @@ sections:
     title: Your project details and estimated costs
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
   - name: check-and-submit-your-application
-    title: Check and submit your application
+    title: Check and submit your stage 1 application
     id: b7006592-79e9-442b-a371-36fa95042c68
 
 pages:
@@ -221,10 +220,14 @@ pages:
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
+      - name: sectorsIrrigatedInfo
+        id: 673b4256-0ac1-480f-b6ef-cd5d4112c7d3
+        type: Html # TODO update link
+        content: >
+          <p class="govuk-body">To find out more about what crops are eligible for this grant read: <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Applicant's Guide: Water Management grant round 3 (opens in a new tab)</a></p>
       - name: sectorsIrrigated
         id: 32b05b01-5940-40d0-b191-36b5028c01e5
-        title: What crops will be irrigated using the water from this project?
-        hint: "To find out more about what crops are eligible for this grant read: 'Applicant's Guide: Water Management grant round 3 (opens in a new tab)'. Choose all that apply." # TODO add link
+        title: Choose all that apply
         type: CheckboxesField
         list: 1f2856d7-0706-4ea2-b382-07697ca7914c
         options:
@@ -885,7 +888,7 @@ pages:
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: DeclarationPageController
     config:
-      submitButtonText: Confirm and submit
+      submitButtonText: Submit your application
       showSupportDetails: false
       hiddenFields:
         guidanceRead: 'true'
@@ -971,7 +974,7 @@ lists:
       - text: Forest nursery
         value: FOREST_NURSERY
         id: 94114a05-296c-4c89-a7cc-560dadc02ee3
-      - text: Grass for feeding livestock or commercial turf
+      - text: Grass for commercial turf or feeding livestock
         value: GRASS_FEEDING_LIVESTOCK_COMMERCIAL_TURF
         id: abb227ff-1174-497e-a29d-084048bda098
       - text: Ornamentals
