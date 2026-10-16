@@ -11,3 +11,4 @@ coverage
 .env
 playwright-report
 test-results
+test/testconfig
