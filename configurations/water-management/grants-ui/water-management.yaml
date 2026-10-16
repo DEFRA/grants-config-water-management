@@ -101,10 +101,14 @@ metadata:
                     - path: flatName
                     - path: pafOrganisationName
                 - path: vat
-                - path: type
+                - path: legalStatus
                   fields:
                     - path: code
                     - path: type
+                - path: registrationNumbers
+                  fields:
+                    - path: companiesHouse
+                    - path: charityCommission
     responseMapping:
       business: data.business.info
       customer: data.customer.info
@@ -124,11 +128,11 @@ metadata:
       - title: Business details
         fields:
           - label: Legal status
-            sourcePath: business.type.type
+            sourcePath: business.legalStatus.type
           - label: Company Registration Number
-            sourcePath: business.info.registrationNumbers.companiesHouse
+            sourcePath: business.registrationNumbers.companiesHouse
           - label: Registered Charity Number
-            sourcePath: business.info.registrationNumbers.charityCommission
+            sourcePath: business.registrationNumbers.charityCommission
       - title: Reference numbers
         fields:
           - label: Single Business Identifier (SBI)
