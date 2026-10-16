@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.3
+
+### Patch Changes
+
+- be1ff75: Fetch business references in query
+
 ## 0.7.2
 
 ### Patch Changes
