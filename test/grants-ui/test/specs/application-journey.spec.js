@@ -1,18 +1,7 @@
-import { readFileSync } from 'node:fs'
 import { test, expect } from '@playwright/test'
 import { authenticateTo } from '../utils/auth.js'
 import { clearApplicationData } from '../utils/backend.js'
 import { analyzeAccessibility } from '../utils/accessibility.js'
-
-const gasConfig = JSON.parse(
-  readFileSync(
-    new URL(
-      '../../../../configurations/water-management/gas/gas.json',
-      import.meta.url
-    ),
-    'utf8'
-  )
-)
 
 const CRN = '1106298365'
 const SBI = '106480734'
@@ -106,10 +95,6 @@ test.describe('Water Management Grant application', () => {
     }
   )
 })
-
-function CI() {
-  return !!process.env.MOCKSERVER_HOST
-}
 
 async function assertTaskStatuses(page, tasks) {
   for (const { name, status } of tasks) {

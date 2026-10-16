@@ -17,6 +17,8 @@ export async function authenticateTo(page, path, crn) {
     await page.locator('input#password').fill('x')
     await page.locator('button[type="submit"]').click()
 
-    await expect(page).toHaveURL(/\/(water-management|agreement)/, { timeout: 30_000 })
+    await expect(page).toHaveURL(/\/(water-management|agreement)/, {
+      timeout: 30_000
+    })
   }
 }
