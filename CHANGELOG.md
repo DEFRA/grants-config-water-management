@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.5
+
+### Patch Changes
+
+- 887f999: grants-ui config, UCD changes
+
 ## 0.7.4
 
 ### Patch Changes
