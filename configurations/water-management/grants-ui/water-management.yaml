@@ -196,7 +196,7 @@ sections:
     title: Check your project eligibility
     id: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
   - name: project-details-estimated-costs
-    title: Your project details and estimated costs
+    title: Your project details
     id: 922947cc-6c6a-4fe5-b831-da27251663a9
   - name: check-and-submit-your-application
     title: Check and submit your stage 1 application
@@ -268,13 +268,13 @@ pages:
       - name: projectLocated
         id: 9e3b7d5a-4c4f-4d7e-9f2a-ab8c9d5e6f70
         title: Where is your project?
-        hint: Use the map to to indicate the location of your project (for example the centre of your reservoir). If your project will deliver multiple reservoirs, water storage tanks or underground distribution mains, then indicate a central location.
+        hint: Select the centre of your project on the map (for example the centre of your reservoir). If you are planning more than one reservoir; water tank or underground distribution main, select the middle point between all the items.
         type: EastingNorthingField
         options:
           required: true
         shortDescription: Where is your project?
   # 1.3 Work started yet
-  - title: Has work already started on this project?
+  - title: Have you started work?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
     path: /work-started-yet
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -282,7 +282,7 @@ pages:
     components:
       - name: workStartedYet
         id: 6d91fee3-d23c-4e05-aa1e-89f23b5f0a1f
-        title: Has work already started on this project?
+        title: Have you started work?
         type: RadiosField
         list: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
         options:
@@ -319,8 +319,7 @@ pages:
         id: 226da8d4-0485-4ee3-8df6-0434c11bec3a
         type: Html # TODO update link
         content: >
-          <p class="govuk-body">You cannot apply for a grant if you have already started work on your project.</p>
-          <p class="govuk-body">Starting the project or committing to any costs (such as placing orders) before you receive a funding agreement invalidates your application.</p>
+          <p class="govuk-body">You cannot apply for a grant. Starting work on the project or committing to costs (such as placing orders) are against the rules of the scheme.</p>
           <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.4 Eligible organisation
   - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
@@ -349,7 +348,7 @@ pages:
         id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
         type: Html # TODO update link
         content: >
-          <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and Water Management Companies.</p>
+          <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and water management companies.</p>
           <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.5 Organisation type
   - title: What type of organisation are you applying on behalf of?
@@ -413,9 +412,9 @@ pages:
         id: b00d59d6-5070-45ba-91f1-96a355c943c5
         type: Html
         content: >
-          <p class="govuk-body">Because you are a Water Management Company you must have the consent of any land owners and tenants in place before starting work on this project.</p>
+          <p class="govuk-body">Because you are a water management company you must have the consent of any land owners and tenants in place before starting work on this project.</p>
   # 1.6 How many businesses will use the water
-  - title: How many businesses will use the water from this project for irrigation?
+  - title: How many business will use the water for irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
     path: /how-many-businesses-will-use-the-water
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -423,15 +422,15 @@ pages:
     components:
       - name: businessesUsingWater
         id: 6e30957f-74f3-4717-aeea-284898e25b1b
-        title: How many businesses will use the water from this project for irrigation?
-        hint: If the business you are applying on behalf of will use also use the water for irrigation then include this in the total.
+        title: How many business will use the water for irrigation?
+        hint: Tell us the total number of businesses that will use the water for irrigation (including the one you are applying on behalf of)
         type: RadiosField
         list: 6b2f167b-5564-4671-b987-053828151926
         options:
           required: true
         shortDescription: How many businesses will use the water?
   # 1.7 Where water will come from
-  - title: Where will the water come from to fill your reservoir or transfer via the distribution main?
+  - title: Where will the water come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
     path: /where-water-will-come-from
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -439,7 +438,7 @@ pages:
     components:
       - name: whereWaterWillComeFrom
         id: e40f6766-225f-4dc9-b2ed-d0cf4c858434
-        title: Where will the water come from to fill your reservoir or transfer via the distribution main?
+        title: Where will the water come from?
         hint: Select all that apply
         type: CheckboxesField
         list: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
@@ -461,7 +460,7 @@ pages:
           <p class="govuk-body">This grant will only fund projects that will store water from surface water abstraction, rainwater harvesting or a borehole/aquifer.</p>
           <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.8 Have planning permission
-  - title: Do you already have planning permission for this project confirmed by your Local Planning Authority?
+  - title: Do you have confirmed planning permission?
     id: abfbde5b-c983-47f1-9b24-4586d0568171
     path: /have-planning-permission
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -469,9 +468,9 @@ pages:
     components:
       - name: havePlanningPermission
         id: 85957609-1ab7-4921-ad8f-5707b455784b
-        title: Do you already have planning permission for this project confirmed by your Local Planning Authority?
+        title: Do you have confirmed planning permission?
         hint: >
-          If you are building a reservoir you will need to apply for and receive the relevant permission from your Local Planning Authority in advance of starting construction of your project.
+          If you are building a reservoir you'll need to have planning permission from your local planning authority before starting construction work.
 
           This could be through the prior notification or full planning permission process.
 
@@ -482,7 +481,7 @@ pages:
           required: true
         shortDescription: Do you have planning permission?
   # 1.8.1 Planning permission reference number, havePlanningPermission=Y
-  - title: Confirm the planning permission reference number for this project
+  - title: Enter the planning permission reference number
     id: 7d30df77-e814-49b4-a0ef-18205da9d630
     path: /planning-permission-reference-number
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -491,14 +490,14 @@ pages:
     components:
       - name: planningPermissionReferenceNumber
         id: cf6da572-13e3-4963-a37a-f81f8cf4e249
-        title: Confirm the planning permission reference number for this project
-        hint: You will find this reference number on the information provided by your Local Planning Authority.
+        title: Enter the planning permission reference number
+        hint: Your reference number will be on the planning decision notice issued by your local planning authority (for example, 24/01234/FUL)
         type: TextField
         options:
           required: true
         shortDescription: Planning permission reference number
   # 1.8.2 Planning permission is needed, havePlanningPermission=N
-  - title: You will need to receive planning permission from your Local Planning Authority in advance of starting construction on your project
+  - title: You must have planning permission before you start construction work
     id: 5ac7efd6-2d1b-4105-881a-f28b1bf0713c
     path: /planning-permission-is-needed
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -513,8 +512,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">You will need to provide evidence that planning permission has been received in the next stage of the application process.</p>
-          <p class="govuk-body">If planning permission is not needed, you will need to confirm why this is the case.</p>
+          <p class="govuk-body">You'll need to provide evidence that you have planning permission if you are invited to stage 2 of the application process.</p>
   # 1.8.3 Planning permission why not needed, havePlanningPermission=NN
   - title: Tell us why you do not need planning permission
     id: 9cb8bf96-2a38-41a6-85e4-9369302c8cd4
@@ -557,7 +555,6 @@ pages:
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
-        hint: If you are invited to proceed, you will need to provide evidence of the appropriate licence before submitting a claim.
         type: RadiosField
         list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
         options:
@@ -580,7 +577,7 @@ pages:
           required: true
         shortDescription: Abstraction licence consent number
   # 1.9.2 Why licence is not yet secured, needAbstractionLicenceList=N
-  - title: You will need to receive an abstraction licence from the Environment Agency before starting construction work on your project
+  - title: You must have an abstraction licence before you start construction work
     id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
     path: /abstraction-licence-is-not-yet-secured
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -594,10 +591,10 @@ pages:
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
         type: Html
         content: >
-          <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">You will need to provide evidence that an abstraction licence has been received in the next stage of the application process.</p>
+          <p class="govuk-body">You can continue with the application for grant funding.</p>
+          <p class="govuk-body">You'll need to provide evidence that you have an abstraction licence from the Environment Agency if you are invited to stage 2 of the application process.</p>
   # 1.9.3 Abstraction licence why not needed, needAbstractionLicenceList=NN
-  - title: Tell us why an abstraction licence is not needed for this project
+  - title: Tell us why you do not need an abstraction licence
     id: 68c4d850-dea8-4594-8a68-a946d636113d
     path: /why-abstraction-licence-is-not-needed
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -606,7 +603,7 @@ pages:
     components:
       - name: whyAbstractionLicenceIsNotNeeded
         id: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
-        title: Tell us why an abstraction licence is not needed for this project
+        title: Tell us why you do not need an abstraction licence
         hint: Select all reasons that apply
         type: CheckboxesField
         list: 38d9e3c7-6d20-4f53-9322-b94a82007edd
@@ -662,11 +659,7 @@ pages:
             <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }} out of 100</p>
           </div>
           <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">i</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-visually-hidden">Warning</span>
-              The likelihood of your application being successful will depend on the total number of applications received for this grant, and the relative scores of all projects as they relate to RPA's policy objectives and budget.
-            </strong>
+            <p class="govuk-body">The likelihood of your application being successful will depend on the total number of applications received for this grant, and the relative scores of all projects as they relate to RPA's policy objectives and budget.</p>
           </div>
   # ==========================================
   # Section 2: Project details and estimated costs
@@ -690,7 +683,7 @@ pages:
           autocomplete: off
         shortDescription: Expected project start date
   # 2.2 Items planning to install
-  - title: What type of items are you planning to install?
+  - title: What are you planning to build or install?
     id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
     path: /items-planning-to-install
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -698,7 +691,7 @@ pages:
     components:
       - name: itemsPlanningToInstall
         id: 7af61365-6933-40c1-bdd2-8dce5960a8eb
-        title: What type of items are you planning to install?
+        title: What are you planning to build or install?
         hint: Select all that apply
         type: CheckboxesField
         list: 8c0a3d2c-9572-4512-9226-7800ff471010
@@ -707,7 +700,7 @@ pages:
           classes: govuk-radios
         shortDescription: What are you planning to build or install?
   # 2.2.1 Reservoir storage capacity
-  - title: How much water will your reservoir hold when full, in metres cubed (m³)?
+  - title: How much water can your reservoir hold?
     id: a5fd52b7-0dc1-4bce-bc5f-a7598f62cd91
     path: /reservoir-storage-capacity
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -716,8 +709,8 @@ pages:
     components:
       - name: howMuchWater
         id: 26208f72-951c-4944-869c-2bdd60401433
-        title: How much water will your reservoir hold when full, in metres cubed (m³)?
-        hint: Must be a whole number (no decimals)
+        title: How much water can your reservoir hold?
+        hint: Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number, without decimals.
         type: NumberField
         options:
           required: true
@@ -734,7 +727,7 @@ pages:
           precision: 0
         shortDescription: Reservoir storage capacity (m³)
   # 2.2.2 Water distribution length
-  - title: How long will the underground water distribution main be, in metres (m)?
+  - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
     path: /water-distribution-length
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -743,8 +736,8 @@ pages:
     components:
       - name: waterDistributionLength
         id: a1ff4fd2-95a9-46f4-b7b8-1d6ad0a6ec21
-        title: How long will the underground water distribution main be, in metres (m)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £25.00 per metre. Must be a whole number (no decimals)
+        title: How long will your underground water distribution main be?
+        hint: Enter the planned length in metres. Use a whole number, without decimals.
         type: NumberField
         options:
           required: true
@@ -759,7 +752,7 @@ pages:
           precision: 0
         shortDescription: Water distribution length (m)
   # 2.2.3 Water storage capacity
-  - title: What will the total storage capacity of water storage tank(s) be, in metres cubed (m³)?
+  - title: How much water will your storage tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /water-storage-capacity
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -768,8 +761,8 @@ pages:
     components:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
-        title: What will the total storage capacity of water storage tank(s) be, in metres cubed (m³)?
-        hint: Your total estimated cost will be calculated based on a standard cost of £50.00 per metres cubed (m³). Must be a whole number (no decimals)
+        title: How much water will your storage tanks hold?
+        hint: Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number, without decimals.
         type: NumberField
         options:
           required: true
@@ -784,7 +777,7 @@ pages:
           precision: 0
         shortDescription: Water storage capacity (m³)
   # 2.3 Total estimated cost TODO how to display reservoir
-  - title: Total estimated cost
+  - title: Total estimated grant based on estimated costs
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
     path: /total-estimated-cost
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -820,14 +813,14 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">You may be eligible for a grant of up to 40% of the total estimated costs of your project.</p>
-          <p class="govuk-body">The total estimated costs are as follows:</p>
+          <p class="govuk-body">The amount of grant you can apply for is based on the reference cost contribution for the items you need. If successful, you will be able to claim this amount or 40% of your actual invoice costs at claim stage, whichever is the lower amount.</p>
+          <p class="govuk-body">The total estimated grant is as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
             {% if itemsPlanningToInstall contains "RESERVOIR" %}
-              <li>Reservoir – clay lined: {{ howMuchWater }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
+              <li>Reservoir – clay lined: {{ howMuchWater }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
-              <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000 m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of £0.00.</li>
+              <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of £0.00.</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
               <li>Water distribution network: {{ waterDistributionLength }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency }} per m = {{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency }}</li>
@@ -837,7 +830,7 @@ pages:
             {% endif %}
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body">Total estimated cost = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</p>
+          <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</p>
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 3: Check and submit your application
@@ -875,13 +868,13 @@ pages:
         id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
         type: Html
         content: >
-          <p class="govuk-body">You may be eligible for a grant of {{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency }}, based on a total estimated cost of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}.</p>
+          <p class="govuk-body">You may be able to apply for a grant of {{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency }} if you are invited to stage 2 of the application process. This is based on your estimated costs of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}.</p>
           <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
             <strong class="govuk-warning-text__text">
               <span class="govuk-visually-hidden">Warning</span>
-              There's no guarantee the project will receive a grant
+              There is no guarantee that your stage 2 grant application will be successful
             </strong>
           </div>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -926,8 +919,8 @@ pages:
         type: Html
         content: >
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">Thank you for submitting an application for a Water Management grant round 3 (WMG R3).</p>
-          <p class="govuk-body">If your application meets RPA funding priorities you may be asked to provide the following evidence before being offered a grant funding agreement:</p>
+          <p class="govuk-body">Thank you for submitting your stage 1 application for a Water Management grant round 3 (WMG R3).</p>
+          <p class="govuk-body">We will now assess your application against our eligibility criteria and RPA funding priorities. If you are successful in stage 1, we will invite you to complete stage 2 of the application process where you will need to show:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
             <li>Evidence of planning permission</li>
             <li>A plan showing existing and proposed irrigation systems</li>
@@ -960,7 +953,11 @@ pages:
         id: 0ea6b5ac-be67-4e14-89dc-cfa26bf37e11
         type: Html # TODO update link
         content: >
-          <p class="govuk-body">The estimated costs for your project are not high enough to be eligible for a grant. Estimated costs need to be a minimum of £15,000 when only planning to build a water tank(s), otherwise £35,000.</p>
+          {% if itemsPlanningToInstall.size == 1 and itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
+            <p class="govuk-body">Your costs must be at least £35,500 because the minimum grant is £15,000 (40% of your confirmed costs).</p>
+          {% else %}
+            <p class="govuk-body">Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).</p>
+          {% endif %}
           <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
 
 lists:
@@ -1020,16 +1017,16 @@ lists:
     name: organisationTypeList
     type: string
     items:
-      - text: Landowner - landlord, not farming
+      - text: Landowner landlord
         value: LANDOWNER_LANDLORD
         id: 3057ad78-5357-4d0c-a23a-80e15602a124
-      - text: Landowner farmer, grower, forester etc.
+      - text: Landowner farmer, grower or forester
         value: LANDOWNER_OWNER_OCCUPIER
         id: a078d35c-92c8-46c3-99dc-224870b71a98
-      - text: Tenant farmer, grower, forester etc.
+      - text: Tenant farmer, grower or forester
         value: TENANT
         id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
-      - text: Water Management Company
+      - text: Water management company
         value: WATER_MANAGEMENT_COMPANY
         id: aef62824-765a-4722-99f4-c32bfb641279
   - title: Where water will come from list
@@ -1060,7 +1057,7 @@ lists:
       - text: No
         value: N
         id: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
-      - text: Not needed
+      - text: I don't need planning permission
         value: NN
         id: dba6504e-f262-46a9-888c-1f418406b99e
   - title: Planning permission why not needed list
@@ -1082,13 +1079,13 @@ lists:
     name: needAbstractionLicenceList
     type: string
     items:
-      - text: Yes, licence needed and already secured
+      - text: I already have a licence
         value: Y
         id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
-      - text: Yes, licence needed but not yet secured
+      - text: I need a licence but I have not got one yet
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-      - text: No, licence not needed
+      - text: I do not need a licence
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
   - title: Abstraction licence why not needed list
@@ -1121,13 +1118,13 @@ lists:
     name: itemsPlanningToInstallList
     type: string
     items:
-      - text: Clay lined reservoir
+      - text: Clay-lined reservoir
         value: RESERVOIR
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
-      - text: Synthetic lined reservoir
+      - text: Synthetic-lined reservoir
         value: SYNTHETIC_LINED_RESERVOIR
         id: 8fd37e44-f99b-440b-a9fd-21bc31065365
-      - text: Water storage tank(s) above ground
+      - text: Above-ground water storage tanks
         value: WATER_STORAGE_TANKS
         id: 544b8f79-973d-42d3-8053-f049fb351e6e
       - text: Underground water distribution main
