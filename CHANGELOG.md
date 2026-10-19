@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.4
+
+### Patch Changes
+
+- 4ff8fe2: grants-ui config, UCD changes, check answers and min grant not reached
+
 ## 0.7.3
 
 ### Patch Changes
