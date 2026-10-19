@@ -9,3 +9,6 @@ coverage
 .cache
 .eslintcache
 .env
+playwright-report
+test-results
+test/testconfig
