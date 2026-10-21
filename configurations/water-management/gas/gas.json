@@ -7,7 +7,7 @@
     }
   },
   "actions": [],
-  "amendablePositions": ["PHASE_PRE_AWARD"],
+  "amendablePositions": [],
   "entitlementTemplates": [],
   "phases": [
     {
