@@ -131,8 +131,18 @@ metadata:
             sourcePath: business.legalStatus.type
           - label: Company Registration Number
             sourcePath: business.registrationNumbers.companiesHouse
+            showIfEmptyWhen:
+              sourcePath: business.legalStatus.type
+              values:
+                - Private Ltd Company
+            emptyText: Not entered
           - label: Registered Charity Number
             sourcePath: business.registrationNumbers.charityCommission
+            showIfEmptyWhen:
+              sourcePath: business.legalStatus.type
+              values:
+                - Charity
+            emptyText: Not entered
       - title: Reference numbers
         fields:
           - label: Single Business Identifier (SBI)
