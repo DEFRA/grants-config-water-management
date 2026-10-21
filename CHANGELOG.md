@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.7
+
+### Patch Changes
+
+- 58053d7: Remove the water-management amendable position that names a phase rather than a position
+
 ## 0.7.6
 
 ### Patch Changes
