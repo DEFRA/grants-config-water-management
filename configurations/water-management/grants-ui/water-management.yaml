@@ -457,7 +457,7 @@ pages:
         id: b1da8222-9e39-40ec-88d2-10ae5662da6c
         type: Html # TODO update link
         content: >
-          <p class="govuk-body">This grant will only fund projects that will store water from surface water abstraction, rainwater harvesting or a borehole/aquifer.</p>
+          <p class="govuk-body">This grant will only fund projects that will store water from surface water abstraction, rainwater harvesting or a borehole / aquifer.</p>
           <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 1.8 Have planning permission
   - title: Do you have confirmed planning permission?
@@ -817,20 +817,20 @@ pages:
           <p class="govuk-body">The total estimated grant is as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
             {% if itemsPlanningToInstall contains "RESERVOIR" %}
-              <li>Reservoir – clay lined: {{ howMuchWater }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency }}.</li>
+              <li>Reservoir – clay lined: {{ howMuchWater | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency | replace: '.00', '' }}</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
-              <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency }}/m³, giving a total of £0.00.</li>
+              <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of £0.00</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
-              <li>Water distribution network: {{ waterDistributionLength }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency }} per m = {{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency }}</li>
+              <li>Water distribution network: {{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per m = {{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
-              <li>Water storage tank(s): {{ waterStorageCapacity }}m³ at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency }} per m³ = {{ context.state.additionalAnswers.waterTanksCost | formatCurrency }}</li>
+              <li>Water storage tank(s): {{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per m³ = {{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</li>
             {% endif %}
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</p>
+          <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</p>
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 3: Check and submit your application
@@ -868,7 +868,7 @@ pages:
         id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
         type: Html
         content: >
-          <p class="govuk-body">You may be able to apply for a grant of {{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency }} if you are invited to stage 2 of the application process. This is based on your estimated costs of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}.</p>
+          <p class="govuk-body">You may be able to apply for a grant of {{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency | replace: '.00', '' }} if you are invited to stage 2 of the application process. This is based on your estimated costs of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}.</p>
           <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
