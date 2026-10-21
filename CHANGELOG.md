@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.8
+
+### Patch Changes
+
+- ba8d84d: grants-ui config, UCD changes, fix total estimated grant
+
 ## 0.7.7
 
 ### Patch Changes
