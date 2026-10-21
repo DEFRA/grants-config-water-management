@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.6
+
+### Patch Changes
+
+- 32fe5be: grants-ui config, remove zero pence from monetary values
+
 ## 0.7.5
 
 ### Patch Changes
