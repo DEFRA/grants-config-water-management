@@ -830,7 +830,7 @@ pages:
             {% endif %}
           </ul>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</p>
+          <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</p>
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 3: Check and submit your application
