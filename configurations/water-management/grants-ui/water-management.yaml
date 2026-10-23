@@ -127,12 +127,40 @@ metadata:
             sourcePath: business.email.address
       - title: Business details
         fields:
+          # See legalStatusCodes.md for full list of mapping codes used below
           - label: Legal status
             sourcePath: business.legalStatus.type
+            showIfEmpty: true
           - label: Company Registration Number
             sourcePath: business.registrationNumbers.companiesHouse
+            showIfEmptyWhen:
+              sourcePath: business.legalStatus.code
+              values:
+                # Limited Liability Partnership (LLP)
+                - 102105
+                # Limited Partnership (LP)
+                - 102106
+                # Non-UK Company
+                - 102107
+                # Partnership
+                - 102108
+                # Private Limited Company (Ltd)
+                - 102109
+                # Public Limited Company (PLC)
+                - 102110
+                # Sole Proprietorship
+                - 102111
+                # Unlimited Company (Ultd)
+                - 102114
           - label: Registered Charity Number
             sourcePath: business.registrationNumbers.charityCommission
+            showIfEmptyWhen:
+              sourcePath: business.legalStatus.code
+              values:
+                # Charitable Trust
+                - 102113
+                # Charitable Incorporated Organisation (CIO)
+                - 102101
       - title: Reference numbers
         fields:
           - label: Single Business Identifier (SBI)
