@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.7.9
+
+### Patch Changes
+
+- 469b893: grants-ui config, fix disabled section when all questions answered
+
 ## 0.7.8
 
 ### Patch Changes
