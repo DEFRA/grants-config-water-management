@@ -1341,6 +1341,13 @@ conditions:
   - id: fdf85863-b1df-492b-8d4c-b3e124a68ce9
     displayName: planningPermissionNNSomethingElse
     items:
+      - id: e4d62b90-843c-44d9-9122-f0106189925c
+        componentId: 85957609-1ab7-4921-ad8f-5707b455784b
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
+          itemId: dba6504e-f262-46a9-888c-1f418406b99e
       - id: 64535f4a-bfd2-445a-9513-d3c2f6180599
         componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
         operator: contains
@@ -1400,6 +1407,13 @@ conditions:
   - id: cc5f849d-2804-44bc-948f-0e02a941b020
     displayName: abstractionLicenceNotNeededSomethingElse
     items:
+      - id: 75f16b7b-b788-4a04-9403-90b3941cecdd
+        componentId: 86e5ae73-ed7b-4720-8f71-5b461adbe382
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
+          itemId: 077f18c8-d91c-4b18-8a8b-13997d5b867d
       - id: 4cb5226e-ad6a-44d1-a76b-b6f844176901
         componentId: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
         operator: contains
