@@ -130,6 +130,7 @@ metadata:
           # See legalStatusCodes.md for full list of mapping codes used below
           - label: Legal status
             sourcePath: business.legalStatus.type
+            showIfEmpty: true
           - label: Company Registration Number
             sourcePath: business.registrationNumbers.companiesHouse
             showIfEmptyWhen:
