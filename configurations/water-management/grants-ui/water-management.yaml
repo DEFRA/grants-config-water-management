@@ -966,16 +966,16 @@ lists:
     name: cropsIrrigatedUsingWaterList
     type: string
     items:
-      - text: Arable
+      - text: Arable crops
         value: ARABLE
         id: 583a9706-4c13-45d8-a279-4bc6ea6b0669
-      - text: Field scale vegetables
+      - text: Field scale edible crops
         value: FIELD_SCALE_VEGETABLES
         id: 9034c3c3-e0be-4970-a85a-5befdd63ef89
-      - text: Forest nursery
+      - text: Forest nursery stock
         value: FOREST_NURSERY
         id: 94114a05-296c-4c89-a7cc-560dadc02ee3
-      - text: Grass for commercial turf or feeding livestock
+      - text: Grass and forage crops
         value: GRASS_FEEDING_LIVESTOCK_COMMERCIAL_TURF
         id: abb227ff-1174-497e-a29d-084048bda098
       - text: Ornamentals
@@ -987,12 +987,9 @@ lists:
       - text: Soft and cane fruit
         value: SOFT_AND_CANE_FRUIT
         id: 32eacc46-e385-4022-9738-ecb363ef7675
-      - text: Top and stone fruit
+      - text: Top, stone fruit and vines
         value: TOP_AND_STONE_FRUIT
         id: 59439dfe-d559-47e2-aea9-a4dc967fb9ff
-      - text: Vineyards
-        value: VINEYARDS
-        id: 7c3533d8-aead-4d57-9125-82805b7a73e7
       - text: Something else
         value: SOMETHING_ELSE
         id: f2ffdd8a-da39-441a-8be8-f30accdd3397
