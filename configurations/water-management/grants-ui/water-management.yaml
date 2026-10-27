@@ -776,7 +776,7 @@ pages:
           min: 1
           precision: 0
         shortDescription: Water storage capacity (m³)
-  # 2.3 Total estimated cost TODO how to display reservoir
+  # 2.3 Total estimated grant TODO how to display reservoir
   - title: Total estimated grant based on estimated costs
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
     path: /total-estimated-cost
@@ -853,7 +853,7 @@ pages:
               stateValue: additionalAnswers.totalScore
         - page: /total-estimated-cost
           items:
-            - title: Total estimated cost (£)
+            - title: Total estimated grant (£)
               stateValue: additionalAnswers.totalEstimatedCost
   # 3.2 Potential funding
   - title: Potential grant funding
@@ -1207,13 +1207,6 @@ conditions:
         value:
           listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
           itemId: 59439dfe-d559-47e2-aea9-a4dc967fb9ff
-      - id: 11c197b8-918e-430c-86c2-bc7268006332
-        componentId: 32b05b01-5940-40d0-b191-36b5028c01e5
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 1f2856d7-0706-4ea2-b382-07697ca7914c
-          itemId: 7c3533d8-aead-4d57-9125-82805b7a73e7
     coordinator: and
   # Work started yet is begun work -> exit page
   - id: b97db953-3321-4262-bf2f-f72945f26e85
