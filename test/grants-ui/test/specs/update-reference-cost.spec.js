@@ -354,6 +354,21 @@ test.describe('Water Management Grant Round 3', () => {
             status: 'Incomplete'
           }
         ])
+        await page
+          .getByRole('link', {
+            name: 'Check and submit your stage 1 application'
+          })
+          .click()
+
+        await expect(page).toHaveURL('/water-management/summary')
+        await page.getByRole('button', { name: 'Continue' }).click()
+
+        await expect(page).toHaveURL('/water-management/potential-funding')
+        await expect(
+          page.getByText(
+            'You may be able to apply for a grant of £300,000 if you are invited to stage 2 of the application process. This is based on your estimated costs of £1,330,000.'
+          )
+        ).toBeVisible()
       })
     }
   )
