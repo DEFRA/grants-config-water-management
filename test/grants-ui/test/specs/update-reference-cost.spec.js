@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test'
 import { authenticateTo } from '../utils/auth.js'
 import { clearApplicationData } from '../utils/backend.js'
 
-const CRN = '1106298365'
-const SBI = '106480734'
+const CRN = '9000000035'
+const SBI = '800000026'
 const GRANT_CODE = 'water-management'
 
 test.describe('Water Management Grant Round 3', () => {
