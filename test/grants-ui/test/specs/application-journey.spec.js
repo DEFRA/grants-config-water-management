@@ -1,7 +1,20 @@
+import { readFileSync } from 'node:fs'
 import { test, expect } from '@playwright/test'
+import Ajv2020 from 'ajv/dist/2020.js'
 import { authenticateTo } from '../utils/auth.js'
 import { clearApplicationData } from '../utils/backend.js'
 import { analyzeAccessibility } from '../utils/accessibility.js'
+import { getApplicationSubmission } from '../utils/gas.js'
+
+const gasConfig = JSON.parse(
+  readFileSync(
+    new URL(
+      '../../../../configurations/water-management/gas/gas.json',
+      import.meta.url
+    ),
+    'utf8'
+  )
+)
 
 const CRN = '9000000035'
 const SBI = '800000026'
@@ -16,6 +29,7 @@ test.describe('Water Management Grant application', () => {
     'Apply for a Water Management grant round 3 (WMG R3)',
     { tag: ['@cdp', '@ci', '@runme'] },
     async ({ page }) => {
+      let referenceNumber
       await test.step('authentication', async () => {
         await authenticateTo(page, 'water-management', CRN)
       })
@@ -924,14 +938,136 @@ test.describe('Water Management Grant application', () => {
         await expect(page.getByText('you agree to disclose all')).toHaveText(
           'you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose'
         )
-        await expect(
-          page.getByRole('button', { name: 'Submit your application' })
-        ).toBeVisible()
-        await page.close()
+        await page
+          .getByRole('button', { name: 'Submit your application' })
+          .click()
       })
+
+      await test.step('confirmation', async () => {
+        await expect(page).toHaveURL('/water-management/confirmation')
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'Application submitted'
+        )
+        await analyzeAccessibility(page)
+        await expect(
+          page.locator('.govuk-panel--confirmation .govuk-panel__body')
+        ).toContainText('Your application number')
+        await expect(page.locator('.govuk-panel__body')).toContainText(
+          /WMG-[A-Z0-9]+-[A-Z0-9]+/
+        )
+        referenceNumber = await page
+          .locator('.govuk-panel__body strong')
+          .textContent()
+        await expect(
+          page.getByRole('heading', { name: 'What happens next' })
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'Thank you for submitting your stage 1 application for a Water Management grant round 3 (WMG R3).'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'We will now assess your application against our eligibility criteria and RPA funding priorities. If you are successful in stage 1, we will invite you to complete stage 2 of the application process where you will need to show:'
+          )
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText: 'Evidence of planning permission'
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText: 'A plan showing existing and proposed irrigation systems'
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText:
+              'Evidence of a water-abstraction licence, if necessary for the project'
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText:
+              'Letters of support from any other farms the project will supply water to'
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText:
+              'A letter from your accountant confirming you can pay the remaining costs of the project'
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', {
+            name: 'View / Print submitted application (opens in new tab)',
+            exact: true
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', {
+            name: 'Give feedback on this service (opens in new tab)',
+            exact: true
+          })
+        ).toBeVisible()
+      })
+
+      await test.step('print-submitted-application', async () => {
+        const [printTab] = await Promise.all([
+          page.context().waitForEvent('page'),
+          page
+            .getByRole('link', {
+              name: 'View / Print submitted application (opens in new tab)'
+            })
+            .click()
+        ])
+        await printTab.waitForLoadState()
+        await expect(printTab).toHaveURL(
+          '/water-management/print-submitted-application'
+        )
+        await expect(printTab.getByRole('heading', { level: 1 })).toContainText(
+          'Apply for a Water Management grant round 3 (WMG R3) application'
+        )
+        await analyzeAccessibility(printTab)
+        await expect(printTab.getByText(referenceNumber)).toBeVisible()
+        await expect(
+          printTab.getByRole('button', { name: 'Print this page' })
+        ).toBeVisible()
+        await printTab.close()
+      })
+
+      if (CI()) {
+        await test.step('verify GAS submission', async () => {
+          const request = await getApplicationSubmission(referenceNumber)
+          expect(request).not.toBeNull()
+
+          expect(request.body.json.metadata.clientRef).toEqual(
+            referenceNumber.toLowerCase()
+          )
+          expect(request.body.json.metadata.sbi).toEqual(SBI)
+          expect(request.body.json.metadata.crn).toEqual(CRN)
+          expect(request.body.json.metadata.frn).toBeTruthy()
+          expect(request.body.json.metadata.configVersion).toMatch(
+            /^\d+\.\d+\.\d+$/
+          )
+
+          const ajv = new Ajv2020({
+            strict: false,
+            formats: { 'date-time': true }
+          })
+          const validate = ajv.compile(gasConfig.phases[0].questions)
+          const valid = validate(request.body.json.answers)
+          expect(valid, ajv.errorsText(validate.errors)).toBe(true)
+        })
+      }
     }
   )
 })
+
+function CI() {
+  return !!process.env.MOCKSERVER_HOST
+}
 
 async function assertTaskStatuses(page, tasks) {
   for (const { name, status } of tasks) {
