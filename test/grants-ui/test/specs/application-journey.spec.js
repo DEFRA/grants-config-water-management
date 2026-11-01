@@ -27,7 +27,7 @@ test.describe('Water Management Grant application', () => {
 
   test(
     'Apply for a Water Management grant round 3 (WMG R3)',
-    { tag: ['@cdp', '@ci', '@runme'] },
+    { tag: ['@cdp', '@ci'] },
     async ({ page }) => {
       let referenceNumber
       await test.step('authentication', async () => {
