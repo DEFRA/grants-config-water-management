@@ -943,7 +943,7 @@ pages:
   # =======================================================
   # EXTRA PAGES, only accessible via custom exit conditions
   # =======================================================
-  # 1.2.1 EXIT total-estimated-cost: when minGrantReached=false
+  # 1.2.1 EXIT where-project-located when location is not in England
   - title: Your project must be in England
     id: 7cca24be-610e-4c56-8684-928be4cb95c9
     path: /exit-where-project-located # don't change this without changing grants-ui LocationValidateController.getNextPath
