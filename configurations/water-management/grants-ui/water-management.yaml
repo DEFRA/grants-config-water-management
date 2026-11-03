@@ -263,7 +263,7 @@ pages:
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
     path: /where-project-located
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
+    controller: LocationValidateController
     components:
       - name: projectLocated
         id: 9e3b7d5a-4c4f-4d7e-9f2a-ab8c9d5e6f70
@@ -273,6 +273,7 @@ pages:
         options:
           required: true
         shortDescription: Where is your project?
+  # See EXTRA PAGES for where-project-located exit page
   # 1.3 Work started yet
   - title: Have you started work?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
@@ -942,6 +943,20 @@ pages:
   # =======================================================
   # EXTRA PAGES, only accessible via custom exit conditions
   # =======================================================
+  # 1.2.1 EXIT total-estimated-cost: when minGrantReached=false
+  - title: Your project must be in England
+    id: 7cca24be-610e-4c56-8684-928be4cb95c9
+    path: /exit-where-project-located # don't change this without changing grants-ui LocationValidateController.getNextPath
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TerminalPageController
+    components:
+      - name: totalEstimatedCostMinNotReachedInfo
+        id: 34f0a49a-29cc-43df-8093-8894b81b13ef
+        type: Html # TODO update both links
+        content: >
+          <p class="govuk-body">You cannot apply for this grant because you have selected a location that is not in England.</p>
+          <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the maps page</a> and select the correct location.</p>
+          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
   # 2.3.1 EXIT total-estimated-cost: when minGrantReached=false
   - title: You cannot apply for a grant from this scheme
     id: a57dd815-7b9f-4434-bf27-2d7145e3a4f6
@@ -954,7 +969,7 @@ pages:
         type: Html # TODO update link
         content: >
           {% if itemsPlanningToInstall.size == 1 and itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
-            <p class="govuk-body">Your costs must be at least £35,500 because the minimum grant is £15,000 (40% of your confirmed costs).</p>
+            <p class="govuk-body">Your costs must be at least £37,500 because the minimum grant is £15,000 (40% of your confirmed costs).</p>
           {% else %}
             <p class="govuk-body">Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).</p>
           {% endif %}
