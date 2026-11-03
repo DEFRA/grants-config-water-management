@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.0
+
+### Minor Changes
+
+- ab70943: add LocationValidateController, and minor content change
+
 ## 0.7.10
 
 ### Patch Changes
