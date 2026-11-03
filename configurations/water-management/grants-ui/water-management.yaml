@@ -950,7 +950,7 @@ pages:
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TerminalPageController
     components:
-      - name: totalEstimatedCostMinNotReachedInfo
+      - name: whereProjectLocatedNotInEnglandInfo
         id: 34f0a49a-29cc-43df-8093-8894b81b13ef
         type: Html # TODO update both links
         content: >
