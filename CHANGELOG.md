@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.1
+
+### Patch Changes
+
+- 6d71737: Enable multiple Water Management applications per SBI.
+
 ## 0.8.0
 
 ### Minor Changes
