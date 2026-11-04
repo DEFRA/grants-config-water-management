@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { authenticateTo } from '../utils/auth.js'
 import { clearApplicationData } from '../utils/backend.js'
+import { formatUrlForPath } from '../utils/urls.js'
 
 const CRN = '9000000035'
 const SBI = '800000026'
@@ -17,11 +18,11 @@ test.describe('Water Management Grant Round 3', () => {
     })
 
     await test.step('Fill out application', async () => {
-      await expect(page).toHaveURL('/water-management/check-details')
+      await expect(page).toHaveURL(await formatUrlForPath('check-details'))
       await page.getByRole('radio', { name: 'Yes' }).click()
       await page.getByRole('button', { name: 'Continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/tasks')
+      await expect(page).toHaveURL(await formatUrlForPath('tasks'))
       await assertTaskStatuses(page, [
         { name: 'Check your project eligibility', status: 'Incomplete' },
         {
@@ -37,38 +38,42 @@ test.describe('Water Management Grant Round 3', () => {
         .getByRole('link', { name: 'Check your project eligibility' })
         .click()
 
-      await expect(page).toHaveURL('/water-management/sectors-irrigated')
+      await expect(page).toHaveURL(await formatUrlForPath('sectors-irrigated'))
 
-      await page.getByRole('checkbox', { name: 'Arable' }).click()
+      await page.getByRole('checkbox', { name: 'Arable crops' }).click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/where-project-located')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('where-project-located')
+      )
       await page.locator('#projectLocated__easting').fill('374980')
       await page.locator('#projectLocated__northing').fill('448127')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/work-started-yet')
+      await expect(page).toHaveURL(await formatUrlForPath('work-started-yet'))
       await page.getByRole('radio', { name: 'Yes, preparatory work' }).click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/eligible-organisation')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('eligible-organisation')
+      )
       await page.getByRole('radio', { name: 'No' }).click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/organisation-type')
+      await expect(page).toHaveURL(await formatUrlForPath('organisation-type'))
       await page
         .getByRole('radio', { name: 'Landowner farmer, grower or forester' })
         .click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
       await expect(page).toHaveURL(
-        '/water-management/how-many-businesses-will-use-the-water'
+        await formatUrlForPath('how-many-businesses-will-use-the-water')
       )
       await page.getByRole('radio', { name: 'One' }).click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
       await expect(page).toHaveURL(
-        '/water-management/where-water-will-come-from'
+        await formatUrlForPath('where-water-will-come-from')
       )
       await page
         .getByRole('checkbox', {
@@ -77,40 +82,44 @@ test.describe('Water Management Grant Round 3', () => {
         .click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/have-planning-permission')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('have-planning-permission')
+      )
       await page.getByRole('radio', { name: 'Yes' }).click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
       await expect(page).toHaveURL(
-        '/water-management/planning-permission-reference-number'
+        await formatUrlForPath('planning-permission-reference-number')
       )
       await page
         .locator('#planningPermissionReferenceNumber')
         .fill('24/01234/FUL')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/need-abstraction-licence')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('need-abstraction-licence')
+      )
       await page
         .getByRole('radio', { name: 'I already have a licence' })
         .click()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
       await expect(page).toHaveURL(
-        '/water-management/abstraction-licence-consent-number'
+        await formatUrlForPath('abstraction-licence-consent-number')
       )
       await page
         .locator('input#abstractionLicenceConsentNumber')
         .fill('24/01234/FUL')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/score-results')
+      await expect(page).toHaveURL(await formatUrlForPath('score-results'))
       await page.getByRole('button', { name: 'Confirm and continue' }).click()
     })
 
     await test.step('All items selected with grant amount over £35,000 should be able to submit application', async () => {
       await startYourProjectDetailsTask(page)
       await expect(page).toHaveURL(
-        '/water-management/items-planning-to-install'
+        await formatUrlForPath('items-planning-to-install')
       )
       await selectAllInstallableItems(page)
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -124,7 +133,9 @@ test.describe('Water Management Grant Round 3', () => {
       await page.locator('input#waterStorageCapacity').fill('1500')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/total-estimated-cost')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('total-estimated-cost')
+      )
       await expect(
         page.locator('li').filter({
           hasText:
@@ -156,7 +167,7 @@ test.describe('Water Management Grant Round 3', () => {
     await test.step('All items selected with grant amount under £35,000 should exit application', async () => {
       await startYourProjectDetailsTask(page)
       await expect(page).toHaveURL(
-        '/water-management/items-planning-to-install'
+        await formatUrlForPath('items-planning-to-install')
       )
       await selectAllInstallableItems(page)
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -170,7 +181,9 @@ test.describe('Water Management Grant Round 3', () => {
       await page.locator('input#waterStorageCapacity').fill('500')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/total-estimated-cost')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('total-estimated-cost')
+      )
       await expect(
         page.locator('li').filter({
           hasText:
@@ -199,7 +212,7 @@ test.describe('Water Management Grant Round 3', () => {
       await page.getByRole('button', { name: 'Confirm and continue' }).click()
 
       await expect(page).toHaveURL(
-        '/water-management/exit-total-estimated-cost'
+        await formatUrlForPath('exit-total-estimated-cost')
       )
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
         'You cannot apply for a grant from this scheme'
@@ -215,13 +228,13 @@ test.describe('Water Management Grant Round 3', () => {
           exact: true
         })
       ).toBeVisible()
-      page.goto('/water-management/tasks')
+      await page.goto(await formatUrlForPath('tasks', false))
     })
 
     await test.step('Select Above-ground water storage tanks with grant amount over £15,000 should be able to submit application', async () => {
       await startYourProjectDetailsTask(page)
       await expect(page).toHaveURL(
-        '/water-management/items-planning-to-install'
+        await formatUrlForPath('items-planning-to-install')
       )
       await uncheckAllItems(page)
       await page
@@ -232,7 +245,9 @@ test.describe('Water Management Grant Round 3', () => {
       await page.locator('input#waterStorageCapacity').fill('1000')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/total-estimated-cost')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('total-estimated-cost')
+      )
       await expect(
         page.locator('li').filter({
           hasText: 'Water storage tank(s): 1,000m³ at £50 per m³ = £50,000'
@@ -247,7 +262,7 @@ test.describe('Water Management Grant Round 3', () => {
     await test.step('Select Above-ground water storage tanks with grant amount under £15,000 should exit application', async () => {
       await startYourProjectDetailsTask(page)
       await expect(page).toHaveURL(
-        '/water-management/items-planning-to-install'
+        await formatUrlForPath('items-planning-to-install')
       )
       await uncheckAllItems(page)
       await page
@@ -258,7 +273,9 @@ test.describe('Water Management Grant Round 3', () => {
       await page.locator('input#waterStorageCapacity').fill('500')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/total-estimated-cost')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('total-estimated-cost')
+      )
       await expect(
         page.locator('li').filter({
           hasText: 'Water storage tank(s): 500m³ at £50 per m³ = £25,000'
@@ -270,14 +287,14 @@ test.describe('Water Management Grant Round 3', () => {
       await page.getByRole('button', { name: 'Confirm and continue' }).click()
 
       await expect(page).toHaveURL(
-        '/water-management/exit-total-estimated-cost'
+        await formatUrlForPath('exit-total-estimated-cost')
       )
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
         'You cannot apply for a grant from this scheme'
       )
       await expect(
         page.getByText(
-          'Your costs must be at least £35,500 because the minimum grant is £15,000 (40% of your confirmed costs).'
+          'Your costs must be at least £37,500 because the minimum grant is £15,000 (40% of your confirmed costs).'
         )
       ).toBeVisible()
       await expect(
@@ -286,13 +303,13 @@ test.describe('Water Management Grant Round 3', () => {
           exact: true
         })
       ).toBeVisible()
-      page.goto('/water-management/tasks')
+      await page.goto(await formatUrlForPath('tasks', false))
     })
 
     await test.step('Select all items with grant amount over £350,000 should cap grant amount at £350,000', async () => {
       await startYourProjectDetailsTask(page)
       await expect(page).toHaveURL(
-        '/water-management/items-planning-to-install'
+        await formatUrlForPath('items-planning-to-install')
       )
       await uncheckAllItems(page)
       await selectAllInstallableItems(page)
@@ -307,7 +324,9 @@ test.describe('Water Management Grant Round 3', () => {
       await page.locator('input#waterStorageCapacity').fill('10000')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/total-estimated-cost')
+      await expect(page).toHaveURL(
+        await formatUrlForPath('total-estimated-cost')
+      )
       await expect(
         page.locator('li').filter({
           hasText:
@@ -334,7 +353,7 @@ test.describe('Water Management Grant Round 3', () => {
         page.getByText('Total estimated grant = £300,000')
       ).toBeVisible()
       await page.getByRole('button', { name: 'Confirm and continue' }).click()
-      await expect(page).toHaveURL('/water-management/tasks')
+      await expect(page).toHaveURL(await formatUrlForPath('tasks'))
       await assertTaskStatuses(page, [
         { name: 'Check your project eligibility', status: 'Completed' },
         {
@@ -352,10 +371,10 @@ test.describe('Water Management Grant Round 3', () => {
         })
         .click()
 
-      await expect(page).toHaveURL('/water-management/summary')
+      await expect(page).toHaveURL(await formatUrlForPath('summary'))
       await page.getByRole('button', { name: 'Continue' }).click()
 
-      await expect(page).toHaveURL('/water-management/potential-funding')
+      await expect(page).toHaveURL(await formatUrlForPath('potential-funding'))
       await expect(
         page.getByText(
           'You may be able to apply for a grant of £300,000 if you are invited to stage 2 of the application process. This is based on your estimated costs of £1,330,000.'
@@ -396,11 +415,13 @@ async function uncheckAllItems(page) {
 }
 
 async function startYourProjectDetailsTask(page) {
-  await expect(page).toHaveURL('/water-management/tasks')
+  await expect(page).toHaveURL(await formatUrlForPath('tasks'))
 
   await page.getByRole('link', { name: 'Your project details' }).click()
 
-  await expect(page).toHaveURL('/water-management/expected-project-start-date')
+  await expect(page).toHaveURL(
+    await formatUrlForPath('expected-project-start-date')
+  )
   await page.locator('input#expectedProjectStartDate__month').fill('01')
   await page.locator('input#expectedProjectStartDate__year').fill('2028')
   await page.getByRole('button', { name: 'Save and continue' }).click()
