@@ -250,7 +250,7 @@ pages:
     components:
       - name: sectorsIrrigatedSomethingElseInfo
         id: 6503008c-d3e0-4236-b0a6-09d409c2a818
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">This grant is only available to:</p>
           <ul class="govuk-list govuk-list--bullet">
@@ -258,7 +258,7 @@ pages:
             <li>nurseries growing ornamentals</li>
             <li>forestry nurseries</li>
           </ul>
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.2 Where project located
   - title: Where is your project?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
@@ -273,6 +273,8 @@ pages:
         type: EastingNorthingField
         options:
           required: true
+          showApproximateLocation: true
+          approximateLocationPrefix: 'Point selected area:'
         shortDescription: Where is your project?
   # See EXTRA PAGES for where-project-located exit page
   # 1.3 Work started yet
@@ -319,10 +321,10 @@ pages:
     components:
       - name: workStartedYetBegunWorkInfo
         id: 226da8d4-0485-4ee3-8df6-0434c11bec3a
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">You cannot apply for a grant. Starting work on the project or committing to costs (such as placing orders) are against the rules of the scheme.</p>
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.4 Eligible organisation
   - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
     id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
@@ -348,10 +350,10 @@ pages:
     components:
       - name: eligibleOrganisationNoInfo
         id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and water management companies.</p>
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.5 Organisation type
   - title: What type of organisation are you applying on behalf of?
     id: f9ca590d-169c-46cc-8819-4be089a30eb9
@@ -441,10 +443,10 @@ pages:
     components:
       - name: sectorsIrrigatedSomethingElseInfo
         id: ce2da4b8-11b0-449d-8f01-114f4b4e5669
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">You cannot apply for this grant because no other businesses will use the water for irrigation.</p>
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.7 Where water will come from
   - title: Where will the water come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
@@ -471,10 +473,10 @@ pages:
     components:
       - name: whereWaterWillComeFromSomethingElseInfo
         id: b1da8222-9e39-40ec-88d2-10ae5662da6c
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">This grant will only fund projects that will store water from surface water abstraction, rainwater harvesting or a borehole / aquifer.</p>
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.8 Have planning permission
   - title: Do you have confirmed planning permission?
     id: abfbde5b-c983-47f1-9b24-4586d0568171
@@ -715,18 +717,50 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: What are you planning to build or install?
-  # 2.2.1 Reservoir storage capacity
-  - title: How much water can your reservoir hold?
-    id: a5fd52b7-0dc1-4bce-bc5f-a7598f62cd91
-    path: /reservoir-storage-capacity
+  # 2.2.1 How many reservoirs?
+  - title: Will the project include more than one reservoir?
+    id: c486e28f-7cc3-4756-ac83-c515d42f8909
+    path: /how-many-reservoirs
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     condition: 3f416796-e237-4a41-86e2-17c2b9b4f03e
     controller: TaskPageController
     components:
+      - name: moreThanOneReservoir
+        id: 6a8657b3-5c15-43c4-9657-c9dbd29f738c
+        title: Will the project include more than one reservoir?
+        type: YesNoField
+        options:
+          required: true
+          classes: govuk-radios
+        shortDescription: More than one reservoir?
+  # 2.2.2 Just one reservoir - what type?
+  - title: What type of reservoir are you building?
+    id: 97a6d7d6-53c3-4c5b-84c7-fb760949cab6
+    path: /what-type-of-reservoir
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    condition: 7ceb643d-978e-420f-8f41-434a277594cf
+    controller: TaskPageController
+    components:
+      - name: whatTypeOfReservoir
+        id: f106de47-928a-4d69-9ecc-3780d7846610
+        title: What type of reservoir are you building?
+        type: RadiosField
+        list: f1ea3032-da6f-4e35-bc75-24d22feb8656
+        options:
+          required: true
+        shortDescription: What type of reservoir?
+  # 2.2.3 Just one reservoir - how much water?
+  - title: How much water will your reservoir hold?
+    id: 485593f7-86cb-4ad5-9372-02b28c4adf58
+    path: /how-much-water-reservoir
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    condition: 7ceb643d-978e-420f-8f41-434a277594cf
+    controller: TaskPageController
+    components:
       - name: howMuchWater
         id: 26208f72-951c-4944-869c-2bdd60401433
-        title: How much water can your reservoir hold?
-        hint: Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number, without decimals.
+        title: How much water will your reservoir hold?
+        hint: Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number without decimals.
         type: NumberField
         options:
           required: true
@@ -742,7 +776,60 @@ pages:
           max: 999999
           precision: 0
         shortDescription: Reservoir storage capacity (m³)
-  # 2.2.2 Water distribution length
+  # 2.2.3 More than one reservoir
+  - title: Reservoir items
+    id: b4c70d24-9e80-4925-86cc-9ac2607c69d2
+    path: /reservoir-items
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    condition: a86cf477-9445-487e-b351-bf29c64764cb
+    controller: RepeatPageController
+    repeat:
+      options:
+        name: reservoirItems
+        title: Reservoirs
+      schema:
+        min: 1
+        max: 5
+    components:
+      - name: reservoirItemName
+        id: 71d16032-acdd-4dfa-9bea-5ad1f68f7b58
+        title: Item name
+        type: TextField
+        options:
+          required: true
+          customValidationMessages:
+            string.empty: Enter a name for this item
+        schema:
+          max: 100
+        shortDescription: Item name
+      - name: reservoirItemWhatTypeOfReservoir
+        id: 634bfd06-73cb-482a-adde-8ad7212f8dc5
+        title: What type of reservoir are you building?
+        type: RadiosField
+        list: f1ea3032-da6f-4e35-bc75-24d22feb8656
+        options:
+          required: true
+        shortDescription: What type of reservoir?
+      - name: reservoirItemHowMuchWater
+        id: 159778c8-6540-4f59-8e09-93308680c12c
+        title: How much water will your reservoir hold?
+        hint: Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number without decimals.
+        type: NumberField
+        options:
+          required: true
+          classes: govuk-!-width-one-third
+          suffix: m³
+          autocomplete: off
+          customValidationMessages:
+            any.required: Enter value in metres cubed (m³)
+            number.max: Enter a value less than one million metres cubed (m³)
+            number.min: Enter a value of one metre cubed (m³) or more
+        schema:
+          min: 1
+          max: 999999
+          precision: 0
+        shortDescription: Reservoir storage capacity (m³)
+  # 2.2.4 Water distribution length
   - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
     path: /water-distribution-length
@@ -767,7 +854,7 @@ pages:
           min: 1
           precision: 0
         shortDescription: Water distribution length (m)
-  # 2.2.3 Water storage capacity
+  # 2.2.5 Water storage capacity
   - title: How much water will your storage tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /water-storage-capacity
@@ -833,7 +920,7 @@ pages:
           <p class="govuk-body">The total estimated grant is as follows:</p>
           <ul class="govuk-list govuk-list--bullet">
             {% if itemsPlanningToInstall contains "RESERVOIR" %}
-              <li>Reservoir – clay lined: {{ howMuchWater | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency | replace: '.00', '' }}</li>
+              <li>Reservoir – {{ context.state.whatTypeOfReservoir }} lined: {{ howMuchWater | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency | replace: '.00', '' }}</li>
             {% endif %}
             {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
               <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of £0.00</li>
@@ -988,7 +1075,7 @@ pages:
           {% else %}
             <p class="govuk-body">Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).</p>
           {% endif %}
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank"></a>
 
 lists:
   - title: Crops irrigated using water list
@@ -1145,12 +1232,9 @@ lists:
     name: itemsPlanningToInstallList
     type: string
     items:
-      - text: Clay-lined reservoir
+      - text: Reservoir
         value: RESERVOIR
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
-      - text: Synthetic-lined reservoir
-        value: SYNTHETIC_LINED_RESERVOIR
-        id: 8fd37e44-f99b-440b-a9fd-21bc31065365
       - text: Above-ground water storage tanks
         value: WATER_STORAGE_TANKS
         id: 544b8f79-973d-42d3-8053-f049fb351e6e
@@ -1162,10 +1246,10 @@ lists:
     name: reservoirTypeList
     type: string
     items:
-      - text: Clay
+      - text: Clay lined
         value: clay
         id: 2e183b4d-24db-41b1-bf03-03b87d1e1c58
-      - text: Synthetic
+      - text: Synthetic lined
         value: synthetic
         id: e2ed4727-0acb-42e7-810c-bd447a99e6a0
 
@@ -1499,14 +1583,24 @@ conditions:
         value:
           listId: 8c0a3d2c-9572-4512-9226-7800ff471010
           itemId: 0b68e83d-b18d-4415-addf-eb2bf95866ad
-      - id: 59141761-49a0-4668-8897-0fb39b917ba1
-        componentId: 7af61365-6933-40c1-bdd2-8dce5960a8eb
-        operator: contains
-        type: ListItemRef
-        value:
-          listId: 8c0a3d2c-9572-4512-9226-7800ff471010
-          itemId: 8fd37e44-f99b-440b-a9fd-21bc31065365
-    coordinator: or
+  # Project delivers reservoir - only one
+  - id: 7ceb643d-978e-420f-8f41-434a277594cf
+    displayName: moreThanOneReservoirNo
+    items:
+      - id: 6aff4da6-2080-483c-b9c9-22a54f3acbab
+        componentId: 6a8657b3-5c15-43c4-9657-c9dbd29f738c
+        operator: is
+        type: BooleanValue
+        value: false
+  # Project delivers reservoir - more than one
+  - id: a86cf477-9445-487e-b351-bf29c64764cb
+    displayName: moreThanOneReservoirYes
+    items:
+      - id: 05c399eb-a208-4a81-b0e8-487154408914
+        componentId: 6a8657b3-5c15-43c4-9657-c9dbd29f738c
+        operator: is
+        type: BooleanValue
+        value: true
   # Project delivers water distribution main
   - id: d1da14c4-a8da-49c1-b3c2-d9555e5f223f
     displayName: projectDeliversWaterDistributionNetwork
