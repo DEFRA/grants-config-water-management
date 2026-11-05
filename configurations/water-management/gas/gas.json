@@ -1,7 +1,7 @@
 {
   "code": "water-management",
   "metadata": {
-    "description": "Water Management grant",
+    "description": "Water Management grant round 3 (WMG R3)",
     "startDate": {
       "$date": "2100-01-01T00:00:00Z"
     }
