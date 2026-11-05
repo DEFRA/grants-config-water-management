@@ -193,6 +193,9 @@ metadata:
     submitButtonText: Save and continue
 
 sections:
+  - name: your-legal-status
+    title: Your legal status
+    id: 8961b84a-572c-410c-9f07-076a4fb876a5
   - name: check-project-eligibility
     title: Check your project eligibility
     id: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -218,7 +221,58 @@ pages:
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
   # ==========================================
-  # Section 1: Check project eligibility
+  # Section 1: Your legal status
+  # ==========================================
+  # 0.1 Type of business or organisation
+  - title: What is the legal status of your business or organisation?
+    id: 018ef285-4c34-4c7d-a91a-c488f1b6000d
+    path: /type-of-business-or-organisation
+    section: 8961b84a-572c-410c-9f07-076a4fb876a5
+    controller: TaskPageController
+    components:
+      - name: yourLegalStatus
+        id: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        title: What is the legal status of your business or organisation?
+        hint: Select one option
+        type: RadiosField
+        list: d05095a0-a3d0-46c9-905d-a3889c4e1306
+        options:
+          required: true
+        shortDescription: Type of company or organisation?
+  # 0.1.1 Company number
+  - title: Enter your company number
+    id: cfca412e-1509-4984-9175-3d590f4af909
+    path: /company-number
+    section: 8961b84a-572c-410c-9f07-076a4fb876a5
+    controller: TaskPageController
+    condition: 5568a36e-376a-465a-9d35-ab74311f0013
+    components:
+      - name: companyNumber
+        id: dff9090f-135d-495b-a6e8-ab2858460e78
+        title: Enter your company number
+        hint: You can find this on your certificate of incorporation or by searching the Companies House register
+        type: TextField
+        options:
+          required: true
+        shortDescription: Company number
+  # 0.1.2 Charity number
+  - title: Enter your charity number
+    id: ff582b71-949a-4bdc-9bfa-bb27af895298
+    path: /charity-number
+    section: 8961b84a-572c-410c-9f07-076a4fb876a5
+    controller: TaskPageController
+    condition: f548264e-9899-416f-8b4f-d9e045c0f527
+    components:
+      - name: charyNumber
+        id: 94befa64-ab1c-4b7d-ae75-5040d5b500c7
+        title: Enter your company number
+        hint: You can find this on your charity's registration certificate or on the charity register
+        type: TextField
+        options:
+          required: false
+        shortDescription: Charity number
+  # ==========================================
+  # Section 2: Check project eligibility
   # ==========================================
   # 1.1 Sectors irrigated using water
   - title: What crops will be irrigated using the water from this project?
@@ -680,7 +734,7 @@ pages:
             <p class="govuk-body">The likelihood of your application being successful will depend on the total number of applications received for this grant, and the relative scores of all projects as they relate to RPA's policy objectives and budget.</p>
           </div>
   # ==========================================
-  # Section 2: Project details and estimated costs
+  # Section 3: Project details and estimated costs
   # ==========================================
   # 2.1 Expected project start date
   - title: When do you expect the project work to start?
@@ -936,7 +990,7 @@ pages:
           <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</p>
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
-  # Section 3: Check and submit your application
+  # Section 4: Check and submit your application
   # ============================================
   # 3.1 Check your answers
   - title: Check your answers
@@ -1078,6 +1132,50 @@ pages:
           <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank"></a>
 
 lists:
+  - title: Type of company or organisation list
+    id: d05095a0-a3d0-46c9-905d-a3889c4e1306
+    name: typeOfCompanyOrOrganisationList
+    type: string
+    items:
+      - text: Charitable incorporated organisation
+        value: CHARITABLE_INCORPORATED_ORGANISATION
+        id: eda0d05a-a0b7-44bc-a9bf-bfd8b68744c1
+      - text: Charitable trust
+        value: CHARITABLE_TRUST
+        id: b7d87b83-0ebc-4599-815c-3bc18f4b8134
+      - text: Community interest company
+        value: COMMUNITY_INTEREST_COMPANY
+        id: 4c2a1d71-1f38-4cf9-8bba-900cbb760999
+      - text: Government (central)
+        value: GOVERNMENT_CENTRAL
+        id: 957b8c0d-c8be-4502-a08f-b55557eec940
+      - text: Government (local)
+        value: GOVERNMENT_LOCAL
+        id: f0276223-bde2-4c8e-b268-2a610a1fff70
+      - text: Limited liability partnership
+        value: LIMITED_LIABILITY_PARTNERSHIP
+        id: 7c8fe669-4ba7-4f07-9ef2-0524d4a3811d
+      - text: Limited partnership
+        value: LIMITED_PARTNERSHIP
+        id: 25b27310-92b2-4c5d-ace5-93e5c0bb8ef1
+      - text: Partnership
+        value: PARTNERSHIP
+        id: 3b2512c3-e53a-4d81-a934-13a941ed90da
+      - text: Private limited company
+        value: PRIVATE_LIMITED_COMPANY
+        id: bcf8e79c-6517-459d-acf9-ca5d0f5a8cae
+      - text: Public limited company
+        value: PUBLIC_LIMITED_COMPANY
+        id: 1688d76b-8853-4507-8a4b-9c3bcca5435b
+      - text: Sole proprietorship
+        value: SOLE_PROPRIETORSHIP
+        id: 75f32c9d-b9d6-4103-a7b1-2e2d3b016295
+      - text: The Crown
+        value: THE_CROWN
+        id: 40db0d5c-5d27-40df-a1a5-dce8bf92da44
+      - text: Unlimited company
+        value: UNLIMITED_COMPANY
+        id: f4cedac7-18d0-4b94-8d80-2de3cf631cf7
   - title: Crops irrigated using water list
     id: 1f2856d7-0706-4ea2-b382-07697ca7914c
     name: cropsIrrigatedUsingWaterList
@@ -1254,6 +1352,72 @@ lists:
         id: e2ed4727-0acb-42e7-810c-bd447a99e6a0
 
 conditions:
+  # Type of business -> company
+  - id: 5568a36e-376a-465a-9d35-ab74311f0013
+    displayName: yourLegalStatusCompany
+    items:
+      - id: 798244ba-4908-46b0-b20c-cfb0dec63d0a
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: 4c2a1d71-1f38-4cf9-8bba-900cbb760999
+      - id: 07e1f99c-267e-49e7-9663-33d6a6af90e7
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: 7c8fe669-4ba7-4f07-9ef2-0524d4a3811d
+      - id: 116ee558-f659-4dbf-98ad-70358d9d06d2
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: 25b27310-92b2-4c5d-ace5-93e5c0bb8ef1
+      - id: 16490178-8a4b-45bb-be08-dde2bc88e55d
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: bcf8e79c-6517-459d-acf9-ca5d0f5a8cae
+      - id: cf0ddf20-55fb-46c6-b701-a0c6a371e66e
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: 1688d76b-8853-4507-8a4b-9c3bcca5435b
+      - id: 53ff985f-d661-49b9-8b28-fca3098aa6d7
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: f4cedac7-18d0-4b94-8d80-2de3cf631cf7
+    coordinator: or
+  # Type of business -> charity
+  - id: f548264e-9899-416f-8b4f-d9e045c0f527
+    displayName: yourLegalStatusCharity
+    items:
+      - id: 0dd9a2ee-01c5-4799-8cdb-252a9b4d771c
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: eda0d05a-a0b7-44bc-a9bf-bfd8b68744c1
+      - id: 6d01c191-bc3d-48a6-bbe2-5c5c8ab7035e
+        componentId: aba546cc-12b8-4312-9303-d3c3a8462fbf
+        operator: is
+        type: ListItemRef
+        value:
+          listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
+          itemId: b7d87b83-0ebc-4599-815c-3bc18f4b8134
+    coordinator: or
   # Crops irrigated is ONLY something else -> exit page
   - id: 12e0a793-1929-4931-ad20-e5eb76d1d95c
     displayName: sectorsIrrigatedOnlySomethingElse
