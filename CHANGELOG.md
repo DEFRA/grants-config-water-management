@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.3
+
+### Patch Changes
+
+- 8fdded5: grants-ui config, restructure journey to prepare for addition of multiple reservoirs, also other grants links added
+
 ## 0.8.2
 
 ### Patch Changes
