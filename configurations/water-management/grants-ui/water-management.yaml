@@ -174,7 +174,7 @@ metadata:
         classes: 'govuk-tag--green'
       cannotContinue:
         text: 'On hold'
-        classes: 'govuk-tag--grey'
+        classes: 'govuk-tag--pink'
       completed:
         text: 'Completed'
   printPage:
@@ -215,6 +215,40 @@ pages:
     path: /check-details
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
+  # Grant guidance summary
+  - title: Apply for a Water Management grant round 3 (WMG R3)
+    id: 18df3a56-023c-4fa4-bb38-efbca0bcc456
+    path: /grant-guidance-summary
+    controller: TaskPageController
+    config:
+      submitButtonText: Continue
+    components:
+      - name: grantGuidanceSummaryContent
+        id: 732ecdb5-5696-4e95-85ef-fd6661a8664e
+        type: Html # TODO update link
+        content: >
+          <p class="govuk-body">The grant helps farmers and growers improve water storage and transfer for crop irrigation.</p>
+          <p class="govuk-body">You can apply for funding towards the cost of:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>building new water storage reservoirs</li>
+            <li>installing above-ground water storage tanks</li>
+            <li>installing underground water distribution mains</li>
+          </ul>
+          <h1 class="govuk-heading-l">How the application works</h2>
+          <p class="govuk-body">There are 2 stages to the application process.</p>
+          <p class="govuk-body"><b>Stage 1: Check your eligibility and submit your project details</b><br/>You'll answer questions about your business and proposed project. Your application will be scored based on eligibility criteria.</p>
+          <p class="govuk-body">The Rural Payments Agency will assess your application and invite successful applicants to make a full application in stage 2.</p>
+          <p class="govuk-body"><b>Stage 2: Make a full application</b><br/>If you're invited to stage 2, you’ll need to provide more detailed information and supporting evidence about your project.</p>
+          <h1 class="govuk-heading-l">Who can apply</h2>
+          <p class="govuk-body">The grant is for eligible farmers, growers, landowners and water management companies. Your project must be in England. You cannot apply if you have already started work on your project.</p>
+          <h1 class="govuk-heading-l">Before you apply</h2>
+          <p class="govuk-body">You should:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>check the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
+            <li>have an idea of what you want to build, where it will be located and how much water it will store</li>
+            <li>check whether your project needs planning permission or an abstraction licence</li>
+          </ul>
+          <p class="govuk-body">You can make more than one application if you have separate projects.</p>
   # Task list page
   - title: Apply for a Water Management grant round 3 (WMG R3)
     path: /tasks
@@ -306,13 +340,9 @@ pages:
         id: 6503008c-d3e0-4236-b0a6-09d409c2a818
         type: Html
         content: >
-          <p class="govuk-body">This grant is only available to:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>arable and horticultural farming businesses that supply the food industry</li>
-            <li>nurseries growing ornamentals</li>
-            <li>forestry nurseries</li>
-          </ul>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
+          <p class="govuk-body">You cannot continue with your application.</p>
+          <p class="govuk-body">The crops you plan to irrigate must be included in one of the eligible crop categories.</p>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for.</a>
   # 1.2 Where project located
   - title: Where is your project?
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
@@ -332,7 +362,7 @@ pages:
         shortDescription: Where is your project?
   # See EXTRA PAGES for where-project-located exit page
   # 1.3 Work started yet
-  - title: Have you started work?
+  - title: What work have you done on your project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
     path: /work-started-yet
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -340,7 +370,7 @@ pages:
     components:
       - name: workStartedYet
         id: 6d91fee3-d23c-4e05-aa1e-89f23b5f0a1f
-        title: Have you started work?
+        title: What work have you done on your project?
         type: RadiosField
         list: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
         options:
@@ -357,12 +387,13 @@ pages:
               </span>
             </summary>
             <div class="govuk-details__text">
-              <p class="govuk-body">You will invalidate your application if start the project or commit to any costs (such as placing any orders) before you receive a funding agreement.</p>
+              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.</p>
               <p class="govuk-body">Before you start the project, you can:</p>
               <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-                <li>get quotes from suppliers</li>
+                <li>have discussions with suppliers</li>
                 <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
               </ul>
+              <p class="govuk-body">Read the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
             </div>
           </details>
   # 1.3.1 EXIT work-started-yet: when 'Yes, we have begun project work' is selected
@@ -1182,30 +1213,38 @@ lists:
     type: string
     items:
       - text: Arable crops
+        description: 'For example: wheat, barley, oats, oilseed rape, field beans, peas, sugar beet'
         value: ARABLE
         id: 583a9706-4c13-45d8-a279-4bc6ea6b0669
       - text: Field scale edible crops
+        description: 'For example: potatoes, vining peas, carrots, parsnips, pumpkins, broccoli, cauliflower, cabbage, onions, lettuce, herbs'
         value: FIELD_SCALE_VEGETABLES
         id: 9034c3c3-e0be-4970-a85a-5befdd63ef89
       - text: Forest nursery stock
+        description: 'For example: tree seedlings, transplants, planting stock grown for forestry or woodland creation'
         value: FOREST_NURSERY
         id: 94114a05-296c-4c89-a7cc-560dadc02ee3
       - text: Grass and forage crops
+        description: 'For example: grass for grazing or silage, forage maize, clover, lucerne, commercial turf'
         value: GRASS_FEEDING_LIVESTOCK_COMMERCIAL_TURF
         id: abb227ff-1174-497e-a29d-084048bda098
       - text: Ornamentals
+        description: 'For example: bulbs, flowers, bedding plants, pot plants, shrubs, hardy ornamental nursery stock '
         value: ORNAMENTALS
         id: 22a26b9d-8b48-49ba-ae77-299b12fd2d5c
       - text: Protected edible crops
+        description: 'For example: tomatoes, cucumbers, peppers, aubergines, salad leaves, herbs, spices'
         value: PROTECTED_EDIBLE_CROPS
         id: c6bad1ef-a697-4ae3-8a69-59b6e7b70327
       - text: Soft and cane fruit
+        description: 'For example: strawberries, raspberries, blueberries, blackberries, blackcurrants, redcurrants, gooseberries '
         value: SOFT_AND_CANE_FRUIT
         id: 32eacc46-e385-4022-9738-ecb363ef7675
       - text: Top, stone fruit and vines
+        description: 'For example: apples, pears, cherries, plums, grapes'
         value: TOP_AND_STONE_FRUIT
         id: 59439dfe-d559-47e2-aea9-a4dc967fb9ff
-      - text: Something else
+      - text: None of these crop categories apply to my project
         value: SOMETHING_ELSE
         id: f2ffdd8a-da39-441a-8be8-f30accdd3397
   - title: Already started work list
@@ -1213,17 +1252,17 @@ lists:
     name: alreadyStartedWorkList
     type: string
     items:
-      - text: Yes, preparatory work
-        description: For example quotes from suppliers, applying for planning permission
-        value: YES_PREPARATORY_WORK
-        id: 7fecf507-95e0-46e4-b810-8a1b49730f46
-      - text: Yes, we have begun project work
-        description: For example digging, signing contracts, placing orders
-        value: YES_PROJECT_WORK
-        id: 92a51829-3be0-42eb-b1c7-d910833e84ca
-      - text: No work has started yet
+      - text: I have not started work
         value: NO_WORK_YET
         id: 7407e193-c144-49e9-a1c6-016d5ccb56bd
+      - text: I’ve only started preparatory work
+        description: For example having discussions with suppliers or applying for planning permission
+        value: YES_PREPARATORY_WORK
+        id: 7fecf507-95e0-46e4-b810-8a1b49730f46
+      - text: I’ve started work
+        description: For example digging, signing contracts or placing orders
+        value: YES_PROJECT_WORK
+        id: 92a51829-3be0-42eb-b1c7-d910833e84ca
   - title: Organisation type list
     id: 67a7167d-3807-425e-a16a-d877e8ad4b1a
     name: organisationTypeList
