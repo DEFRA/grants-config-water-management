@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.2
+
+### Patch Changes
+
+- 1efa685: grants-ui config, exit page when landlord or water company aren't sharing the water
+
 ## 0.8.1
 
 ### Patch Changes
