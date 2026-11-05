@@ -26,7 +26,9 @@
     "version:changed": "changeset version",
     "version": "changeset",
     "test": "TZ=UTC vitest run --coverage",
-    "test:watch": "TZ=UTC vitest"
+    "test:watch": "TZ=UTC vitest",
+    "test:journey:local": "cd test/grants-ui && npm install && npm run test:local",
+    "test:journey:ci": "cd test/grants-ui && npm run test:ci"
   },
   "publishConfig": {
     "access": "public"
