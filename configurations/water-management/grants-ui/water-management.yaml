@@ -437,10 +437,10 @@ pages:
         id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
         type: Html
         content: >
-          <p class="govuk-body">This grant is only available to farm owners, landlords, farm tenants, and water management companies.</p>
+          <p class="govuk-body">This grant is only available to landowner landlords, landowner farmer or grower, tenant farmers or growers and water management companies.</p>
           <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.5 Organisation type
-  - title: What type of organisation are you applying on behalf of?
+  - title: What type of applicant are you?
     id: f9ca590d-169c-46cc-8819-4be089a30eb9
     path: /organisation-type
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -448,12 +448,26 @@ pages:
     components:
       - name: organisationType
         id: 7a52568c-6927-432a-8eb4-65ba36f14283
-        title: What type of organisation are you applying on behalf of?
+        title: What type of applicant are you?
         type: RadiosField
         list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
         options:
           required: true
         shortDescription: Who are you applying on behalf of?
+  # 1.5.1 EXIT eligible-organisation: when 'Yes' is selected
+  - title: You cannot apply for a grant from this scheme
+    id: b6a6a7d6-c083-4313-8db6-0e0d1c3b4c92
+    path: /exit-organisation-type
+    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
+    controller: TerminalPageController
+    condition: 82cab4cd-3302-46ad-949d-6e3dbe33f68f
+    components:
+      - name: organisationTypeNoneAboveInfo
+        id: c9f27341-4976-4836-b1c2-24e04f19904d
+        type: Html
+        content: >
+          <p class="govuk-body">This grant is only available to landowner landlords, landowner farmers, tenant farmers or growers and water management companies.</p>
+          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.5.1 ORG TYPE TENANT: What you need to do
   - title: What you need to do
     id: 70c01819-e87d-463f-97ca-951434b0fed1
@@ -1269,17 +1283,24 @@ lists:
     type: string
     items:
       - text: Landowner landlord
+        description: You are not a farmer or grower - you will own and maintain the project items but will not use them for crop irrigation. Other farmers and growers will use the project items and water for crop irrigation.
         value: LANDOWNER_LANDLORD
         id: 3057ad78-5357-4d0c-a23a-80e15602a124
-      - text: Landowner farmer, grower or forester
+      - text: Landowner farmer or grower
+        description: You will use the project items and water for your own crop irrigation. Other farmers and growers may also use the project items and water for crop irrigation. You may also be a landlord.
         value: LANDOWNER_OWNER_OCCUPIER
         id: a078d35c-92c8-46c3-99dc-224870b71a98
-      - text: Tenant farmer, grower or forester
+      - text: Tenant farmer or grower
+        description: You will use the project items and water for your own crop irrigation. Other farmers and growers may also use the project items and water for crop irrigation.
         value: TENANT
         id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
       - text: Water management company
+        description: You are a business including farmers, growers and landowners working together to store and transfer water for crop irrigation. The business itself will not use the stored water. Instead it will provide water for crop irrigation to farmers and growers.
         value: WATER_MANAGEMENT_COMPANY
         id: aef62824-765a-4722-99f4-c32bfb641279
+      - text: None of the above
+        value: NONE_OF_THE_ABOVE
+        id: ed0036a7-862c-4aa3-b125-b49812240192
   - title: Where water will come from list
     id: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
     name: whereWaterWillComeFromList
@@ -1597,6 +1618,17 @@ conditions:
           listId: 67a7167d-3807-425e-a16a-d877e8ad4b1a
           itemId: aef62824-765a-4722-99f4-c32bfb641279
     coordinator: or
+  # Organisation type is None of the above -> exit page
+  - id: 82cab4cd-3302-46ad-949d-6e3dbe33f68f
+    displayName: noneOfTheAbove
+    items:
+      - id: 265f3f2d-b001-4101-8139-099506d30e85
+        componentId: 7a52568c-6927-432a-8eb4-65ba36f14283
+        operator: is
+        type: ListItemRef
+        value:
+          listId: 67a7167d-3807-425e-a16a-d877e8ad4b1a
+          itemId: ed0036a7-862c-4aa3-b125-b49812240192
   # Other businesses using the water are zero
   - id: b52137a4-d0e3-4a52-85b6-2627203c5646
     displayName: notSharingWaterWithOtherBusinesses
