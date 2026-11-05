@@ -2,4 +2,4 @@
 'grants-config-water-management': patch
 ---
 
-grants-ui config, exit page when landlord or water compant aren't sharing the water
+grants-ui config, exit page when landlord or water company aren't sharing the water
