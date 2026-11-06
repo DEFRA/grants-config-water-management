@@ -653,13 +653,14 @@ pages:
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
+        hint: An abstraction licence gives you permission to take water from a river, stream, lake or underground source.
         type: RadiosField
         list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
         options:
           required: true
         shortDescription: Will you need an abstraction licence?
   # 1.9.1 Abstraction licence consent number, needAbstractionLicenceList=Y
-  - title: Confirm the licence consent number
+  - title: Enter abstraction licence number
     id: 6539b617-cbc6-4d80-af6f-10f71593758a
     path: /abstraction-licence-consent-number
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -668,14 +669,14 @@ pages:
     components:
       - name: abstractionLicenceConsentNumber
         id: da14005e-c930-4510-9b86-6e708c1e97b4
-        title: Confirm the licence consent number
-        hint: You will find this reference number on the information provided by the Environment Agency
+        title: Enter abstraction licence number
+        hint: You can find this on your abstraction licence issued by the Environment Agency. You can enter more than one licence number separated by commas.
         type: TextField
         options:
           required: true
         shortDescription: Abstraction licence consent number
   # 1.9.2 Why licence is not yet secured, needAbstractionLicenceList=N
-  - title: You must have an abstraction licence before you start construction work
+  - title: You must have an abstraction licence before you make your first claim
     id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
     path: /abstraction-licence-is-not-yet-secured
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -689,8 +690,8 @@ pages:
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
         type: Html
         content: >
-          <p class="govuk-body">You can continue with the application for grant funding.</p>
-          <p class="govuk-body">You'll need to provide evidence that you have an abstraction licence from the Environment Agency if you are invited to stage 2 of the application process.</p>
+          <p class="govuk-body">You can continue with this application for grant funding.</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner).</p>
   # 1.9.3 Abstraction licence why not needed, needAbstractionLicenceList=NN
   - title: Tell us why you do not need an abstraction licence
     id: 68c4d850-dea8-4594-8a68-a946d636113d
@@ -752,13 +753,21 @@ pages:
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
         content: >
-          <p class="govuk-body">Based on the answers provided, your project has scored</p>
+          <p class="govuk-body">Based on your answers, your project has scored:</p>
           <div class="govuk-inset-text">
             <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }} out of 100</p>
           </div>
           <div class="govuk-warning-text">
-            <p class="govuk-body">The likelihood of your application being successful will depend on the total number of applications received for this grant, and the relative scores of all projects as they relate to RPA's policy objectives and budget.</p>
+            <p class="govuk-body">The likelihood of your application being successful  and being invited to stage 2 of the application process will depend on the total number of applications we receive, and the relative scores of all projects as they relate to the RPA's policy objectives and budget.</p>
           </div>
+      - name: confirmWantToContinueOnScorePage
+        id: 599036ad-3649-48ae-b636-e8dfc309dd71
+        title: Confirm # TODO discuss with design
+        type: CheckboxesField
+        list: 64d3e997-b987-43e6-8b78-03863ad6aa48
+        options:
+          required: true
+        shortDescription: Want to continue on the score page?
   # ==========================================
   # Section 3: Project details and estimated costs
   # ==========================================
@@ -1316,7 +1325,7 @@ lists:
       - text: I do not need planning permission because I’m only installing an underground distribution main
         value: NNDM # TODO scoring update required
         id: 51fc81c3-d3b3-4e9e-bc41-922755e5aabc
-  - title: Planning permission why not needed list
+  - title: Confirm will get planning permission
     id: ad7ab436-263b-4485-8425-4c61212f7f64
     name: willGetPlanningPermissionList
     type: string
@@ -1335,7 +1344,7 @@ lists:
       - text: I need a licence but I have not got one yet
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-      - text: I do not need a licence
+      - text: I do not need a licence (for example because you will only harvest rainwater, you will take no more that 20 cubic metres a day) or the water will come from a mains supply
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
   - title: Abstraction licence why not needed list
@@ -1349,6 +1358,14 @@ lists:
       - text: Something else
         value: SOMETHING_ELSE
         id: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
+  - title: Confirm want to continue on score page
+    id: 64d3e997-b987-43e6-8b78-03863ad6aa48
+    name: confirmWantToContinueOnScorePageList
+    type: string
+    items:
+      - text: I confirm I want to continue with the application for this project
+        value: Y
+        id: 976bea6a-5a32-4f4c-b370-d3f75dbd0d70
   - title: How many businesses will use the water
     id: 6b2f167b-5564-4671-b987-053828151926
     name: howManyBusinessesWillUseTheWaterList
