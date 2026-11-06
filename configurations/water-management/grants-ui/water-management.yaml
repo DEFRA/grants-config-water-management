@@ -517,7 +517,7 @@ pages:
         content: >
           <p class="govuk-body">Because you are a water management company you must have the consent of any land owners and tenants in place before starting work on this project.</p>
   # 1.6 How many businesses will use the water
-  - title: How many business will use the water for irrigation?
+  - title: How many other businesses will use the water for irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
     path: /how-many-businesses-will-use-the-water
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -525,13 +525,18 @@ pages:
     components:
       - name: businessesUsingWater
         id: 6e30957f-74f3-4717-aeea-284898e25b1b
-        title: How many business will use the water for irrigation?
-        hint: Tell us the total number of businesses that will use the water for irrigation (including the one you are applying on behalf of)
+        title: How many other businesses will use the water for irrigation?
+        hint: Do not include the business you’re applying on behalf of
         type: RadiosField
         list: 6b2f167b-5564-4671-b987-053828151926
         options:
           required: true
         shortDescription: How many businesses will use the water?
+      - name: businessesUsingWaterFooter
+        id: 12df0ed8-aab5-400a-b4c4-bad0f4d05d77
+        type: Html
+        content: >
+          <p class="govuk-body">If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water.</p>
   # 1.6.1 EXIT landlord or water company and not sharing the water
   - title: You cannot apply for a grant from this scheme
     id: 399ec4cf-745f-41ee-9a40-1c23fa617d2b
@@ -574,7 +579,7 @@ pages:
         id: b1da8222-9e39-40ec-88d2-10ae5662da6c
         type: Html
         content: >
-          <p class="govuk-body">This grant will only fund projects that will store water from surface water abstraction, rainwater harvesting or a borehole / aquifer.</p>
+          <p class="govuk-body">You’re not eligible for this grant because we can only fund projects that will store water from a surface water source, rainwater harvesting or a borehole or aquifer.</p>
           <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for</a>
   # 1.8 Have planning permission
   - title: Do you have confirmed planning permission?
@@ -892,7 +897,7 @@ pages:
     components:
       - name: reservoirItemName
         id: 71d16032-acdd-4dfa-9bea-5ad1f68f7b58
-        title: Item name
+        title: Reservoir name
         type: TextField
         options:
           required: true
@@ -900,7 +905,7 @@ pages:
             string.empty: Enter a name for this item
         schema:
           max: 100
-        shortDescription: Item name
+        shortDescription: Reservoir name
       - name: reservoirItemWhatTypeOfReservoir
         id: 634bfd06-73cb-482a-adde-8ad7212f8dc5
         title: What type of reservoir are you building?
@@ -1306,16 +1311,16 @@ lists:
     name: whereWaterWillComeFromList
     type: string
     items:
-      - text: Surface water abstraction for storage
+      - text: A surface water source (for example a river or stream)
         value: SURFACE_WATER_ABSTRACTION_FOR_STORAGE
         id: 1d5ee2ac-46aa-4041-b2d8-a051b6ff6ac7
       - text: Rainwater harvesting
         value: RAINWATER_HARVESTING
         id: b51f11ca-331e-4da9-b26c-35a29e2389d9
-      - text: Borehole / aquifer
+      - text: A groundwater source (for example a borehole or aquifer)
         value: BOREHOLE_AQUIFER
         id: 74eaff0f-4438-4fac-9f15-fe732935930a
-      - text: Something else
+      - text: A different water source
         value: SOMETHING_ELSE
         id: e73bc54c-cd1c-4aa8-b5f0-30f87115a049
   - title: Need planning permission list
