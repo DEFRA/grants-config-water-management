@@ -297,7 +297,7 @@ pages:
     controller: TaskPageController
     condition: f548264e-9899-416f-8b4f-d9e045c0f527
     components:
-      - name: charyNumber
+      - name: charityNumber
         id: 94befa64-ab1c-4b7d-ae75-5040d5b500c7
         title: Enter your company number
         hint: You can find this on your charity's registration certificate or on the charity register
@@ -1313,7 +1313,7 @@ lists:
         value: GRASS_FEEDING_LIVESTOCK_COMMERCIAL_TURF
         id: abb227ff-1174-497e-a29d-084048bda098
       - text: Ornamentals
-        description: 'For example: bulbs, flowers, bedding plants, pot plants, shrubs, hardy ornamental nursery stock '
+        description: 'For example: bulbs, flowers, bedding plants, pot plants, shrubs, hardy ornamental nursery stock'
         value: ORNAMENTALS
         id: 22a26b9d-8b48-49ba-ae77-299b12fd2d5c
       - text: Protected edible crops
