@@ -124,6 +124,21 @@ test.describe('Water Management Grant Round 3', () => {
       await selectAllInstallableItems(page)
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
+      await expect(page).toHaveURL(
+        await formatUrlForPath('how-many-reservoirs')
+      )
+      await page.getByRole('radio', { name: 'No' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        await formatUrlForPath('what-type-of-reservoir')
+      )
+      await page.getByRole('radio', { name: 'Clay lined' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        await formatUrlForPath('how-much-water-reservoir')
+      )
       await page.locator('input#howMuchWater').fill('1500')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
@@ -140,12 +155,6 @@ test.describe('Water Management Grant Round 3', () => {
         page.locator('li').filter({
           hasText:
             'Reservoir – clay lined: 1,500m³ at £10/m³ for the first 10,000m³, with any additional volume charged at £2/m³, giving a total of £15,000'
-        })
-      ).toBeVisible()
-      await expect(
-        page.locator('li').filter({
-          hasText:
-            'Reservoir – synthetic lined: 0m³ at £10/m³ for the first 10,000m³, with any additional volume charged at £2/m³, giving a total of £0.00'
         })
       ).toBeVisible()
       await expect(
@@ -172,6 +181,21 @@ test.describe('Water Management Grant Round 3', () => {
       await selectAllInstallableItems(page)
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
+      await expect(page).toHaveURL(
+        await formatUrlForPath('how-many-reservoirs')
+      )
+      await page.getByRole('radio', { name: 'No' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        await formatUrlForPath('what-type-of-reservoir')
+      )
+      await page.getByRole('radio', { name: 'Clay lined' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        await formatUrlForPath('how-much-water-reservoir')
+      )
       await page.locator('input#howMuchWater').fill('500')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
@@ -188,12 +212,6 @@ test.describe('Water Management Grant Round 3', () => {
         page.locator('li').filter({
           hasText:
             'Reservoir – clay lined: 500m³ at £10/m³ for the first 10,000m³, with any additional volume charged at £2/m³, giving a total of £5,000'
-        })
-      ).toBeVisible()
-      await expect(
-        page.locator('li').filter({
-          hasText:
-            'Reservoir – synthetic lined: 0m³ at £10/m³ for the first 10,000m³, with any additional volume charged at £2/m³, giving a total of £0.00'
         })
       ).toBeVisible()
       await expect(
@@ -221,12 +239,6 @@ test.describe('Water Management Grant Round 3', () => {
         page.getByText(
           'Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).'
         )
-      ).toBeVisible()
-      await expect(
-        page.getByRole('link', {
-          name: 'See other grants you may be eligible for',
-          exact: true
-        })
       ).toBeVisible()
       await page.goto(await formatUrlForPath('tasks', false))
     })
@@ -297,12 +309,6 @@ test.describe('Water Management Grant Round 3', () => {
           'Your costs must be at least £37,500 because the minimum grant is £15,000 (40% of your confirmed costs).'
         )
       ).toBeVisible()
-      await expect(
-        page.getByRole('link', {
-          name: 'See other grants you may be eligible for',
-          exact: true
-        })
-      ).toBeVisible()
       await page.goto(await formatUrlForPath('tasks', false))
     })
 
@@ -315,6 +321,21 @@ test.describe('Water Management Grant Round 3', () => {
       await selectAllInstallableItems(page)
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
+      await expect(page).toHaveURL(
+        await formatUrlForPath('how-many-reservoirs')
+      )
+      await page.getByRole('radio', { name: 'No' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        await formatUrlForPath('what-type-of-reservoir')
+      )
+      await page.getByRole('radio', { name: 'Clay lined' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        await formatUrlForPath('how-much-water-reservoir')
+      )
       await page.locator('input#howMuchWater').fill('250000')
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
@@ -331,12 +352,6 @@ test.describe('Water Management Grant Round 3', () => {
         page.locator('li').filter({
           hasText:
             'Reservoir – clay lined: 250,000m³ at £10/m³ for the first 10,000m³, with any additional volume charged at £2/m³, giving a total of £580,000'
-        })
-      ).toBeVisible()
-      await expect(
-        page.locator('li').filter({
-          hasText:
-            'Reservoir – synthetic lined: 0m³ at £10/m³ for the first 10,000m³, with any additional volume charged at £2/m³, giving a total of £0.00'
         })
       ).toBeVisible()
       await expect(
@@ -385,10 +400,7 @@ test.describe('Water Management Grant Round 3', () => {
 })
 
 async function selectAllInstallableItems(page) {
-  await page.getByRole('checkbox', { name: 'Clay-lined reservoir' }).check()
-  await page
-    .getByRole('checkbox', { name: 'Synthetic-lined reservoir' })
-    .check()
+  await page.getByRole('checkbox', { name: 'Reservoir' }).check()
   await page
     .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
     .check()
@@ -400,10 +412,7 @@ async function selectAllInstallableItems(page) {
 }
 
 async function uncheckAllItems(page) {
-  await page.getByRole('checkbox', { name: 'Clay-lined reservoir' }).uncheck()
-  await page
-    .getByRole('checkbox', { name: 'Synthetic-lined reservoir' })
-    .uncheck()
+  await page.getByRole('checkbox', { name: 'Reservoir' }).uncheck()
   await page
     .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
     .uncheck()

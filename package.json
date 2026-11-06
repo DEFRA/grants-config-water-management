@@ -26,7 +26,9 @@
     "version:changed": "changeset version",
     "version": "changeset",
     "test": "TZ=UTC vitest run --coverage",
-    "test:watch": "TZ=UTC vitest"
+    "test:watch": "TZ=UTC vitest",
+    "test:journey:local": "cd test/grants-ui && npm install && npm run test:local",
+    "test:journey:ci": "cd test/grants-ui && npm run test:ci"
   },
   "publishConfig": {
     "access": "public"
@@ -92,18 +94,8 @@
     "vitest-fetch-mock": "0.4.5"
   },
   "overrides": {
-    "brace-expansion": "5.0.12",
-    "hapi-pulse": {
-      "joi": "18.3.1"
-    },
-    "eslint": {
-      "minimatch": "11.0.3"
-    },
-    "@typescript-eslint/typescript-estree": {
-      "minimatch": "11.0.3"
-    },
-    "npm-run-all": {
-      "minimatch": "11.0.3"
-    }
+    "joi": "18.3.1",
+    "minimatch": "11.0.3",
+    "brace-expansion": "5.0.12"
   }
 }

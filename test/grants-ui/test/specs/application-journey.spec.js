@@ -188,7 +188,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByRole('link', {
-            name: 'See other grants you may be eligible for',
+            name: 'Check what other grants you may be eligible for',
             exact: true
           })
         ).toBeVisible()
@@ -299,7 +299,7 @@ test.describe('Water Management Grant application', () => {
         )
         await verifyHowManyBusinessesWillUseTheWater(page)
         await analyzeAccessibility(page)
-        await page.getByRole('radio', { name: 'One' }).click()
+        await page.getByRole('radio', { name: 'None' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
 
@@ -328,7 +328,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByRole('link', {
-            name: 'See other grants you may be eligible for',
+            name: 'Check what other grants you may be eligible for',
             exact: true
           })
         ).toBeVisible()
@@ -692,57 +692,59 @@ test.describe('Water Management Grant application', () => {
           'Select all that apply'
         )
 
-        // Selecting Only Clay-lined reservoir and continuing to the next page
-        await page
-          .getByRole('checkbox', { name: 'Clay-lined reservoir' })
-          .click()
+        // Selecting Only Reservoir and continuing to the next page
+        await page.getByRole('checkbox', { name: 'Reservoir' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
         await expect(page).toHaveURL(
-          await formatUrlForPath('reservoir-storage-capacity')
+          await formatUrlForPath('how-many-reservoirs')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'How much water can your reservoir hold?'
+          'Will the project include more than one reservoir?'
+        )
+        // User selects No and continues to the next page
+        await page.getByRole('radio', { name: 'No' }).click()
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+
+        await expect(page).toHaveURL(
+          await formatUrlForPath('what-type-of-reservoir')
+        )
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'What type of reservoir are you building?'
+        )
+
+        verifyAllReservoirTypes(page)
+        await analyzeAccessibility(page)
+
+        // User selects Clay lined and continues to the next page
+        await page.getByRole('radio', { name: 'Clay lined' }).click()
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+
+        await expect(page).toHaveURL(
+          await formatUrlForPath('how-much-water-reservoir')
+        )
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'How much water will your reservoir hold?'
         )
         await analyzeAccessibility(page)
         await expect(page.locator('#howMuchWater-hint')).toHaveText(
-          'Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number, without decimals.'
+          'Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number without decimals.'
         )
         await expect(page.locator('input#howMuchWater')).toBeVisible()
         await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')
 
         await page.getByRole('link', { name: 'Back', exact: true }).click()
         await expect(page).toHaveURL(
-          await formatUrlForPath('items-planning-to-install')
+          await formatUrlForPath('what-type-of-reservoir')
         )
-        await page
-          .getByRole('checkbox', { name: 'Clay-lined reservoir' })
-          .uncheck()
-
-        // Selecting Only Synthetic-lined reservoir and continuing to the next page
-        await page
-          .getByRole('checkbox', { name: 'Synthetic-lined reservoir' })
-          .click()
-        await page.getByRole('button', { name: 'Save and continue' }).click()
+        await page.getByRole('link', { name: 'Back', exact: true }).click()
         await expect(page).toHaveURL(
-          await formatUrlForPath('reservoir-storage-capacity')
+          await formatUrlForPath('how-many-reservoirs')
         )
-        await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'How much water can your reservoir hold?'
-        )
-        await analyzeAccessibility(page)
-        await expect(page.locator('#howMuchWater-hint')).toHaveText(
-          'Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number, without decimals.'
-        )
-        await expect(page.locator('input#howMuchWater')).toBeVisible()
-        await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')
-
         await page.getByRole('link', { name: 'Back', exact: true }).click()
         await expect(page).toHaveURL(
           await formatUrlForPath('items-planning-to-install')
         )
-        await page
-          .getByRole('checkbox', { name: 'Synthetic-lined reservoir' })
-          .uncheck()
+        await page.getByRole('checkbox', { name: 'Reservoir' }).uncheck()
 
         // Selecting Only Above-ground water storage tanks and continuing to the next page
         await page
@@ -802,9 +804,7 @@ test.describe('Water Management Grant application', () => {
           .uncheck()
 
         // Selecting multiple mixed items and continue to fill in the details for each item in the correct order
-        await page
-          .getByRole('checkbox', { name: 'Clay-lined reservoir' })
-          .click()
+        await page.getByRole('checkbox', { name: 'Reservoir' }).click()
         await page
           .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
           .click()
@@ -812,13 +812,31 @@ test.describe('Water Management Grant application', () => {
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
         await expect(page).toHaveURL(
-          await formatUrlForPath('reservoir-storage-capacity')
+          await formatUrlForPath('how-many-reservoirs')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'How much water can your reservoir hold?'
+          'Will the project include more than one reservoir?'
+        )
+        await page.getByRole('radio', { name: 'No' }).click()
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+
+        await expect(page).toHaveURL(
+          await formatUrlForPath('what-type-of-reservoir')
+        )
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'What type of reservoir are you building?'
+        )
+        await page.getByRole('radio', { name: 'Clay lined' }).click()
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+
+        await expect(page).toHaveURL(
+          await formatUrlForPath('how-much-water-reservoir')
+        )
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'How much water will your reservoir hold?'
         )
         await expect(page.locator('#howMuchWater-hint')).toHaveText(
-          'Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number, without decimals.'
+          'Enter the maximum volume of water your reservoir can hold in cubic metres. Use a whole number without decimals.'
         )
         await page.locator('input#howMuchWater').fill('10000')
         await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')
@@ -1136,7 +1154,7 @@ async function verifyAllSectors(page) {
 }
 
 async function verifyHowManyBusinessesWillUseTheWater(page) {
-  const options = ['One', 'Two to four', 'Five or more']
+  const options = ['None', '1 to 4', '5 or more']
   for (const option of options) {
     await expect(page.getByRole('radio', { name: option })).toBeVisible()
   }
@@ -1162,5 +1180,12 @@ async function verifyPlanningPermissionWhyNotNeeded(page) {
   ]
   for (const option of options) {
     await expect(page.getByRole('checkbox', { name: option })).toBeVisible()
+  }
+}
+
+async function verifyAllReservoirTypes(page) {
+  const reservoirTypes = ['Clay lined', 'Synthetic lined']
+  for (const type of reservoirTypes) {
+    await expect(page.getByRole('radio', { name: type })).toBeVisible()
   }
 }
