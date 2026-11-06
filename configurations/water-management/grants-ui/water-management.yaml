@@ -591,12 +591,6 @@ pages:
       - name: havePlanningPermission
         id: 85957609-1ab7-4921-ad8f-5707b455784b
         title: Do you have confirmed planning permission?
-        hint: >
-          If you are building a reservoir you'll need to have planning permission from your local planning authority before starting construction work.
-
-          This could be through the prior notification or full planning permission process.
-
-          If you are applying for a water storage tank you should consult your Local Planning Authority regarding the type of consent you will need.
         type: RadiosField
         list: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
         options:
@@ -613,7 +607,7 @@ pages:
       - name: planningPermissionReferenceNumber
         id: cf6da572-13e3-4963-a37a-f81f8cf4e249
         title: Enter the planning permission reference number
-        hint: Your reference number will be on the planning decision notice issued by your local planning authority (for example, 24/01234/FUL)
+        hint: The reference number will be on the planning decision notice issued by your local planning authority (for example 24/01234/FUL). You can enter more than one reference number separated by commas.
         type: TextField
         options:
           required: true
@@ -634,39 +628,21 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">You'll need to provide evidence that you have planning permission if you are invited to stage 2 of the application process.</p>
-  # 1.8.3 Planning permission why not needed, havePlanningPermission=NN
-  - title: Tell us why you do not need planning permission
-    id: 9cb8bf96-2a38-41a6-85e4-9369302c8cd4
-    path: /planning-permission-why-not-needed
-    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
-    condition: 597a6652-dd98-469b-a860-a84b171a2808
-    components:
-      - name: planningPermissionWhyNotNeeded
-        id: f26d9d1d-0596-49f5-8cd0-911bf658d76f
-        title: Tell us why you do not need planning permission
-        hint: Select all reasons that apply
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              You'll need to provide evidence that you have planning permission within 12 months of accepting the agreement or making the first claim (if this is earlier).
+            </strong>
+          </div>
+      - name: confirmWillGetPlanningPermission
+        id: e1b1db20-39c8-458c-bbac-ec9d225f62cd
+        title: Confirm # TODO discuss with design
         type: CheckboxesField
-        list: 57ca866c-7ade-4d29-9109-39883c74a6d6
+        list: ad7ab436-263b-4485-8425-4c61212f7f64
         options:
           required: true
-        shortDescription: Why don't you need planning permission?
-  # 1.8.3.1 Planning permission details why not needed, havePlanningPermission=NN and why=SOMETHING_ELSE
-  - title: Give more details
-    id: af7862dc-28a5-410d-91d2-2692016e03a3
-    path: /details-planning-permission-why-not-needed
-    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
-    condition: fdf85863-b1df-492b-8d4c-b3e124a68ce9
-    components:
-      - name: detailsPlanningPermissionWhyNotNeeded
-        id: 39d9285e-c3d3-4202-b485-e4b76fde7312
-        title: Give more details
-        type: MultilineTextField
-        options:
-          required: true
-        shortDescription: Give more details
+        shortDescription: Will get planning permission?
   # 1.9 Need abstraction licence
   - title: Will you need an abstraction licence?
     id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
@@ -1328,29 +1304,26 @@ lists:
     name: needPlanningPermissionList
     type: string
     items:
-      - text: Yes
+      - text: Yes, all planning permission is in place
         value: Y
         id: f06c96df-95df-4aed-9c29-2c1feed059db
-      - text: No
-        value: N
-        id: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
-      - text: I don't need planning permission
+      - text: I have confirmation from my local planing authority  that I do not need planning permission
         value: NN
         id: dba6504e-f262-46a9-888c-1f418406b99e
+      - text: No, I need to apply (or check if I need planning permission)
+        value: N
+        id: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
+      - text: I do not need planning permission because I’m only installing an underground distribution main
+        value: NNDM # TODO scoring update required
+        id: 51fc81c3-d3b3-4e9e-bc41-922755e5aabc
   - title: Planning permission why not needed list
-    id: 57ca866c-7ade-4d29-9109-39883c74a6d6
-    name: planningPermissionWhyNotNeededList
+    id: ad7ab436-263b-4485-8425-4c61212f7f64
+    name: willGetPlanningPermissionList
     type: string
     items:
-      - text: Exemption under General Permitted Development Order 2015
-        value: GENERAL_PERMITTED_ORDER_2015
-        id: 4ecce527-5d85-4680-b2ed-b35ef548edc0
-      - text: Project does not include a new reservoir
-        value: DOES_NOT_INCLUDE_NEW_RESERVOIR
-        id: 96f3266c-f079-41d8-a25c-b261af62dc85
-      - text: Something else
-        value: SOMETHING_ELSE
-        id: 3538eea0-827d-43a7-becc-ac83ec888fca
+      - text: I confirm I will get the necessary planning permission
+        value: Y
+        id: 125360e7-142f-4c24-9b77-eb9a9bdfe7ca
   - title: Need abstraction licence list
     id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
     name: needAbstractionLicenceList
@@ -1709,50 +1682,6 @@ conditions:
         value:
           listId: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
           itemId: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
-  # Planning permission not needed
-  - id: 597a6652-dd98-469b-a860-a84b171a2808
-    displayName: planningPermissionNotNeeded
-    items:
-      - id: e6a5a3d7-870d-4262-8479-2d637ce08285
-        componentId: 85957609-1ab7-4921-ad8f-5707b455784b
-        operator: is
-        type: ListItemRef
-        value:
-          listId: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
-          itemId: dba6504e-f262-46a9-888c-1f418406b99e
-  # Planning permission not needed, and ONLY something else
-  - id: fdf85863-b1df-492b-8d4c-b3e124a68ce9
-    displayName: planningPermissionNNSomethingElse
-    items:
-      - id: e4d62b90-843c-44d9-9122-f0106189925c
-        componentId: 85957609-1ab7-4921-ad8f-5707b455784b
-        operator: is
-        type: ListItemRef
-        value:
-          listId: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
-          itemId: dba6504e-f262-46a9-888c-1f418406b99e
-      - id: 64535f4a-bfd2-445a-9513-d3c2f6180599
-        componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
-        operator: contains
-        type: ListItemRef
-        value:
-          listId: 57ca866c-7ade-4d29-9109-39883c74a6d6
-          itemId: 3538eea0-827d-43a7-becc-ac83ec888fca
-      - id: 6d37e0e3-f7e8-4b81-a020-b0843d899341
-        componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 57ca866c-7ade-4d29-9109-39883c74a6d6
-          itemId: 4ecce527-5d85-4680-b2ed-b35ef548edc0
-      - id: e31e7e71-8e32-43e1-bccb-63fc50a61a09
-        componentId: f26d9d1d-0596-49f5-8cd0-911bf658d76f
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 57ca866c-7ade-4d29-9109-39883c74a6d6
-          itemId: 96f3266c-f079-41d8-a25c-b261af62dc85
-    coordinator: and
   # Abstraction licence secured
   - id: 77637237-be69-4496-9933-e65fe134ae15
     displayName: abstractionLicenceSecured
