@@ -126,14 +126,6 @@ metadata:
             format: phoneNumbers
           - label: Business email address
             sourcePath: business.email.address
-      - title: Business details
-        fields:
-          - label: Legal status
-            sourcePath: business.legalStatus.type
-          - label: Company Registration Number
-            sourcePath: business.registrationNumbers.companiesHouse
-          - label: Registered Charity Number
-            sourcePath: business.registrationNumbers.charityCommission
       - title: Reference numbers
         fields:
           - label: Single Business Identifier (SBI)
