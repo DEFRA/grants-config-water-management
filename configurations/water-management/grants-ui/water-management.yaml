@@ -772,17 +772,17 @@ pages:
   # Section 3: Project details and estimated costs
   # ==========================================
   # 2.1 Expected project start date
-  - title: When do you expect the project work to start?
+  - title: When do you expect to start the project work?
     id: 7cb1a024-1ce6-45ac-b9ca-009f4848b5e5
     path: /expected-project-start-date
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
-    components:
+    components: # TODO discuss with design
       - name: expectedProjectStartDate
         id: 331371cf-61c9-4753-b8c6-a0238ae1375b
-        title: When do you expect the project work to start?
+        title: When do you expect to start the project work?
         hint: >
-          This is when you expect to start digging, signing contracts or placing orders.
+          Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. The date you choose should allow you time to complete the work and submit your final claim by 31 March 2030.
           For example, 3 2027
         type: MonthYearField
         options:
@@ -807,7 +807,7 @@ pages:
           classes: govuk-radios
         shortDescription: What are you planning to build or install?
   # 2.2.1 How many reservoirs?
-  - title: Will the project include more than one reservoir?
+  - title: Will your project include more than one reservoir?
     id: c486e28f-7cc3-4756-ac83-c515d42f8909
     path: /how-many-reservoirs
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -816,7 +816,8 @@ pages:
     components:
       - name: moreThanOneReservoir
         id: 6a8657b3-5c15-43c4-9657-c9dbd29f738c
-        title: Will the project include more than one reservoir?
+        title: Will your project include more than one reservoir?
+        hint: You can include up to 5 reservoirs in this application
         type: YesNoField
         options:
           required: true
@@ -882,15 +883,16 @@ pages:
     components:
       - name: reservoirItemName
         id: 71d16032-acdd-4dfa-9bea-5ad1f68f7b58
-        title: Reservoir name
+        title: Name of your reservoir
+        hint: For example, North reservoir
         type: TextField
         options:
           required: true
           customValidationMessages:
-            string.empty: Enter a name for this item
+            string.empty: Enter a name for this reservoir
         schema:
           max: 100
-        shortDescription: Reservoir name
+        shortDescription: Name of your reservoir
       - name: reservoirItemWhatTypeOfReservoir
         id: 634bfd06-73cb-482a-adde-8ad7212f8dc5
         title: What type of reservoir are you building?
@@ -898,7 +900,7 @@ pages:
         list: f1ea3032-da6f-4e35-bc75-24d22feb8656
         options:
           required: true
-        shortDescription: What type of reservoir?
+        shortDescription: What type of reservoir are you building?
       - name: reservoirItemHowMuchWater
         id: 159778c8-6540-4f59-8e09-93308680c12c
         title: How much water will your reservoir hold?
@@ -918,33 +920,8 @@ pages:
           max: 999999
           precision: 0
         shortDescription: Reservoir storage capacity (m³)
-  # 2.2.4 Water distribution length
-  - title: How long will your underground water distribution main be?
-    id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
-    path: /water-distribution-length
-    section: 922947cc-6c6a-4fe5-b831-da27251663a9
-    controller: TaskPageController
-    condition: d1da14c4-a8da-49c1-b3c2-d9555e5f223f
-    components:
-      - name: waterDistributionLength
-        id: a1ff4fd2-95a9-46f4-b7b8-1d6ad0a6ec21
-        title: How long will your underground water distribution main be?
-        hint: Enter the planned length in metres. Use a whole number, without decimals.
-        type: NumberField
-        options:
-          required: true
-          classes: govuk-!-width-one-third
-          suffix: m
-          autocomplete: off
-          customValidationMessages:
-            any.required: Enter value in metres (m)
-            number.min: Enter a value of one metre (m) or more
-        schema:
-          min: 1
-          precision: 0
-        shortDescription: Water distribution length (m)
-  # 2.2.5 Water storage capacity
-  - title: How much water will your storage tanks hold?
+  # 2.2.4 Water storage capacity
+  - title: How much water will your storage tank or tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /water-storage-capacity
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -953,8 +930,8 @@ pages:
     components:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
-        title: How much water will your storage tanks hold?
-        hint: Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number, without decimals.
+        title: How much water will your storage tank or tanks hold?
+        hint: Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.
         type: NumberField
         options:
           required: true
@@ -968,8 +945,33 @@ pages:
           min: 1
           precision: 0
         shortDescription: Water storage capacity (m³)
+  # 2.2.5 Water distribution length
+  - title: How long will your underground water distribution main be?
+    id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
+    path: /water-distribution-length
+    section: 922947cc-6c6a-4fe5-b831-da27251663a9
+    controller: TaskPageController
+    condition: d1da14c4-a8da-49c1-b3c2-d9555e5f223f
+    components:
+      - name: waterDistributionLength
+        id: a1ff4fd2-95a9-46f4-b7b8-1d6ad0a6ec21
+        title: How long will your underground water distribution main be?
+        hint: Enter the planned length in metres. Use a whole number without decimals.
+        type: NumberField
+        options:
+          required: true
+          classes: govuk-!-width-one-third
+          suffix: m
+          autocomplete: off
+          customValidationMessages:
+            any.required: Enter value in metres (m)
+            number.min: Enter a value of one metre (m) or more
+        schema:
+          min: 1
+          precision: 0
+        shortDescription: Water distribution length (m)
   # 2.3 Total estimated grant TODO how to display reservoir
-  - title: Total estimated grant based on estimated costs
+  - title: Total estimated grant
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
     path: /total-estimated-cost
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -1005,24 +1007,76 @@ pages:
         id: 68342054-a3cc-44b3-860e-61aab15c2798
         type: Html
         content: >
-          <p class="govuk-body">The amount of grant you can apply for is based on the reference cost contribution for the items you need. If successful, you will be able to claim this amount or 40% of your actual invoice costs at claim stage, whichever is the lower amount.</p>
-          <p class="govuk-body">The total estimated grant is as follows:</p>
+          <div class="govuk-inset-text">
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</p>
+            <p class="govuk-body">This is the estimated amount you could apply for at stage 2.</p>
+          </div>
+          <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
+          <p class="govuk-body">Your estimated grant is based on 40% of the reference costs for the items in your application.</p>
+          <p class="govuk-body">If you’re invited to apply for stage 2, the grant you can claim will be the lower of:</p>
           <ul class="govuk-list govuk-list--bullet">
-            {% if itemsPlanningToInstall contains "RESERVOIR" %}
-              <li>Reservoir – {{ context.state.whatTypeOfReservoir }} lined: {{ howMuchWater | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of {{ context.state.additionalAnswers.reservoirCost | formatCurrency | replace: '.00', '' }}</li>
-            {% endif %}
-            {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
-              <li>Reservoir – synthetic lined: 0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³, giving a total of £0.00</li>
-            {% endif %}
-            {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
-              <li>Water distribution network: {{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per m = {{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</li>
-            {% endif %}
-            {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
-              <li>Water storage tank(s): {{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per m³ = {{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</li>
-            {% endif %}
+            <li>40% of the reference costs shown below</li>
+            <li>40% of your actual invoiced costs at claim stage</li>
           </ul>
+          <h2 class="govuk-heading-m">Estimated costs</h2>
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Item</th>
+                <th scope="col" class="govuk-table__header">Details</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Estimated cost</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              {% if itemsPlanningToInstall contains "RESERVOIR" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Reservoir – {{ context.state.whatTypeOfReservoir }} lined</td>
+                  <td class="govuk-table__cell">{{ howMuchWater | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.reservoirCost | formatCurrency | replace: '.00', '' }}</td>
+                </tr>
+              {% endif %}
+              {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Reservoir – synthetic lined</td>
+                  <td class="govuk-table__cell">0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">£0</td>
+                </tr>
+              {% endif %}
+              {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Water distribution network</td>
+                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per m</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
+                </tr>
+              {% endif %}
+              {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Water storage tank(s)</td>
+                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per m³</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</td>
+                </tr>
+              {% endif %}
+            </tbody>
+          </table>
+          <h2 class="govuk-heading-m">Estimated grant</h2>
+          <table class="govuk-table">
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row" style="border: none;">
+                <td class="govuk-table__cell" style="border: none;">Total estimated grant</td>
+                <td class="govuk-table__cell" style="border: none;">40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</td>
+              </tr>
+            </tbody>
+          </table>
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body">Total estimated grant = {{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</p>
+      - name: understandNoGuaranteedSuccessOnEstimatedCostPage
+        id: 37c68068-38d6-4a39-b64e-44dce1558293
+        title: Confirm # TODO discuss with design
+        type: CheckboxesField
+        list: 7f849dda-527d-49a9-900d-39480430d613
+        options:
+          required: true
+        shortDescription: Understand no guaranteed success on estimated cost page
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 4: Check and submit your application
@@ -1388,7 +1442,7 @@ lists:
       - text: Reservoir
         value: RESERVOIR
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
-      - text: Above-ground water storage tanks
+      - text: Above-ground water storage tank or tanks
         value: WATER_STORAGE_TANKS
         id: 544b8f79-973d-42d3-8053-f049fb351e6e
       - text: Underground water distribution main
@@ -1405,6 +1459,14 @@ lists:
       - text: Synthetic lined
         value: synthetic
         id: e2ed4727-0acb-42e7-810c-bd447a99e6a0
+  - title: Understand no guarantee on estimated cost page list
+    id: 7f849dda-527d-49a9-900d-39480430d613
+    name: understandNoGuaranteedSuccessOnEstimatedCostPageList
+    type: string
+    items:
+      - text: I understand there is no guarantee that your stage 2 grant application will be successful
+        value: Y
+        id: f3cc887b-b393-4045-a4bf-2fb6d65ce6cb
 
 conditions:
   # Type of business -> company
