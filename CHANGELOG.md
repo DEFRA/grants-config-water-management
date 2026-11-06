@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.4
+
+### Patch Changes
+
+- 41b062b: grants-ui config, update all content ahead for final page tickets
+
 ## 0.8.3
 
 ### Patch Changes
