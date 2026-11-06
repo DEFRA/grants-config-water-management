@@ -1100,33 +1100,8 @@ pages:
         - page: /total-estimated-cost
           items:
             - title: Total estimated grant (£)
-              stateValue: additionalAnswers.totalEstimatedCost
-  # 3.2 Potential funding
-  - title: Potential grant funding
-    id: c78a90a0-91be-4c93-976c-ae18378e4996
-    path: /potential-funding
-    section: b7006592-79e9-442b-a371-36fa95042c68
-    controller: TaskPageController
-    config:
-      submitButtonText: Confirm and continue
-    components:
-      - name: potentialFundingContent
-        id: b22ac6e2-59fe-47ce-bdf6-4ddb6bd85bd5
-        type: Html
-        content: >
-          <p class="govuk-body">You may be able to apply for a grant of {{ context.state.additionalAnswers.estimatedMaxGrant | floor | formatCurrency | replace: '.00', '' }} if you are invited to stage 2 of the application process. This is based on your estimated costs of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}.</p>
-          <p class="govuk-body">You will need to be able to fund the remainder of your project costs.</p>
-          <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-visually-hidden">Warning</span>
-              There is no guarantee that your stage 2 grant application will be successful
-            </strong>
-          </div>
-          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-          <p class="govuk-body">Based on your answers, your project score is</p>
-          <strong class="govuk-tag govuk-tag--yellow govuk-!-margin-bottom-4 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }} out of 100</strong>
-  # 3.3 Submit application
+              stateValue: additionalAnswers.estimatedMaxGrant
+  # 3.2 Submit application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
     path: /declaration
@@ -1151,7 +1126,15 @@ pages:
             <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
             <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
           </ul>
-  # 3.4 Confirmation
+      - name: acceptTermsAndConditionsOnSubmitApplicationPage
+        id: bbf54e3f-41f1-4364-9524-874195e1c519
+        title: Confirm # TODO discuss with design
+        type: CheckboxesField
+        list: 94e44f7c-9bb2-4844-8a2c-7f115ff6ba44
+        options:
+          required: true
+        shortDescription: Accept terms and conditions on submit application page
+  # 3.3 Confirmation
   - title: Confirmation
     id: ae9f2211-7278-4071-bb66-a7f56f4194df
     path: /confirmation
@@ -1165,18 +1148,18 @@ pages:
         type: Html
         content: >
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">Thank you for submitting your stage 1 application for a Water Management grant round 3 (WMG R3).</p>
-          <p class="govuk-body">We will now assess your application against our eligibility criteria and RPA funding priorities. If you are successful in stage 1, we will invite you to complete stage 2 of the application process where you will need to show:</p>
+          <p class="govuk-body">Your stage 1 application for a Water Management grant round 3 (WMG R3) has been submitted.</p>
+          <p class="govuk-body">We’ll now assess your application against our eligibility criteria and RPA funding priorities. If your stage 1 application is successful, we’ll invite you to  stage 2 of the application process where you will need to show:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-            <li>Evidence of planning permission</li>
-            <li>A plan showing existing and proposed irrigation systems</li>
-            <li>Evidence of a water-abstraction licence, if necessary for the project</li>
-            <li>Letters of support from any other farms the project will supply water to</li>
-            <li>A letter from your accountant confirming you can pay the remaining costs of the project</li>
+            <li>evidence of planning permission</li>
+            <li>a plan showing existing and proposed irrigation systems</li>
+            <li>evidence of a water abstraction licence (if you need one)</li>
+            <li>letters of support from any other farms the project will supply water to</li>
+            <li>a letter from your accountant confirming you can pay the remaining project costs</li>
           </ul>
-
+          <p class="govuk-body">The window for stage 1 applications closes at 23.59 on 23 February 2027. The RPA will invite successful applicants to apply for stage 2 soon after that.</p>
           <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
-  # 3.5 Print application
+  # 3.4 Print application
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
     path: /print-submitted-application
@@ -1467,6 +1450,14 @@ lists:
       - text: I understand there is no guarantee that your stage 2 grant application will be successful
         value: Y
         id: f3cc887b-b393-4045-a4bf-2fb6d65ce6cb
+  - title: Accept terms and conditions on submit application page list
+    id: 94e44f7c-9bb2-4844-8a2c-7f115ff6ba44
+    name: acceptTermsAndConditionsOnSubmitApplicationPageList
+    type: string
+    items:
+      - text: I accept the terms and conditions
+        value: Y
+        id: d5c5de9c-f2a6-4f3e-90b2-db59813fd872
 
 conditions:
   # Type of business -> company
