@@ -94,18 +94,8 @@
     "vitest-fetch-mock": "0.4.5"
   },
   "overrides": {
-    "brace-expansion": "5.0.12",
-    "hapi-pulse": {
-      "joi": "18.3.1"
-    },
-    "eslint": {
-      "minimatch": "11.0.3"
-    },
-    "@typescript-eslint/typescript-estree": {
-      "minimatch": "11.0.3"
-    },
-    "npm-run-all": {
-      "minimatch": "11.0.3"
-    }
+    "joi": "18.3.1",
+    "minimatch": "11.0.3",
+    "brace-expansion": "5.0.12"
   }
 }
