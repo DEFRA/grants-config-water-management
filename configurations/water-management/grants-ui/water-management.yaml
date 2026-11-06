@@ -911,7 +911,7 @@ pages:
     repeat:
       options:
         name: reservoirItems
-        title: Reservoirs
+        title: Reservoir
       schema:
         min: 1
         max: 5
