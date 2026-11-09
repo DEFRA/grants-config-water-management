@@ -1066,7 +1066,7 @@ pages:
                 {% for reservoir in context.state.additionalAnswers.reservoirs %}
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">Reservoir – {{ reservoir.type }} lined</td>
-                    <td class="govuk-table__cell">{{ reservoir.name }} {{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
+                    <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }} {{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency | replace: '.00', '' }}</td>
                   </tr>
                 {% endfor %}
