@@ -823,6 +823,8 @@ pages:
         options:
           required: true
           autocomplete: off
+          earliestMonthYear: 2027-03
+          latestMonthYear: 2030-03
         shortDescription: Expected project start date
   # 2.2 Items planning to install
   - title: What are you planning to build or install?
