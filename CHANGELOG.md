@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.7
+
+### Patch Changes
+
+- 7adf330: grants-ui config, collaboration page updates
+
 ## 0.8.6
 
 ### Patch Changes
