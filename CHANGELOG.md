@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.8
+
+### Patch Changes
+
+- d809ae5: grants-ui config, crops page updates
+
 ## 0.8.7
 
 ### Patch Changes
