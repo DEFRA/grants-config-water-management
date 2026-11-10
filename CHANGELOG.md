@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.5
+
+### Patch Changes
+
+- 529e18b: grants-ui config, legal status changes, and confirm questions not lists
+
 ## 0.8.4
 
 ### Patch Changes
