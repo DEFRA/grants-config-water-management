@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.9
+
+### Patch Changes
+
+- 37ecb9b: grants-ui config, reference costs and print page display
+
 ## 0.8.8
 
 ### Patch Changes
