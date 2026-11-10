@@ -186,7 +186,7 @@ metadata:
 
 sections:
   - name: your-legal-status
-    title: Your legal status
+    title: Confirm legal status
     id: 8961b84a-572c-410c-9f07-076a4fb876a5
   - name: check-project-eligibility
     title: Check your project eligibility
@@ -480,12 +480,12 @@ pages:
           <p class="govuk-body">If you’re successful, you and your tenant will need to allow the RPA to access the project location for monitoring visits for the duration of the grant agreement.</p>
           <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
       - name: confirmConsultedWithTenants
-        id: b1973500-6bba-4544-b815-5dca17a25a83
+        id: bef87169-aa5a-4b75-bfdd-323fbc81f5c4
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: e011beab-29c5-41dd-8b71-f44cced69611
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I confirm I have consulted (or will consult) tenants about this project
         shortDescription: Confirm consulted with tenants?
   # 1.5.2 ORG TYPE TENANT: What you need to do
   - title: What you need to do as a tenant farmer or grower
@@ -506,12 +506,12 @@ pages:
           <p class="govuk-body">You must consult with your landlord before you apply and check that the project will not breach the terms of your tenancy agreement.</p>
           <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
       - name: confirmHaveTenancyAgreement
-        id: e8838c5a-c355-4ded-a5af-1a8d636c7876
+        id: 15825705-1437-4845-b67b-d85db0df22b9
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: 333638d3-ba56-44ec-a1f9-869ddf5dc878
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I confirm I have a tenancy agreement that meets the grant requirements
         shortDescription: Confirm consulted with tenants?
   # 1.5.3 ORG TYPE WATER COMPANY: What you need to do
   - title: What you need to do as a water management company
@@ -544,12 +544,12 @@ pages:
           </ul>
           <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
       - name: confirmHaveAgreements
-        id: 57917a46-2a59-447d-8ff1-7b472f3df625
+        id: b309ab0c-dece-4661-b171-1ef1b7d436a0
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: f44200ff-e3ea-4c8f-bf1f-a62d1c4f188b
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I confirm I will have all the necessary agreements in place
         shortDescription: Confirm have agreements?
   # 1.6 How many businesses will use the water
   - title: How many other businesses will use the water for irrigation?
@@ -671,12 +671,12 @@ pages:
             </strong>
           </div>
       - name: confirmWillGetPlanningPermission
-        id: e1b1db20-39c8-458c-bbac-ec9d225f62cd
+        id: 8f8e667b-84a4-4c39-940b-fdc9d8b67063
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: ad7ab436-263b-4485-8425-4c61212f7f64
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I confirm I will get the necessary planning permission
         shortDescription: Will get planning permission?
   # 1.9 Need abstraction licence
   - title: Will you need an abstraction licence?
@@ -796,12 +796,12 @@ pages:
             <p class="govuk-body">The likelihood of your application being successful  and being invited to stage 2 of the application process will depend on the total number of applications we receive, and the relative scores of all projects as they relate to the RPA's policy objectives and budget.</p>
           </div>
       - name: confirmWantToContinueOnScorePage
-        id: 599036ad-3649-48ae-b636-e8dfc309dd71
+        id: f35f09e8-6ce8-470a-a9f5-d6bd984d2503
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: 64d3e997-b987-43e6-8b78-03863ad6aa48
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I confirm I want to continue with the application for this project
         shortDescription: Want to continue on the score page?
   # ==========================================
   # Section 3: Project details and estimated costs
@@ -1107,10 +1107,10 @@ pages:
       - name: understandNoGuaranteedSuccessOnEstimatedCostPage
         id: 37c68068-38d6-4a39-b64e-44dce1558293
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: 7f849dda-527d-49a9-900d-39480430d613
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I understand there is no guarantee that your stage 2 grant application will be successful
         shortDescription: Understand no guaranteed success on estimated cost page
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
@@ -1162,12 +1162,12 @@ pages:
             <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
           </ul>
       - name: acceptTermsAndConditionsOnSubmitApplicationPage
-        id: bbf54e3f-41f1-4364-9524-874195e1c519
+        id: 1eb2dc48-1f2d-4a70-8957-41a71ce41a22
         title: Confirm # TODO discuss with design
-        type: CheckboxesField
-        list: 94e44f7c-9bb2-4844-8a2c-7f115ff6ba44
+        type: DeclarationField
         options:
           required: true
+          declarationConfirmationLabel: I accept the terms and conditions
         shortDescription: Accept terms and conditions on submit application page
   # 3.3 Confirmation
   - title: Confirmation
@@ -1363,30 +1363,6 @@ lists:
       - text: None of the above
         value: NONE_OF_THE_ABOVE
         id: ed0036a7-862c-4aa3-b125-b49812240192
-  - title: Confirm consulted with tenants list
-    id: e011beab-29c5-41dd-8b71-f44cced69611
-    name: confirmConsultedWithTenantsList
-    type: string
-    items:
-      - text: I confirm I have consulted (or will consult) tenants about this project
-        value: Y
-        id: a7e6151a-009f-4614-adf6-6598f186e410
-  - title: Confirm have tenancy agreement list
-    id: 333638d3-ba56-44ec-a1f9-869ddf5dc878
-    name: confirmHaveTenancyAgreementList
-    type: string
-    items:
-      - text: I confirm I have a tenancy agreement that meets the grant requirements
-        value: Y
-        id: ed6dc3bc-ea50-4289-9b01-55d58330cf73
-  - title: Confirm have agreements
-    id: f44200ff-e3ea-4c8f-bf1f-a62d1c4f188b
-    name: confirmHaveAgreementsList
-    type: string
-    items:
-      - text: I confirm I will have all the necessary agreements in place
-        value: Y
-        id: 444d1a12-7e78-4102-8f40-30ba21f4f24a
   - title: Where water will come from list
     id: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
     name: whereWaterWillComeFromList
@@ -1421,14 +1397,6 @@ lists:
       - text: I do not need planning permission because I’m only installing an underground distribution main
         value: NNDM # TODO scoring update required
         id: 51fc81c3-d3b3-4e9e-bc41-922755e5aabc
-  - title: Confirm will get planning permission
-    id: ad7ab436-263b-4485-8425-4c61212f7f64
-    name: willGetPlanningPermissionList
-    type: string
-    items:
-      - text: I confirm I will get the necessary planning permission
-        value: Y
-        id: 125360e7-142f-4c24-9b77-eb9a9bdfe7ca
   - title: Need abstraction licence list
     id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
     name: needAbstractionLicenceList
@@ -1454,14 +1422,6 @@ lists:
       - text: Something else
         value: SOMETHING_ELSE
         id: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
-  - title: Confirm want to continue on score page
-    id: 64d3e997-b987-43e6-8b78-03863ad6aa48
-    name: confirmWantToContinueOnScorePageList
-    type: string
-    items:
-      - text: I confirm I want to continue with the application for this project
-        value: Y
-        id: 976bea6a-5a32-4f4c-b370-d3f75dbd0d70
   - title: How many businesses will use the water
     id: 6b2f167b-5564-4671-b987-053828151926
     name: howManyBusinessesWillUseTheWaterList
@@ -1501,22 +1461,6 @@ lists:
       - text: Synthetic lined
         value: synthetic
         id: e2ed4727-0acb-42e7-810c-bd447a99e6a0
-  - title: Understand no guarantee on estimated cost page list
-    id: 7f849dda-527d-49a9-900d-39480430d613
-    name: understandNoGuaranteedSuccessOnEstimatedCostPageList
-    type: string
-    items:
-      - text: I understand there is no guarantee that your stage 2 grant application will be successful
-        value: Y
-        id: f3cc887b-b393-4045-a4bf-2fb6d65ce6cb
-  - title: Accept terms and conditions on submit application page list
-    id: 94e44f7c-9bb2-4844-8a2c-7f115ff6ba44
-    name: acceptTermsAndConditionsOnSubmitApplicationPageList
-    type: string
-    items:
-      - text: I accept the terms and conditions
-        value: Y
-        id: d5c5de9c-f2a6-4f3e-90b2-db59813fd872
 
 conditions:
   # Type of business -> company
