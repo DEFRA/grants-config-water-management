@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.6
+
+### Patch Changes
+
+- e1d2f49: grants-ui config, update costs to support multiple reservoirs
+
 ## 0.8.5
 
 ### Patch Changes
