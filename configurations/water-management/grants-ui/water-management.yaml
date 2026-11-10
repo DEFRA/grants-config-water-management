@@ -561,17 +561,12 @@ pages:
       - name: businessesUsingWater
         id: 6e30957f-74f3-4717-aeea-284898e25b1b
         title: How many other businesses will use the water for irrigation?
-        hint: Do not include the business you’re applying on behalf of
+        hint: If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water. Do not include the business you’re applying on behalf of.
         type: RadiosField
         list: 6b2f167b-5564-4671-b987-053828151926
         options:
           required: true
         shortDescription: How many businesses will use the water?
-      - name: businessesUsingWaterFooter
-        id: 12df0ed8-aab5-400a-b4c4-bad0f4d05d77
-        type: Html
-        content: >
-          <p class="govuk-body">If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water.</p>
   # 1.6.1 EXIT landlord or water company and not sharing the water
   - title: You cannot apply for a grant from this scheme
     id: 399ec4cf-745f-41ee-9a40-1c23fa617d2b
