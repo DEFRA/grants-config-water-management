@@ -823,6 +823,8 @@ pages:
         options:
           required: true
           autocomplete: off
+          earliestMonthYear: 2027-03
+          latestMonthYear: 2030-03
         shortDescription: Expected project start date
   # 2.2 Items planning to install
   - title: What are you planning to build or install?
@@ -1016,12 +1018,11 @@ pages:
       submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
-          - reservoirHighCostPerUnit
-          - reservoirLowCostPerUnit
-          - distNetworkCostPerUnit
-          - tanksCostPerUnit
+          - reservoirs
           - reservoirCost
+          - distNetworkCostPerUnit
           - waterDistributionNetworkCost
+          - tanksCostPerUnit
           - waterTanksCost
           - totalEstimatedCost
           - estimatedMaxGrantBeforeReduction
@@ -1064,18 +1065,13 @@ pages:
             </thead>
             <tbody class="govuk-table__body">
               {% if itemsPlanningToInstall contains "RESERVOIR" %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Reservoir – {{ context.state.whatTypeOfReservoir }} lined</td>
-                  <td class="govuk-table__cell">{{ howMuchWater | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.reservoirCost | formatCurrency | replace: '.00', '' }}</td>
-                </tr>
-              {% endif %}
-              {% if itemsPlanningToInstall contains "SYNTHETIC_LINED_RESERVOIR" %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Reservoir – synthetic lined</td>
-                  <td class="govuk-table__cell">0m³ at {{ context.state.additionalAnswers.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ context.state.additionalAnswers.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">£0</td>
-                </tr>
+                {% for reservoir in context.state.additionalAnswers.reservoirs %}
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">Reservoir – {{ reservoir.type }} lined</td>
+                    <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }} {{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency | replace: '.00', '' }}</td>
+                  </tr>
+                {% endfor %}
               {% endif %}
               {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
                 <tr class="govuk-table__row">
