@@ -276,11 +276,15 @@ pages:
       - name: companyNumber
         id: dff9090f-135d-495b-a6e8-ab2858460e78
         title: Enter your company number
-        hint: You can find this on your certificate of incorporation or by searching the Companies House register
         type: TextField
         options:
           required: true
         shortDescription: Company number
+      - name: companyNumberInfo
+        id: 8e124442-95e5-4e67-a125-68a4fd68d22f
+        type: Html # TODO update link
+        content: >
+          <p class="govuk-body">You can find this on your certificate of incorporation or by searching the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a></p>
   # 0.1.2 Charity number
   - title: Enter your charity number
     id: ff582b71-949a-4bdc-9bfa-bb27af895298
@@ -292,16 +296,20 @@ pages:
       - name: charityNumber
         id: 94befa64-ab1c-4b7d-ae75-5040d5b500c7
         title: Enter your company number
-        hint: You can find this on your charity's registration certificate or on the charity register
         type: TextField
         options:
           required: false
         shortDescription: Charity number
+      - name: charityNumberInfo
+        id: 3c9e813b-2863-4912-8a52-c17a5da163e9
+        type: Html # TODO update link
+        content: >
+          <p class="govuk-body">You can find this on your charity's registration certificate or on the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Charity Commission for England and Wales charity register (opens in a new tab)</a></p>
   # ==========================================
   # Section 2: Check project eligibility
   # ==========================================
   # 1.1 Sectors irrigated using water
-  - title: What crops will be irrigated using the water from this project?
+  - title: Crops you plan to irrigate
     id: 800a5b0f-bd41-4b0b-9453-75eca51f43f3
     path: /sectors-irrigated
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -315,7 +323,8 @@ pages:
           <p class="govuk-body">For more information read the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
       - name: sectorsIrrigated
         id: 32b05b01-5940-40d0-b191-36b5028c01e5
-        title: Select all that apply
+        title: What crops will be irrigated using the water from this project?
+        hint: Select all that apply
         type: CheckboxesField
         list: 1f2856d7-0706-4ea2-b382-07697ca7914c
         options:
