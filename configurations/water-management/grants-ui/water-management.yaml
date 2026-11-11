@@ -491,7 +491,7 @@ pages:
           <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
       - name: confirmConsultedWithTenants
         id: bef87169-aa5a-4b75-bfdd-323fbc81f5c4
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
@@ -517,7 +517,7 @@ pages:
           <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
       - name: confirmHaveTenancyAgreement
         id: 15825705-1437-4845-b67b-d85db0df22b9
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
@@ -555,7 +555,7 @@ pages:
           <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
       - name: confirmHaveAgreements
         id: b309ab0c-dece-4661-b171-1ef1b7d436a0
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
@@ -590,7 +590,7 @@ pages:
     components:
       - name: sectorsIrrigatedSomethingElseInfo
         id: ce2da4b8-11b0-449d-8f01-114f4b4e5669
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">You cannot apply for this grant because no other businesses will use the water for irrigation.</p>
           <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
@@ -680,23 +680,27 @@ pages:
           </div>
       - name: confirmWillGetPlanningPermission
         id: 8f8e667b-84a4-4c39-940b-fdc9d8b67063
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
           declarationConfirmationLabel: I confirm I will get the necessary planning permission
         shortDescription: Will get planning permission?
   # 1.9 Need abstraction licence
-  - title: Will you need an abstraction licence?
+  - title: Water abstraction licences
     id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
     path: /need-abstraction-licence
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
+      - name: haveAbstractionLicenceInfo
+        id: 00cafd98-a399-4ac2-8f3a-6a1b845eb2f2
+        type: Html # TODO update link
+        content: >
+          <p class="govuk-body">You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
-        hint: An abstraction licence gives you permission to take water from a river, stream, lake or underground source.
         type: RadiosField
         list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
         options:
@@ -714,7 +718,7 @@ pages:
         id: da14005e-c930-4510-9b86-6e708c1e97b4
         title: Enter abstraction licence number
         hint: You can find this on your abstraction licence issued by the Environment Agency. You can enter more than one licence number separated by commas.
-        type: TextField
+        type: MultilineTextField
         options:
           required: true
         shortDescription: Abstraction licence consent number
@@ -731,42 +735,19 @@ pages:
     components:
       - name: abstractionLicenceIsNotYetSecuredInfo
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner).</p>
-  # 1.9.3 Abstraction licence why not needed, needAbstractionLicenceList=NN
-  - title: Tell us why you do not need an abstraction licence
-    id: 68c4d850-dea8-4594-8a68-a946d636113d
-    path: /why-abstraction-licence-is-not-needed
-    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
-    condition: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
-    components:
-      - name: whyAbstractionLicenceIsNotNeeded
-        id: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
-        title: Tell us why you do not need an abstraction licence
-        hint: Select all reasons that apply
-        type: CheckboxesField
-        list: 38d9e3c7-6d20-4f53-9322-b94a82007edd
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner).</p>
+          <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+      - name: confirmWillGetAbstractionLicence
+        id: 4778d175-9398-4223-a20b-3fc64c0f4069
+        title: Confirm
+        type: DeclarationField
         options:
           required: true
-        shortDescription: Why abstraction licence is not needed?
-  # 1.9.3.1 Abstraction licence details why not needed, needAbstractionLicenceList=NN and why=SOMETHING_ELSE
-  - title: Give more details
-    id: 273737bb-0627-4797-8dd4-d5c449f53c28
-    path: /details-why-abstraction-licence-is-not-needed
-    section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
-    controller: TaskPageController
-    condition: cc5f849d-2804-44bc-948f-0e02a941b020
-    components:
-      - name: detailsWhyAbstractionLicenceIsNotNeeded
-        id: 1ed3247d-3842-4d8b-bf1a-a212dd685a10
-        title: Give more details
-        type: MultilineTextField
-        options:
-          required: true
-        shortDescription: Give more details
+          declarationConfirmationLabel: I confirm I want to continue with the application for this project
+        shortDescription: Will get abstraction licence?
   # 1.10 Score results
   - title: Your eligibility score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
@@ -805,7 +786,7 @@ pages:
           </div>
       - name: confirmWantToContinueOnScorePage
         id: f35f09e8-6ce8-470a-a9f5-d6bd984d2503
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
@@ -1113,7 +1094,7 @@ pages:
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
       - name: understandNoGuaranteedSuccessOnEstimatedCostPage
         id: 37c68068-38d6-4a39-b64e-44dce1558293
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
@@ -1170,7 +1151,7 @@ pages:
           </ul>
       - name: acceptTermsAndConditionsOnSubmitApplicationPage
         id: 1eb2dc48-1f2d-4a70-8957-41a71ce41a22
-        title: Confirm # TODO discuss with design
+        title: Confirm
         type: DeclarationField
         options:
           required: true
@@ -1414,23 +1395,12 @@ lists:
       - text: I already have a licence
         value: Y
         id: cfe3f21e-6976-4d89-a7aa-8ea6cdc1d595
-      - text: I need a licence but I have not got one yet
+      - text: I need a licence but I do not have it yet
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-      - text: I do not need a licence (for example because you will only harvest rainwater, you will take no more that 20 cubic metres a day) or the water will come from a mains supply
+      - text: I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
-  - title: Abstraction licence why not needed list
-    id: 38d9e3c7-6d20-4f53-9322-b94a82007edd
-    name: abstractionLicenceWhyNotNeededList
-    type: string
-    items:
-      - text: Water will be sourced from rainwater harvesting only
-        value: RAINWATER_HARVESTING_ONLY
-        id: 32515aad-79b5-4cd4-94ae-09819dca2d6c
-      - text: Something else
-        value: SOMETHING_ELSE
-        id: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
   - title: How many businesses will use the water
     id: 6b2f167b-5564-4671-b987-053828151926
     name: howManyBusinessesWillUseTheWaterList
@@ -1786,43 +1756,6 @@ conditions:
         value:
           listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
           itemId: 16dc7d87-c73f-4fd5-b350-082d32385b09
-  # Abstraction licence not needed
-  - id: 1acb42d1-a5dd-40a0-9bc1-734521453f0b
-    displayName: abstractionLicenceNotNeeded
-    items:
-      - id: a11ebb2c-5782-409d-bc24-ffc5a03aca1d
-        componentId: 86e5ae73-ed7b-4720-8f71-5b461adbe382
-        operator: is
-        type: ListItemRef
-        value:
-          listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
-          itemId: 077f18c8-d91c-4b18-8a8b-13997d5b867d
-  # Abstraction licence not needed, and ONLY something else
-  - id: cc5f849d-2804-44bc-948f-0e02a941b020
-    displayName: abstractionLicenceNotNeededSomethingElse
-    items:
-      - id: 75f16b7b-b788-4a04-9403-90b3941cecdd
-        componentId: 86e5ae73-ed7b-4720-8f71-5b461adbe382
-        operator: is
-        type: ListItemRef
-        value:
-          listId: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
-          itemId: 077f18c8-d91c-4b18-8a8b-13997d5b867d
-      - id: 4cb5226e-ad6a-44d1-a76b-b6f844176901
-        componentId: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
-        operator: contains
-        type: ListItemRef
-        value:
-          listId: 38d9e3c7-6d20-4f53-9322-b94a82007edd
-          itemId: e41e97ae-7a3f-4d69-b4fc-4c06f7bb7660
-      - id: 985f29ce-f165-4841-aa82-fd043bda38c9
-        componentId: f5a8b7ae-99df-43b3-b0a5-07e547327e6d
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 38d9e3c7-6d20-4f53-9322-b94a82007edd
-          itemId: 32515aad-79b5-4cd4-94ae-09819dca2d6c
-    coordinator: and
   # Project delivers reservoir
   - id: 3f416796-e237-4a41-86e2-17c2b9b4f03e
     displayName: projectDeliversReservoir
