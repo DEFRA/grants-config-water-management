@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.16
+
+### Patch Changes
+
+- 23a1edf: grants-ui config, map page, also update all links
+
 ## 0.8.15
 
 ### Patch Changes
