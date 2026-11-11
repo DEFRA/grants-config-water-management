@@ -651,7 +651,7 @@ pages:
         id: cf6da572-13e3-4963-a37a-f81f8cf4e249
         title: Enter the planning permission reference number
         hint: The reference number will be on the planning decision notice issued by your local planning authority (for example 24/01234/FUL). You can enter more than one reference number separated by commas.
-        type: TextField
+        type: MultilineTextField
         options:
           required: true
         shortDescription: Planning permission reference number
@@ -671,13 +671,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-visually-hidden">Warning</span>
-              You'll need to provide evidence that you have planning permission within 12 months of accepting the agreement or making the first claim (if this is earlier).
-            </strong>
-          </div>
+          <p class="govuk-body">You'll need to provide evidence that you have planning permission within 12 months of accepting the agreement or making the first claim (if this is earlier).</p>
       - name: confirmWillGetPlanningPermission
         id: 8f8e667b-84a4-4c39-940b-fdc9d8b67063
         title: Confirm # TODO discuss with design
@@ -1397,7 +1391,7 @@ lists:
       - text: Yes, all planning permission is in place
         value: Y
         id: f06c96df-95df-4aed-9c29-2c1feed059db
-      - text: I have confirmation from my local planing authority  that I do not need planning permission
+      - text: I have confirmation from my local planning authority that I do not need planning permission
         value: NN
         id: dba6504e-f262-46a9-888c-1f418406b99e
       - text: No, I need to apply (or check if I need planning permission)
