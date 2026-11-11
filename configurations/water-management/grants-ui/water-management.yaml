@@ -775,9 +775,8 @@ pages:
           <div class="govuk-inset-text">
             <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }} out of 100</p>
           </div>
-          <div class="govuk-warning-text">
-            <p class="govuk-body">The likelihood of your application being successful  and being invited to stage 2 of the application process will depend on the total number of applications we receive, and the relative scores of all projects as they relate to the RPA's policy objectives and budget.</p>
-          </div>
+          <p class="govuk-body">You are eligible to apply for this grant and we will consider your application carefully.</p>
+          <p class="govuk-body">The likelihood of your application being successful and being invited to stage 2 of the application process will depend on the total number of applications we receive and the relative scores of all projects as they relate to the RPA's policy objectives and budget.</p>
       - name: confirmWantToContinueOnScorePage
         id: f35f09e8-6ce8-470a-a9f5-d6bd984d2503
         title: Confirm
