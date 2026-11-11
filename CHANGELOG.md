@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.11
+
+### Patch Changes
+
+- a2e2ccb: grants-ui config, planning permission pages
+
 ## 0.8.10
 
 ### Patch Changes
