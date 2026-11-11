@@ -410,7 +410,7 @@ pages:
         id: 226da8d4-0485-4ee3-8df6-0434c11bec3a
         type: Html
         content: >
-          <p class="govuk-body">You cannot apply for a grant. Starting work on the project or committing to costs (such as placing orders) are against the rules of the scheme.</p>
+          <p class="govuk-body">You cannot apply for a grant if you have already started work or committed to costs for this project. For information about eligibility criteria, check the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
           <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
   # 1.4 Eligible organisation
   - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
