@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.19
+
+### Patch Changes
+
+- 81c2a56: grants-ui config, application submitted page
+
 ## 0.8.18
 
 ### Patch Changes
