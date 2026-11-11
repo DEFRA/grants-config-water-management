@@ -650,7 +650,7 @@ pages:
       - name: planningPermissionReferenceNumber
         id: cf6da572-13e3-4963-a37a-f81f8cf4e249
         title: Enter the planning permission reference number
-        hint: The reference number will be on the planning decision notice issued by your local planning authority (for example 24/01234/FUL). You can enter more than one reference number separated by commas.
+        hint: The reference number will be on the planning decision notice issued by your local planning authority (for example YY/01234/FUL). You can enter more than one reference number separated by commas.
         type: MultilineTextField
         options:
           required: true
