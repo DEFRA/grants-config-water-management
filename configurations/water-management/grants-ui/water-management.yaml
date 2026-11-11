@@ -790,21 +790,22 @@ pages:
   # Section 3: Project details and estimated costs
   # ==========================================
   # 2.1 Expected project start date
-  - title: When do you expect to start the project work?
+  - title: Estimated start date
     id: 7cb1a024-1ce6-45ac-b9ca-009f4848b5e5
     path: /expected-project-start-date
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
-    components: # TODO discuss with design
+    components:
+      - name: expectedProjectStartDateInfo
+        id: 965df9cc-eeca-4fd5-ac5a-815eab8513cd
+        type: Html
+        content: >
+          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027 after the application window has closed. You cannot start work before you are offered and accept a grant funding agreement.</p>
+          <p class="govuk-body">The date you choose should allow you time to complete the work and submit your final claim by 31 March 2030.</p>
       - name: expectedProjectStartDate
         id: 331371cf-61c9-4753-b8c6-a0238ae1375b
         title: When do you expect to start the project work?
-        hint: >
-          Tell us when you expect to start work on your project. The earliest date you can enter is March 2027 after the application window has closed. You cannot start work before you are offered and accept a grant funding agreement.
-
-          The date you choose should allow you time to complete the work and submit your final claim by 31 March 2030.
-
-          For example, 3 2027.
+        hint: For example, 3 2027
         type: MonthYearField
         options:
           required: true
