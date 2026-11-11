@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.13
+
+### Patch Changes
+
+- 799b62e: grants-ui config, organisation type pages
+
 ## 0.8.12
 
 ### Patch Changes
