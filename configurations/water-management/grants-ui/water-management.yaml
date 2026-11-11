@@ -1197,15 +1197,14 @@ pages:
         content: >
           <h2 class="govuk-heading-m">What happens next</h2>
           <p class="govuk-body">Your stage 1 application for a Water Management grant round 3 (WMG R3) has been submitted.</p>
-          <p class="govuk-body">We’ll now assess your application against our eligibility criteria and RPA funding priorities. If your stage 1 application is successful, we’ll invite you to  stage 2 of the application process where you will need to show:</p>
+          <p class="govuk-body">We’ll now assess your application against our eligibility criteria and RPA funding priorities. If your stage 1 application is successful, we’ll invite you to  stage 2 of the application process where you’ll need to show:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-            <li>evidence of planning permission</li>
-            <li>a plan showing existing and proposed irrigation systems</li>
-            <li>evidence of a water abstraction licence (if you need one)</li>
-            <li>letters of support from any other farms the project will supply water to</li>
-            <li>a letter from your accountant confirming you can pay the remaining project costs</li>
+            <li>project plans, maps and drawings</li>
+            <li>letters or emails of support from all the businesses that will use the water to irrigate their crops</li>
+            <li>a letter from your accountant confirming that your business is viable and can pay the remaining project costs</li>
           </ul>
-          <p class="govuk-body">The window for stage 1 applications closes at 23.59 on 23 February 2027. The RPA will invite successful applicants to apply for stage 2 soon after that.</p>
+          <p class="govuk-body">We’ll tell you the full list of supporting documents we require if you’re invited to stage 2. Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> for more information.</p>
+          <p class="govuk-body">The window for stage 1 applications closes at 11.59pm on 23 February 2027. The RPA will invite successful applicants to apply for stage 2 soon after that.</p>
           <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
   # 3.4 Print application
   - title: PrintSubmittedApplication
