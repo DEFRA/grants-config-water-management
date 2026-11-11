@@ -1156,7 +1156,7 @@ pages:
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: DeclarationPageController
     config:
-      submitButtonText: Submit your application
+      submitButtonText: Confirm and submit your application
       showSupportDetails: false
       hiddenFields:
         guidanceRead: 'true'
@@ -1169,10 +1169,10 @@ pages:
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>the information you have provided is correct to the best of your knowledge</li>
-            <li>you have read and understand the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management guidance (opens in new tab)</a> about this application</li>
-            <li>you are capable of fulfilling the obligations which will be required of you if your application is successful</li>
-            <li>you agree to let any authorised person access the land and relevant records related to this application so they can inspect or audit them to verify the information you’ve provided to the Rural Payments Agency (RPA) and to check that you are complying with this agreement</li>
-            <li>you agree to disclose all information relevant to this application, provide any additional information as may be required by the RPA, field officers or auditors and co-operate with or take part in any economic, environmental or other monitoring and evaluation of the scheme (including any research and development studies) conducted by RPA or by anyone appointed by them for that purpose</li>
+            <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
+            <li>you have read, understood and agree to the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management grant round 3 general terms and conditions (opens in a new tab)</a> under which this grant is offered</li>
+            <li>you understand that if you are offered the grant, the grant funding agreement may contain specific conditions which will apply for the duration of the agreement</li>
+            <li>you’re not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
           </ul>
       - name: acceptTermsAndConditionsOnSubmitApplicationPage
         id: 1eb2dc48-1f2d-4a70-8957-41a71ce41a22
