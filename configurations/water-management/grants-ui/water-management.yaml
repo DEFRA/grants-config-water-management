@@ -217,7 +217,7 @@ pages:
     components:
       - name: grantGuidanceSummaryContent
         id: 732ecdb5-5696-4e95-85ef-fd6661a8664e
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">The grant helps farmers and growers improve water storage and transfer for crop irrigation.</p>
           <p class="govuk-body">You can apply for funding towards the cost of:</p>
@@ -236,7 +236,7 @@ pages:
           <h1 class="govuk-heading-l">Before you apply</h2>
           <p class="govuk-body">You should:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>check the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
+            <li>check the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
             <li>have an idea of what you want to build, where it will be located and how much water it will store</li>
             <li>check whether your project needs planning permission or an abstraction licence</li>
           </ul>
@@ -282,9 +282,9 @@ pages:
         shortDescription: Company number
       - name: companyNumberInfo
         id: 8e124442-95e5-4e67-a125-68a4fd68d22f
-        type: Html # TODO update link
+        type: Html
         content: >
-          <p class="govuk-body">You can find this on your certificate of incorporation or by searching the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a></p>
+          <p class="govuk-body">You can find this on your certificate of incorporation or by searching the <a href="https://find-and-update.company-information.service.gov.uk/" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a></p>
   # 0.1.2 Charity number
   - title: Enter your charity number
     id: ff582b71-949a-4bdc-9bfa-bb27af895298
@@ -302,9 +302,9 @@ pages:
         shortDescription: Charity number
       - name: charityNumberInfo
         id: 3c9e813b-2863-4912-8a52-c17a5da163e9
-        type: Html # TODO update link
+        type: Html
         content: >
-          <p class="govuk-body">You can find this on your charity's registration certificate or on the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Charity Commission for England and Wales charity register (opens in a new tab)</a></p>
+          <p class="govuk-body">You can find this on your charity's registration certificate or on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search" class="govuk-link" target="_blank">Charity Commission for England and Wales charity register (opens in a new tab)</a></p>
   # ==========================================
   # Section 2: Check project eligibility
   # ==========================================
@@ -317,10 +317,10 @@ pages:
     components:
       - name: sectorsIrrigatedInfo
         id: 673b4256-0ac1-480f-b6ef-cd5d4112c7d3
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">The crops listed are examples of eligible crops within each crop category.</p>
-          <p class="govuk-body">For more information read the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
+          <p class="govuk-body">For more information read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
       - name: sectorsIrrigated
         id: 32b05b01-5940-40d0-b191-36b5028c01e5
         title: What crops will be irrigated using the water from this project?
@@ -344,24 +344,55 @@ pages:
         content: >
           <p class="govuk-body">You cannot continue with your application.</p>
           <p class="govuk-body">The crops you plan to irrigate must be included in one of the eligible crop categories.</p>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.2 Where project located
-  - title: Where is your project?
+  - title: Tell us where your project is
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
     path: /where-project-located
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: LocationValidateController
     components:
+      - name: projectLocatedInfo
+        id: b42ec3aa-23be-4ff6-99e2-6631f423b297
+        type: Html
+        content: >
+          <p class="govuk-body">Your project must be in England to be eligible for a grant.</p>
+          <p class="govuk-body">Select the centre of your project on the map (for example the centre of your reservoir). If you’re planning more than one reservoir, water tank or underground distribution main, select the location of the larger reservoir or major part of your project.</p>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with using the map
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <p class="govuk-body">There are tools on the map to help you use it. You can:</p>
+              <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+                <li>use the search icon on the top right of the map to search by postcode</li>
+                <li>use the map layers icon on the top left of the map to switch to an aerial view</li>
+                <li>use the plus and minus tools to zoom in and out</li>
+                <li>select the diagonal arrows icon to switch to a full-screen view of the map.</li>
+              </ul>
+              <p class="govuk-body">If you are unable to use the map, you can find the co-ordinates using an address lookup service, postcode search or an Ordnance Survey mapping tool.</p>
+            </div>
+          </details>
       - name: projectLocated
         id: 9e3b7d5a-4c4f-4d7e-9f2a-ab8c9d5e6f70
         title: Where is your project?
-        hint: Select the centre of your project on the map (for example the centre of your reservoir). If you are planning more than one reservoir; water tank or underground distribution main, select the middle point between all the items.
+        hint: The Easting and Northing co-ordinates of the grid reference will appear when you select your location on the map. You can use these co-ordinates to find this location on another map (or keep them as a reference).
         type: EastingNorthingField
         options:
           required: true
           showApproximateLocation: true
           approximateLocationPrefix: 'Point selected area:'
         shortDescription: Where is your project?
+      - name: confirmCorrectLocationSelected
+        id: 8bbf8228-ed1e-46ab-9be6-c5e5827d7984
+        title: Confirm
+        type: DeclarationField
+        options:
+          required: true
+          declarationConfirmationLabel: I confirm I have selected the right location on the map
+        shortDescription: Want to continue on the location page?
   # See EXTRA PAGES for where-project-located exit page
   # 1.3 Work started yet
   - title: What work have you done on your project?
@@ -395,7 +426,7 @@ pages:
                 <li>have discussions with suppliers</li>
                 <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
               </ul>
-              <p class="govuk-body">Read the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+              <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
             </div>
           </details>
   # 1.3.1 EXIT work-started-yet: when 'Yes, we have begun project work' is selected
@@ -410,8 +441,8 @@ pages:
         id: 226da8d4-0485-4ee3-8df6-0434c11bec3a
         type: Html
         content: >
-          <p class="govuk-body">You cannot apply for a grant if you have already started work or committed to costs for this project. For information about eligibility criteria, check the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
+          <p class="govuk-body">You cannot apply for a grant if you have already started work or committed to costs for this project. For information about eligibility criteria, check the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.4 Eligible organisation
   - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
     id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
@@ -440,7 +471,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">This grant is only available to landowner landlords, landowner farmer or grower, tenant farmers or growers and water management companies.</p>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.5 Organisation type
   - title: What type of applicant are you?
     id: f9ca590d-169c-46cc-8819-4be089a30eb9
@@ -469,7 +500,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">This grant is only available to landowner landlords, landowner farmers, tenant farmers or growers and water management companies.</p>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.5.1 ORG TYPE LANDLORD NOT FARMING: What you need to do
   - title: What you need to do as a landowner landlord
     id: e5ba53d6-c017-4323-a45e-af04c6c209e9
@@ -483,12 +514,12 @@ pages:
     components:
       - name: whatLandlordsNeedToDoInfo
         id: f8c5c883-c9ec-4fb7-8ce8-58859b933484
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">You should consult your tenants before you apply for the grant.</p>
           <p class="govuk-body">You must keep your tenants informed about the project and any grant conditions that might have an impact on them.</p>
           <p class="govuk-body">If you’re successful, you and your tenant will need to allow the RPA to access the project location for monitoring visits for the duration of the grant agreement.</p>
-          <p class="govuk-body">Read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmConsultedWithTenants
         id: bef87169-aa5a-4b75-bfdd-323fbc81f5c4
         title: Confirm
@@ -510,11 +541,11 @@ pages:
     components:
       - name: whatTenantsNeedToDoInfo
         id: 0b163051-ba80-42f6-a5df-ef2a9186ef53
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">You must have a current tenancy agreement in place and make sure it meets the grant requirements.</p>
           <p class="govuk-body">You must consult with your landlord before you apply and check that the project will not breach the terms of your tenancy agreement.</p>
-          <p class="govuk-body">Read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmHaveTenancyAgreement
         id: 15825705-1437-4845-b67b-d85db0df22b9
         title: Confirm
@@ -536,7 +567,7 @@ pages:
     components:
       - name: whatWaterCompanysNeedToDoInfo
         id: 97766702-cab5-4c5a-87ca-182b7f49ec15
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">If the members of your water management company are tenants or a landowner and landlord, you must have all the following agreements in place:</p>
           <p class="govuk-body">Tenants must:</p>
@@ -552,7 +583,7 @@ pages:
             <li>keep your tenants informed about the project and any grant conditions that might have an impact on them</li>
             <li>if successful, allow the RPA to access the project location for monitoring visits for the duration of the grant agreement</li>
           </ul>
-          <p class="govuk-body">Read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmHaveAgreements
         id: b309ab0c-dece-4661-b171-1ef1b7d436a0
         title: Confirm
@@ -590,10 +621,10 @@ pages:
     components:
       - name: sectorsIrrigatedSomethingElseInfo
         id: ce2da4b8-11b0-449d-8f01-114f4b4e5669
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">You cannot apply for this grant because no other businesses will use the water for irrigation.</p>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.7 Where water will come from
   - title: Where will the water come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
@@ -623,7 +654,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You’re not eligible for this grant because we can only fund projects that will store water from a surface water source, rainwater harvesting or a borehole or aquifer.</p>
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.8 Have planning permission
   - title: Do you have confirmed planning permission?
     id: abfbde5b-c983-47f1-9b24-4586d0568171
@@ -689,9 +720,9 @@ pages:
     components:
       - name: haveAbstractionLicenceInfo
         id: 00cafd98-a399-4ac2-8f3a-6a1b845eb2f2
-        type: Html # TODO update link
+        type: Html
         content: >
-          <p class="govuk-body">You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
@@ -729,11 +760,11 @@ pages:
     components:
       - name: abstractionLicenceIsNotYetSecuredInfo
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
-        type: Html # TODO update link
+        type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
           <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner).</p>
-          <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetAbstractionLicence
         id: 4778d175-9398-4223-a20b-3fc64c0f4069
         title: Confirm
@@ -1199,11 +1230,11 @@ pages:
     components:
       - name: whereProjectLocatedNotInEnglandInfo
         id: 34f0a49a-29cc-43df-8093-8894b81b13ef
-        type: Html # TODO update both links
+        type: Html # TODO update link - return to map
         content: >
           <p class="govuk-body">You cannot apply for this grant because you have selected a location that is not in England.</p>
-          <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the maps page</a> and select the correct location.</p>
-          <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">See other grants you may be eligible for</a>
+          <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 2.3.1 EXIT total-estimated-cost: when minGrantReached=false
   - title: You cannot apply for a grant from this scheme
     id: a57dd815-7b9f-4434-bf27-2d7145e3a4f6
@@ -1213,14 +1244,14 @@ pages:
     components:
       - name: totalEstimatedCostMinNotReachedInfo
         id: 0ea6b5ac-be67-4e14-89dc-cfa26bf37e11
-        type: Html # TODO update link
+        type: Html
         content: >
           {% if itemsPlanningToInstall.size == 1 and itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
             <p class="govuk-body">Your costs must be at least £37,500 because the minimum grant is £15,000 (40% of your confirmed costs).</p>
           {% else %}
             <p class="govuk-body">Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).</p>
           {% endif %}
-          <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank"></a>
+          <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
 
 lists:
   - title: Type of company or organisation list
