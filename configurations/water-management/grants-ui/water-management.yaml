@@ -771,7 +771,7 @@ pages:
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I confirm I want to continue with the application for this project
+          declarationConfirmationLabel: I confirm I will get an abstraction licence
         shortDescription: Will get abstraction licence?
   # 1.10 Score results
   - title: Your eligibility score
