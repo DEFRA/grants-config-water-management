@@ -282,9 +282,9 @@ pages:
         shortDescription: Company number
       - name: companyNumberInfo
         id: 8e124442-95e5-4e67-a125-68a4fd68d22f
-        type: Html # TODO update link
+        type: Html
         content: >
-          <p class="govuk-body">You can find this on your certificate of incorporation or by searching the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a></p>
+          <p class="govuk-body">You can find this on your certificate of incorporation or by searching the <a href="https://find-and-update.company-information.service.gov.uk/" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a></p>
   # 0.1.2 Charity number
   - title: Enter your charity number
     id: ff582b71-949a-4bdc-9bfa-bb27af895298
@@ -302,9 +302,9 @@ pages:
         shortDescription: Charity number
       - name: charityNumberInfo
         id: 3c9e813b-2863-4912-8a52-c17a5da163e9
-        type: Html # TODO update link
+        type: Html
         content: >
-          <p class="govuk-body">You can find this on your charity's registration certificate or on the <a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Charity Commission for England and Wales charity register (opens in a new tab)</a></p>
+          <p class="govuk-body">You can find this on your charity's registration certificate or on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search" class="govuk-link" target="_blank">Charity Commission for England and Wales charity register (opens in a new tab)</a></p>
   # ==========================================
   # Section 2: Check project eligibility
   # ==========================================
