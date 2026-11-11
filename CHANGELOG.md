@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.17
+
+### Patch Changes
+
+- eb3c9ec: grants-ui config, abstraction licence pages
+
 ## 0.8.16
 
 ### Patch Changes
