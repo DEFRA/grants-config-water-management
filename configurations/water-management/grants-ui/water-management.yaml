@@ -483,12 +483,12 @@ pages:
     components:
       - name: whatLandlordsNeedToDoInfo
         id: f8c5c883-c9ec-4fb7-8ce8-58859b933484
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">You should consult your tenants before you apply for the grant.</p>
           <p class="govuk-body">You must keep your tenants informed about the project and any grant conditions that might have an impact on them.</p>
           <p class="govuk-body">If you’re successful, you and your tenant will need to allow the RPA to access the project location for monitoring visits for the duration of the grant agreement.</p>
-          <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmConsultedWithTenants
         id: bef87169-aa5a-4b75-bfdd-323fbc81f5c4
         title: Confirm
@@ -510,11 +510,11 @@ pages:
     components:
       - name: whatTenantsNeedToDoInfo
         id: 0b163051-ba80-42f6-a5df-ef2a9186ef53
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">You must have a current tenancy agreement in place and make sure it meets the grant requirements.</p>
           <p class="govuk-body">You must consult with your landlord before you apply and check that the project will not breach the terms of your tenancy agreement.</p>
-          <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmHaveTenancyAgreement
         id: 15825705-1437-4845-b67b-d85db0df22b9
         title: Confirm
@@ -536,7 +536,7 @@ pages:
     components:
       - name: whatWaterCompanysNeedToDoInfo
         id: 97766702-cab5-4c5a-87ca-182b7f49ec15
-        type: Html
+        type: Html # TODO update link
         content: >
           <p class="govuk-body">If the members of your water management company are tenants or a landowner and landlord, you must have all the following agreements in place:</p>
           <p class="govuk-body">Tenants must:</p>
@@ -552,7 +552,7 @@ pages:
             <li>keep your tenants informed about the project and any grant conditions that might have an impact on them</li>
             <li>if successful, allow the RPA to access the project location for monitoring visits for the duration of the grant agreement</li>
           </ul>
-          <p class="govuk-body">Read the Water Management grant round 3 guidance (opens in a new tab).</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmHaveAgreements
         id: b309ab0c-dece-4661-b171-1ef1b7d436a0
         title: Confirm
@@ -650,7 +650,7 @@ pages:
       - name: planningPermissionReferenceNumber
         id: cf6da572-13e3-4963-a37a-f81f8cf4e249
         title: Enter the planning permission reference number
-        hint: The reference number will be on the planning decision notice issued by your local planning authority (for example 24/01234/FUL). You can enter more than one reference number separated by commas.
+        hint: The reference number will be on the planning decision notice issued by your local planning authority (for example YY/01234/FUL). You can enter more than one reference number separated by commas.
         type: MultilineTextField
         options:
           required: true
