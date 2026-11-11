@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.15
+
+### Patch Changes
+
+- f7a326b: grants-ui config, score page
+
 ## 0.8.14
 
 ### Patch Changes
