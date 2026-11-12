@@ -1065,8 +1065,9 @@ pages:
             <p class="govuk-body">This is the estimated amount you could apply for at stage 2.</p>
           </div>
           <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
-          <p class="govuk-body">Grants are based on reference costs to work out the maximum grant amount you could get. Reference costs are based on the expected average cost for each item (for more information, read the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">Grants are based on reference costs to work out the maximum grant amount you could get. Reference costs are based on the expected average cost for each item. The maximum grant available is £300,000.</p>
           <p class="govuk-body">If you’re invited to apply for stage 2, and are successful in being offered a grant funding agreement, the grant you can claim for eligible items will be the lower of 40% of the reference costs or 40% of your actual invoiced costs at claim stage.</p>
+          <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
           <h2 class="govuk-heading-m">Estimated costs</h2>
           <table class="govuk-table">
             <thead class="govuk-table__head">
@@ -1232,7 +1233,7 @@ pages:
         type: Html # TODO update link - return to map
         content: >
           <p class="govuk-body">You cannot apply for this grant because you have selected a location that is not in England.</p>
-          <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
+          <p class="govuk-body">If your project is in England, <a href="/{{SLUG}}/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 2.3.1 EXIT total-estimated-cost: when minGrantReached=false
   - title: Your eligible projects costs are too low to qualify for a grant
