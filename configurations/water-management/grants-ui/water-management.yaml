@@ -444,16 +444,28 @@ pages:
           <p class="govuk-body">You cannot apply for a grant if you have already started work or committed to costs for this project. For information about eligibility criteria, check the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.4 Eligible organisation
-  - title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
+  - title: Who can apply for this grant
     id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
     path: /eligible-organisation
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
+      - name: eligibleOrganisationInfo
+        id: 448f0088-240b-4270-844f-0360e6fa868b
+        type: Html
+        content: >
+          <p class="govuk-body">You cannot apply for this grant on behalf of:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a government department</li>
+            <li>an executive agency</li>
+            <li>a non-department public body such as the Environment Agency or the Forestry Commission</li>
+            <li>a public body unless it is a local authority, National Park Authority or the Crown Estate</li>
+          </ul>
       - name: eligibleOrganisation
         id: 072ea72d-4330-4944-9d85-d0e7655cfcff
-        title: Are you a National Parks authority or a government department, executive agency or non-departmental public body?
-        type: YesNoField
+        title: Is your organisation eligible?
+        type: RadiosField
+        list: ad598b8f-1553-4cb1-b333-a8475dccbe1f
         options:
           required: true
           classes: govuk-radios
@@ -466,11 +478,11 @@ pages:
     controller: TerminalPageController
     condition: bd8c3d1a-c70c-4b05-a8b0-b3afad12d79c
     components:
-      - name: eligibleOrganisationNoInfo
+      - name: eligibleOrganisationYesInfo
         id: 2e4bcf4d-a35a-4955-a8d2-37ec63813940
         type: Html
         content: >
-          <p class="govuk-body">This grant is only available to landowner landlords, landowner farmer or grower, tenant farmers or growers and water management companies.</p>
+          <p class="govuk-body">Because you told us your organisation is not eligible, you cannot continue with this application.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.5 Organisation type
   - title: What type of applicant are you?
@@ -570,8 +582,8 @@ pages:
           <p class="govuk-body">Tenants must:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>have a tenancy agreement in place</li>
-            <li>make sure the tenancy agreement meets the grant requirements </li>
-            <li>consult with your landlord before you apply </li>
+            <li>make sure the tenancy agreement meets the grant requirements</li>
+            <li>consult with your landlord before you apply</li>
             <li>check that the project will not breach the terms of your tenancy agreement</li>
           </ul>
           <p class="govuk-body">Landlords must:</p>
@@ -1346,6 +1358,17 @@ lists:
         description: For example digging, signing contracts or placing orders
         value: YES_PROJECT_WORK
         id: 92a51829-3be0-42eb-b1c7-d910833e84ca
+  - title: Organisation eligible list
+    id: ad598b8f-1553-4cb1-b333-a8475dccbe1f
+    name: organisationEligibleList
+    type: string
+    items:
+      - text: Yes, I confirm my organisation can apply
+        value: Y
+        id: e27a11e2-8602-4006-9976-2fabc2df8b25
+      - text: No, my organisation is not eligible to apply
+        value: N
+        id: c5b8c449-949f-4448-9005-a03f6aa19b1b
   - title: Organisation type list
     id: 67a7167d-3807-425e-a16a-d877e8ad4b1a
     name: organisationTypeList
@@ -1611,8 +1634,10 @@ conditions:
       - id: 5a2a4fbc-7953-48b4-8ef5-405cb97c8cda
         componentId: 072ea72d-4330-4944-9d85-d0e7655cfcff
         operator: is
-        type: BooleanValue
-        value: true
+        type: ListItemRef
+        value:
+          listId: ad598b8f-1553-4cb1-b333-a8475dccbe1f
+          itemId: c5b8c449-949f-4448-9005-a03f6aa19b1b
   # Organisation type tenant -> what you need to do page
   - id: 8e1b9ba9-494e-473b-909e-7055fa25315c
     displayName: organisationTypeTenant
