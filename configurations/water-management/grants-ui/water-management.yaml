@@ -1075,23 +1075,23 @@ pages:
                 {% for reservoir in context.state.additionalAnswers.reservoirs %}
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }}</td>
-                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre for the first 10,000 cubic metre, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
+                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre for the first 10,000 cubic metres, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency | replace: '.00', '' }}</td>
                   </tr>
                 {% endfor %}
               {% endif %}
-              {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Water distribution network</td>
-                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per metre for the first 10,000 metres</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
-                </tr>
-              {% endif %}
               {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">Water storage tank(s)</td>
-                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }} cubic metre at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
+                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
                   <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</td>
+                </tr>
+              {% endif %}
+              {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Water distribution network</td>
+                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per metre</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
                 </tr>
               {% endif %}
               <tr class="govuk-table__row">
