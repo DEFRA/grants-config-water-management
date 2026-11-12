@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.22
+
+### Patch Changes
+
+- c34256c: grants-ui config, eligible organisation page
+
 ## 0.8.21
 
 ### Patch Changes
