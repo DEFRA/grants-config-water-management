@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.21
+
+### Patch Changes
+
+- 27231fd: grants-ui config, remove Confirm and continue buttons
+
 ## 0.8.20
 
 ### Patch Changes
