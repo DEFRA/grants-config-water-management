@@ -510,7 +510,6 @@ pages:
     condition: 8a7e18eb-3e36-44e9-87c0-5d0757d3b51a
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: whatLandlordsNeedToDoInfo
         id: f8c5c883-c9ec-4fb7-8ce8-58859b933484
@@ -537,7 +536,6 @@ pages:
     condition: 8e1b9ba9-494e-473b-909e-7055fa25315c
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: whatTenantsNeedToDoInfo
         id: 0b163051-ba80-42f6-a5df-ef2a9186ef53
@@ -563,7 +561,6 @@ pages:
     condition: a7f04050-d932-4c00-bdbe-1f446b9ac613
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: whatWaterCompanysNeedToDoInfo
         id: 97766702-cab5-4c5a-87ca-182b7f49ec15
@@ -695,7 +692,6 @@ pages:
     condition: 8692829c-5473-40a4-92c3-02c687f0b587
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: planningPermissionIsNeeded
         id: 91a18bfd-2a00-498b-b388-14c4bc3e9682
@@ -756,7 +752,6 @@ pages:
     condition: bf7b6185-f370-43b1-9b20-691f15ff3f8a
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: abstractionLicenceIsNotYetSecuredInfo
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
@@ -781,7 +776,6 @@ pages:
     controller: ScoreResultsTaskPageController
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
           - totalScore
@@ -1032,7 +1026,6 @@ pages:
     controller: TotalEstimatedCostTaskPageController
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
           - reservoirs
