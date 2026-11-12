@@ -510,7 +510,6 @@ pages:
     condition: 8a7e18eb-3e36-44e9-87c0-5d0757d3b51a
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: whatLandlordsNeedToDoInfo
         id: f8c5c883-c9ec-4fb7-8ce8-58859b933484
@@ -537,7 +536,6 @@ pages:
     condition: 8e1b9ba9-494e-473b-909e-7055fa25315c
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: whatTenantsNeedToDoInfo
         id: 0b163051-ba80-42f6-a5df-ef2a9186ef53
@@ -563,7 +561,6 @@ pages:
     condition: a7f04050-d932-4c00-bdbe-1f446b9ac613
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: whatWaterCompanysNeedToDoInfo
         id: 97766702-cab5-4c5a-87ca-182b7f49ec15
@@ -641,7 +638,7 @@ pages:
         options:
           required: true
         shortDescription: Where will the water come from?
-  # 1.7.1 EXIT where-water-will-come-from: when ONLY 'Something else' is selected
+  # 1.7.1 EXIT where-water-will-come-from: when 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: 6e6c9ced-290e-420c-84f3-4763d7f266ee
     path: /exit-where-water-will-come-from
@@ -695,7 +692,6 @@ pages:
     condition: 8692829c-5473-40a4-92c3-02c687f0b587
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: planningPermissionIsNeeded
         id: 91a18bfd-2a00-498b-b388-14c4bc3e9682
@@ -756,7 +752,6 @@ pages:
     condition: bf7b6185-f370-43b1-9b20-691f15ff3f8a
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
     components:
       - name: abstractionLicenceIsNotYetSecuredInfo
         id: 3ae3fe60-7f95-4af9-a25c-e4dabfd12a50
@@ -781,7 +776,6 @@ pages:
     controller: ScoreResultsTaskPageController
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
           - totalScore
@@ -1032,7 +1026,6 @@ pages:
     controller: TotalEstimatedCostTaskPageController
     config:
       excludeFromTaskCompletion: true
-      submitButtonText: Confirm and continue
       derivedState:
         stateKeys:
           - reservoirs
@@ -1706,7 +1699,7 @@ conditions:
       - id: 116bf5ce-07cd-440a-b953-39f46a12b3ee
         conditionId: b52137a4-d0e3-4a52-85b6-2627203c5646
     coordinator: and
-  # Where water will come from is ONLY something else -> exit page
+  # Where water will come from includes something else -> exit page
   - id: 8ebb93ee-f01e-4fb8-8d34-a48511cd0efc
     displayName: whereWaterWillComeFromOnlySomethingElse
     items:
@@ -1717,28 +1710,6 @@ conditions:
         value:
           listId: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
           itemId: e73bc54c-cd1c-4aa8-b5f0-30f87115a049
-      - id: 40fcd37e-eebb-476b-af51-c7cb0595e322
-        componentId: e40f6766-225f-4dc9-b2ed-d0cf4c858434
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
-          itemId: 1d5ee2ac-46aa-4041-b2d8-a051b6ff6ac7
-      - id: e0e774e1-9490-412c-8f68-39c2fc29985f
-        componentId: e40f6766-225f-4dc9-b2ed-d0cf4c858434
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
-          itemId: b51f11ca-331e-4da9-b26c-35a29e2389d9
-      - id: 94ebc947-dcd3-40ed-8cbb-54c1bae77121
-        componentId: e40f6766-225f-4dc9-b2ed-d0cf4c858434
-        operator: does not contain
-        type: ListItemRef
-        value:
-          listId: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
-          itemId: 74eaff0f-4438-4fac-9f15-fe732935930a
-    coordinator: and
   # Planning permission secured
   - id: 68b77aa3-20c0-4da3-80fa-b909870308fb
     displayName: planningPermissionSecured
