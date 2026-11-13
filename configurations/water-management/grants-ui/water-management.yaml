@@ -10,14 +10,14 @@ metadata:
     grantCode: water-management
   grantRedirectRules:
     preSubmission:
-      - toPath: '/tasks'
+      - toPath: '/task-list'
     postSubmission:
       # Default fallback
       - fromGrantsStatus: default
         gasStatus: default
         toGrantsStatus: SUBMITTED
         toPath: /confirmation
-    excludedPaths: ['print-submitted-application']
+    excludedPaths: ['print-application']
   permissions:
     enforce: true
     resource: businessDetails
@@ -204,13 +204,13 @@ pages:
   # ==========================================
   # Check details page
   - title: Confirm your details
-    path: /check-details
+    path: /confirm-your-details
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Grant guidance summary
   - title: Apply for a Water Management grant round 3 (WMG R3)
     id: 18df3a56-023c-4fa4-bb38-efbca0bcc456
-    path: /grant-guidance-summary
+    path: /grant-overview
     controller: TaskPageController
     config:
       submitButtonText: Continue
@@ -237,7 +237,7 @@ pages:
           <p class="govuk-body">The grant is for eligible farmers, growers, landowners and water management companies. Your project must be in England. You cannot apply if you have already started work on your project.</p>
   # Task list page
   - title: Apply for a Water Management grant round 3 (WMG R3)
-    path: /tasks
+    path: /task-list
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
   # ==========================================
@@ -246,7 +246,7 @@ pages:
   # 0.1 Type of business or organisation
   - title: What is the legal status of your business or organisation?
     id: 018ef285-4c34-4c7d-a91a-c488f1b6000d
-    path: /type-of-business-or-organisation
+    path: /confirm-legal-status
     section: 8961b84a-572c-410c-9f07-076a4fb876a5
     controller: TaskPageController
     components:
@@ -262,7 +262,7 @@ pages:
   # 0.1.1 Company number
   - title: Enter your company number
     id: cfca412e-1509-4984-9175-3d590f4af909
-    path: /company-number
+    path: /company-or-organisation-number
     section: 8961b84a-572c-410c-9f07-076a4fb876a5
     controller: TaskPageController
     condition: 5568a36e-376a-465a-9d35-ab74311f0013
@@ -305,7 +305,7 @@ pages:
   # 1.1 Sectors irrigated using water
   - title: Crops you plan to irrigate
     id: 800a5b0f-bd41-4b0b-9453-75eca51f43f3
-    path: /sectors-irrigated
+    path: /eligibility-crops-irrigated
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -324,10 +324,10 @@ pages:
         options:
           required: true
         shortDescription: What crops will be irrigated?
-  # 1.1.1 EXIT sectors-irrigated: when ONLY 'Something else' is selected
+  # 1.1.1 EXIT eligibility-crops-irrigated: when ONLY 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: eb9b88ce-1c08-4461-9698-1cbbc794c159
-    path: /exit-sectors-irrigated-somethingelse
+    path: /exit-eligibility-crops-irrigated
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     condition: 12e0a793-1929-4931-ad20-e5eb76d1d95c
@@ -342,7 +342,7 @@ pages:
   # 1.2 Where project located
   - title: Tell us where your project is
     id: 1b1a1add-7f33-4cf2-9b0e-6ed5cd08ed08
-    path: /where-project-located
+    path: /eligibility-project-location
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: LocationValidateController
     components:
@@ -387,11 +387,11 @@ pages:
           required: true
           declarationConfirmationLabel: I confirm I have selected the right location on the map
         shortDescription: Want to continue on the location page?
-  # See EXTRA PAGES for where-project-located exit page
+  # See EXTRA PAGES for eligibility-project-location exit page
   # 1.3 Work started yet
   - title: What work have you done on your project?
     id: c995d1bb-1c7f-44d5-9a0a-576caa6f66e7
-    path: /work-started-yet
+    path: /eligibility-work-started
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -423,10 +423,10 @@ pages:
               <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
             </div>
           </details>
-  # 1.3.1 EXIT work-started-yet: when 'Yes, we have begun project work' is selected
+  # 1.3.1 EXIT eligibility-work-started: when 'Yes, we have begun project work' is selected
   - title: You cannot apply for a grant from this scheme
     id: aecbebef-7b1b-4d94-b355-3ad52d776876
-    path: /exit-work-started-yet-begunwork
+    path: /exit-eligibility-work-started
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     condition: b97db953-3321-4262-bf2f-f72945f26e85
@@ -440,7 +440,7 @@ pages:
   # 1.4 Eligible organisation
   - title: Who can apply for this grant
     id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
-    path: /eligible-organisation
+    path: /eligibility-organisation
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -464,10 +464,10 @@ pages:
           required: true
           classes: govuk-radios
         shortDescription: Is your organisation ineligible?
-  # 1.4.1 EXIT eligible-organisation: when 'Yes' is selected
+  # 1.4.1 EXIT eligibility-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b7ad30b6-c36e-490c-95d6-b44ef4989667
-    path: /exit-eligible-organisation-no
+    path: /exit-eligibility-organisation
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     condition: bd8c3d1a-c70c-4b05-a8b0-b3afad12d79c
@@ -481,7 +481,7 @@ pages:
   # 1.5 Organisation type
   - title: What type of applicant are you?
     id: f9ca590d-169c-46cc-8819-4be089a30eb9
-    path: /organisation-type
+    path: /eligibility-applicant-type
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -493,10 +493,10 @@ pages:
         options:
           required: true
         shortDescription: Who are you applying on behalf of?
-  # 1.5.1 EXIT eligible-organisation: when 'Yes' is selected
+  # 1.5.1 EXIT eligibility-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b6a6a7d6-c083-4313-8db6-0e0d1c3b4c92
-    path: /exit-organisation-type
+    path: /exit-eligibility-applicant-type
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     condition: 82cab4cd-3302-46ad-949d-6e3dbe33f68f
@@ -510,7 +510,7 @@ pages:
   # 1.5.1 ORG TYPE LANDLORD NOT FARMING: What you need to do
   - title: What you need to do as a landowner landlord
     id: e5ba53d6-c017-4323-a45e-af04c6c209e9
-    path: /what-landlords-need-to-do
+    path: /eligibility-landowner-landlord-requirements
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 8a7e18eb-3e36-44e9-87c0-5d0757d3b51a
@@ -536,7 +536,7 @@ pages:
   # 1.5.2 ORG TYPE TENANT: What you need to do
   - title: What you need to do as a tenant farmer or grower
     id: 70c01819-e87d-463f-97ca-951434b0fed1
-    path: /what-tenants-need-to-do
+    path: /eligibility-tenant-requirements
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 8e1b9ba9-494e-473b-909e-7055fa25315c
@@ -561,7 +561,7 @@ pages:
   # 1.5.3 ORG TYPE WATER COMPANY: What you need to do
   - title: What you need to do as a water management company
     id: e61f7da3-b841-4560-9d0d-aa3d5cdd4c8e
-    path: /what-water-companys-need-to-do
+    path: /eligibility-water-management-company-requirements
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: a7f04050-d932-4c00-bdbe-1f446b9ac613
@@ -598,7 +598,7 @@ pages:
   # 1.6 How many businesses will use the water
   - title: How many other businesses will use the water for irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
-    path: /how-many-businesses-will-use-the-water
+    path: /eligibility-other-businesses-use-water
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -617,7 +617,7 @@ pages:
   # 1.6.1 EXIT landlord or water company and not sharing the water
   - title: You cannot apply for a grant from this scheme
     id: 399ec4cf-745f-41ee-9a40-1c23fa617d2b
-    path: /exit-landlord-watercompany-and-not-sharing
+    path: /exit-eligibility-other-businesses-use-water
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     condition: 49d55a49-a5a7-481b-b153-4bf89f0c9b14
@@ -631,7 +631,7 @@ pages:
   # 1.7 Where water will come from
   - title: Where will the water come from?
     id: 73de8e2c-4ada-4418-9278-81360a547381
-    path: /where-water-will-come-from
+    path: /eligibility-water-source
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -644,10 +644,10 @@ pages:
         options:
           required: true
         shortDescription: Where will the water come from?
-  # 1.7.1 EXIT where-water-will-come-from: when 'Something else' is selected
+  # 1.7.1 EXIT eligibility-water-source: when 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: 6e6c9ced-290e-420c-84f3-4763d7f266ee
-    path: /exit-where-water-will-come-from
+    path: /exit-eligibility-water-source
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     condition: 8ebb93ee-f01e-4fb8-8d34-a48511cd0efc
@@ -661,7 +661,7 @@ pages:
   # 1.8 Have planning permission
   - title: Do you have confirmed planning permission?
     id: abfbde5b-c983-47f1-9b24-4586d0568171
-    path: /have-planning-permission
+    path: /eligibility-planning-permission
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -676,7 +676,7 @@ pages:
   # 1.8.1 Planning permission reference number, havePlanningPermission=Y
   - title: Enter the planning permission reference number
     id: 7d30df77-e814-49b4-a0ef-18205da9d630
-    path: /planning-permission-reference-number
+    path: /eligibility-planning-permission-reference-number
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 68b77aa3-20c0-4da3-80fa-b909870308fb
@@ -692,7 +692,7 @@ pages:
   # 1.8.2 Planning permission is needed, havePlanningPermission=N
   - title: You must have planning permission before you start construction work
     id: 5ac7efd6-2d1b-4105-881a-f28b1bf0713c
-    path: /planning-permission-is-needed
+    path: /eligibility-planning-permission-required
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 8692829c-5473-40a4-92c3-02c687f0b587
@@ -716,7 +716,7 @@ pages:
   # 1.9 Need abstraction licence
   - title: Water abstraction licences
     id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
-    path: /need-abstraction-licence
+    path: /eligibility-abstraction-licence
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     components:
@@ -736,7 +736,7 @@ pages:
   # 1.9.1 Abstraction licence consent number, needAbstractionLicenceList=Y
   - title: Enter abstraction licence number
     id: 6539b617-cbc6-4d80-af6f-10f71593758a
-    path: /abstraction-licence-consent-number
+    path: /eligibility-abstraction-licence-number
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: 77637237-be69-4496-9933-e65fe134ae15
@@ -752,7 +752,7 @@ pages:
   # 1.9.2 Why licence is not yet secured, needAbstractionLicenceList=N
   - title: You must have an abstraction licence before you make your first claim
     id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
-    path: /abstraction-licence-is-not-yet-secured
+    path: /eligibility-abstraction-licence-required
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TaskPageController
     condition: bf7b6185-f370-43b1-9b20-691f15ff3f8a
@@ -777,7 +777,7 @@ pages:
   # 1.10 Score results
   - title: Your eligibility score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
-    path: /score-results
+    path: /eligibility-score-results
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: ScoreResultsTaskPageController
     config:
@@ -822,7 +822,7 @@ pages:
   # 2.1 Expected project start date
   - title: Estimated start date
     id: 7cb1a024-1ce6-45ac-b9ca-009f4848b5e5
-    path: /expected-project-start-date
+    path: /project-details-expected-start-date
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     components:
@@ -846,7 +846,7 @@ pages:
   # 2.2 Items planning to install
   - title: What are you planning to build or install?
     id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
-    path: /items-planning-to-install
+    path: /project-building-or-installation-details
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     components:
@@ -863,7 +863,7 @@ pages:
   # 2.2.1 How many reservoirs?
   - title: Will your project include more than one reservoir?
     id: c486e28f-7cc3-4756-ac83-c515d42f8909
-    path: /how-many-reservoirs
+    path: /project-details-how-many-reservoirs
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     condition: 3f416796-e237-4a41-86e2-17c2b9b4f03e
     controller: TaskPageController
@@ -880,7 +880,7 @@ pages:
   # 2.2.2 Just one reservoir - what type?
   - title: What type of reservoir are you building?
     id: 97a6d7d6-53c3-4c5b-84c7-fb760949cab6
-    path: /what-type-of-reservoir
+    path: /project-details-type-of-reservoir
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     condition: 7ceb643d-978e-420f-8f41-434a277594cf
     controller: TaskPageController
@@ -896,7 +896,7 @@ pages:
   # 2.2.3 Just one reservoir - how much water?
   - title: How much water will your reservoir hold?
     id: 485593f7-86cb-4ad5-9372-02b28c4adf58
-    path: /how-much-water-reservoir
+    path: /project-details-reservoir-water-volume
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     condition: 7ceb643d-978e-420f-8f41-434a277594cf
     controller: TaskPageController
@@ -923,7 +923,7 @@ pages:
   # 2.2.3 More than one reservoir
   - title: Reservoir items
     id: b4c70d24-9e80-4925-86cc-9ac2607c69d2
-    path: /reservoir-items
+    path: /project-details-reservoir-details
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     condition: a86cf477-9445-487e-b351-bf29c64764cb
     controller: RepeatPageController
@@ -977,7 +977,7 @@ pages:
   # 2.2.4 Water storage capacity
   - title: How much water will your storage tank or tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
-    path: /water-storage-capacity
+    path: /project-details-water-storage-volume
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     condition: 89a11523-dff8-44c2-82e4-073e4b22f4cc
@@ -1002,7 +1002,7 @@ pages:
   # 2.2.5 Water distribution length
   - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
-    path: /water-distribution-length
+    path: /project-details-water-distribution-length
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TaskPageController
     condition: d1da14c4-a8da-49c1-b3c2-d9555e5f223f
@@ -1027,7 +1027,7 @@ pages:
   # 2.3 Total estimated grant TODO how to display reservoir
   - title: Total estimated grant
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
-    path: /total-estimated-cost
+    path: /project-details-total-estimated-grant
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TotalEstimatedCostTaskPageController
     config:
@@ -1132,27 +1132,27 @@ pages:
   # 3.1 Check your answers
   - title: Check your answers
     id: d489e351-3873-4f06-9f7c-88984f56088c
-    path: /summary
+    path: /check-your-answers
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: CheckResponsesPageController
     config:
       width: full
       derivedStatePages:
-        - /score-results
-        - /total-estimated-cost
+        - /eligibility-score-results
+        - /project-details-total-estimated-grant
       additionalSections:
-        - page: /score-results
+        - page: /eligibility-score-results
           items:
-            - title: Score
+            - title: Eligibility score
               stateValue: additionalAnswers.totalScore
-        - page: /total-estimated-cost
+        - page: /project-details-total-estimated-grant
           items:
             - title: Total estimated grant (£)
               stateValue: additionalAnswers.estimatedMaxGrant
   # 3.2 Submit application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
-    path: /declaration
+    path: /application-declaration
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: DeclarationPageController
     config:
@@ -1205,11 +1205,11 @@ pages:
           </ul>
           <p class="govuk-body">We’ll tell you the full list of supporting documents we require if you’re invited to stage 2. Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> for more information.</p>
           <p class="govuk-body">The window for stage 1 applications closes at 11.59pm on 23 February 2027. The RPA will invite successful applicants to apply for stage 2 soon after that.</p>
-          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
   # 3.4 Print application
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
-    path: /print-submitted-application
+    path: /print-application
     controller: PrintSubmittedApplicationController
     config:
       width: full
@@ -1220,10 +1220,10 @@ pages:
   # =======================================================
   # EXTRA PAGES, only accessible via custom exit conditions
   # =======================================================
-  # 1.2.1 EXIT where-project-located when location is not in England
+  # 1.2.1 EXIT eligibility-project-location when location is not in England
   - title: Your project must be in England
     id: 7cca24be-610e-4c56-8684-928be4cb95c9
-    path: /exit-where-project-located # don't change this without changing grants-ui LocationValidateController.getNextPath
+    path: /exit-eligibility-project-location # don't change this without changing grants-ui LocationValidateController.getNextPath
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: TerminalPageController
     components:
@@ -1232,12 +1232,12 @@ pages:
         type: Html # TODO update link - return to map
         content: >
           <p class="govuk-body">You cannot apply for this grant because you have selected a location that is not in England.</p>
-          <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
+          <p class="govuk-body">If your project is in England, <a href="/water-management/eligibility-project-location" class="govuk-link">return to the map page</a> and select the correct location.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
-  # 2.3.1 EXIT total-estimated-cost: when minGrantReached=false
+  # 2.3.1 EXIT project-details-total-estimated-grant: when minGrantReached=false
   - title: Your eligible projects costs are too low to qualify for a grant
     id: a57dd815-7b9f-4434-bf27-2d7145e3a4f6
-    path: /exit-total-estimated-cost # don't change this without changing grants-ui TotalEstimatedCostController.getNextPath
+    path: /exit-project-details-total-estimated-grant # don't change this without changing grants-ui TotalEstimatedCostController.getNextPath
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
     controller: TerminalPageController
     components:
@@ -1825,5 +1825,5 @@ conditions:
           listId: 8c0a3d2c-9572-4512-9226-7800ff471010
           itemId: 544b8f79-973d-42d3-8053-f049fb351e6e
 
-startPage: /check-details
+startPage: /confirm-your-details
 schema: 2
