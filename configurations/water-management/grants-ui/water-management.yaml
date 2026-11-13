@@ -1226,7 +1226,7 @@ pages:
         type: Html # TODO update link - return to map
         content: >
           <p class="govuk-body">You cannot apply for this grant because you have selected a location that is not in England.</p>
-          <p class="govuk-body">If your project is in England, <a href="/{{SLUG}}/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
+          <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 2.3.1 EXIT total-estimated-cost: when minGrantReached=false
   - title: Your eligible projects costs are too low to qualify for a grant
