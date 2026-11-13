@@ -1048,13 +1048,15 @@ test.describe('Water Management Grant application', () => {
         )
         await analyzeAccessibility(page)
         await expect(
-          page.getByRole('cell', { name: 'Reservoir – clay lined' })
+          page.getByRole('cell', { name: 'Reservoir' })
         ).toBeVisible()
         await expect(
           page.getByRole('cell', {
-            name: 'Reservoir 10,000m³ at £9/m³ for the first 10,000m³, with any additional volume charged at £2.25/m³'
+            name: 'Clay lined'
           })
-        ).toBeVisible()
+        ).toContainText(
+          '10,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+        )
         await expect(
           page.getByRole('cell', {
             name: '£90,000'
@@ -1065,7 +1067,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByRole('cell', {
-            name: '10,000m³ at £71 per m³'
+            name: '10,000 cubic metres at £71 per cubic metre'
           })
         ).toBeVisible()
         await expect(
@@ -1092,7 +1094,7 @@ test.describe('Water Management Grant application', () => {
         ).toHaveText('£300,000')
         await page
           .getByRole('checkbox', {
-            name: 'I understand there is no guarantee that your stage 2 grant application will be successful'
+            name: 'I understand there is no guarantee that my application will be successful'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()

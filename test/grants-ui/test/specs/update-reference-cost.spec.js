@@ -204,15 +204,16 @@ test.describe('Water Management Grant Round 3', () => {
       )
       await expect(
         page.locator('td').filter({
-          hasText: 'Reservoir – clay lined'
+          hasText: 'Reservoir'
         })
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText:
-            'Reservoir 1,500m³ at £9/m³ for the first 10,000m³, with any additional volume charged at £2.25/m³'
+          hasText: 'Clay lined'
         })
-      ).toBeVisible()
+      ).toContainText(
+        '1,500 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+      )
       await expect(
         page.locator('td').filter({
           hasText: '£13,500'
@@ -225,7 +226,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText: '1,500m at £30 per m'
+          hasText: '1,500 metres at £30 per metre'
         })
       ).toBeVisible()
       await expect(
@@ -240,7 +241,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText: '1,500m³ at £71 per m³'
+          hasText: '1,500 cubic metres at £71 per cubic metre'
         })
       ).toBeVisible()
       await expect(
@@ -263,7 +264,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await page
         .getByRole('checkbox', {
-          name: 'I understand there is no guarantee that your stage 2 grant application will be successful'
+          name: 'I understand there is no guarantee that my application will be successful'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -306,15 +307,16 @@ test.describe('Water Management Grant Round 3', () => {
       )
       await expect(
         page.locator('td').filter({
-          hasText: 'Reservoir – synthetic lined'
+          hasText: 'Reservoir'
         })
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText:
-            'Reservoir 500m³ at £11/m³ for the first 10,000m³, with any additional volume charged at £2.75/m³'
+          hasText: 'Synthetic lined'
         })
-      ).toBeVisible()
+      ).toContainText(
+        '500 cubic metres at £11 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.75 per cubic metre'
+      )
       await expect(
         page.locator('td').filter({
           hasText: '£5,500'
@@ -327,7 +329,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText: '500m at £30 per m'
+          hasText: '500 metres at £30 per metre'
         })
       ).toBeVisible()
       await expect(
@@ -342,7 +344,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText: '500m³ at £71 per m³'
+          hasText: '500 cubic metres at £71 per cubic metre'
         })
       ).toBeVisible()
       await expect(
@@ -365,7 +367,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await page
         .getByRole('checkbox', {
-          name: 'I understand there is no guarantee that your stage 2 grant application will be successful'
+          name: 'I understand there is no guarantee that my application will be successful'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -374,12 +376,22 @@ test.describe('Water Management Grant Round 3', () => {
         await formatUrlForPath('exit-total-estimated-cost')
       )
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
-        'You cannot apply for a grant from this scheme'
+        'Your eligible projects costs are too low to qualify for a grant'
       )
       await expect(
         page.getByText(
-          'Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).'
+          'Your eligible project costs must be at least £87,500 to qualify for a grant.'
         )
+      ).toBeVisible()
+      await expect(
+        page.getByText(
+          'This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £35,000.'
+        )
+      ).toBeVisible()
+      await expect(
+        page.getByRole('link', {
+          name: 'Check what other grants you may be eligible for (opens in a new tab)'
+        })
       ).toBeVisible()
       await page.goto(await formatUrlForPath('tasks', false))
     })
@@ -408,12 +420,16 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.getByRole('cell', {
-          name: '1,000m³ at £71 per m³'
+          name: '1,000 cubic metres at £71 per cubic metre'
         })
       ).toBeVisible()
       await expect(
-        page.getByRole('cell', { name: '£71,000', exact: true })
-      ).toBeVisible()
+        page
+          .getByRole('cell', {
+            name: '1,000 cubic metres at £71 per cubic metre'
+          })
+          .locator('//following-sibling::td')
+      ).toHaveText('£71,000')
       await expect(
         page.getByRole('cell', { name: 'Total estimated grant' })
       ).toBeVisible()
@@ -425,7 +441,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await page
         .getByRole('checkbox', {
-          name: 'I understand there is no guarantee that your stage 2 grant application will be successful'
+          name: 'I understand there is no guarantee that my application will be successful'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -455,15 +471,16 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.getByRole('cell', {
-          name: '500m³ at £71 per m³'
+          name: '500 cubic metres at £71 per cubic metre'
         })
       ).toBeVisible()
       await expect(
-        page.getByRole('cell', {
-          name: '£35,500',
-          exact: true
-        })
-      ).toBeVisible()
+        page
+          .getByRole('cell', {
+            name: '500 cubic metres at £71 per cubic metre'
+          })
+          .locator('//following-sibling::td')
+      ).toHaveText('£35,500')
       await expect(
         page.getByRole('cell', { name: 'Total estimated grant' })
       ).toBeVisible()
@@ -475,7 +492,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await page
         .getByRole('checkbox', {
-          name: 'I understand there is no guarantee that your stage 2 grant application will be successful'
+          name: 'I understand there is no guarantee that my application will be successful'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -484,12 +501,22 @@ test.describe('Water Management Grant Round 3', () => {
         await formatUrlForPath('exit-total-estimated-cost')
       )
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
-        'You cannot apply for a grant from this scheme'
+        'Your eligible projects costs are too low to qualify for a grant'
       )
       await expect(
         page.getByText(
-          'Your costs must be at least £37,500 because the minimum grant is £15,000 (40% of your confirmed costs).'
+          'Your eligible project costs must be at least £35,500 to qualify for a grant.'
         )
+      ).toBeVisible()
+      await expect(
+        page.getByText(
+          'This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £15,000.'
+        )
+      ).toBeVisible()
+      await expect(
+        page.getByRole('link', {
+          name: 'Check what other grants you may be eligible for (opens in a new tab)'
+        })
       ).toBeVisible()
       await page.goto(await formatUrlForPath('tasks', false))
     })
@@ -530,14 +557,14 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(page).toHaveURL(
         await formatUrlForPath('total-estimated-cost')
       )
-      await expect(
-        page.getByRole('cell', { name: 'Reservoir – clay lined' })
-      ).toBeVisible()
+      await expect(page.getByRole('cell', { name: 'Reservoir' })).toBeVisible()
       await expect(
         page.getByRole('cell', {
-          name: 'Reservoir 250,000m³ at £9/m³ for the first 10,000m³, with any additional volume charged at £2.25/m³'
+          name: 'Clay lined'
         })
-      ).toBeVisible()
+      ).toContainText(
+        '250,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+      )
       await expect(
         page.getByRole('cell', {
           name: '£630,000'
@@ -548,13 +575,13 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.getByRole('cell', {
-          name: '10,000m at £30 per m'
+          name: '10,000 metres at £30 per metre'
         })
       ).toBeVisible()
       await expect(
         page
           .getByRole('cell', {
-            name: '10,000m at £30 per m'
+            name: '10,000 metres at £30 per metre'
           })
           .locator('//following-sibling::td')
       ).toHaveText('£300,000')
@@ -563,7 +590,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.getByRole('cell', {
-          name: '10,000m³ at £71 per m³'
+          name: '10,000 cubic metres at £71 per cubic metre'
         })
       ).toBeVisible()
       await expect(
@@ -590,7 +617,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toHaveText('£300,000')
       await page
         .getByRole('checkbox', {
-          name: 'I understand there is no guarantee that your stage 2 grant application will be successful'
+          name: 'I understand there is no guarantee that my application will be successful'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
