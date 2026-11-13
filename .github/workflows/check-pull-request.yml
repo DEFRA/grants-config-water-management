@@ -40,6 +40,12 @@ jobs:
           docker build --no-cache --tag cdp-node-backend-template .
           exit $?
 
+      - name: Run journey tests for grants-ui
+        continue-on-error: true
+        run: |
+          chmod +x ./test/run-all-tests.sh
+          ./test/run-all-tests.sh
+
       - name: SonarCloud Scan
         if: github.actor != 'dependabot[bot]'
         uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9 #8.3.0

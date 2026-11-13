@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - 'configurations/**'
+      - 'test/**'
   workflow_dispatch:
     inputs:
       run_name:
