@@ -219,28 +219,22 @@ pages:
         id: 732ecdb5-5696-4e95-85ef-fd6661a8664e
         type: Html
         content: >
-          <p class="govuk-body">The grant helps farmers and growers improve water storage and transfer for crop irrigation.</p>
-          <p class="govuk-body">You can apply for funding towards the cost of:</p>
+          <p class="govuk-body">The grant helps farmers and growers improve water resilience. It funds equipment and infrastructure to store and move water on farms for irrigated crop production.</p>
+          <p class="govuk-body">You can apply for a grant for:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>building new water storage reservoirs</li>
-            <li>installing above-ground water storage tanks</li>
-            <li>installing underground water distribution mains</li>
+            <li>irrigation water storage reservoirs</li>
+            <li>above-ground water storage tanks</li>
+            <li>underground water distribution mains</li>
           </ul>
-          <h1 class="govuk-heading-l">How the application works</h2>
-          <p class="govuk-body">There are 2 stages to the application process.</p>
-          <p class="govuk-body"><b>Stage 1: Check your eligibility and submit your project details</b><br/>You'll answer questions about your business and proposed project. Your application will be scored based on eligibility criteria.</p>
-          <p class="govuk-body">The Rural Payments Agency will assess your application and invite successful applicants to make a full application in stage 2.</p>
-          <p class="govuk-body"><b>Stage 2: Make a full application</b><br/>If you're invited to stage 2, you’ll need to provide more detailed information and supporting evidence about your project.</p>
-          <h1 class="govuk-heading-l">Who can apply</h2>
+          <p class="govuk-body">Before you apply You must read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <h2 class="govuk-heading-m">How the application works</h2>
+          <p class="govuk-body">Water Management grant round 3 is competitive - not all applications may receive funding. The application is in 2 stages:</p>
+          <h3 class="govuk-heading-s">Stage 1: Check your eligibility and submit your project details</h3>
+          <p class="govuk-body">You'll answer questions about your business and proposed project. If you’re eligible, your application will be scored against the grant’s funding priorities. If you score highly enough, we will invite you to complete your application at stage 2.</p>
+          <h3 class="govuk-heading-s">Stage 2: Complete your application</h3>
+          <p class="govuk-body">This stage is for invited applicants to complete their application and submit supporting evidence documents and evidence.</p>
+          <h2 class="govuk-heading-m">Who can apply</h2>
           <p class="govuk-body">The grant is for eligible farmers, growers, landowners and water management companies. Your project must be in England. You cannot apply if you have already started work on your project.</p>
-          <h1 class="govuk-heading-l">Before you apply</h2>
-          <p class="govuk-body">You should:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>check the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
-            <li>have an idea of what you want to build, where it will be located and how much water it will store</li>
-            <li>check whether your project needs planning permission or an abstraction licence</li>
-          </ul>
-          <p class="govuk-body">You can make more than one application if you have separate projects.</p>
   # Task list page
   - title: Apply for a Water Management grant round 3 (WMG R3)
     path: /tasks
