@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.28
+
+### Patch Changes
+
+- c5d1782: grants-ui and gas configs, page urls fix, total grant to number
+
 ## 0.8.27
 
 ### Patch Changes
