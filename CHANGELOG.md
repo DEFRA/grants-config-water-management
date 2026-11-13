@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.25
+
+### Patch Changes
+
+- e6fac95: grants-ui and gas configs, check your answers and print application pages, and remove integer check from gas config
+
 ## 0.8.24
 
 ### Patch Changes
