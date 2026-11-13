@@ -815,7 +815,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I want to continue with the application for this project
-        shortDescription: Eligibility score
+        shortDescription: Eligibility score declaration
   # ==========================================
   # Section 3: Project details and estimated costs
   # ==========================================
