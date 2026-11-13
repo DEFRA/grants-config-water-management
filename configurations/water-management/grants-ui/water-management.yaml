@@ -264,7 +264,7 @@ pages:
         list: d05095a0-a3d0-46c9-905d-a3889c4e1306
         options:
           required: true
-        shortDescription: Type of company or organisation?
+        shortDescription: Organisation legal status
   # 0.1.1 Company number
   - title: Enter your company number
     id: cfca412e-1509-4984-9175-3d590f4af909
@@ -279,7 +279,7 @@ pages:
         type: TextField
         options:
           required: true
-        shortDescription: Company number
+        shortDescription: Company or organisation number
       - name: companyNumberInfo
         id: 8e124442-95e5-4e67-a125-68a4fd68d22f
         type: Html
@@ -329,7 +329,7 @@ pages:
         list: 1f2856d7-0706-4ea2-b382-07697ca7914c
         options:
           required: true
-        shortDescription: What crops will be irrigated?
+        shortDescription: Crops to be irrigated
   # 1.1.1 EXIT sectors-irrigated: when ONLY 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: eb9b88ce-1c08-4461-9698-1cbbc794c159
@@ -384,7 +384,7 @@ pages:
           required: true
           showApproximateLocation: true
           approximateLocationPrefix: 'Point selected area:'
-        shortDescription: Where is your project?
+        shortDescription: Project location
       - name: confirmCorrectLocationSelected
         id: 8bbf8228-ed1e-46ab-9be6-c5e5827d7984
         title: Confirm
@@ -392,7 +392,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I have selected the right location on the map
-        shortDescription: Want to continue on the location page?
+        shortDescription: Confirm project location
   # See EXTRA PAGES for where-project-located exit page
   # 1.3 Work started yet
   - title: What work have you done on your project?
@@ -408,7 +408,7 @@ pages:
         list: b1eb45b7-ce4e-4ecf-8d2e-3fe4945348da
         options:
           required: true
-        shortDescription: Have you started work?
+        shortDescription: Status of work
       - name: eligibilityContent
         id: 4cd0820a-3f0a-4fbd-87aa-6830dcf25963
         type: Html
@@ -469,7 +469,7 @@ pages:
         options:
           required: true
           classes: govuk-radios
-        shortDescription: Is your organisation ineligible?
+        shortDescription: Organisation eligibility
   # 1.4.1 EXIT eligible-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b7ad30b6-c36e-490c-95d6-b44ef4989667
@@ -498,7 +498,7 @@ pages:
         list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
         options:
           required: true
-        shortDescription: Who are you applying on behalf of?
+        shortDescription: Applicant type
   # 1.5.1 EXIT eligible-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b6a6a7d6-c083-4313-8db6-0e0d1c3b4c92
@@ -538,7 +538,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I have consulted (or will consult) tenants about this project
-        shortDescription: Confirm consulted with tenants?
+        shortDescription: Landowner landlord responsibilities
   # 1.5.2 ORG TYPE TENANT: What you need to do
   - title: What you need to do as a tenant farmer or grower
     id: 70c01819-e87d-463f-97ca-951434b0fed1
@@ -563,7 +563,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I have a tenancy agreement that meets the grant requirements
-        shortDescription: Confirm consulted with tenants?
+        shortDescription: Tenant farmer or grower responsibilities
   # 1.5.3 ORG TYPE WATER COMPANY: What you need to do
   - title: What you need to do as a water management company
     id: e61f7da3-b841-4560-9d0d-aa3d5cdd4c8e
@@ -600,7 +600,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I will have all the necessary agreements in place
-        shortDescription: Confirm have agreements?
+        shortDescription: Water management company responsibilities
   # 1.6 How many businesses will use the water
   - title: How many other businesses will use the water for irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
@@ -619,7 +619,7 @@ pages:
         list: 6b2f167b-5564-4671-b987-053828151926
         options:
           required: true
-        shortDescription: How many businesses will use the water?
+        shortDescription: Number of other businesses using water
   # 1.6.1 EXIT landlord or water company and not sharing the water
   - title: You cannot apply for a grant from this scheme
     id: 399ec4cf-745f-41ee-9a40-1c23fa617d2b
@@ -649,7 +649,7 @@ pages:
         list: 7b0f42ae-8711-4da7-bcc8-bebeb151dbe5
         options:
           required: true
-        shortDescription: Where will the water come from?
+        shortDescription: Water source
   # 1.7.1 EXIT where-water-will-come-from: when 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: 6e6c9ced-290e-420c-84f3-4763d7f266ee
@@ -678,7 +678,7 @@ pages:
         list: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
         options:
           required: true
-        shortDescription: Do you have planning permission?
+        shortDescription: Planning permission status
   # 1.8.1 Planning permission reference number, havePlanningPermission=Y
   - title: Enter the planning permission reference number
     id: 7d30df77-e814-49b4-a0ef-18205da9d630
@@ -718,7 +718,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I will get the necessary planning permission
-        shortDescription: Will get planning permission?
+        shortDescription: Planning permission declaration
   # 1.9 Need abstraction licence
   - title: Water abstraction licences
     id: 9e72aef7-9efe-499b-a9d8-d3a69dbdc0bf
@@ -738,7 +738,7 @@ pages:
         list: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
         options:
           required: true
-        shortDescription: Will you need an abstraction licence?
+        shortDescription: Abstraction licence status
   # 1.9.1 Abstraction licence consent number, needAbstractionLicenceList=Y
   - title: Enter abstraction licence number
     id: 6539b617-cbc6-4d80-af6f-10f71593758a
@@ -754,7 +754,7 @@ pages:
         type: MultilineTextField
         options:
           required: true
-        shortDescription: Abstraction licence consent number
+        shortDescription: Abstraction licence  number
   # 1.9.2 Why licence is not yet secured, needAbstractionLicenceList=N
   - title: You must have an abstraction licence before you make your first claim
     id: 04470d97-ccf7-47a0-b4c0-a7498a8c0f5c
@@ -779,7 +779,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I will get an abstraction licence
-        shortDescription: Will get abstraction licence?
+        shortDescription: Abstraction licence declaration
   # 1.10 Score results
   - title: Your eligibility score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
@@ -821,7 +821,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I want to continue with the application for this project
-        shortDescription: Want to continue on the score page?
+        shortDescription: Eligibility score
   # ==========================================
   # Section 3: Project details and estimated costs
   # ==========================================
@@ -848,7 +848,7 @@ pages:
           autocomplete: off
           earliestMonthYear: 2027-03
           latestMonthYear: 2030-03
-        shortDescription: Expected project start date
+        shortDescription: Estimated start date
   # 2.2 Items planning to install
   - title: What are you planning to build or install?
     id: 14ac713a-2c63-4ad4-93d7-f0b4360808b7
@@ -865,7 +865,7 @@ pages:
         options:
           required: true
           classes: govuk-radios
-        shortDescription: What are you planning to build or install?
+        shortDescription: Type of build or installation
   # 2.2.1 How many reservoirs?
   - title: Will your project include more than one reservoir?
     id: c486e28f-7cc3-4756-ac83-c515d42f8909
@@ -882,7 +882,7 @@ pages:
         options:
           required: true
           classes: govuk-radios
-        shortDescription: More than one reservoir?
+        shortDescription: How many reservoirs
   # 2.2.2 Just one reservoir - what type?
   - title: What type of reservoir are you building?
     id: 97a6d7d6-53c3-4c5b-84c7-fb760949cab6
@@ -898,7 +898,7 @@ pages:
         list: f1ea3032-da6f-4e35-bc75-24d22feb8656
         options:
           required: true
-        shortDescription: What type of reservoir?
+        shortDescription: Type of reservoir
   # 2.2.3 Just one reservoir - how much water?
   - title: How much water will your reservoir hold?
     id: 485593f7-86cb-4ad5-9372-02b28c4adf58
@@ -925,7 +925,7 @@ pages:
           min: 1
           max: 999999
           precision: 0
-        shortDescription: Reservoir storage capacity (m³)
+        shortDescription: Reservoir capacity (m³)
   # 2.2.3 More than one reservoir
   - title: Reservoir items
     id: b4c70d24-9e80-4925-86cc-9ac2607c69d2
@@ -952,7 +952,7 @@ pages:
             string.empty: Enter a name for this reservoir
         schema:
           max: 100
-        shortDescription: Name of your reservoir
+        shortDescription: Name of reservoir
       - name: reservoirItemWhatTypeOfReservoir
         id: 634bfd06-73cb-482a-adde-8ad7212f8dc5
         title: What type of reservoir are you building?
@@ -960,7 +960,7 @@ pages:
         list: f1ea3032-da6f-4e35-bc75-24d22feb8656
         options:
           required: true
-        shortDescription: What type of reservoir are you building?
+        shortDescription: Type of reservoir
       - name: reservoirItemHowMuchWater
         id: 159778c8-6540-4f59-8e09-93308680c12c
         title: How much water will your reservoir hold?
@@ -979,7 +979,7 @@ pages:
           min: 1
           max: 999999
           precision: 0
-        shortDescription: Reservoir storage capacity (m³)
+        shortDescription: Reservoir volume (m³)
   # 2.2.4 Water storage capacity
   - title: How much water will your storage tank or tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
@@ -1004,7 +1004,7 @@ pages:
         schema:
           min: 1
           precision: 0
-        shortDescription: Water storage capacity (m³)
+        shortDescription: Water storage tank capacity (m³)
   # 2.2.5 Water distribution length
   - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
@@ -1029,7 +1029,7 @@ pages:
         schema:
           min: 1
           precision: 0
-        shortDescription: Water distribution length (m)
+        shortDescription: Length of underground water distribution main  (m)
   # 2.3 Total estimated grant TODO how to display reservoir
   - title: Total estimated grant
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
@@ -1130,7 +1130,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I understand there is no guarantee that my application will be successful
-        shortDescription: Understand no guaranteed success on estimated cost page
+        shortDescription: No guarantee declaration
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 4: Check and submit your application
@@ -1149,11 +1149,11 @@ pages:
       additionalSections:
         - page: /score-results
           items:
-            - title: Score
+            - title: Eligibility score
               stateValue: additionalAnswers.totalScore
         - page: /total-estimated-cost
           items:
-            - title: Total estimated grant (£)
+            - title: Estimated grant (£)
               stateValue: additionalAnswers.estimatedMaxGrant
   # 3.2 Submit application
   - title: Submit your application
@@ -1187,7 +1187,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I accept the terms and conditions
-        shortDescription: Accept terms and conditions on submit application page
+        shortDescription: Acceptance of terms and conditions
   # 3.3 Confirmation
   - title: Confirmation
     id: ae9f2211-7278-4071-bb66-a7f56f4194df
