@@ -1070,12 +1070,9 @@ pages:
             <p class="govuk-body">This is the estimated amount you could apply for at stage 2.</p>
           </div>
           <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
-          <p class="govuk-body">Your estimated grant is based on 40% of the reference costs for the items in your application.</p>
-          <p class="govuk-body">If you’re invited to apply for stage 2, the grant you can claim will be the lower of:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>40% of the reference costs shown below</li>
-            <li>40% of your actual invoiced costs at claim stage</li>
-          </ul>
+          <p class="govuk-body">Grants are based on reference costs to work out the maximum grant amount you could get. Reference costs are based on the expected average cost for each item. The maximum grant available is £300,000.</p>
+          <p class="govuk-body">If you’re invited to apply for stage 2, and are successful in being offered a grant funding agreement, the grant you can claim for eligible items will be the lower of 40% of the reference costs or 40% of your actual invoiced costs at claim stage.</p>
+          <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/pa3-water-management-plan-2026" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
           <h2 class="govuk-heading-m">Estimated costs</h2>
           <table class="govuk-table">
             <thead class="govuk-table__head">
@@ -1089,30 +1086,34 @@ pages:
               {% if itemsPlanningToInstall contains "RESERVOIR" %}
                 {% for reservoir in context.state.additionalAnswers.reservoirs %}
                   <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Reservoir – {{ reservoir.type }} lined</td>
-                    <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }} {{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }}/m³ for the first 10,000m³, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }}/m³</td>
+                    <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }}</td>
+                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre for the first 10,000 cubic metres, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
                     <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency | replace: '.00', '' }}</td>
                   </tr>
                 {% endfor %}
               {% endif %}
-              {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell">Water distribution network</td>
-                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }}m at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per m</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
-                </tr>
-              {% endif %}
               {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">Water storage tank(s)</td>
-                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }}m³ at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per m³</td>
+                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
                   <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</td>
                 </tr>
               {% endif %}
+              {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Water distribution network</td>
+                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per metre</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
+                </tr>
+              {% endif %}
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header" colspan="2">Total estimated cost</th>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</td>
+              </tr>
             </tbody>
           </table>
-          <h2 class="govuk-heading-m">Estimated grant</h2>
-          <table class="govuk-table">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Estimated grant</h2>
+          <table class="govuk-table govuk-!-margin-bottom-0">
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row" style="border: none;">
                 <td class="govuk-table__cell" style="border: none;">Total estimated grant</td>
@@ -1121,14 +1122,14 @@ pages:
               </tr>
             </tbody>
           </table>
-          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-6">
       - name: understandNoGuaranteedSuccessOnEstimatedCostPage
         id: 37c68068-38d6-4a39-b64e-44dce1558293
         title: Confirm
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I understand there is no guarantee that your stage 2 grant application will be successful
+          declarationConfirmationLabel: I understand there is no guarantee that my application will be successful
         shortDescription: Understand no guaranteed success on estimated cost page
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
@@ -1240,7 +1241,7 @@ pages:
           <p class="govuk-body">If your project is in England, <a href="/water-management/where-project-located" class="govuk-link">return to the map page</a> and select the correct location.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 2.3.1 EXIT total-estimated-cost: when minGrantReached=false
-  - title: You cannot apply for a grant from this scheme
+  - title: Your eligible projects costs are too low to qualify for a grant
     id: a57dd815-7b9f-4434-bf27-2d7145e3a4f6
     path: /exit-total-estimated-cost # don't change this without changing grants-ui TotalEstimatedCostController.getNextPath
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -1251,9 +1252,11 @@ pages:
         type: Html
         content: >
           {% if itemsPlanningToInstall.size == 1 and itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
-            <p class="govuk-body">Your costs must be at least £37,500 because the minimum grant is £15,000 (40% of your confirmed costs).</p>
+          <p class="govuk-body">Your eligible project costs must be at least £35,500 to qualify for a grant.</p>
+            <p class="govuk-body">This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £15,000.</p>
           {% else %}
-            <p class="govuk-body">Your costs must be at least £87,500 because the minimum grant is £35,000 (40% of your confirmed costs).</p>
+            <p class="govuk-body">Your eligible project costs must be at least £87,500 to qualify for a grant.</p>
+            <p class="govuk-body">This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £35,000.</p>
           {% endif %}
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
 
