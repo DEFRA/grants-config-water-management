@@ -882,7 +882,7 @@ pages:
         options:
           required: true
           classes: govuk-radios
-        shortDescription: How many reservoirs
+        shortDescription: Multiple reservoirs
   # 2.2.2 Just one reservoir - what type?
   - title: What type of reservoir are you building?
     id: 97a6d7d6-53c3-4c5b-84c7-fb760949cab6
