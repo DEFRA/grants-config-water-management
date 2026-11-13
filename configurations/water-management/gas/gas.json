@@ -38,6 +38,10 @@
             "type": "string",
             "format": "date-time"
           },
+          "totalEstimatedCost": {
+            "type": "number",
+            "minimum": 0
+          },
           "guidanceRead": {
             "type": "boolean",
             "const": true

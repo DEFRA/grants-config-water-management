@@ -17,7 +17,7 @@ metadata:
         gasStatus: default
         toGrantsStatus: SUBMITTED
         toPath: /confirmation
-    excludedPaths: ['print-application']
+    excludedPaths: ['print-submitted-application']
   permissions:
     enforce: true
     resource: businessDetails
@@ -1205,11 +1205,11 @@ pages:
           </ul>
           <p class="govuk-body">We’ll tell you the full list of supporting documents we require if you’re invited to stage 2. Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> for more information.</p>
           <p class="govuk-body">The window for stage 1 applications closes at 11.59pm on 23 February 2027. The RPA will invite successful applicants to apply for stage 2 soon after that.</p>
-          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
   # 3.4 Print application
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
-    path: /print-application
+    path: /print-submitted-application
     controller: PrintSubmittedApplicationController
     config:
       width: full
