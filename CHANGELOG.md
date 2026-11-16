@@ -1,5 +1,12 @@
 # grants-config-water-management
 
+## 0.8.31
+
+### Patch Changes
+
+- c48276b: GRAN-259 Test automation for updating grant estimation pages
+- c48276b: updates for GRAN-259, GRAN-220 and GRAN-260
+
 ## 0.8.30
 
 ### Patch Changes
