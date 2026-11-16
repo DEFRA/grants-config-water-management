@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "engines": {
-    "node": ">=24.22.1"
+    "node": ">=26.13.1"
   },
   "scripts": {
     "dev": "AWS_EMF_ENVIRONMENT=Local NODE_ENV=development npm run server:watch",
@@ -29,7 +29,7 @@
     "test:watch": "TZ=UTC vitest",
     "test:journey:local": "cd test/grants-ui && npm install && npm run test:local",
     "test:journey:ci": "cd test/grants-ui && npm run test:ci",
-    "test:journey:show:reports": "cd test/grants-ui && npx playwright@1.64.1 show-report"
+    "test:journey:show:reports": "cd test/grants-ui && npx playwright@1.65.0 show-report"
   },
   "publishConfig": {
     "access": "public"
