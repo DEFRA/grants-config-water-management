@@ -5,6 +5,7 @@ import { assertTaskStatuses } from '../utils/assertion.js'
 import { preTaskSteps } from '../steps/pre-task-steps.js'
 import { legalStatusSteps } from '../steps/legal-status-steps.js'
 import { projectEligibilitySteps } from '../steps/project-eligibility-steps.js'
+import { startYourProjectDetailsTask } from '../utils/enter-valid-project-start.js'
 
 const CRN = '9000000035'
 const SBI = '800000026'
@@ -523,17 +524,4 @@ async function uncheckAllItems(page) {
       name: 'Underground water distribution main'
     })
     .uncheck()
-}
-
-async function startYourProjectDetailsTask(page) {
-  await expect(page).toHaveURL(formatUrlForPath('task-list'))
-
-  await page.getByRole('link', { name: 'Your project details' }).click()
-
-  await expect(page).toHaveURL(
-    formatUrlForPath('project-details-expected-start-date')
-  )
-  await page.locator('input#expectedProjectStartDate__month').fill('01')
-  await page.locator('input#expectedProjectStartDate__year').fill('2028')
-  await page.getByRole('button', { name: 'Save and continue' }).click()
 }
