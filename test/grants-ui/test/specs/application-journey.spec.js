@@ -258,7 +258,7 @@ test.describe('Water Management Grant application', () => {
         await expect(page.getByText('an executive agency')).toBeVisible()
         await expect(
           page.getByText(
-            'a non-department public body such as the Environment Agency or the Forestry Commission'
+            'a non-departmental public body such as the Environment Agency or the Forestry Commission'
           )
         ).toBeVisible()
         await expect(
@@ -1168,7 +1168,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByRole('link', {
-            name: 'View / Print submitted application (opens in new tab)',
+            name: 'View and print this submitted application (opens in new tab)',
             exact: true
           })
         ).toBeVisible()
@@ -1185,7 +1185,7 @@ test.describe('Water Management Grant application', () => {
           page.context().waitForEvent('page'),
           page
             .getByRole('link', {
-              name: 'View / Print submitted application (opens in new tab)'
+              name: 'View and print this submitted application (opens in new tab)'
             })
             .click()
         ])

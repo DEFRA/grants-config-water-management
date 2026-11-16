@@ -9,7 +9,7 @@ export async function preTaskSteps(page, CRN) {
   })
 
   await test.step('Complete pre-task steps', async () => {
-    await expect(page).toHaveURL(formatUrlForPath('confirm-your-details'))
+    await expect(page).toHaveURL(formatUrlForPath('check-details'))
     await page.getByRole('radio', { name: 'Yes' }).click()
     await page.getByRole('button', { name: 'Continue' }).click()
 
