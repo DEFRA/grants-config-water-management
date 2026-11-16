@@ -32,5 +32,5 @@ export async function preTaskSteps(page, CRN) {
         status: 'Cannot start yet'
       }
     ])
-    })
+  })
 }

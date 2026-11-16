@@ -67,9 +67,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('tasks -> grant-guidance-summary', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('grant-guidance-summary')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('grant-guidance-summary'))
         await expect(
           page.getByRole('heading', {
             level: 1,
@@ -140,9 +138,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('eligibility-land-registered -> exit-sectors-irrigated-somethingelse -> back -> select Arable sector', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('sectors-irrigated')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('sectors-irrigated'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Crops you plan to irrigate'
         )
@@ -164,18 +160,14 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await page.getByRole('link', { name: 'Back', exact: true }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('sectors-irrigated')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('sectors-irrigated'))
 
         await page.getByRole('checkbox', { name: 'Arable crops' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
 
       await test.step('where-project-located', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('where-project-located')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('where-project-located'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Tell us where your project is'
         )
@@ -215,9 +207,7 @@ test.describe('Water Management Grant application', () => {
           .click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligible-organisation')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('eligible-organisation'))
         await page.getByRole('link', { name: 'Back', exact: true }).click()
 
         await expect(page).toHaveURL(formatUrlForPath('work-started-yet'))
@@ -256,9 +246,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('eligible-organisation', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligible-organisation')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('eligible-organisation'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Who can apply for this grant'
         )
@@ -304,9 +292,7 @@ test.describe('Water Management Grant application', () => {
           })
         ).toBeVisible()
         await page.getByRole('link', { name: 'Back', exact: true }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligible-organisation')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('eligible-organisation'))
         await page
           .getByRole('radio', {
             name: 'Yes, I confirm my organisation can apply'
@@ -316,9 +302,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('organisation-type -> Landowner landlord -> what-landlords-need-to-do -> Confirm - How many businesses will use the water -> back -> back - organisation type', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('organisation-type')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('organisation-type'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'What type of applicant are you?'
         )
@@ -374,9 +358,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('organisation-type -> Tenant farmer or grower -> what-tenants-need-to-do -> Confirm -> How many businesses will use the water -> back -> back -> organisation type', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('organisation-type')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('organisation-type'))
         await page
           .getByRole('radio', { name: 'Tenant farmer or grower' })
           .click()
@@ -423,9 +405,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('organisation-type -> Water management company -> what-water-companys-need-to-do -> Confirm -> How many businesses will use the water -> back -> back -> organisation type', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('organisation-type')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('organisation-type'))
         await page
           .getByRole('radio', { name: 'Water management company' })
           .click()
@@ -497,14 +477,10 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('organisation-type -> None of the above - exit-organisation-type', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('organisation-type')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('organisation-type'))
         await page.getByRole('radio', { name: 'None of the above' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('exit-organisation-type')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('exit-organisation-type'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'You cannot apply for a grant from this scheme'
         )
@@ -524,9 +500,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('organisation-type -> Landowner farmer or grower', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('organisation-type')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('organisation-type'))
         await page
           .getByRole('radio', { name: 'Landowner farmer or grower' })
           .click()
@@ -871,9 +845,7 @@ test.describe('Water Management Grant application', () => {
         // Selecting Only Reservoir and continuing to the next page
         await page.getByRole('checkbox', { name: 'Reservoir' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('how-many-reservoirs')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('how-many-reservoirs'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Will your project include more than one reservoir?'
         )
@@ -881,9 +853,7 @@ test.describe('Water Management Grant application', () => {
         await page.getByRole('radio', { name: 'No' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('what-type-of-reservoir')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('what-type-of-reservoir'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'What type of reservoir are you building?'
         )
@@ -909,13 +879,9 @@ test.describe('Water Management Grant application', () => {
         await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')
 
         await page.getByRole('link', { name: 'Back', exact: true }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('what-type-of-reservoir')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('what-type-of-reservoir'))
         await page.getByRole('link', { name: 'Back', exact: true }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('how-many-reservoirs')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('how-many-reservoirs'))
         await page.getByRole('link', { name: 'Back', exact: true }).click()
         await expect(page).toHaveURL(
           formatUrlForPath('items-planning-to-install')
@@ -929,9 +895,7 @@ test.describe('Water Management Grant application', () => {
           })
           .click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('water-storage-capacity')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('water-storage-capacity'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'How much water will your storage tank or tanks hold?'
         )
@@ -993,18 +957,14 @@ test.describe('Water Management Grant application', () => {
 
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('how-many-reservoirs')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('how-many-reservoirs'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Will your project include more than one reservoir?'
         )
         await page.getByRole('radio', { name: 'No' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('what-type-of-reservoir')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('what-type-of-reservoir'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'What type of reservoir are you building?'
         )
@@ -1024,9 +984,7 @@ test.describe('Water Management Grant application', () => {
         await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('water-storage-capacity')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('water-storage-capacity'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'How much water will your storage tank or tanks hold?'
         )
@@ -1040,9 +998,7 @@ test.describe('Water Management Grant application', () => {
       })
 
       await test.step('total-estimated-cost -> Confirm and continue', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('total-estimated-cost')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('total-estimated-cost'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Total estimated grant'
         )

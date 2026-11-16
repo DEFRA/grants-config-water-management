@@ -15,19 +15,17 @@ test.describe('Water Management Grant Round 3', () => {
   })
 
   test('Geospatial Journey', { tag: ['@cdp', '@runme'] }, async ({ page }) => {
-
     await preTaskSteps(page, CRN)
 
     await legalStatusSteps(page)
 
     await test.step('Selecting a valid location in the Isle of Scilly that is covered by the grant should return a score and allow application to progress', async () => {
-
       await page
         .getByRole('link', { name: 'Check your project eligibility' })
         .click()
 
       await expect(page).toHaveURL(
-        await formatUrlForPath("eligibility-crops-irrigated")
+        await formatUrlForPath('eligibility-crops-irrigated')
       )
 
       await page.getByRole('checkbox', { name: 'Arable crops' }).click()
