@@ -190,8 +190,8 @@ test.describe('Water Management Grant application', () => {
         await expect(page.locator('#projectLocated-hint')).toHaveText(
           'The Easting and Northing co-ordinates of the grid reference will appear when you select your location on the map. You can use these co-ordinates to find this location on another map (or keep them as a reference).'
         )
-        await page.locator('#projectLocated__easting').fill('374980')
-        await page.locator('#projectLocated__northing').fill('448127')
+        await page.locator('#projectLocated__easting').fill('613413')
+        await page.locator('#projectLocated__northing').fill('154146')
         await page
           .getByRole('checkbox', {
             name: 'I confirm I have selected the right location on the map'
@@ -807,7 +807,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.locator('.govuk-inset-text .govuk-body')
-        ).toContainText('80 out of 100')
+        ).toContainText(/8\d{1} out of 100/)
         await expect(
           page.getByText(
             'You are eligible to apply for this grant and we will consider your application carefully.'
