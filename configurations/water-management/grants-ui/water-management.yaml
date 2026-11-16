@@ -204,7 +204,7 @@ pages:
   # ==========================================
   # Check details page
   - title: Confirm your details
-    path: /confirm-your-details
+    path: /check-details
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Grant guidance summary
@@ -1132,7 +1132,7 @@ pages:
   # 3.1 Check your answers
   - title: Check your answers
     id: d489e351-3873-4f06-9f7c-88984f56088c
-    path: /check-your-answers
+    path: /summary
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: CheckResponsesPageController
     config:
@@ -1825,5 +1825,5 @@ conditions:
           listId: 8c0a3d2c-9572-4512-9226-7800ff471010
           itemId: 544b8f79-973d-42d3-8053-f049fb351e6e
 
-startPage: /confirm-your-details
+startPage: /check-details
 schema: 2
