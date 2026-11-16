@@ -14,7 +14,7 @@ test.describe('Water Management Grant Round 3', () => {
     await clearApplicationData(SBI, GRANT_CODE)
   })
 
-  test('Geospatial Journey', { tag: ['@cdp', '@runme'] }, async ({ page }) => {
+  test('Geospatial Journey', { tag: ['@cdp'] }, async ({ page }) => {
     await preTaskSteps(page, CRN)
 
     await legalStatusSteps(page)

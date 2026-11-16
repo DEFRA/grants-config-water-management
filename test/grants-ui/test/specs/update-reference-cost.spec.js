@@ -17,7 +17,7 @@ test.describe('Water Management Grant Round 3', () => {
 
   test(
     'Reference costs',
-    { tag: ['@cdp', '@ci', '@runme'] },
+    { tag: ['@cdp', '@ci'] },
     async ({ page }) => {
       await preTaskSteps(page, CRN)
 
