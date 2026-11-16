@@ -208,7 +208,7 @@ test.describe('Water Management Grant Round 3', () => {
             name: 'Check and submit your stage 1 application'
           })
           .click()
-        await expect(page).toHaveURL(formatUrlForPath('check-your-answers'))
+        await expect(page).toHaveURL(formatUrlForPath('summary'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Check your answers'
         )
