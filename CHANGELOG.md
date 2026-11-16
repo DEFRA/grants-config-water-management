@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.29
+
+### Patch Changes
+
+- 57fa75d: Update journey tests to cater for upcoming multi-reservoir spec
+
 ## 0.8.28
 
 ### Patch Changes
