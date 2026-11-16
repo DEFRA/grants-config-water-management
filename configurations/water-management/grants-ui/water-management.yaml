@@ -324,7 +324,7 @@ pages:
         options:
           required: true
         shortDescription: Crops to be irrigated
-  # 1.1.1 EXIT ligibility-crops-irrigated: when ONLY 'Something else' is selected
+  # 1.1.1 EXIT eligibility-crops-irrigated: when ONLY 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: eb9b88ce-1c08-4461-9698-1cbbc794c159
     path: /exit-eligibility-crops-irrigated

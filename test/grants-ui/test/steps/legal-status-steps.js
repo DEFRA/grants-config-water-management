@@ -10,9 +10,7 @@ export async function legalStatusSteps(page) {
     await page.getByRole('radio', { name: 'Private limited company' }).click()
     await page.getByRole('button', { name: 'Save and continue' }).click()
 
-    await expect(page).toHaveURL(
-      formatUrlForPath('company-or-organisation-number')
-    )
+    await expect(page).toHaveURL(formatUrlForPath('company-number'))
     await page.locator('#companyNumber').fill('12351975')
     await page.getByRole('button', { name: 'Save and continue' }).click()
 
