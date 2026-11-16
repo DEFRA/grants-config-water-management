@@ -204,7 +204,7 @@ pages:
   # ==========================================
   # Check details page
   - title: Confirm your details
-    path: /confirm-your-details
+    path: /check-details
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Grant guidance summary
@@ -262,7 +262,7 @@ pages:
   # 0.1.1 Company number
   - title: Enter your company number
     id: cfca412e-1509-4984-9175-3d590f4af909
-    path: /company-or-organisation-number
+    path: /company-number
     section: 8961b84a-572c-410c-9f07-076a4fb876a5
     controller: TaskPageController
     condition: 5568a36e-376a-465a-9d35-ab74311f0013
@@ -324,7 +324,7 @@ pages:
         options:
           required: true
         shortDescription: Crops to be irrigated
-  # 1.1.1 EXIT ligibility-crops-irrigated: when ONLY 'Something else' is selected
+  # 1.1.1 EXIT eligibility-crops-irrigated: when ONLY 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: eb9b88ce-1c08-4461-9698-1cbbc794c159
     path: /exit-eligibility-crops-irrigated
@@ -359,8 +359,8 @@ pages:
               </span>
             </summary>
             <div class="govuk-details__text">
-              <p class="govuk-body">There are tools on the map to help you use it. You can:</p>
-              <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+              <p class="govuk-body govuk-!-margin-bottom-0">There are tools on the map to help you use it. You can:</p>
+              <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
                 <li>use the search icon on the top right of the map to search by postcode</li>
                 <li>use the map layers icon on the top left of the map to switch to an aerial view</li>
                 <li>use the plus and minus tools to zoom in and out</li>
@@ -415,8 +415,8 @@ pages:
             </summary>
             <div class="govuk-details__text">
               <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.</p>
-              <p class="govuk-body">Before you start the project, you can:</p>
-              <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+              <p class="govuk-body govuk-!-margin-bottom-0">Before you start the project, you can:</p>
+              <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
                 <li>have discussions with suppliers</li>
                 <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
               </ul>
@@ -452,7 +452,7 @@ pages:
           <ul class="govuk-list govuk-list--bullet">
             <li>a government department</li>
             <li>an executive agency</li>
-            <li>a non-department public body such as the Environment Agency or the Forestry Commission</li>
+            <li>a non-departmental public body such as the Environment Agency or the Forestry Commission</li>
             <li>a public body unless it is a local authority, National Park Authority or the Crown Estate</li>
           </ul>
       - name: eligibleOrganisation
@@ -573,15 +573,15 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">If the members of your water management company are tenants or a landowner and landlord, you must have all the following agreements in place:</p>
-          <p class="govuk-body">Tenants must:</p>
-          <ul class="govuk-list govuk-list--bullet">
+          <p class="govuk-body govuk-!-margin-bottom-0">Tenants must:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
             <li>have a tenancy agreement in place</li>
             <li>make sure the tenancy agreement meets the grant requirements</li>
             <li>consult with your landlord before you apply</li>
             <li>check that the project will not breach the terms of your tenancy agreement</li>
           </ul>
-          <p class="govuk-body">Landlords must:</p>
-          <ul class="govuk-list govuk-list--bullet">
+          <p class="govuk-body govuk-!-margin-bottom-0">Landlords must:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
             <li>consult your tenants before you apply for the grant</li>
             <li>keep your tenants informed about the project and any grant conditions that might have an impact on them</li>
             <li>if successful, allow the RPA to access the project location for monitoring visits for the duration of the grant agreement</li>
@@ -1132,7 +1132,7 @@ pages:
   # 3.1 Check your answers
   - title: Check your answers
     id: d489e351-3873-4f06-9f7c-88984f56088c
-    path: /check-your-answers
+    path: /summary
     section: b7006592-79e9-442b-a371-36fa95042c68
     controller: CheckResponsesPageController
     config:
@@ -1205,7 +1205,7 @@ pages:
           </ul>
           <p class="govuk-body">We’ll tell you the full list of supporting documents we require if you’re invited to stage 2. Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> for more information.</p>
           <p class="govuk-body">The window for stage 1 applications closes at 11.59pm on 23 February 2027. The RPA will invite successful applicants to apply for stage 2 soon after that.</p>
-          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View / Print submitted application (opens in new tab)</a></p>
+          <p class="govuk-body"><a class="govuk-link" href="/{{SLUG}}/print-submitted-application" target="_blank">View and print this submitted application (opens in new tab)</a></p>
   # 3.4 Print application
   - title: PrintSubmittedApplication
     id: 3a5aafef-e492-4db2-9111-42c2e3922aba
@@ -1825,5 +1825,5 @@ conditions:
           listId: 8c0a3d2c-9572-4512-9226-7800ff471010
           itemId: 544b8f79-973d-42d3-8053-f049fb351e6e
 
-startPage: /confirm-your-details
+startPage: /check-details
 schema: 2

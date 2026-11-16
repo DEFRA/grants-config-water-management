@@ -67,13 +67,9 @@ test.describe('Water Management Grant Round 3', () => {
         page.locator('td').filter({
           hasText: 'Clay lined'
         })
-      ).toBeVisible()
-      await expect(
-        page.locator('td').filter({
-          hasText:
-            '1,500 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
-        })
-      ).toBeVisible()
+      ).toContainText(
+        '1,500 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+      )
       await expect(
         page.locator('td').filter({
           hasText: '£13,500'
@@ -174,13 +170,9 @@ test.describe('Water Management Grant Round 3', () => {
         page.locator('td').filter({
           hasText: 'Synthetic lined'
         })
-      ).toBeVisible()
-      await expect(
-        page.locator('td').filter({
-          hasText:
-            '500 cubic metres at £11 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.75 per cubic metre'
-        })
-      ).toBeVisible()
+      ).toContainText(
+        '500 cubic metres at £11 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.75 per cubic metre'
+      )
       await expect(
         page.locator('td').filter({
           hasText: '£5,500'
@@ -244,13 +236,18 @@ test.describe('Water Management Grant Round 3', () => {
       )
       await expect(
         page.getByText(
-          'Your eligible project costs must be at least £87,500 to qualify for a grant. '
+          'Your eligible project costs must be at least £87,500 to qualify for a grant.'
         )
       ).toBeVisible()
       await expect(
         page.getByText(
           'This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £35,000.'
         )
+      ).toBeVisible()
+      await expect(
+        page.getByRole('link', {
+          name: 'Check what other grants you may be eligible for (opens in a new tab)'
+        })
       ).toBeVisible()
       await page.goto(formatUrlForPath('task-list', false))
     })
@@ -278,23 +275,12 @@ test.describe('Water Management Grant Round 3', () => {
         page.getByRole('cell', { name: 'Water storage tank(s)' })
       ).toBeVisible()
       await expect(
-        page.getByRole('cell', {
-          name: '1,000 cubic metres at £71 per cubic metre'
-        })
-      ).toBeVisible()
-      await expect(page.getByRole('cell', { name: '£' }).nth(1)).toHaveText(
-        '£71,000'
-      ) // There are 3 cells with £71,000 in them so selecting and asserting like this matches as expected
-      await expect(
-        page.locator('td').filter({
-          hasText: 'Total estimated grant'
-        })
-      ).toBeVisible()
-      await expect(
-        page.locator('td').filter({
-          hasText: '40% of £71,000'
-        })
-      ).toBeVisible()
+        page
+          .getByRole('cell', {
+            name: '1,000 cubic metres at £71 per cubic metre'
+          })
+          .locator('//following-sibling::td')
+      ).toHaveText('£71,000')
       await expect(
         page.locator('td').filter({
           hasText: '£28,400'
@@ -331,13 +317,12 @@ test.describe('Water Management Grant Round 3', () => {
         page.getByRole('cell', { name: 'Water storage tank(s)' })
       ).toBeVisible()
       await expect(
-        page.getByRole('cell', {
-          name: '500 cubic metres at £71 per cubic metre'
-        })
-      ).toBeVisible()
-      await expect(page.getByRole('cell', { name: '£' }).nth(1)).toHaveText(
-        '£35,500'
-      )
+        page
+          .getByRole('cell', {
+            name: '500 cubic metres at £71 per cubic metre'
+          })
+          .locator('//following-sibling::td')
+      ).toHaveText('£35,500')
       await expect(
         page.getByRole('cell', { name: 'Total estimated grant' })
       ).toBeVisible()
@@ -362,13 +347,18 @@ test.describe('Water Management Grant Round 3', () => {
       )
       await expect(
         page.getByText(
-          'Your eligible project costs must be at least £35,500 to qualify for a grant. '
+          'Your eligible project costs must be at least £35,500 to qualify for a grant.'
         )
       ).toBeVisible()
       await expect(
         page.getByText(
           'This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £15,000.'
         )
+      ).toBeVisible()
+      await expect(
+        page.getByRole('link', {
+          name: 'Check what other grants you may be eligible for (opens in a new tab)'
+        })
       ).toBeVisible()
       await page.goto(formatUrlForPath('task-list', false))
     })
@@ -410,12 +400,13 @@ test.describe('Water Management Grant Round 3', () => {
         formatUrlForPath('project-details-total-estimated-grant')
       )
       await expect(page.getByRole('cell', { name: 'Reservoir' })).toBeVisible()
-      await expect(page.getByRole('cell', { name: 'Clay lined' })).toBeVisible()
       await expect(
         page.getByRole('cell', {
-          name: '250,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+          name: 'Clay lined'
         })
-      ).toBeVisible()
+      ).toContainText(
+        '250,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+      )
       await expect(
         page.getByRole('cell', {
           name: '£630,000'
@@ -491,7 +482,7 @@ test.describe('Water Management Grant Round 3', () => {
         })
         .click()
 
-      await expect(page).toHaveURL(formatUrlForPath('check-your-answers'))
+      await expect(page).toHaveURL(formatUrlForPath('summary'))
       await expect(
         page
           .locator('dt')
