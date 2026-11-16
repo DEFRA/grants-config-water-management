@@ -6,5 +6,7 @@ export function formatUrlForPath(path, regex = true) {
 }
 
 export function formatUrlForPathWithUUID(path, optionalSuffix = '') {
-  return new RegExp(String.raw`water-management/${path}/[\w-]+${optionalSuffix}`)
+  return new RegExp(
+    String.raw`water-management/${path}/[\w-]+${optionalSuffix}`
+  )
 }
