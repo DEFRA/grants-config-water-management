@@ -490,7 +490,7 @@ test.describe('Water Management Grant Round 3', () => {
         })
         .click()
 
-      await expect(page).toHaveURL(formatUrlForPath('check-your-answers'))
+      await expect(page).toHaveURL(formatUrlForPath('summary'))
       await expect(
         page
           .locator('dt')
