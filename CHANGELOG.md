@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.35
+
+### Patch Changes
+
+- 2eb4fa0: grants-ui config, enable thousands separator, also minor content changes
+
 ## 0.8.34
 
 ### Patch Changes
