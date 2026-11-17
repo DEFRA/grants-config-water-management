@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.33
+
+### Patch Changes
+
+- acb8ff2: Add multi-reservoir journey tests
+
 ## 0.8.32
 
 ### Patch Changes
