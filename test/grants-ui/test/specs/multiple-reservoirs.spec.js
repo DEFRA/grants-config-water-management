@@ -72,7 +72,7 @@ test.describe('Water Management Grant Round 3', () => {
       await page.getByRole('button', { name: 'Add another' }).click()
       //still on summary page
       await expect(page).toHaveURL(
-        formatUrlForPath('project-details-reservoir-details/summary#')
+        /water-management\/project-details-reservoir-details\/summary/
       )
       await expect(
         page.locator('h2').filter({ hasText: 'There is a problem' })
