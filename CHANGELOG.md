@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.34
+
+### Patch Changes
+
+- 5424853: TGC-1869 - Upgrade nodejs
+
 ## 0.8.33
 
 ### Patch Changes
