@@ -79,6 +79,26 @@ test.describe('Water Management Grant application', () => {
           })
         ).toBeVisible()
         await analyzeAccessibility(page)
+        await expect(
+          page.getByText(
+            'Before you apply you must read the Water Management grant round 3 guidance (opens in a new tab).'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', {
+            name: 'Water Management grant round 3 guidance (opens in a new tab)'
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByRole('heading', {
+            name: 'Stage 2: Complete your application'
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'This stage is for invited applicants to complete their application and submit supporting evidence documents.'
+          )
+        ).toBeVisible()
         await page.getByRole('button', { name: 'Continue' }).click()
       })
 
