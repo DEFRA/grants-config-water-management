@@ -142,7 +142,7 @@ If a hotfix is required, complete the following steps:
 
 ### Node.js
 
-Please install [Node.js](http://nodejs.org/) `>= v24` and [npm](https://nodejs.org/) `>= v11`. You will find it
+Please install [Node.js](http://nodejs.org/) `>= v26` and [npm](https://nodejs.org/) `>= v11`. You will find it
 easier to use the Node Version Manager [nvm](https://github.com/creationix/nvm)
 
 To use the correct version of Node.js for this application, via nvm:
@@ -236,7 +236,7 @@ git config --global core.autocrlf false
 
 We are using forward-proxy which is set up by default. Services are automatically configured with the proxy environment variables when deployed.
 
-Node.js 24 uses these variables to route outbound HTTP(S) requests through the proxy:
+Node.js 26 uses these variables to route outbound HTTP(S) requests through the proxy:
 
 NODE_USE_ENV_PROXY=1
 HTTPS_PROXY=...
