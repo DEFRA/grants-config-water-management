@@ -226,13 +226,13 @@ pages:
             <li>above-ground water storage tanks</li>
             <li>underground water distribution mains</li>
           </ul>
-          <p class="govuk-body">Before you apply You must read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">Before you apply you must read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
           <h2 class="govuk-heading-m">How the application works</h2>
           <p class="govuk-body">Water Management grant round 3 is competitive - not all applications may receive funding. The application is in 2 stages:</p>
           <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Stage 1: Check your eligibility and submit your project details</h3>
           <p class="govuk-body">You'll answer questions about your business and proposed project. If you’re eligible, your application will be scored against the grant’s funding priorities. If you score highly enough, we will invite you to complete your application at stage 2.</p>
           <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Stage 2: Complete your application</h3>
-          <p class="govuk-body">This stage is for invited applicants to complete their application and submit supporting evidence documents and evidence.</p>
+          <p class="govuk-body">This stage is for invited applicants to complete their application and submit supporting evidence documents.</p>
           <h2 class="govuk-heading-m">Who can apply</h2>
           <p class="govuk-body">The grant is for eligible farmers, growers, landowners and water management companies. Your project must be in England. You cannot apply if you have already started work on your project.</p>
   # Task list page
@@ -909,6 +909,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
+          format: thousands
           suffix: m³
           autocomplete: off
           customValidationMessages:
@@ -963,6 +964,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
+          format: thousands
           suffix: m³
           autocomplete: off
           customValidationMessages:
@@ -990,6 +992,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
+          format: thousands
           suffix: m³
           autocomplete: off
           customValidationMessages:
@@ -1015,6 +1018,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
+          format: thousands
           suffix: m
           autocomplete: off
           customValidationMessages:
@@ -1235,7 +1239,7 @@ pages:
           <p class="govuk-body">If your project is in England, <a href="/water-management/eligibility-project-location" class="govuk-link">return to the map page</a> and select the correct location.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/government" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 2.3.1 EXIT project-details-total-estimated-grant: when minGrantReached=false
-  - title: Your eligible projects costs are too low to qualify for a grant
+  - title: Your project costs are too low to qualify for a grant
     id: a57dd815-7b9f-4434-bf27-2d7145e3a4f6
     path: /exit-project-details-total-estimated-grant # don't change this without changing grants-ui TotalEstimatedCostController.getNextPath
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
