@@ -232,7 +232,7 @@ test.describe('Water Management Grant Round 3', () => {
         formatUrlForPath('exit-project-details-total-estimated-grant')
       )
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
-        'Your eligible projects costs are too low to qualify for a grant'
+        'Your project costs are too low to qualify for a grant'
       )
       await expect(
         page.getByText(
@@ -343,7 +343,7 @@ test.describe('Water Management Grant Round 3', () => {
         formatUrlForPath('exit-project-details-total-estimated-grant')
       )
       await expect(page.getByRole('heading', { level: 1 })).toContainText(
-        'Your eligible projects costs are too low to qualify for a grant'
+        'Your project costs are too low to qualify for a grant'
       )
       await expect(
         page.getByText(
