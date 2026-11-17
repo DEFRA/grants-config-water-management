@@ -12,7 +12,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL,
     headless: true,
     ignoreHTTPSErrors: true,
-    screenshot: 'only-on-failure'
+    screenshot: { mode: 'only-on-failure', fullPage: true }
   },
   projects: [
     {

@@ -489,6 +489,143 @@ test.describe('Water Management Grant Round 3', () => {
           .filter({ hasText: 'Estimated grant (£)' })
           .locator('//following-sibling::dd')
       ).toContainText('300000')
+      await page.goto(formatUrlForPath('task-list', false))
+    })
+
+    await test.step('Total estimate grant should be rounded 2dp and not break submission', async () => {
+      await startYourProjectDetailsTask(page)
+      await expect(page).toHaveURL(
+        formatUrlForPath('project-building-or-installation-details')
+      )
+      await uncheckAllItems(page)
+      await page.getByRole('checkbox', { name: 'Reservoir' }).check()
+      await page
+        .getByRole('checkbox', {
+          name: 'Above-ground water storage tank or tanks'
+        })
+        .check()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+      await expect(page).toHaveURL(
+        formatUrlForPath('project-details-how-many-reservoirs')
+      )
+      await page.getByRole('radio', { name: 'No' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        formatUrlForPath('project-details-type-of-reservoir')
+      )
+      await page.getByRole('radio', { name: 'Synthetic lined' }).click()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        formatUrlForPath('project-details-reservoir-water-volume')
+      )
+      await page.locator('input#howMuchWater').fill('15222')
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await page.locator('input#waterStorageCapacity').fill('5644')
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+
+      await expect(page).toHaveURL(
+        formatUrlForPath('project-details-total-estimated-grant')
+      )
+
+      await expect(page.getByRole('cell', { name: 'Reservoir' })).toBeVisible()
+      await expect(
+        page.getByRole('cell', {
+          name: 'Synthetic lined'
+        })
+      ).toContainText(
+        '15,222 cubic metres at £11 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.75 per cubic metre'
+      )
+      await expect(
+        page.getByRole('cell', {
+          name: '£124,360.50'
+        })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', { name: 'Water storage tank(s)' })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', {
+          name: '5,644 cubic metres at £71 per cubic metre'
+        })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', {
+          name: '£400,724'
+        })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', { name: 'Total estimated grant' })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', {
+          name: '40% of £525,084.50',
+          exact: true
+        })
+      ).toBeVisible()
+      await expect(
+        page
+          .getByRole('cell', {
+            name: '40% of £525,084.50',
+            exact: true
+          })
+          .locator('//following-sibling::td')
+      ).toHaveText('£210,033.80')
+      await page
+        .getByRole('checkbox', {
+          name: 'I understand there is no guarantee that my application will be successful'
+        })
+        .check()
+      await page.getByRole('button', { name: 'Save and continue' }).click()
+      await expect(page).toHaveURL(formatUrlForPath('task-list'))
+      await assertTaskStatuses(page, [
+        { name: 'Confirm legal status', status: 'Completed' },
+        { name: 'Check your project eligibility', status: 'Completed' },
+        {
+          name: 'Your project details',
+          status: 'Completed'
+        },
+        {
+          name: 'Check and submit your stage 1 application',
+          status: 'Not started'
+        }
+      ])
+      await page
+        .getByRole('link', {
+          name: 'Check and submit your stage 1 application'
+        })
+        .click()
+
+      await expect(page).toHaveURL(formatUrlForPath('summary'))
+      await expect(
+        page
+          .locator('dt')
+          .filter({ hasText: 'Estimated grant (£)' })
+          .locator('//following-sibling::dd')
+      ).toContainText('210033.8')
+      await page.getByRole('button', { name: 'Continue' }).click()
+
+      await expect(page).toHaveURL(formatUrlForPath('application-declaration'))
+      await page
+        .getByRole('checkbox', {
+          name: 'I accept the terms and conditions'
+        })
+        .check()
+      await page
+        .getByRole('button', { name: 'Confirm and submit your application' })
+        .click()
+      await expect(page).toHaveURL(formatUrlForPath('confirmation'))
+      await expect(page.getByRole('heading', { level: 1 })).toContainText(
+        'Application submitted'
+      )
+      await expect(
+        page.locator('.govuk-panel--confirmation .govuk-panel__body')
+      ).toContainText('Your application number')
+      await expect(page.locator('.govuk-panel__body')).toContainText(
+        /WMG-[A-Z0-9]+-[A-Z0-9]+/
+      )
     })
   })
 })
