@@ -234,7 +234,7 @@ test.describe('Water Management Grant Round 3', () => {
           .filter({ hasText: 'Reservoir volume (m³)' })
           .locator('//following-sibling::dd')
           .nth(0)
-      ).toContainText('62000')
+      ).toContainText('62,000')
     })
   })
 })
