@@ -41,7 +41,6 @@ jobs:
           exit $?
 
       - name: Run journey tests for grants-ui
-        continue-on-error: true
         run: |
           chmod +x ./test/run-all-tests.sh
           ./test/run-all-tests.sh
