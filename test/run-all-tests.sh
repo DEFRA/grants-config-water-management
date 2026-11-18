@@ -19,7 +19,7 @@ if [ "${CI}" = "true" ]; then
 fi
 
 mkdir -p test/testconfig
-cp -r configurations/water-management/ test/testconfig/water-management@0.0.0
+cp -rT configurations/water-management/ test/testconfig/water-management@0.0.0
 cp $(dirname "$0")/release.yml test/testconfig/
 curl -fsSL \
   https://raw.githubusercontent.com/DEFRA/grants-ui/main/compose/config-broker/local-allowlists/water-management.yaml \

@@ -7,8 +7,8 @@ import { legalStatusSteps } from '../steps/legal-status-steps.js'
 import { projectEligibilitySteps } from '../steps/project-eligibility-steps.js'
 import { startYourProjectDetailsTask } from '../utils/enter-valid-project-start.js'
 
-const CRN = '9000000035'
-const SBI = '800000026'
+const CRN = '9000000001'
+const SBI = '800000001'
 const GRANT_CODE = 'water-management'
 
 test.describe('Water Management Grant Round 3', () => {
