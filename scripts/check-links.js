@@ -61,9 +61,17 @@ function extractLinks(obj, filePath, lineTracker) {
 
       foundLinks.push({
         url: match[1],
-        text: match[2].replace(/<[^>]*>/g, '').trim(),
+        text: (() => {
+          let sanitized = match[2]
+          let previous
+          do {
+            previous = sanitized
+            sanitized = sanitized.replace(/<[^>]*>/g, '')
+          } while (sanitized !== previous)
+          return sanitized.trim()
+        })(),
         file: filePath,
-        line: line
+        line
       })
     }
   } else if (Array.isArray(obj)) {
