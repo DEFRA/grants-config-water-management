@@ -7,6 +7,10 @@ import { analyzeAccessibility } from '../utils/accessibility.js'
 import { getApplicationSubmission } from '../utils/gas.js'
 import { formatUrlForPath } from '../utils/urls.js'
 import { assertTaskStatuses } from '../utils/assertion.js'
+import {
+  legalStatusOptionsSteps,
+  legalStatusSteps
+} from '../steps/legal-status-steps.js'
 
 const gasConfig = JSON.parse(
   readFileSync(
@@ -75,42 +79,34 @@ test.describe('Water Management Grant application', () => {
           })
         ).toBeVisible()
         await analyzeAccessibility(page)
+        await expect(
+          page.getByText(
+            'Before you apply you must read the Water Management grant round 3 guidance (opens in a new tab).'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', {
+            name: 'Water Management grant round 3 guidance (opens in a new tab)'
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByRole('heading', {
+            name: 'Stage 2: Complete your application'
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'This stage is for invited applicants to complete their application and submit supporting evidence documents.'
+          )
+        ).toBeVisible()
         await page.getByRole('button', { name: 'Continue' }).click()
       })
 
-      await test.step('task-list -> Your legal status', async () => {
-        expect(page).toHaveURL(await formatUrlForPath('task-list'))
-        await assertTaskStatuses(page, [
-          { name: 'Confirm legal status', status: 'Not started' },
-          {
-            name: 'Check your project eligibility',
-            status: 'Cannot start yet'
-          },
-          {
-            name: 'Your project details',
-            status: 'Cannot start yet'
-          },
-          {
-            name: 'Check and submit your stage 1 application',
-            status: 'Cannot start yet'
-          }
-        ])
-        await page.getByRole('link', { name: 'Confirm legal status' }).click()
+      // Verify all legal status options combo
+      await legalStatusOptionsSteps(page)
 
-        await expect(page).toHaveURL(formatUrlForPath('confirm-legal-status'))
-        await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'What is the legal status of your business or organisation?'
-        )
-        await analyzeAccessibility(page)
-        await page
-          .getByRole('radio', { name: 'Private limited company' })
-          .click()
-        await page.getByRole('button', { name: 'Save and continue' }).click()
-
-        await expect(page).toHaveURL(formatUrlForPath('company-number'))
-        await page.locator('#companyNumber').fill('12351975')
-        await page.getByRole('button', { name: 'Save and continue' }).click()
-      })
+      // Select a legal status and continue
+      await legalStatusSteps(page)
 
       await test.step('task-list -> Check your project eligibility', async () => {
         await expect(page).toHaveURL(formatUrlForPath('task-list'))
