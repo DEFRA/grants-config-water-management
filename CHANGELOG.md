@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.36
+
+### Patch Changes
+
+- 3e10252: Fixing tests and shell script for running tests
+
 ## 0.8.35
 
 ### Patch Changes
