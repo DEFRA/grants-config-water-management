@@ -1064,7 +1064,7 @@ pages:
         type: Html
         content: >
           <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency }}</p>
             <p class="govuk-body">This is the estimated amount you could apply for at stage 2.</p>
           </div>
           <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
@@ -1085,28 +1085,28 @@ pages:
                 {% for reservoir in context.state.additionalAnswers.reservoirs %}
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }}</td>
-                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre for the first 10,000 cubic metres, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency | replace: '.00', '' }}</td>
+                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatThousands }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency }} per cubic metre for the first 10,000 cubic metres, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency }} per cubic metre</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency }}</td>
                   </tr>
                 {% endfor %}
               {% endif %}
               {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">Water storage tank(s)</td>
-                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</td>
+                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatThousands }} cubic metres at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency }} per cubic metre</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency }}</td>
                 </tr>
               {% endif %}
               {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">Water distribution network</td>
-                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per metre</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
+                  <td class="govuk-table__cell">{{ waterDistributionLength | formatThousands }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency }} per metre</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency }}</td>
                 </tr>
               {% endif %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header" colspan="2">Total estimated cost</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</td>
               </tr>
             </tbody>
           </table>
@@ -1115,8 +1115,8 @@ pages:
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row" style="border: none;">
                 <td class="govuk-table__cell" style="border: none;">Total estimated grant</td>
-                <td class="govuk-table__cell" style="border: none;">40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</td>
+                <td class="govuk-table__cell" style="border: none;">40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency }}</td>
               </tr>
             </tbody>
           </table>
