@@ -34,6 +34,14 @@ jobs:
           npm run lint
           npm test
 
+      - name: Check links
+        run: |
+          if [ -f "scripts/urls.json" ]; then
+            node scripts/check-links.js --urls-file=scripts/urls.json
+          else
+            node scripts/check-links.js
+          fi
+
       - name: Test Docker Image Build
         run: |
           set +e
