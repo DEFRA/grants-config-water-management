@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.38
+
+### Patch Changes
+
+- 2e246c5: grants-ui config, link href updates
+
 ## 0.8.37
 
 ### Patch Changes
