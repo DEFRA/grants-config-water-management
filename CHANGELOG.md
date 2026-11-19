@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.39
+
+### Patch Changes
+
+- 6d12270: Extract out expected reference costs in journey tests
+
 ## 0.8.38
 
 ### Patch Changes
