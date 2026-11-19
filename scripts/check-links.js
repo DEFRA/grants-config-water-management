@@ -94,7 +94,7 @@ function extractLinks(obj, filePath, lineTracker) {
         url: obj.href,
         text: obj.text.trim(),
         file: filePath,
-        line: line
+        line
       })
     }
     for (const key in obj) {

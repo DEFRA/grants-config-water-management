@@ -1,0 +1,8 @@
+costs:
+  reservoirClayHighCostPerUnit: 9
+  reservoirClayLowCostPerUnit: 2.25
+  reservoirSyntheticHighCostPerUnit: 11
+  reservoirSyntheticLowCostPerUnit: 2.75
+  distNetworkCostPerUnit: 30
+  tanksCostPerUnit: 71
+  grantMaxRate: 0.4

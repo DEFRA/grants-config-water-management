@@ -11,6 +11,10 @@ import {
   legalStatusOptionsSteps,
   legalStatusSteps
 } from '../steps/legal-status-steps.js'
+import {
+  getExpectedClayReservoirCostText,
+  getExpectedWaterStorageTankCostText
+} from '../utils/expected-costs.js'
 
 const gasConfig = JSON.parse(
   readFileSync(
@@ -1060,9 +1064,7 @@ test.describe('Water Management Grant application', () => {
           page.getByRole('cell', {
             name: 'Clay lined'
           })
-        ).toContainText(
-          '10,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
-        )
+        ).toContainText(getExpectedClayReservoirCostText('10,000'))
         await expect(
           page.getByRole('cell', {
             name: '£90,000'
@@ -1073,7 +1075,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByRole('cell', {
-            name: '10,000 cubic metres at £71 per cubic metre'
+            name: getExpectedWaterStorageTankCostText('10,000')
           })
         ).toBeVisible()
         await expect(
