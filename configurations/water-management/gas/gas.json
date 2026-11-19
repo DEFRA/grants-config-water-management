@@ -87,7 +87,11 @@
             "type": "string"
           },
           "whereWaterWillComeFrom": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
           },
           "havePlanningPermission": {
             "type": "string"
