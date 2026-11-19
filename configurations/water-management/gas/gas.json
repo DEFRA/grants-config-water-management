@@ -257,7 +257,7 @@
           "acceptTermsAndConditionsOnSubmitApplicationPage": {
             "type": "array",
             "items": {
-              "type": "boolean"
+              "type": "string"
             },
             "minItems": 1
           }
