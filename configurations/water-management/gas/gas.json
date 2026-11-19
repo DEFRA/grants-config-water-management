@@ -156,12 +156,10 @@
                   "type": "string"
                 },
                 "reservoirItemWhatTypeOfReservoir": {
-                  "type": "string",
-                  "exclusiveMinimum": 0
+                  "type": "string"
                 },
                 "reservoirItemHowMuchWater": {
-                  "type": "number",
-                  "exclusiveMinimum": 0
+                  "type": "number"
                 }
               },
               "required": [
