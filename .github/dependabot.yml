@@ -7,31 +7,21 @@ updates:
     open-pull-requests-limit: 10
     cooldown:
       default-days: 7
-    # Group packages into a shared PR
+    # Separate production and development dependency updates into their own PRs
     groups:
-      lint:
-        patterns:
-          - 'prettier'
-          - 'stylelint'
-          - 'stylelint-*'
-      logging:
-        patterns:
-          - '*-pino'
-          - '*-pino-format'
-          - 'pino'
-          - 'pino-*'
-      tools:
-        patterns:
-          - 'husky'
-          - 'vitest'
-          - 'nodemon'
-          - 'npm-run-all'
-      others:
-        patterns:
-          - '*'
+      production-dependencies:
+        dependency-type: production
+      development-dependencies:
+        dependency-type: development
+    # Pin eslint to its current major (neostandard controls the version);
+    # still allow minor/patch and security updates through
     ignore:
-      - dependency-name: 'eslint-*'
       - dependency-name: 'eslint'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'eslint-*'
+        update-types: ['version-update:semver-major']
+    labels:
+      - 'dependencies'
     schedule:
       interval: weekly
       day: monday
@@ -45,6 +35,13 @@ updates:
   # Update GitHub Actions
   - package-ecosystem: github-actions
     directory: /
+    # Group all GitHub Actions bumps into a single PR
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+    labels:
+      - 'dependencies'
     schedule:
       interval: weekly
       day: monday
@@ -54,6 +51,8 @@ updates:
   # Update Docker
   - package-ecosystem: docker
     directory: /
+    labels:
+      - 'dependencies'
     schedule:
       interval: weekly
       day: monday
