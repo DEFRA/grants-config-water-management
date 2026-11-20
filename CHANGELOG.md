@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.40
+
+### Patch Changes
+
+- 7124328: gas config, top level schema and validation
+
 ## 0.8.39
 
 ### Patch Changes
