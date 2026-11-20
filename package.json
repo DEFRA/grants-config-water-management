@@ -66,20 +66,20 @@
   "author": "Defra DDTS",
   "license": "OGL-UK-3.0",
   "dependencies": {
-    "@defra/cdp-auditing": "0.6.2",
+    "@defra/cdp-auditing": "0.6.3",
     "@defra/cdp-metrics": "0.6.1",
-    "@defra/grants-config-utils": "1.4.0",
-    "@defra/hapi-secure-context": "0.4.1",
-    "@defra/hapi-tracing": "1.30.1",
+    "@defra/grants-config-utils": "1.5.0",
+    "@defra/hapi-secure-context": "0.4.2",
+    "@defra/hapi-tracing": "1.30.2",
     "@elastic/ecs-pino-format": "1.5.0",
     "@hapi/boom": "10.0.1",
-    "@hapi/hapi": "21.4.10",
+    "@hapi/hapi": "21.4.13",
     "aws4": "1.13.2",
     "convict": "6.2.5",
     "convict-format-with-validator": "6.2.0",
     "hapi-pino": "13.0.0",
     "hapi-pulse": "4.0.0",
-    "joi": "18.3.1",
+    "joi": "18.3.2",
     "pino": "10.4.0"
   },
   "devDependencies": {
@@ -97,7 +97,7 @@
     "vitest-fetch-mock": "0.4.5"
   },
   "overrides": {
-    "joi": "18.3.1",
+    "joi": "18.3.2",
     "minimatch": "11.0.3",
     "brace-expansion": "5.0.12"
   }
