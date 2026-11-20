@@ -218,7 +218,7 @@ test.describe('Water Management Grant Round 3', () => {
           .filter({ hasText: 'Name of reservoir' })
           .locator('//following-sibling::dd')
           .nth(0)
-      ).toContainText('Test reservoir 1 updated')
+      ).toContainText("Test Automation's reservoir 1 updated")
 
       await expect(
         page
@@ -245,7 +245,7 @@ async function createReservoirDetails(
 ) {
   await page
     .getByRole('textbox', { name: 'Name of your reservoir' })
-    .fill(`Test reservoir ${reservoir}`)
+    .fill(`Test Automation's reservoir ${reservoir}`)
   await page.getByRole('radio', { name: `${lining} lined` }).click()
   await page
     .getByRole('textbox', {
