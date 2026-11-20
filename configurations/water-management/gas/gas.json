@@ -19,8 +19,7 @@
         "type": "object",
         "properties": {
           "businessDetailsUpToDate": {
-            "type": "boolean",
-            "const": true
+            "type": "boolean"
           },
           "applicant": {
             "type": "object",
@@ -38,24 +37,266 @@
             "type": "string",
             "format": "date-time"
           },
+          "yourLegalStatus": {
+            "type": "string"
+          },
+          "companyNumber": {
+            "type": "string"
+          },
+          "charityNumber": {
+            "type": "string"
+          },
+          "sectorsIrrigated": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "projectLocated__easting": {
+            "type": "number"
+          },
+          "projectLocated__northing": {
+            "type": "number"
+          },
+          "confirmCorrectLocationSelected": {
+            "type": "boolean"
+          },
+          "locationFound": {
+            "type": "boolean"
+          },
+          "workStartedYet": {
+            "type": "string"
+          },
+          "eligibleOrganisation": {
+            "type": "string"
+          },
+          "organisationType": {
+            "type": "string"
+          },
+          "confirmConsultedWithTenants": {
+            "type": "boolean"
+          },
+          "confirmHaveTenancyAgreement": {
+            "type": "boolean"
+          },
+          "confirmHaveAgreements": {
+            "type": "boolean"
+          },
+          "businessesUsingWater": {
+            "type": "string"
+          },
+          "whereWaterWillComeFrom": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "havePlanningPermission": {
+            "type": "string"
+          },
+          "planningPermissionReferenceNumber": {
+            "type": "string"
+          },
+          "confirmWillGetPlanningPermission": {
+            "type": "boolean"
+          },
+          "haveAbstractionLicence": {
+            "type": "string"
+          },
+          "abstractionLicenceConsentNumber": {
+            "type": "string"
+          },
+          "confirmWillGetAbstractionLicence": {
+            "type": "boolean"
+          },
+          "totalScore": {
+            "type": "number"
+          },
+          "sectorScore": {
+            "type": "number"
+          },
+          "scarcityScore": {
+            "type": "number"
+          },
+          "collaborationScore": {
+            "type": "number"
+          },
+          "planningAbstractionScore": {
+            "type": "number"
+          },
+          "confirmWantToContinueOnScorePage": {
+            "type": "boolean"
+          },
+          "expectedProjectStartDate__month": {
+            "type": "number"
+          },
+          "expectedProjectStartDate__year": {
+            "type": "number"
+          },
+          "itemsPlanningToInstall": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "moreThanOneReservoir": {
+            "type": "boolean"
+          },
+          "whatTypeOfReservoir": {
+            "type": "string"
+          },
+          "howMuchWater": {
+            "type": "number"
+          },
+          "reservoirItems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "reservoirItemName": {
+                  "type": "string"
+                },
+                "reservoirItemWhatTypeOfReservoir": {
+                  "type": "string"
+                },
+                "reservoirItemHowMuchWater": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "reservoirItemName",
+                "reservoirItemWhatTypeOfReservoir",
+                "reservoirItemHowMuchWater"
+              ]
+            },
+            "minItems": 1
+          },
+          "waterStorageCapacity": {
+            "type": "number"
+          },
+          "waterDistributionLength": {
+            "type": "number"
+          },
+          "reservoirs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": ["string", "null"]
+                },
+                "type": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "reservoirHighCostPerUnit": {
+                  "type": "number"
+                },
+                "reservoirLowCostPerUnit": {
+                  "type": "number"
+                },
+                "cost": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type",
+                "size",
+                "reservoirHighCostPerUnit",
+                "reservoirLowCostPerUnit",
+                "cost"
+              ]
+            },
+            "minItems": 1
+          },
+          "reservoirCost": {
+            "type": "number"
+          },
+          "distNetworkCostPerUnit": {
+            "type": "number"
+          },
+          "waterDistributionNetworkCost": {
+            "type": "number"
+          },
+          "tanksCostPerUnit": {
+            "type": "number"
+          },
+          "waterTanksCost": {
+            "type": "number"
+          },
           "totalEstimatedCost": {
             "type": "number",
             "minimum": 0
           },
+          "estimatedMaxGrantBeforeReduction": {
+            "type": "number"
+          },
+          "estimatedMaxGrant": {
+            "type": "number"
+          },
+          "minGrantReached": {
+            "type": "boolean"
+          },
+          "maxGrantReached": {
+            "type": "boolean"
+          },
+          "understandNoGuaranteedSuccessOnEstimatedCostPage": {
+            "type": "boolean"
+          },
           "guidanceRead": {
-            "type": "boolean",
-            "const": true
+            "type": "boolean"
           },
           "applicationConfirmation": {
-            "type": "boolean",
-            "const": true
+            "type": "boolean"
+          },
+          "acceptTermsAndConditionsOnSubmitApplicationPage": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
           }
         },
         "required": [
           "businessDetailsUpToDate",
+          "applicant",
+          "detailsConfirmedAt",
+          "yourLegalStatus",
+          "sectorsIrrigated",
+          "projectLocated__easting",
+          "projectLocated__northing",
+          "confirmCorrectLocationSelected",
+          "locationFound",
+          "workStartedYet",
+          "eligibleOrganisation",
+          "organisationType",
+          "businessesUsingWater",
+          "whereWaterWillComeFrom",
+          "havePlanningPermission",
+          "haveAbstractionLicence",
+          "totalScore",
+          "sectorScore",
+          "scarcityScore",
+          "collaborationScore",
+          "planningAbstractionScore",
+          "confirmWantToContinueOnScorePage",
+          "expectedProjectStartDate__month",
+          "expectedProjectStartDate__year",
+          "itemsPlanningToInstall",
           "totalEstimatedCost",
+          "estimatedMaxGrantBeforeReduction",
+          "estimatedMaxGrant",
+          "minGrantReached",
+          "maxGrantReached",
+          "understandNoGuaranteedSuccessOnEstimatedCostPage",
           "guidanceRead",
-          "applicationConfirmation"
+          "applicationConfirmation",
+          "acceptTermsAndConditionsOnSubmitApplicationPage"
         ]
       },
       "stages": [
