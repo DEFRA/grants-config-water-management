@@ -6,7 +6,7 @@ export default defineConfig({
   grep: /@ci/,
   timeout: 120_000,
   fullyParallel: false,
-  workers: 1,
+  workers: 3,
   reporter: [['list', { printSteps: true }]],
   use: {
     baseURL: process.env.BASE_URL,

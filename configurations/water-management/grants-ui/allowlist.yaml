@@ -6,3 +6,5 @@ perf-test:
   allowAll: true
 ext-test:
   allowAll: true
+production:
+  sbis: []

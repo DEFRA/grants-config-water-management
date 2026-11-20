@@ -15,6 +15,7 @@ import {
   getExpectedClayReservoirCostText,
   getExpectedWaterStorageTankCostText
 } from '../utils/expected-costs.js'
+import { availableUsers } from '../data/test-users.js'
 
 const gasConfig = JSON.parse(
   readFileSync(
@@ -26,13 +27,12 @@ const gasConfig = JSON.parse(
   )
 )
 
-const CRN = '9000000035'
-const SBI = '800000026'
-const GRANT_CODE = 'water-management'
+const CRN = availableUsers.get(1).crn
+const SBI = availableUsers.get(1).sbi
 
 test.describe('Water Management Grant application', () => {
   test.beforeEach(async () => {
-    await clearApplicationData(SBI, GRANT_CODE)
+    await clearApplicationData(SBI)
   })
 
   test(
