@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.44
+
+### Patch Changes
+
+- e320012: GRAN-153: Create GAS grant definition, GRAN-271: Apostrophes not displayed properly on CYA, GRAN-281: Application submitted page - replace start new application button, GRAN-311: Update logic on 'Crops you plan to irrigate' page
+
 ## 0.8.43
 
 ### Patch Changes
