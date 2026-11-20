@@ -164,6 +164,11 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-crops-irrigated')
         )
 
+        await page
+          .getByRole('checkbox', {
+            name: 'None of these crop categories apply to my project'
+          })
+          .click()
         await page.getByRole('checkbox', { name: 'Arable crops' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
