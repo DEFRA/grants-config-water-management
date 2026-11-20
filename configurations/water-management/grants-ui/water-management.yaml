@@ -379,6 +379,12 @@ pages:
           showApproximateLocation: true
           approximateLocationPrefix: 'Point selected area:'
         shortDescription: Project location
+      - name: projectLocatedDescription
+        id: 198bfdba-1194-473c-89ca-e784ccf63987
+        title: Project location description
+        type: HiddenField
+        options:
+          required: false
       - name: confirmCorrectLocationSelected
         id: 8bbf8228-ed1e-46ab-9be6-c5e5827d7984
         title: Confirm
