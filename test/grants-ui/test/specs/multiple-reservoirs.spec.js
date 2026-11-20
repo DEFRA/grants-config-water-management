@@ -7,18 +7,19 @@ import { projectEligibilitySteps } from '../steps/project-eligibility-steps.js'
 import { startYourProjectDetailsTask } from '../utils/enter-valid-project-start.js'
 import { assertTaskStatuses } from '../utils/assertion.js'
 import { analyzeAccessibility } from '../utils/accessibility.js'
+import { getExpectedClayReservoirCostText } from '../utils/expected-costs.js'
+import { availableUsers } from '../data/test-users.js'
 
-const CRN = '9000000035'
-const SBI = '800000026'
-const GRANT_CODE = 'water-management'
+const CRN = availableUsers.get(2).crn
+const SBI = availableUsers.get(2).sbi
 
 test.describe('Water Management Grant Round 3', () => {
   test.beforeEach(async () => {
-    await clearApplicationData(SBI, GRANT_CODE)
+    await clearApplicationData(SBI)
   })
 
   test('Multiple reservoirs', { tag: ['@cdp', '@ci'] }, async ({ page }) => {
-    await preTaskSteps(page, CRN)
+    await preTaskSteps(page, CRN, SBI)
 
     await legalStatusSteps(page)
 
@@ -146,8 +147,7 @@ test.describe('Water Management Grant Round 3', () => {
       ).toBeVisible()
       await expect(
         page.locator('td').filter({
-          hasText:
-            '62,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
+          hasText: getExpectedClayReservoirCostText('62,000')
         })
       ).toBeVisible()
       await expect(page.getByRole('cell', { name: '£' }).nth(1)).toHaveText(

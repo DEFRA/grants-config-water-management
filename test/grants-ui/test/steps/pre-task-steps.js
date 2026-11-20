@@ -3,9 +3,9 @@ import { authenticateTo } from '../utils/auth.js'
 import { formatUrlForPath } from '../utils/urls.js'
 import { assertTaskStatuses } from '../utils/assertion.js'
 
-export async function preTaskSteps(page, CRN) {
+export async function preTaskSteps(page, CRN, SBI = '') {
   await test.step('authentication', async () => {
-    await authenticateTo(page, 'water-management', CRN)
+    await authenticateTo(page, 'water-management', CRN, SBI)
   })
 
   await test.step('Complete pre-task steps', async () => {

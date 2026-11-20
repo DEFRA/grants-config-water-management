@@ -1,5 +1,35 @@
 # grants-config-water-management
 
+## 0.8.43
+
+### Patch Changes
+
+- 8589cea: Use distinct users in CI runs of tests
+
+## 0.8.42
+
+### Patch Changes
+
+- 0088564: grants-ui config, crops page now exits whenever 'None..' is selected
+
+## 0.8.41
+
+### Patch Changes
+
+- 4c8d3bb: gas config, top level schema and validation, minor fixes
+
+## 0.8.40
+
+### Patch Changes
+
+- 7124328: gas config, top level schema and validation
+
+## 0.8.39
+
+### Patch Changes
+
+- 6d12270: Extract out expected reference costs in journey tests
+
 ## 0.8.38
 
 ### Patch Changes

@@ -4,14 +4,15 @@ import { formatUrlForPath } from '../utils/urls.js'
 import { analyzeAccessibility } from '../utils/accessibility.js'
 import { preTaskSteps } from '../steps/pre-task-steps.js'
 import { legalStatusSteps } from '../steps/legal-status-steps.js'
+import { availableUsers } from '../data/test-users.js'
 
-const CRN = '9000000035'
-const SBI = '800000026'
-const GRANT_CODE = 'water-management'
+//ideally this would use a different test user, when we get more, but as this doesn't run on CI, we can use the same one for now
+const CRN = availableUsers.get(1).crn
+const SBI = availableUsers.get(1).sbi
 
 test.describe('Water Management Grant Round 3', () => {
   test.beforeEach(async () => {
-    await clearApplicationData(SBI, GRANT_CODE)
+    await clearApplicationData(SBI)
   })
 
   test('Geospatial Journey', { tag: ['@cdp'] }, async ({ page }) => {

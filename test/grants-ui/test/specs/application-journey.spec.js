@@ -11,6 +11,11 @@ import {
   legalStatusOptionsSteps,
   legalStatusSteps
 } from '../steps/legal-status-steps.js'
+import {
+  getExpectedClayReservoirCostText,
+  getExpectedWaterStorageTankCostText
+} from '../utils/expected-costs.js'
+import { availableUsers } from '../data/test-users.js'
 
 const gasConfig = JSON.parse(
   readFileSync(
@@ -22,13 +27,12 @@ const gasConfig = JSON.parse(
   )
 )
 
-const CRN = '9000000035'
-const SBI = '800000026'
-const GRANT_CODE = 'water-management'
+const CRN = availableUsers.get(1).crn
+const SBI = availableUsers.get(1).sbi
 
 test.describe('Water Management Grant application', () => {
   test.beforeEach(async () => {
-    await clearApplicationData(SBI, GRANT_CODE)
+    await clearApplicationData(SBI)
   })
 
   test(
@@ -160,6 +164,11 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-crops-irrigated')
         )
 
+        await page
+          .getByRole('checkbox', {
+            name: 'None of these crop categories apply to my project'
+          })
+          .click()
         await page.getByRole('checkbox', { name: 'Arable crops' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
@@ -1060,9 +1069,7 @@ test.describe('Water Management Grant application', () => {
           page.getByRole('cell', {
             name: 'Clay lined'
           })
-        ).toContainText(
-          '10,000 cubic metres at £9 per cubic metre for the first 10,000 cubic metres, with any additional volume charged at £2.25 per cubic metre'
-        )
+        ).toContainText(getExpectedClayReservoirCostText('10,000'))
         await expect(
           page.getByRole('cell', {
             name: '£90,000'
@@ -1073,7 +1080,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByRole('cell', {
-            name: '10,000 cubic metres at £71 per cubic metre'
+            name: getExpectedWaterStorageTankCostText('10,000')
           })
         ).toBeVisible()
         await expect(
