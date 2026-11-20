@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.43
+
+### Patch Changes
+
+- 8589cea: Use distinct users in CI runs of tests
+
 ## 0.8.42
 
 ### Patch Changes
