@@ -13,14 +13,14 @@ import {
   getExpectedSyntheticReservoirCostText,
   getExpectedWaterStorageTankCostText
 } from '../utils/expected-costs.js'
+import { availableUsers } from '../data/test-users.js'
 
-const CRN = '9000000001'
-const SBI = '800000001'
-const GRANT_CODE = 'water-management'
+const CRN = availableUsers.get(3).crn
+const SBI = availableUsers.get(3).sbi
 
 test.describe('Water Management Grant Round 3', () => {
   test.beforeEach(async () => {
-    await clearApplicationData(SBI, GRANT_CODE)
+    await clearApplicationData(SBI)
   })
 
   test('Reference costs', { tag: ['@cdp', '@ci'] }, async ({ page }) => {
