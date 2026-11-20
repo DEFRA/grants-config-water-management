@@ -44,7 +44,7 @@
             "type": "string"
           },
           "charityNumber": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "sectorsIrrigated": {
             "type": "array",
@@ -172,7 +172,7 @@
                 "reservoirItemHowMuchWater"
               ]
             },
-            "minItems": 1
+            "minItems": 0
           },
           "waterStorageCapacity": {
             "type": "number"
@@ -212,7 +212,7 @@
                 "cost"
               ]
             },
-            "minItems": 1
+            "minItems": 0
           },
           "reservoirCost": {
             "type": "number"
