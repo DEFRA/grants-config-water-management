@@ -29,7 +29,7 @@ test.describe('Water Management Grant Round 3', () => {
         await formatUrlForPath('eligibility-crops-irrigated')
       )
 
-      await page.getByRole('checkbox', { name: 'Arable crops' }).click()
+      await page.getByRole('checkbox', { name: 'Arable crops' }).check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
       await expect(page).toHaveURL(

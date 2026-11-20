@@ -144,11 +144,27 @@ test.describe('Water Management Grant application', () => {
         )
         await verifyAllSectors(page)
         await analyzeAccessibility(page)
+
+        // Continue without selecting any options should error out and not progress to next page
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+        await expect(page.locator('h2.govuk-error-summary__title')).toHaveText(
+          'There is a problem'
+        )
+        await expect(
+          page
+            .locator('.govuk-error-summary__body ul li')
+            .filter({ hasText: 'Select crops to be irrigated' })
+        ).toBeVisible()
+        await expect(page).toHaveURL(
+          formatUrlForPath('eligibility-crops-irrigated')
+        )
+
+        // Select non of these crops only and ensure we exit the application
         await page
           .getByRole('checkbox', {
             name: 'None of these crop categories apply to my project'
           })
-          .click()
+          .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
         await expect(page).toHaveURL(
@@ -164,12 +180,31 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-crops-irrigated')
         )
 
+        // Select non of these crops and another option and ensure we exit the application as well
         await page
           .getByRole('checkbox', {
             name: 'None of these crop categories apply to my project'
           })
-          .click()
-        await page.getByRole('checkbox', { name: 'Arable crops' }).click()
+          .check()
+        await page.getByRole('checkbox', { name: 'Arable crops' }).check()
+        await page.getByRole('button', { name: 'Save and continue' }).click()
+
+        await expect(page).toHaveURL(
+          formatUrlForPath('exit-eligibility-crops-irrigated')
+        )
+        await page.getByRole('link', { name: 'Back', exact: true }).click()
+
+        await expect(page).toHaveURL(
+          formatUrlForPath('eligibility-crops-irrigated')
+        )
+
+        // Select Arable crops only and continue the application
+        await page
+          .getByRole('checkbox', {
+            name: 'None of these crop categories apply to my project'
+          })
+          .uncheck()
+        await page.getByRole('checkbox', { name: 'Arable crops' }).check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
 
@@ -567,7 +602,7 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await page
           .getByRole('checkbox', { name: 'A different water source' })
-          .click()
+          .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
         await expect(page).toHaveURL(
@@ -884,7 +919,7 @@ test.describe('Water Management Grant application', () => {
         )
 
         // Selecting Only Reservoir and continuing to the next page
-        await page.getByRole('checkbox', { name: 'Reservoir' }).click()
+        await page.getByRole('checkbox', { name: 'Reservoir' }).check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
         await expect(page).toHaveURL(
           formatUrlForPath('project-details-how-many-reservoirs')
@@ -942,7 +977,7 @@ test.describe('Water Management Grant application', () => {
           .getByRole('checkbox', {
             name: 'Above-ground water storage tank or tanks'
           })
-          .click()
+          .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
         await expect(page).toHaveURL(
           formatUrlForPath('project-details-water-storage-volume')
@@ -972,7 +1007,7 @@ test.describe('Water Management Grant application', () => {
           .getByRole('checkbox', {
             name: 'Underground water distribution main'
           })
-          .click()
+          .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
         await expect(page).toHaveURL(
@@ -999,12 +1034,12 @@ test.describe('Water Management Grant application', () => {
           .uncheck()
 
         // Selecting multiple mixed items and continue to fill in the details for each item in the correct order
-        await page.getByRole('checkbox', { name: 'Reservoir' }).click()
+        await page.getByRole('checkbox', { name: 'Reservoir' }).check()
         await page
           .getByRole('checkbox', {
             name: 'Above-ground water storage tank or tanks'
           })
-          .click()
+          .check()
 
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
@@ -1231,6 +1266,30 @@ test.describe('Water Management Grant application', () => {
           page.getByRole('link', {
             name: 'View and print this submitted application (opens in new tab)',
             exact: true
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByText('Go to manage your applications to:')
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', {
+            name: 'manage your applications',
+            exact: true
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText: 'view this and other applications'
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText: 'start a new application'
+          })
+        ).toBeVisible()
+        await expect(
+          page.locator('li').filter({
+            hasText: 'continue working on draft applications'
           })
         ).toBeVisible()
         await expect(
