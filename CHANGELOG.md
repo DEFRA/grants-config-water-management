@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.42
+
+### Patch Changes
+
+- 0088564: grants-ui config, crops page now exits whenever 'None..' is selected
+
 ## 0.8.41
 
 ### Patch Changes
