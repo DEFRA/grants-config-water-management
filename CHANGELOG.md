@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.45
+
+### Patch Changes
+
+- 186af16: grants-ui config, uat changes
+
 ## 0.8.44
 
 ### Patch Changes
