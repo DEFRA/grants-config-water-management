@@ -847,7 +847,7 @@ test.describe('Water Management Grant application', () => {
         await expect(
           page.locator('#haveAbstractionLicence-3-item-hint')
         ).toHaveText(
-          'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 metres cubed per day'
+          'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 cubic metres per day'
         )
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
