@@ -220,6 +220,12 @@ test.describe('Water Management Grant Round 3', () => {
         })
       ).toBeVisible()
       await expect(
+        page.getByRole('cell', {
+          name: `The maximum grant available is £300,000`,
+          exact: false
+        })
+      ).not.toBeVisible()
+      await expect(
         page.locator('td').filter({
           hasText: '£22,400'
         })
@@ -238,14 +244,7 @@ test.describe('Water Management Grant Round 3', () => {
         'Your project costs are too low to qualify for a grant'
       )
       await expect(
-        page.getByText(
-          'Your eligible project costs must be at least £87,500 to qualify for a grant.'
-        )
-      ).toBeVisible()
-      await expect(
-        page.getByText(
-          `This is because the grant covers ${expectedCosts.maxRatePercentage}% of your eligible project costs and the minimum grant you can receive is £35,000.`
-        )
+        page.getByText('The minimum grant you can apply for is £35,000.')
       ).toBeVisible()
       await expect(
         page.getByRole('link', {
@@ -263,7 +262,7 @@ test.describe('Water Management Grant Round 3', () => {
       await uncheckAllItems(page)
       await page
         .getByRole('checkbox', {
-          name: 'Above-ground water storage tank or tanks'
+          name: 'Above-ground water storage tanks'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -305,7 +304,7 @@ test.describe('Water Management Grant Round 3', () => {
       await uncheckAllItems(page)
       await page
         .getByRole('checkbox', {
-          name: 'Above-ground water storage tank or tanks'
+          name: 'Above-ground water storage tanks'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -332,7 +331,7 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £35,500`,
-          exact: true
+          exact: false
         })
       ).toBeVisible()
       await expect(
@@ -352,14 +351,7 @@ test.describe('Water Management Grant Round 3', () => {
         'Your project costs are too low to qualify for a grant'
       )
       await expect(
-        page.getByText(
-          'Your eligible project costs must be at least £35,500 to qualify for a grant.'
-        )
-      ).toBeVisible()
-      await expect(
-        page.getByText(
-          `This is because the grant covers ${expectedCosts.maxRatePercentage}% of your eligible project costs and the minimum grant you can receive is £15,000.`
-        )
+        page.getByText('The minimum grant you can apply for is £15,000.')
       ).toBeVisible()
       await expect(
         page.getByRole('link', {
@@ -450,14 +442,20 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £1,640,000`,
-          exact: true
+          exact: false
+        })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', {
+          name: `The maximum grant available is £300,000`,
+          exact: false
         })
       ).toBeVisible()
       await expect(
         page
           .getByRole('cell', {
             name: `${expectedCosts.maxRatePercentage}% of £1,640,000`,
-            exact: true
+            exact: false
           })
           .locator('//following-sibling::td')
       ).toHaveText('£300,000')
@@ -502,10 +500,12 @@ test.describe('Water Management Grant Round 3', () => {
         formatUrlForPath('project-building-or-installation-details')
       )
       await uncheckAllItems(page)
-      await page.getByRole('checkbox', { name: 'Reservoir' }).check()
+      await page
+        .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+        .check()
       await page
         .getByRole('checkbox', {
-          name: 'Above-ground water storage tank or tanks'
+          name: 'Above-ground water storage tanks'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -564,14 +564,14 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £525,084.50`,
-          exact: true
+          exact: false
         })
       ).toBeVisible()
       await expect(
         page
           .getByRole('cell', {
             name: `${expectedCosts.maxRatePercentage}% of £525,084.50`,
-            exact: true
+            exact: false
           })
           .locator('//following-sibling::td')
       ).toHaveText('£210,033.80')
@@ -633,9 +633,11 @@ test.describe('Water Management Grant Round 3', () => {
 })
 
 async function selectAllInstallableItems(page) {
-  await page.getByRole('checkbox', { name: 'Reservoir' }).check()
   await page
-    .getByRole('checkbox', { name: 'Above-ground water storage tank or tanks' })
+    .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+    .check()
+  await page
+    .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
     .check()
   await page
     .getByRole('checkbox', {
@@ -645,9 +647,11 @@ async function selectAllInstallableItems(page) {
 }
 
 async function uncheckAllItems(page) {
-  await page.getByRole('checkbox', { name: 'Reservoir' }).uncheck()
   await page
-    .getByRole('checkbox', { name: 'Above-ground water storage tank or tanks' })
+    .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+    .uncheck()
+  await page
+    .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
     .uncheck()
   await page
     .getByRole('checkbox', {
