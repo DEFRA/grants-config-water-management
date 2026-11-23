@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.46
+
+### Patch Changes
+
+- 06a618d: GRAN-315 - UAT: Text changes for full journey
+
 ## 0.8.45
 
 ### Patch Changes
