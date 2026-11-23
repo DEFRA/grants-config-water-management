@@ -28,7 +28,9 @@ test.describe('Water Management Grant Round 3', () => {
     await test.step('Add first of multiple reservoirs', async () => {
       await startYourProjectDetailsTask(page)
 
-      await page.getByRole('checkbox', { name: 'Reservoir' }).check()
+      await page
+        .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+        .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
 
       await expect(page).toHaveURL(

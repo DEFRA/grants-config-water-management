@@ -85,7 +85,7 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await expect(
           page.getByText(
-            'Before you apply you must read the Water Management grant round 3 guidance (opens in a new tab).'
+            'Before you apply, you must read the Water Management grant round 3 guidance (opens in a new tab)'
           )
         ).toBeVisible()
         await expect(
@@ -362,7 +362,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-applicant-type')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'What type of applicant are you?'
+          'What is your business type?'
         )
         await verifyAllOrganisationTypes(page)
         await analyzeAccessibility(page)
@@ -482,7 +482,7 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await expect(
           page.getByText(
-            'If the members of your water management company are tenants or a landowner and landlord, you must have all the following agreements in place:'
+            'If your water management company is a tenant or a landlord, you must have all the following agreements in place:'
           )
         ).toBeVisible()
         await expect(page.getByText('Tenants must:')).toBeVisible()
@@ -552,7 +552,7 @@ test.describe('Water Management Grant application', () => {
         )
         await expect(
           page.getByText(
-            'This grant is only available to landowner landlords, landowner farmers, tenant farmers or growers and water management companies.'
+            'This grant is only available to landowner landlords, landowner farmers or growers, tenant farmers or growers and water management companies.'
           )
         ).toBeVisible()
         await expect(
@@ -580,10 +580,10 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-other-businesses-use-water')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'How many other businesses will use the water for irrigation?'
+          'How many other businesses will use the water for crop irrigation?'
         )
         await expect(page.locator('#businessesUsingWater-hint')).toHaveText(
-          'If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water. Do not include the business you’re applying on behalf of.'
+          'Do not include your business in this answer. If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water.'
         )
         await verifyHowManyBusinessesWillUseTheWater(page)
         await analyzeAccessibility(page)
@@ -644,7 +644,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-planning-permission')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'Do you have confirmed planning permission?'
+          'Do you have planning permission?'
         )
         await analyzeAccessibility(page)
         await page
@@ -669,12 +669,12 @@ test.describe('Water Management Grant application', () => {
         await expect(
           page.locator('.govuk-body').filter({
             hasText:
-              "You'll need to provide evidence that you have planning permission within 12 months of accepting the agreement or making the first claim (if this is earlier)."
+              'If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have all the required planning permission within 12 months of your grant funding agreement or before making your first claim (if this is earlier).'
           })
         ).toBeVisible()
         await page
           .getByRole('checkbox', {
-            name: 'I confirm I will get the necessary planning permission'
+            name: 'I confirm I will apply for the necessary planning permission'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -761,7 +761,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            "If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner)."
+            'If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).'
           )
         ).toBeVisible()
         await expect(
@@ -776,7 +776,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await page
           .getByRole('checkbox', {
-            name: 'I confirm I will get an abstraction licence'
+            name: 'I confirm I will apply for an abstraction licence'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -831,23 +831,21 @@ test.describe('Water Management Grant application', () => {
       await test.step('project-score-results -> confirm and continue -> task-list', async () => {
         await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'Your eligibility score'
+          'Your project score'
         )
         await analyzeAccessibility(page)
-        await expect(
-          page.getByText('Based on your answers, your project has scored:')
-        ).toBeVisible()
+        await expect(page.getByText('Your project has scored:')).toBeVisible()
         await expect(
           page.locator('.govuk-inset-text .govuk-body')
         ).toContainText(/8\d{1} out of 100/)
         await expect(
           page.getByText(
-            'You are eligible to apply for this grant and we will consider your application carefully.'
+            'Based on your answers, you are eligible to apply for this grant and we will consider your application carefully.'
           )
         ).toBeVisible()
         await expect(
           page.getByText(
-            "The likelihood of your application being successful and being invited to stage 2 of the application process will depend on the total number of applications we receive and the relative scores of all projects as they relate to the RPA's policy objectives and budget."
+            'You will be competing for funding. Applications will be scored against the funding priorities. The likelihood of your application being successful and being invited to stage 2 of the application process will depend on the number and value of other applications we receive.'
           )
         ).toBeVisible()
         await page
@@ -884,7 +882,7 @@ test.describe('Water Management Grant application', () => {
         )
         await expect(
           page.getByText(
-            'Tell us when you expect to start work on your project. The earliest date you can enter is March 2027 after the application window has closed. You cannot start work before you are offered and accept a grant funding agreement.'
+            'Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a grant funding agreement.'
           )
         ).toBeVisible()
         await expect(
@@ -911,13 +909,15 @@ test.describe('Water Management Grant application', () => {
         )
 
         // Selecting Only Reservoir and continuing to the next page
-        await page.getByRole('checkbox', { name: 'Reservoir' }).check()
+        await page
+          .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+          .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
         await expect(page).toHaveURL(
           formatUrlForPath('project-details-how-many-reservoirs')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'Will your project include more than one reservoir?'
+          'Will your project include more than one reservoir at the same location?'
         )
         // User selects No and continues to the next page
         await page.getByRole('radio', { name: 'No' }).click()
@@ -962,12 +962,14 @@ test.describe('Water Management Grant application', () => {
         await expect(page).toHaveURL(
           formatUrlForPath('project-building-or-installation-details')
         )
-        await page.getByRole('checkbox', { name: 'Reservoir' }).uncheck()
+        await page
+          .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+          .uncheck()
 
         // Selecting Only Above-ground water storage tanks and continuing to the next page
         await page
           .getByRole('checkbox', {
-            name: 'Above-ground water storage tank or tanks'
+            name: 'Above-ground water storage tanks'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -990,7 +992,7 @@ test.describe('Water Management Grant application', () => {
         )
         await page
           .getByRole('checkbox', {
-            name: 'Above-ground water storage tank or tanks'
+            name: 'Above-ground water storage tanks'
           })
           .uncheck()
 
@@ -1026,10 +1028,12 @@ test.describe('Water Management Grant application', () => {
           .uncheck()
 
         // Selecting multiple mixed items and continue to fill in the details for each item in the correct order
-        await page.getByRole('checkbox', { name: 'Reservoir' }).check()
+        await page
+          .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+          .check()
         await page
           .getByRole('checkbox', {
-            name: 'Above-ground water storage tank or tanks'
+            name: 'Above-ground water storage tanks'
           })
           .check()
 
@@ -1039,7 +1043,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('project-details-how-many-reservoirs')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'Will your project include more than one reservoir?'
+          'Will your project include more than one reservoir at the same location?'
         )
         await page.getByRole('radio', { name: 'No' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()

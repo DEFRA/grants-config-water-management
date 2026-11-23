@@ -263,7 +263,7 @@ test.describe('Water Management Grant Round 3', () => {
       await uncheckAllItems(page)
       await page
         .getByRole('checkbox', {
-          name: 'Above-ground water storage tank or tanks'
+          name: 'Above-ground water storage tanks'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -305,7 +305,7 @@ test.describe('Water Management Grant Round 3', () => {
       await uncheckAllItems(page)
       await page
         .getByRole('checkbox', {
-          name: 'Above-ground water storage tank or tanks'
+          name: 'Above-ground water storage tanks'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -502,10 +502,12 @@ test.describe('Water Management Grant Round 3', () => {
         formatUrlForPath('project-building-or-installation-details')
       )
       await uncheckAllItems(page)
-      await page.getByRole('checkbox', { name: 'Reservoir' }).check()
+      await page
+        .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+        .check()
       await page
         .getByRole('checkbox', {
-          name: 'Above-ground water storage tank or tanks'
+          name: 'Above-ground water storage tanks'
         })
         .check()
       await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -633,9 +635,11 @@ test.describe('Water Management Grant Round 3', () => {
 })
 
 async function selectAllInstallableItems(page) {
-  await page.getByRole('checkbox', { name: 'Reservoir' }).check()
   await page
-    .getByRole('checkbox', { name: 'Above-ground water storage tank or tanks' })
+    .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+    .check()
+  await page
+    .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
     .check()
   await page
     .getByRole('checkbox', {
@@ -645,9 +649,11 @@ async function selectAllInstallableItems(page) {
 }
 
 async function uncheckAllItems(page) {
-  await page.getByRole('checkbox', { name: 'Reservoir' }).uncheck()
   await page
-    .getByRole('checkbox', { name: 'Above-ground water storage tank or tanks' })
+    .getByRole('checkbox', { name: 'Irrigation water storage reservoir' })
+    .uncheck()
+  await page
+    .getByRole('checkbox', { name: 'Above-ground water storage tanks' })
     .uncheck()
   await page
     .getByRole('checkbox', {

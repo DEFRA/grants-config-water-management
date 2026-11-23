@@ -830,7 +830,7 @@ pages:
         id: 965df9cc-eeca-4fd5-ac5a-815eab8513cd
         type: Html
         content: >
-          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027 after the application window has closed. You cannot start work before you are offered and accept a grant funding agreement.</p>
+          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a grant funding agreement.</p>
           <p class="govuk-body">The date you choose should allow you time to complete the work and submit your final claim by 31 March 2030.</p>
       - name: expectedProjectStartDate
         id: 331371cf-61c9-4753-b8c6-a0238ae1375b
@@ -861,7 +861,7 @@ pages:
           classes: govuk-radios
         shortDescription: Type of build or installation
   # 2.2.1 How many reservoirs?
-  - title: Will your project include more than one reservoir?
+  - title: Will your project include more than one reservoir at the same location?
     id: c486e28f-7cc3-4756-ac83-c515d42f8909
     path: /project-details-how-many-reservoirs
     section: 922947cc-6c6a-4fe5-b831-da27251663a9
@@ -870,8 +870,8 @@ pages:
     components:
       - name: moreThanOneReservoir
         id: 6a8657b3-5c15-43c4-9657-c9dbd29f738c
-        title: Will your project include more than one reservoir?
-        hint: You can include up to 5 reservoirs in this application
+        title: Will your project include more than one reservoir at the same location?
+        hint: You can include up to 5 reservoirs in this application. Where all project items are at the same location and will be delivered together, you can make one application. You may make an additional application for projects that are in different locations.
         type: YesNoField
         options:
           required: true
@@ -1461,10 +1461,10 @@ lists:
     name: itemsPlanningToInstallList
     type: string
     items:
-      - text: Reservoir
+      - text: Irrigation water storage reservoir
         value: RESERVOIR
         id: 0b68e83d-b18d-4415-addf-eb2bf95866ad
-      - text: Above-ground water storage tank or tanks
+      - text: Above-ground water storage tanks
         value: WATER_STORAGE_TANKS
         id: 544b8f79-973d-42d3-8053-f049fb351e6e
       - text: Underground water distribution main
