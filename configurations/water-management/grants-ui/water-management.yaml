@@ -3,10 +3,25 @@ name: Apply for a Water Management grant round 3
 metadata:
   allowMultipleApplications: true
   applicationsPage:
-    content: # todo impl
+    content:
       html: >
         <p class="govuk-body">You can view your submitted applications, continue working on draft applications or start a new application.</p>
-        <p class="govuk-body">You can apply for a Water Management grant round 3 for up to 30 days after the application window closes at 11.59pm on 23 February 2027.</p>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              If you need to withdraw an application
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">To withdraw a submitted application, <a href="mailto:ruralpayments@defra.gov.uk?subject=Water%20Management%20grant%20round%203%20withdrawal%2C%20[SBI]%2C%20[Project%20reference%20number]&body=I%20would%20like%20to%20withdraw%20my%20application%20for%20the%20Water%20Management%20grant%20round%203.%0D%0A%0D%0ASBI%3A%20[Insert%20SBI]%0D%0AProject%20reference%20number%3A%20[Insert%20project%20reference%20number%2C%20if%20you%20have%20one]" class="govuk-link">email the Rural Payments service</a>. Include the following in the email subject line (separate each item with a comma):</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
+              <li>Water Management grant round 3 withdrawal</li>
+              <li>your Single Business Identifier</li>
+              <li>your project reference number, if you have one (For example:Water Management grant round 3 withdrawal, 234567890, WMG12345)</li>
+            </ul>
+          </div>
+        </details>
+        <p class="govuk-body"></p>
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
   referenceNumberPrefix: WMG
   shortName: Water Management grant round 3
@@ -386,12 +401,6 @@ pages:
           showApproximateLocation: true
           approximateLocationPrefix: 'Point selected area:'
         shortDescription: Project location
-      - name: projectLocatedDescription
-        id: caf7a802-477f-4067-9dde-cfd7b39000fe
-        title: projectLocatedDescription
-        type: HiddenField
-        options:
-          required: false
       - name: confirmCorrectLocationSelected
         id: 8bbf8228-ed1e-46ab-9be6-c5e5827d7984
         title: Confirm
