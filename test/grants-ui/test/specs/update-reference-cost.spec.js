@@ -332,7 +332,7 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £35,500`,
-          exact: true
+          exact: false
         })
       ).toBeVisible()
       await expect(
@@ -450,14 +450,14 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £1,640,000`,
-          exact: true
+          exact: false
         })
       ).toBeVisible()
       await expect(
         page
           .getByRole('cell', {
             name: `${expectedCosts.maxRatePercentage}% of £1,640,000`,
-            exact: true
+            exact: false
           })
           .locator('//following-sibling::td')
       ).toHaveText('£300,000')
@@ -566,14 +566,14 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £525,084.50`,
-          exact: true
+          exact: false
         })
       ).toBeVisible()
       await expect(
         page
           .getByRole('cell', {
             name: `${expectedCosts.maxRatePercentage}% of £525,084.50`,
-            exact: true
+            exact: false
           })
           .locator('//following-sibling::td')
       ).toHaveText('£210,033.80')

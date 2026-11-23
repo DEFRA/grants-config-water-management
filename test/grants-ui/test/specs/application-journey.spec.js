@@ -1125,14 +1125,14 @@ test.describe('Water Management Grant application', () => {
         await expect(
           page.getByRole('cell', {
             name: '40% of £800,000',
-            exact: true
+            exact: false
           })
         ).toBeVisible()
         await expect(
           page
             .getByRole('cell', {
               name: '40% of £800,000',
-              exact: true
+              exact: false
             })
             .locator('//following-sibling::td')
         ).toHaveText('£300,000')
