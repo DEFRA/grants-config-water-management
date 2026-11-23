@@ -340,7 +340,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-organisation')
         )
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'Who can apply for this grant'
+          'Eligible organisations'
         )
         await analyzeAccessibility(page)
         await expect(
@@ -904,7 +904,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await page
           .getByRole('checkbox', {
-            name: 'I confirm I want to continue with the application for this project'
+            name: 'I confirm I want to continue with the application based on this project score'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()

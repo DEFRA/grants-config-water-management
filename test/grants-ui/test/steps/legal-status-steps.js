@@ -209,7 +209,7 @@ async function verifyAllLegalStatusOptions(page) {
         await expect(page.getByText('There is a problem')).toBeVisible()
         await expect(
           page.getByRole('link', {
-            name: 'Enter company or organisation number'
+            name: 'Enter company number'
           })
         ).toBeVisible()
       }
