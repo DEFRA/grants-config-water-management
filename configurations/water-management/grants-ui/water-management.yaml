@@ -1028,7 +1028,7 @@ pages:
           min: 1
           precision: 0
         shortDescription: Length of underground water distribution main  (m)
-  # 2.3 Total estimated grant TODO how to display reservoir
+  # 2.3 Total estimated grant
   - title: Total estimated grant
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
     path: /project-details-total-estimated-grant
@@ -1075,9 +1075,9 @@ pages:
           <table class="govuk-table">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Item</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Item</th>
                 <th scope="col" class="govuk-table__header">Details</th>
-                <th scope="col" class="govuk-table__header govuk-table__header--numeric">Estimated cost</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric govuk-!-width-one-quarter">Estimated cost</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -1114,9 +1114,14 @@ pages:
           <table class="govuk-table govuk-!-margin-bottom-0">
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row" style="border: none;">
-                <td class="govuk-table__cell" style="border: none;">Total estimated grant</td>
-                <td class="govuk-table__cell" style="border: none;">40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</td>
-                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</td>
+                <td class="govuk-table__cell govuk-!-width-one-quarter" style="border: none;">Total estimated grant</td>
+                <td class="govuk-table__cell" style="border: none;">
+                  40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}<br>
+                  <span class="govuk-hint govuk-body-s govuk-!-margin-bottom-0" style="display: block;">
+                    The maximum grant available is £300,000
+                  </span>
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold govuk-!-width-one-quarter" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</td>
               </tr>
             </tbody>
           </table>
@@ -1142,10 +1147,10 @@ pages:
     config:
       width: full
       derivedStatePages:
-        - /eligibility-score-results
+        - /project-score-results
         - /project-details-total-estimated-grant
       additionalSections:
-        - page: /eligibility-score-results
+        - page: /project-score-results
           items:
             - title: Project score
               stateValue: additionalAnswers.totalScore
