@@ -233,7 +233,7 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page
           .locator('dt')
-          .filter({ hasText: 'Reservoir volume (m³)' })
+          .filter({ hasText: 'Reservoir volume' })
           .locator('//following-sibling::dd')
           .nth(0)
       ).toContainText('62,000')
