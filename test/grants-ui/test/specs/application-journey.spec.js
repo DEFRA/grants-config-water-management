@@ -792,7 +792,7 @@ test.describe('Water Management Grant application', () => {
       await test.step('eligibility-abstraction-licence -> I do not need a licence -> project-score-results -> back -> eligibility-abstraction-licence', async () => {
         await page
           .getByRole('radio', {
-            name: 'I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)'
+            name: 'I do not need a licence'
           })
           .click()
         await page.getByRole('button', { name: 'Save and continue' }).click()

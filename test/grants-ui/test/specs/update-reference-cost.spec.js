@@ -220,6 +220,12 @@ test.describe('Water Management Grant Round 3', () => {
         })
       ).toBeVisible()
       await expect(
+        page.getByRole('cell', {
+          name: `The maximum grant available is £300,000`,
+          exact: false
+        })
+      ).not.toBeVisible()
+      await expect(
         page.locator('td').filter({
           hasText: '£22,400'
         })
@@ -450,6 +456,12 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page.getByRole('cell', {
           name: `${expectedCosts.maxRatePercentage}% of £1,640,000`,
+          exact: false
+        })
+      ).toBeVisible()
+      await expect(
+        page.getByRole('cell', {
+          name: `The maximum grant available is £300,000`,
           exact: false
         })
       ).toBeVisible()

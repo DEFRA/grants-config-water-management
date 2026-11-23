@@ -724,7 +724,7 @@ pages:
         id: 00cafd98-a399-4ac2-8f3a-6a1b845eb2f2
         type: Html
         content: >
-          <p class="govuk-body">You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">If required, you must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
@@ -1117,9 +1117,11 @@ pages:
                 <td class="govuk-table__cell govuk-!-width-one-quarter" style="border: none;">Total estimated grant</td>
                 <td class="govuk-table__cell" style="border: none;">
                   40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}<br>
-                  <span class="govuk-hint govuk-body-s govuk-!-margin-bottom-0" style="display: block;">
-                    The maximum grant available is £300,000
-                  </span>
+                  {% if context.state.additionalAnswers.maxGrantReached %}
+                    <span class="govuk-hint govuk-body-s govuk-!-margin-bottom-0" style="display: block;">
+                      The maximum grant available is £300,000
+                    </span>
+                  {% endif %}
                 </td>
                 <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold govuk-!-width-one-quarter" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</td>
               </tr>
@@ -1444,7 +1446,8 @@ lists:
       - text: I need a licence but I do not have it yet
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-      - text: I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)
+      - text: I do not need a licence
+        description: 'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 metres cubed per day'
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
   - title: How many businesses will use the water
