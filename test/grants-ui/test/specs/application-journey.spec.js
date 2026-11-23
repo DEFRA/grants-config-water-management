@@ -732,7 +732,7 @@ test.describe('Water Management Grant application', () => {
         await page.getByRole('button', { name: 'Save and continue' }).click()
       })
 
-      await test.step('eligibility-abstraction-licence -> I need a licence but I have not got one yet -> abstraction-licence-is-not-yet-secured -> eligibility-score-results -> back -> back -> eligibility-abstraction-licence', async () => {
+      await test.step('eligibility-abstraction-licence -> I need a licence but I have not got one yet -> abstraction-licence-is-not-yet-secured -> project-score-results -> back -> back -> eligibility-abstraction-licence', async () => {
         await expect(page).toHaveURL(
           formatUrlForPath('eligibility-abstraction-licence')
         )
@@ -781,9 +781,7 @@ test.describe('Water Management Grant application', () => {
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligibility-score-results')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
         await page.getByRole('link', { name: 'Back', exact: true }).click()
         await page.getByRole('link', { name: 'Back', exact: true }).click()
         await expect(page).toHaveURL(
@@ -791,7 +789,7 @@ test.describe('Water Management Grant application', () => {
         )
       })
 
-      await test.step('eligibility-abstraction-licence -> I do not need a licence -> eligibility-score-results -> back -> eligibility-abstraction-licence', async () => {
+      await test.step('eligibility-abstraction-licence -> I do not need a licence -> project-score-results -> back -> eligibility-abstraction-licence', async () => {
         await page
           .getByRole('radio', {
             name: 'I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)'
@@ -799,16 +797,14 @@ test.describe('Water Management Grant application', () => {
           .click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligibility-score-results')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
         await page.getByRole('link', { name: 'Back', exact: true }).click()
         await expect(page).toHaveURL(
           formatUrlForPath('eligibility-abstraction-licence')
         )
       })
 
-      await test.step('eligibility-abstraction-licence -> I already have a licence -> eligibility-abstraction-licence-number -> eligibility-score-results', async () => {
+      await test.step('eligibility-abstraction-licence -> I already have a licence -> eligibility-abstraction-licence-number -> project-score-results', async () => {
         await page
           .getByRole('radio', { name: 'I already have a licence' })
           .click()
@@ -829,15 +825,11 @@ test.describe('Water Management Grant application', () => {
           .locator('textarea#abstractionLicenceConsentNumber')
           .fill('24/01234/FUL')
         await page.getByRole('button', { name: 'Save and continue' }).click()
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligibility-score-results')
-        )
+        await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
       })
 
-      await test.step('eligibility-score-results -> confirm and continue -> task-list', async () => {
-        await expect(page).toHaveURL(
-          formatUrlForPath('eligibility-score-results')
-        )
+      await test.step('project-score-results -> confirm and continue -> task-list', async () => {
+        await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
           'Your eligibility score'
         )

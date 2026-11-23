@@ -1,10 +1,10 @@
 engine: V2
-name: Apply for a Water Management grant round 3 (WMG R3)
+name: Apply for a Water Management grant round 3
 metadata:
   allowMultipleApplications: true
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
   referenceNumberPrefix: WMG
-  shortName: Water Management grant round 3 (WMG R3)
+  shortName: Water Management grant round 3
   description: Build on-farm reservoirs to improve water storage for crop irrigation
   submission:
     grantCode: water-management
@@ -174,7 +174,7 @@ metadata:
   incorrectDetailsContent:
     heading: Update your details
     paragraphs:
-      - Make sure your details are correct before you apply for a Water Management grant round 3 (WMG R3).
+      - Make sure your details are correct before you apply for a Water Management grant round 3.
       - textBefore: 'To update your details follow our '
         link:
           text: Register and update your details with the Rural Payments Agency guidance
@@ -208,7 +208,7 @@ pages:
     controller: CheckDetailsController
     id: 3c451f3b-1164-4d25-8296-782284a4681a
   # Grant guidance summary
-  - title: Apply for a Water Management grant round 3 (WMG R3)
+  - title: Apply for a Water Management grant round 3
     id: 18df3a56-023c-4fa4-bb38-efbca0bcc456
     path: /grant-overview
     controller: TaskPageController
@@ -226,17 +226,19 @@ pages:
             <li>above-ground water storage tanks</li>
             <li>underground water distribution mains</li>
           </ul>
-          <p class="govuk-body">Before you apply you must read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">Your project must be in England and the project items and water must be used by farmers and growers to irrigate eligible crops.</p>
+          <p class="govuk-body">Before you apply, you must read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
           <h2 class="govuk-heading-m">How the application works</h2>
-          <p class="govuk-body">Water Management grant round 3 is competitive - not all applications may receive funding. The application is in 2 stages:</p>
+          <p class="govuk-body">Water Management grant round 3 is competitive - not all applications may receive funding.  You can apply at any time during the application window. We will only start to review applications after the window closes at 11.59pm on 23 February 2027.</p>
           <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Stage 1: Check your eligibility and submit your project details</h3>
           <p class="govuk-body">You'll answer questions about your business and proposed project. If you’re eligible, your application will be scored against the grant’s funding priorities. If you score highly enough, we will invite you to complete your application at stage 2.</p>
           <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Stage 2: Complete your application</h3>
           <p class="govuk-body">This stage is for invited applicants to complete their application and submit supporting evidence documents.</p>
-          <h2 class="govuk-heading-m">Who can apply</h2>
-          <p class="govuk-body">The grant is for eligible farmers, growers, landowners and water management companies. Your project must be in England. You cannot apply if you have already started work on your project.</p>
+          <h2 class="govuk-heading-m">Multiple applications</h2>
+          <p class="govuk-body">Make one application if all project items are at the same location and will be delivered together. This application can cover multiple irrigation water storage reservoirs or above-ground water storage tanks if they are being delivered as one project at the same location.</p>
+          <p class="govuk-body">You may make an additional application for irrigation water storage reservoirs, above-ground water storage tanks and underground water distribution mains that are in different locations.</p>
   # Task list page
-  - title: Apply for a Water Management grant round 3 (WMG R3)
+  - title: Apply for a Water Management grant round 3
     path: /task-list
     controller: TaskListPageController
     id: 5273c5ef-9202-4068-a644-1232a4b86bad
@@ -414,8 +416,8 @@ pages:
               </span>
             </summary>
             <div class="govuk-details__text">
-              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a funding agreement.</p>
-              <p class="govuk-body govuk-!-margin-bottom-0">Before you start the project, you can:</p>
+              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a grant funding agreement.</p>
+              <p class="govuk-body govuk-!-margin-bottom-0">Before the start date in your grant funding agreement, you can:</p>
               <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
                 <li>have discussions with suppliers</li>
                 <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
@@ -479,7 +481,7 @@ pages:
           <p class="govuk-body">Because you told us your organisation is not eligible, you cannot continue with this application.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.5 Organisation type
-  - title: What type of applicant are you?
+  - title: What is your business type?
     id: f9ca590d-169c-46cc-8819-4be089a30eb9
     path: /eligibility-applicant-type
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -487,12 +489,12 @@ pages:
     components:
       - name: organisationType
         id: 7a52568c-6927-432a-8eb4-65ba36f14283
-        title: What type of applicant are you?
+        title: What is your business type?
         type: RadiosField
         list: 67a7167d-3807-425e-a16a-d877e8ad4b1a
         options:
           required: true
-        shortDescription: Applicant type
+        shortDescription: Business type
   # 1.5.1 EXIT eligibility-organisation: when 'Yes' is selected
   - title: You cannot apply for a grant from this scheme
     id: b6a6a7d6-c083-4313-8db6-0e0d1c3b4c92
@@ -505,7 +507,7 @@ pages:
         id: c9f27341-4976-4836-b1c2-24e04f19904d
         type: Html
         content: >
-          <p class="govuk-body">This grant is only available to landowner landlords, landowner farmers, tenant farmers or growers and water management companies.</p>
+          <p class="govuk-body">This grant is only available to landowner landlords, landowner farmers or growers, tenant farmers or growers and water management companies.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.5.1 ORG TYPE LANDLORD NOT FARMING: What you need to do
   - title: What you need to do as a landowner landlord
@@ -572,7 +574,7 @@ pages:
         id: 97766702-cab5-4c5a-87ca-182b7f49ec15
         type: Html
         content: >
-          <p class="govuk-body">If the members of your water management company are tenants or a landowner and landlord, you must have all the following agreements in place:</p>
+          <p class="govuk-body">If your water management company is a tenant or a landlord, you must have all the following agreements in place:</p>
           <p class="govuk-body govuk-!-margin-bottom-0">Tenants must:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
             <li>have a tenancy agreement in place</li>
@@ -596,7 +598,7 @@ pages:
           declarationConfirmationLabel: I confirm I will have all the necessary agreements in place
         shortDescription: Water management company responsibilities
   # 1.6 How many businesses will use the water
-  - title: How many other businesses will use the water for irrigation?
+  - title: How many other businesses will use the water for crop irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
     path: /eligibility-other-businesses-use-water
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -604,11 +606,8 @@ pages:
     components:
       - name: businessesUsingWater
         id: 6e30957f-74f3-4717-aeea-284898e25b1b
-        title: How many other businesses will use the water for irrigation?
-        hint: >
-          If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water.
-
-          Do not include the business you’re applying on behalf of.
+        title: How many other businesses will use the water for crop irrigation?
+        hint: Do not include your business in this answer. If you are invited to stage 2, you’ll need to provide evidence of the other businesses that will use the water.
         type: RadiosField
         list: 6b2f167b-5564-4671-b987-053828151926
         options:
@@ -659,7 +658,7 @@ pages:
           <p class="govuk-body">You’re not eligible for this grant because we can only fund projects that will store water from a surface water source, rainwater harvesting or a borehole or aquifer.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.8 Have planning permission
-  - title: Do you have confirmed planning permission?
+  - title: Do you have planning permission?
     id: abfbde5b-c983-47f1-9b24-4586d0568171
     path: /eligibility-planning-permission
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -667,7 +666,7 @@ pages:
     components:
       - name: havePlanningPermission
         id: 85957609-1ab7-4921-ad8f-5707b455784b
-        title: Do you have confirmed planning permission?
+        title: Do you have planning permission?
         type: RadiosField
         list: 6b6fdc93-25f5-47ac-9e31-23b950f08bd0
         options:
@@ -704,14 +703,15 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">You'll need to provide evidence that you have planning permission within 12 months of accepting the agreement or making the first claim (if this is earlier).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have all the required planning permission within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
+          <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetPlanningPermission
         id: 8f8e667b-84a4-4c39-940b-fdc9d8b67063
         title: Confirm
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I confirm I will get the necessary planning permission
+          declarationConfirmationLabel: I confirm I will apply for the necessary planning permission
         shortDescription: Planning permission declaration
   # 1.9 Need abstraction licence
   - title: Water abstraction licences
@@ -764,7 +764,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
           <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetAbstractionLicence
         id: 4778d175-9398-4223-a20b-3fc64c0f4069
@@ -772,12 +772,12 @@ pages:
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I confirm I will get an abstraction licence
+          declarationConfirmationLabel: I confirm I will apply for an abstraction licence
         shortDescription: Abstraction licence declaration
   # 1.10 Score results
-  - title: Your eligibility score
+  - title: Your project score
     id: fd417ccc-c671-49f3-8b79-4ab32aabb71c
-    path: /eligibility-score-results
+    path: /project-score-results
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
     controller: ScoreResultsTaskPageController
     config:
@@ -802,12 +802,12 @@ pages:
         id: 91b42eac-cc5a-48ff-a050-9af715c2e0ed
         type: Html
         content: >
-          <p class="govuk-body">Based on your answers, your project has scored:</p>
+          <p class="govuk-body">Your project has scored:</p>
           <div class="govuk-inset-text">
             <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalScore }} out of 100</p>
           </div>
-          <p class="govuk-body">You are eligible to apply for this grant and we will consider your application carefully.</p>
-          <p class="govuk-body">The likelihood of your application being successful and being invited to stage 2 of the application process will depend on the total number of applications we receive and the relative scores of all projects as they relate to the RPA's policy objectives and budget.</p>
+          <p class="govuk-body">Based on your answers, you are eligible to apply for this grant and we will consider your application carefully.</p>
+          <p class="govuk-body">You will be competing for funding. Applications will be scored against the funding priorities. The likelihood of your application being successful and being invited to stage 2 of the application process will depend on the number and value of other applications we receive.</p>
       - name: confirmWantToContinueOnScorePage
         id: f35f09e8-6ce8-470a-a9f5-d6bd984d2503
         title: Confirm
@@ -815,7 +815,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I want to continue with the application for this project
-        shortDescription: Eligibility score declaration
+        shortDescription: Project score declaration
   # ==========================================
   # Section 3: Project details and estimated costs
   # ==========================================
@@ -1147,7 +1147,7 @@ pages:
       additionalSections:
         - page: /eligibility-score-results
           items:
-            - title: Eligibility score
+            - title: Project score
               stateValue: additionalAnswers.totalScore
         - page: /project-details-total-estimated-grant
           items:
@@ -1200,7 +1200,7 @@ pages:
         type: Html
         content: >
           <h2 class="govuk-heading-m">What happens next</h2>
-          <p class="govuk-body">Your stage 1 application for a Water Management grant round 3 (WMG R3) has been submitted.</p>
+          <p class="govuk-body">Your stage 1 application for a Water Management grant round 3 has been submitted.</p>
           <p class="govuk-body">We’ll now assess your application against our eligibility criteria and RPA funding priorities. If your stage 1 application is successful, we’ll invite you to  stage 2 of the application process where you’ll need to show:</p>
           <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
             <li>project plans, maps and drawings</li>
@@ -1375,20 +1375,20 @@ lists:
     name: organisationTypeList
     type: string
     items:
-      - text: Landowner landlord
-        description: You are not a farmer or grower - you will own and maintain the project items but will not use them for crop irrigation. Other farmers and growers will use the project items and water for crop irrigation.
-        value: LANDOWNER_LANDLORD
-        id: 3057ad78-5357-4d0c-a23a-80e15602a124
       - text: Landowner farmer or grower
-        description: You will use the project items and water for your own crop irrigation. Other farmers and growers may also use the project items and water for crop irrigation. You may also be a landlord.
+        description: You will own and maintain the project items. You will use the project items and water for irrigating your crops. Other farmers and growers may also use the project items and water for irrigating their crops.
         value: LANDOWNER_OWNER_OCCUPIER
         id: a078d35c-92c8-46c3-99dc-224870b71a98
+      - text: Landowner landlord (not a farmer or grower)
+        description: You will own and maintain the project items. Your tenants or other farmers and growers will use the project items and water for irrigating their crops.
+        value: LANDOWNER_LANDLORD
+        id: 3057ad78-5357-4d0c-a23a-80e15602a124
       - text: Tenant farmer or grower
-        description: You will use the project items and water for your own crop irrigation. Other farmers and growers may also use the project items and water for crop irrigation.
+        description: You will own and maintain the project items. You will use the project items and water for irrigating your crops. Other farmers and growers may also use the project items and water for irrigating their crops.
         value: TENANT
         id: 73e6ccb9-98b1-4c72-bc8b-032eec7a34f0
       - text: Water management company
-        description: You are a business including farmers, growers and landowners working together to store and transfer water for crop irrigation. The business itself will not use the stored water. Instead it will provide water for crop irrigation to farmers and growers.
+        description: A business formed by a group of farmers, growers and landowners who will work together to store and transfer water for crop irrigation. The business is the owner or tenant of the land where the project items are located. They will own and maintain the project items and will provide water to farmers and growers for irrigating their crops.
         value: WATER_MANAGEMENT_COMPANY
         id: aef62824-765a-4722-99f4-c32bfb641279
       - text: None of the above
