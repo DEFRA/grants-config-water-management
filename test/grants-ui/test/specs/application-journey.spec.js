@@ -36,7 +36,7 @@ test.describe('Water Management Grant application', () => {
   })
 
   test(
-    'Apply for a Water Management grant round 3 (WMG R3)',
+    'Apply for a Water Management grant round 3',
     { tag: ['@cdp', '@ci'] },
     async ({ page }) => {
       let referenceNumber
@@ -79,7 +79,7 @@ test.describe('Water Management Grant application', () => {
         await expect(
           page.getByRole('heading', {
             level: 1,
-            name: 'Apply for a Water Management grant round 3 (WMG R3)'
+            name: 'Apply for a Water Management grant round 3'
           })
         ).toBeVisible()
         await analyzeAccessibility(page)
@@ -115,7 +115,7 @@ test.describe('Water Management Grant application', () => {
       await test.step('task-list -> Check your project eligibility', async () => {
         await expect(page).toHaveURL(formatUrlForPath('task-list'))
         await expect(page.getByRole('heading', { level: 1 })).toContainText(
-          'Apply for a Water Management grant round 3 (WMG R3)'
+          'Apply for a Water Management grant round 3'
         )
         await analyzeAccessibility(page)
         await assertTaskStatuses(page, [
@@ -1233,7 +1233,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'Your stage 1 application for a Water Management grant round 3 (WMG R3) has been submitted.'
+            'Your stage 1 application for a Water Management grant round 3 has been submitted.'
           )
         ).toBeVisible()
         await expect(
@@ -1306,7 +1306,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('print-submitted-application')
         )
         await expect(printTab.getByRole('heading', { level: 1 })).toContainText(
-          'Apply for a Water Management grant round 3 (WMG R3) application'
+          'Apply for a Water Management grant round 3 application'
         )
         await analyzeAccessibility(printTab)
         await expect(printTab.getByText(referenceNumber)).toBeVisible()
