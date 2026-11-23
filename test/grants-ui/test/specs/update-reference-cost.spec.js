@@ -244,14 +244,7 @@ test.describe('Water Management Grant Round 3', () => {
         'Your project costs are too low to qualify for a grant'
       )
       await expect(
-        page.getByText(
-          'Your eligible project costs must be at least £87,500 to qualify for a grant.'
-        )
-      ).toBeVisible()
-      await expect(
-        page.getByText(
-          `This is because the grant covers ${expectedCosts.maxRatePercentage}% of your eligible project costs and the minimum grant you can receive is £35,000.`
-        )
+        page.getByText('The minimum grant you can apply for is £35,000.')
       ).toBeVisible()
       await expect(
         page.getByRole('link', {
@@ -358,14 +351,7 @@ test.describe('Water Management Grant Round 3', () => {
         'Your project costs are too low to qualify for a grant'
       )
       await expect(
-        page.getByText(
-          'Your eligible project costs must be at least £35,500 to qualify for a grant.'
-        )
-      ).toBeVisible()
-      await expect(
-        page.getByText(
-          `This is because the grant covers ${expectedCosts.maxRatePercentage}% of your eligible project costs and the minimum grant you can receive is £15,000.`
-        )
+        page.getByText('The minimum grant you can apply for is £15,000.')
       ).toBeVisible()
       await expect(
         page.getByRole('link', {

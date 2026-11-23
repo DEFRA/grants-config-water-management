@@ -1257,11 +1257,9 @@ pages:
         type: Html
         content: >
           {% if itemsPlanningToInstall.size == 1 and itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
-          <p class="govuk-body">Your eligible project costs must be at least £35,500 to qualify for a grant.</p>
-            <p class="govuk-body">This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £15,000.</p>
+            <p class="govuk-body">The minimum grant you can apply for is £15,000.</p>
           {% else %}
-            <p class="govuk-body">Your eligible project costs must be at least £87,500 to qualify for a grant.</p>
-            <p class="govuk-body">This is because the grant covers 40% of your eligible project costs and the minimum grant you can receive is £35,000.</p>
+            <p class="govuk-body">The minimum grant you can apply for is £35,000.</p>
           {% endif %}
           <p class="govuk-body"><a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
 
