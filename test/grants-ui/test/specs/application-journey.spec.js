@@ -85,6 +85,11 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await expect(
           page.getByText(
+            'Your project must be in England and the project items and water must be used by farmers and growers to irrigate eligible crops.'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByText(
             'Before you apply, you must read the Water Management grant round 3 guidance (opens in a new tab)'
           )
         ).toBeVisible()
@@ -101,6 +106,19 @@ test.describe('Water Management Grant application', () => {
         await expect(
           page.getByText(
             'This stage is for invited applicants to complete their application and submit supporting evidence documents.'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByRole('heading', { name: 'Multiple applications' })
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'Make one application if all project items are at the same location and will be delivered together. This application can cover multiple irrigation water storage reservoirs or above-ground water storage tanks if they are being delivered as one project at the same location.'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'You may make an additional application for irrigation water storage reservoirs, above-ground water storage tanks and underground water distribution mains that are in different locations.'
           )
         ).toBeVisible()
         await page.getByRole('button', { name: 'Continue' }).click()
@@ -248,6 +266,23 @@ test.describe('Water Management Grant application', () => {
           'What work have you done on your project?'
         )
         await analyzeAccessibility(page)
+
+        // Test the eligibility notes
+        await page
+          .locator('details summary span', { hasText: 'Eligibility' })
+          .click()
+        await expect(
+          page.getByText(
+            'You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a grant funding agreement.'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'Before the start date in your grant funding agreement, you can:'
+          )
+        ).toBeVisible()
+
+        // Select 'I have not started work' option
         await page
           .getByRole('radio', { name: 'I have not started work' })
           .click()
@@ -262,6 +297,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('eligibility-work-started')
         )
 
+        // Select 'I’ve started work' option after going back
         await page.getByRole('radio', { name: 'I’ve started work' }).click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
         await expect(page).toHaveURL(
@@ -291,6 +327,8 @@ test.describe('Water Management Grant application', () => {
         await expect(page).toHaveURL(
           formatUrlForPath('eligibility-work-started')
         )
+
+        // Select 'I’ve only started preparatory work' option
         await page
           .getByRole('radio', { name: 'I’ve only started preparatory work' })
           .click()
@@ -740,6 +778,17 @@ test.describe('Water Management Grant application', () => {
           'Water abstraction licences'
         )
         await analyzeAccessibility(page)
+        await expect(
+          page.getByText(
+            'If required, you must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the Apply for a water abstraction or impounding licence guidance (opens in a new tab).'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', {
+            name: 'Apply for a water abstraction or impounding licence guidance (opens in a new tab)'
+          })
+        ).toBeVisible()
+
         await page
           .getByRole('radio', {
             name: 'I need a licence but I do not have it yet'
@@ -795,6 +844,11 @@ test.describe('Water Management Grant application', () => {
             name: 'I do not need a licence'
           })
           .click()
+        await expect(
+          page.locator('#haveAbstractionLicence-3-item-hint')
+        ).toHaveText(
+          'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 metres cubed per day'
+        )
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
         await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
