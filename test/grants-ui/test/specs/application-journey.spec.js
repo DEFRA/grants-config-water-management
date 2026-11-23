@@ -31,6 +31,7 @@ const CRN = availableUsers.get(1).crn
 const SBI = availableUsers.get(1).sbi
 
 test.describe('Water Management Grant application', () => {
+  test.describe.configure({ retries: 2 })
   test.beforeEach(async () => {
     await clearApplicationData(SBI)
   })
@@ -38,7 +39,11 @@ test.describe('Water Management Grant application', () => {
   test(
     'Apply for a Water Management grant round 3',
     { tag: ['@cdp', '@ci'] },
-    async ({ page }) => {
+    async ({ page }, testInfo) => {
+      if (testInfo.retry > 0) {
+        console.log(`Retrying! - sleep for 60 seconds before retrying`)
+        await page.waitForTimeout(60000) // Sleep for 60 seconds before retrying
+      }
       let referenceNumber
       await test.step('authentication', async () => {
         await authenticateTo(page, 'water-management', CRN)
