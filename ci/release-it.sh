@@ -5,7 +5,7 @@ set -e
 name=$1
 
 version=$(jq -r '.version' "package.json")
-tag="${version}"
+tag="${name}-${version}"
 
 echo "Processing $name ($tag) from: $(pwd)"
 
