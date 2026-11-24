@@ -2,6 +2,26 @@ engine: V2
 name: Apply for a Water Management grant round 3
 metadata:
   allowMultipleApplications: true
+  applicationsPage:
+    content:
+      html: >
+        <p class="govuk-body">You can view your submitted applications, continue working on draft applications or start a new application.</p>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              If you need to withdraw an application
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">To withdraw a submitted application, <a href="mailto:ruralpayments@defra.gov.uk?subject=Water%20Management%20grant%20round%203%20withdrawal%2C%20[insert%20single%20business%20identifier%20here]%2C%20[insert%20project%20reference%20number%20here]&body=I%20would%20like%20to%20withdraw%20my%20application%20for%20the%20Water%20Management%20grant%20round%203." class="govuk-link">email the Rural Payments service</a>. Include the following in the email subject line (separate each item with a comma):</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
+              <li>Water Management grant round 3 withdrawal</li>
+              <li>your Single Business Identifier</li>
+              <li>your project reference number, if you have one (For example:Water Management grant round 3 withdrawal, 234567890, WMG12345)</li>
+            </ul>
+          </div>
+        </details>
+        <p class="govuk-body"></p>
   id: 9bc54ba7-b658-4aa7-91ec-cb76ff2648df
   referenceNumberPrefix: WMG
   shortName: Water Management grant round 3
@@ -381,6 +401,12 @@ pages:
           showApproximateLocation: true
           approximateLocationPrefix: 'Point selected area:'
         shortDescription: Project location
+      - name: projectLocatedDescription
+        id: caf7a802-477f-4067-9dde-cfd7b39000fe
+        title: Hidden project location description
+        type: HiddenField
+        options:
+          required: false
       - name: confirmCorrectLocationSelected
         id: 8bbf8228-ed1e-46ab-9be6-c5e5827d7984
         title: Confirm
@@ -909,7 +935,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
-          format: thousands
+          format: thousands|suffix
           suffix: m³
           autocomplete: off
           customValidationMessages:
@@ -922,7 +948,7 @@ pages:
           min: 1
           max: 1300000
           precision: 0
-        shortDescription: Reservoir capacity (m³)
+        shortDescription: Reservoir volume
   # 2.2.3 More than one reservoir
   - title: Reservoir items
     id: b4c70d24-9e80-4925-86cc-9ac2607c69d2
@@ -966,7 +992,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
-          format: thousands
+          format: thousands|suffix
           suffix: m³
           autocomplete: off
           customValidationMessages:
@@ -979,7 +1005,7 @@ pages:
           min: 1
           max: 1300000
           precision: 0
-        shortDescription: Reservoir volume (m³)
+        shortDescription: Reservoir volume
   # 2.2.4 Water storage capacity
   - title: How much water will your storage tank or tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
@@ -996,7 +1022,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
-          format: thousands
+          format: thousands|suffix
           suffix: m³
           autocomplete: off
           customValidationMessages:
@@ -1005,7 +1031,7 @@ pages:
         schema:
           min: 1
           precision: 0
-        shortDescription: Water storage tank capacity (m³)
+        shortDescription: Water storage tank capacity
   # 2.2.5 Water distribution length
   - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
@@ -1022,7 +1048,7 @@ pages:
         options:
           required: true
           classes: govuk-!-width-one-third
-          format: thousands
+          format: thousands|suffix
           suffix: m
           autocomplete: off
           customValidationMessages:
@@ -1031,7 +1057,7 @@ pages:
         schema:
           min: 1
           precision: 0
-        shortDescription: Length of underground water distribution main  (m)
+        shortDescription: Length of underground water distribution main
   # 2.3 Total estimated grant
   - title: Total estimated grant
     id: 47323da6-9abe-4e6d-aab4-c7d04deb2d41
@@ -1068,7 +1094,7 @@ pages:
         type: Html
         content: >
           <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</p>
+            <p class="govuk-body govuk-!-font-size-24 govuk-!-font-weight-bold">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency }}</p>
             <p class="govuk-body">This is the estimated amount you could apply for at stage 2.</p>
           </div>
           <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
@@ -1089,28 +1115,28 @@ pages:
                 {% for reservoir in context.state.additionalAnswers.reservoirs %}
                   <tr class="govuk-table__row">
                     <td class="govuk-table__cell">{{ reservoir.name | default: 'Reservoir' }}</td>
-                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre for the first 10,000 cubic metres, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
-                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency | replace: '.00', '' }}</td>
+                    <td class="govuk-table__cell">{{ reservoir.type | capitalize }} lined<br/>{{ reservoir.size | formatThousands }} cubic metres at {{ reservoir.reservoirHighCostPerUnit | formatCurrency }} per cubic metre for the first 10,000 cubic metres, with any additional volume charged at {{ reservoir.reservoirLowCostPerUnit | formatCurrency }} per cubic metre</td>
+                    <td class="govuk-table__cell govuk-table__cell--numeric">{{ reservoir.cost | formatCurrency }}</td>
                   </tr>
                 {% endfor %}
               {% endif %}
               {% if itemsPlanningToInstall contains "WATER_STORAGE_TANKS" %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">Water storage tank(s)</td>
-                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatCurrency | remove: '£' | remove: '.00' }} cubic metres at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency | replace: '.00', '' }} per cubic metre</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency | replace: '.00', '' }}</td>
+                  <td class="govuk-table__cell">{{ waterStorageCapacity | formatThousands }} cubic metres at {{ context.state.additionalAnswers.tanksCostPerUnit | formatCurrency }} per cubic metre</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterTanksCost | formatCurrency }}</td>
                 </tr>
               {% endif %}
               {% if itemsPlanningToInstall contains "WATER_DISTRIBUTION_NETWORK" %}
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell">Water distribution network</td>
-                  <td class="govuk-table__cell">{{ waterDistributionLength | formatCurrency | remove: '£' | remove: '.00' }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency | replace: '.00', '' }} per metre</td>
-                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency | replace: '.00', '' }}</td>
+                  <td class="govuk-table__cell">{{ waterDistributionLength | formatThousands }} metres at {{ context.state.additionalAnswers.distNetworkCostPerUnit | formatCurrency }} per metre</td>
+                  <td class="govuk-table__cell govuk-table__cell--numeric">{{ context.state.additionalAnswers.waterDistributionNetworkCost | formatCurrency }}</td>
                 </tr>
               {% endif %}
               <tr class="govuk-table__row">
                 <th scope="row" class="govuk-table__header" colspan="2">Total estimated cost</th>
-                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold">{{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}</td>
               </tr>
             </tbody>
           </table>
@@ -1120,14 +1146,14 @@ pages:
               <tr class="govuk-table__row" style="border: none;">
                 <td class="govuk-table__cell govuk-!-width-one-quarter" style="border: none;">Total estimated grant</td>
                 <td class="govuk-table__cell" style="border: none;">
-                  40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency | replace: '.00', '' }}<br>
+                  40% of {{ context.state.additionalAnswers.totalEstimatedCost | formatCurrency }}<br>
                   {% if context.state.additionalAnswers.maxGrantReached %}
                     <span class="govuk-hint govuk-body-s govuk-!-margin-bottom-0" style="display: block;">
                       The maximum grant available is £300,000
                     </span>
                   {% endif %}
                 </td>
-                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold govuk-!-width-one-quarter" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency | replace: '.00', '' }}</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric govuk-!-font-weight-bold govuk-!-width-one-quarter" style="border: none;">{{ context.state.additionalAnswers.estimatedMaxGrant | formatCurrency }}</td>
               </tr>
             </tbody>
           </table>
@@ -1162,8 +1188,9 @@ pages:
               stateValue: additionalAnswers.totalScore
         - page: /project-details-total-estimated-grant
           items:
-            - title: Estimated grant (£)
+            - title: Estimated grant
               stateValue: additionalAnswers.estimatedMaxGrant
+              format: currency:gbp
   # 3.2 Submit application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
