@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.49
+
+### Patch Changes
+
+- 4b5ec52: revert release-it script change
+
 ## 0.8.48
 
 ### Patch Changes
