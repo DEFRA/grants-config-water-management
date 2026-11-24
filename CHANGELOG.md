@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.48
+
+### Patch Changes
+
+- fde5602: Possible fix for broken versioning
+
 ## 0.8.47
 
 ### Patch Changes
