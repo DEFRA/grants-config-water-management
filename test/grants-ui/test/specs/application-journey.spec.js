@@ -1045,7 +1045,7 @@ test.describe('Water Management Grant application', () => {
         )
         await analyzeAccessibility(page)
         await expect(page.locator('#waterStorageCapacity-hint')).toHaveText(
-          'Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.'
+          'Enter the total volume of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.'
         )
         await expect(page.locator('#waterStorageCapacity')).toBeVisible()
         await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')
@@ -1142,7 +1142,7 @@ test.describe('Water Management Grant application', () => {
         )
         await analyzeAccessibility(page)
         await expect(page.locator('#waterStorageCapacity-hint')).toHaveText(
-          'Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.'
+          'Enter the total volume of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.'
         )
         await page.locator('input#waterStorageCapacity').fill('10000')
         await expect(page.locator('.govuk-input__suffix')).toHaveText('m³')

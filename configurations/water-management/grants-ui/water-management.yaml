@@ -939,11 +939,11 @@ pages:
           suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in cubic metres
+            any.required: Enter a value in cubic metres
             number.base: Enter a whole number
             number.integer: Enter a whole number
             number.min: Enter a value of 1 cubic metre or more
-            number.max: Enter a value of more than 1.3 million cubic metres
+            number.max: Enter a value of not more than 1.3 million cubic metres
         schema:
           min: 1
           max: 1300000
@@ -996,17 +996,17 @@ pages:
           suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in cubic metres
+            any.required: Enter a value in cubic metres
             number.base: Enter a whole number
             number.integer: Enter a whole number
             number.min: Enter a value of 1 cubic metre or more
-            number.max: Enter a value of more than 1.3 million cubic metres
+            number.max: Enter a value of not more than 1.3 million cubic metres
         schema:
           min: 1
           max: 1300000
           precision: 0
         shortDescription: Reservoir volume
-  # 2.2.4 Water storage capacity
+  # 2.2.4 Water storage volume
   - title: How much water will your storage tank or tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /project-details-water-storage-volume
@@ -1017,7 +1017,7 @@ pages:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
         title: How much water will your storage tank or tanks hold?
-        hint: Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.
+        hint: Enter the total volume of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.
         type: NumberField
         options:
           required: true
@@ -1026,12 +1026,16 @@ pages:
           suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in cubic metres
-            number.min: Enter a value of one cubic metre or more
+            any.required: Enter a value in cubic metres
+            number.base: Enter a whole number
+            number.integer: Enter a whole number
+            number.min: Enter a value of 100 cubic metres or more
+            number.max: Enter a value of not more than 10,000 cubic metres
         schema:
-          min: 1
+          min: 100
+          max: 10000
           precision: 0
-        shortDescription: Water storage tank capacity
+        shortDescription: Water storage tank volume
   # 2.2.5 Water distribution length
   - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
@@ -1052,10 +1056,14 @@ pages:
           suffix: m
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in metres (m)
-            number.min: Enter a value of one metre (m) or more
+            any.required: Enter a value in metres
+            number.base: Enter a whole number
+            number.integer: Enter a whole number
+            number.min: Enter a value of 1 metre or more
+            number.max: Enter a value of not more than 100,000 metres
         schema:
           min: 1
+          max: 100000
           precision: 0
         shortDescription: Length of underground water distribution main
   # 2.3 Total estimated grant
@@ -1165,7 +1173,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I understand there is no guarantee that my application will be successful
-        shortDescription: No guarantee declaration
+        shortDescription: Declaration
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 4: Check and submit your application
@@ -1223,7 +1231,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I accept the terms and conditions
-        shortDescription: Acceptance of terms and conditions
+        shortDescription: Terms and conditions
   # 3.3 Confirmation
   - title: Confirmation
     id: ae9f2211-7278-4071-bb66-a7f56f4194df
