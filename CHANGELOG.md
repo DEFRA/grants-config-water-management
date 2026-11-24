@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.51
+
+### Patch Changes
+
+- 4e50139: GRAN-246: Create multiple applications page
+
 ## 0.8.50
 
 ### Patch Changes
