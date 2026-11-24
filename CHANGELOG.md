@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.50
+
+### Patch Changes
+
+- de81eaa: grants-ui config, error messages and input validation
+
 ## 0.8.49
 
 ### Patch Changes
