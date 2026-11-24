@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.47
+
+### Patch Changes
+
+- 4d32607: Retry main test set, and sleep before attempting
+
 ## 0.8.46
 
 ### Patch Changes
