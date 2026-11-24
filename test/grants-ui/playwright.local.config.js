@@ -27,7 +27,7 @@ export default defineConfig({
   ],
   use: {
     baseURL: 'http://localhost:3000',
-    headless: true,
+    headless: false,
     screenshot: { mode: 'only-on-failure', fullPage: true }
   },
   projects: [
