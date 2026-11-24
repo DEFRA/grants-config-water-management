@@ -6,6 +6,7 @@ import { clearApplicationData } from '../utils/backend.js'
 import { analyzeAccessibility } from '../utils/accessibility.js'
 import { getApplicationSubmission } from '../utils/gas.js'
 import { formatUrlForPath } from '../utils/urls.js'
+import { setHiddenFieldValue } from '../utils/forms.js'
 import { assertTaskStatuses } from '../utils/assertion.js'
 import {
   legalStatusOptionsSteps,
@@ -255,6 +256,10 @@ test.describe('Water Management Grant application', () => {
         )
         await page.locator('#projectLocated__easting').fill('613413')
         await page.locator('#projectLocated__northing').fill('154146')
+        await setHiddenFieldValue(
+          page.locator('#projectLocatedDescription'),
+          'CT4, Canterbury'
+        )
         await page
           .getByRole('checkbox', {
             name: 'I confirm I have selected the right location on the map'
@@ -1369,7 +1374,7 @@ test.describe('Water Management Grant application', () => {
           formatUrlForPath('print-submitted-application')
         )
         await expect(printTab.getByRole('heading', { level: 1 })).toContainText(
-          'Apply for a Water Management grant round 3 application'
+          'Apply for a Water Management grant round 3'
         )
         await analyzeAccessibility(printTab)
         await expect(printTab.getByText(referenceNumber)).toBeVisible()

@@ -488,9 +488,9 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page
           .locator('dt')
-          .filter({ hasText: 'Estimated grant (£)' })
+          .filter({ hasText: 'Estimated grant' })
           .locator('//following-sibling::dd')
-      ).toContainText('300000')
+      ).toContainText('£300,000')
       await page.goto(formatUrlForPath('task-list', false))
     })
 
@@ -604,9 +604,9 @@ test.describe('Water Management Grant Round 3', () => {
       await expect(
         page
           .locator('dt')
-          .filter({ hasText: 'Estimated grant (£)' })
+          .filter({ hasText: 'Estimated grant' })
           .locator('//following-sibling::dd')
-      ).toContainText('210033.8')
+      ).toContainText('£210,033.80')
       await page.getByRole('button', { name: 'Continue' }).click()
 
       await expect(page).toHaveURL(formatUrlForPath('application-declaration'))
