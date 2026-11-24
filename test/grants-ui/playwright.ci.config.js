@@ -8,6 +8,7 @@ export default defineConfig({
   fullyParallel: false,
   workers: 3,
   reporter: [['list', { printSteps: true }]],
+  retries: 2,
   use: {
     baseURL: process.env.BASE_URL,
     headless: true,
