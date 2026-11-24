@@ -59,6 +59,9 @@
           "projectLocated__northing": {
             "type": "number"
           },
+          "projectLocatedDescription": {
+            "type": ["string", "null"]
+          },
           "confirmCorrectLocationSelected": {
             "type": "boolean"
           },

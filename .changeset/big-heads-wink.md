@@ -2,4 +2,4 @@
 'grants-config-water-management': patch
 ---
 
-grants-ui config, changes required to enable new grants-ui features
+grants-ui and gas configs, changes required to enable new grants-ui features, also add projectLocatedDescription to gas
