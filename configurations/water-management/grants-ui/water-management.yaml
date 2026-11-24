@@ -280,7 +280,7 @@ pages:
         list: d05095a0-a3d0-46c9-905d-a3889c4e1306
         options:
           required: true
-        shortDescription: Organisation legal status
+        shortDescription: Legal status
   # 0.1.1 Company number
   - title: Enter your company number
     id: cfca412e-1509-4984-9175-3d590f4af909
@@ -295,7 +295,7 @@ pages:
         type: TextField
         options:
           required: true
-        shortDescription: Company or organisation number
+        shortDescription: Company number
       - name: companyNumberInfo
         id: 8e124442-95e5-4e67-a125-68a4fd68d22f
         type: Html
@@ -346,7 +346,7 @@ pages:
         options:
           required: true
         shortDescription: Crops to be irrigated
-  # 1.1.1 EXIT eligibility-crops-irrigated: when ONLY 'Something else' is selected
+  # 1.1.1 EXIT eligibility-crops-irrigated: when 'Something else' is selected
   - title: You cannot apply for a grant from this scheme
     id: eb9b88ce-1c08-4461-9698-1cbbc794c159
     path: /exit-eligibility-crops-irrigated
@@ -359,7 +359,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You cannot continue with your application.</p>
-          <p class="govuk-body">The crops you plan to irrigate must be included in one of the eligible crop categories.</p>
+          <p class="govuk-body">All the crops you plan to irrigate must be included in one of the eligible crop categories.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.2 Where project located
   - title: Tell us where your project is
@@ -414,7 +414,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I have selected the right location on the map
-        shortDescription: Confirm project location
+        shortDescription: Selected location
   # See EXTRA PAGES for eligibility-project-location exit page
   # 1.3 Work started yet
   - title: What work have you done on your project?
@@ -466,7 +466,7 @@ pages:
           <p class="govuk-body">You cannot apply for a grant if you have already started work or committed to costs for this project. For information about eligibility criteria, check the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
           <p class="govuk-body"><a href="https://www.gov.uk/find-funding-for-land-or-farms" class="govuk-link" target="_blank">Check what other grants you may be eligible for (opens in a new tab)</a></p>
   # 1.4 Eligible organisation
-  - title: Who can apply for this grant
+  - title: Eligible organisations
     id: 15768f7d-6c7e-471a-8bf7-118efa9535e5
     path: /eligibility-organisation
     section: 8e00ff98-4e79-4b9d-9913-3694af7f40ca
@@ -560,7 +560,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I have consulted (or will consult) tenants about this project
-        shortDescription: Landowner landlord responsibilities
+        shortDescription: Applicant's responsibilities
   # 1.5.2 ORG TYPE TENANT: What you need to do
   - title: What you need to do as a tenant farmer or grower
     id: 70c01819-e87d-463f-97ca-951434b0fed1
@@ -585,7 +585,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I have a tenancy agreement that meets the grant requirements
-        shortDescription: Tenant farmer or grower responsibilities
+        shortDescription: Applicant's responsibilities
   # 1.5.3 ORG TYPE WATER COMPANY: What you need to do
   - title: What you need to do as a water management company
     id: e61f7da3-b841-4560-9d0d-aa3d5cdd4c8e
@@ -622,7 +622,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I confirm I will have all the necessary agreements in place
-        shortDescription: Water management company responsibilities
+        shortDescription: Applicant's responsibilities
   # 1.6 How many businesses will use the water
   - title: How many other businesses will use the water for crop irrigation?
     id: 263d9805-288e-4149-b22f-6b403763be1c
@@ -638,7 +638,7 @@ pages:
         list: 6b2f167b-5564-4671-b987-053828151926
         options:
           required: true
-        shortDescription: Number of other businesses using water
+        shortDescription: Number of other businesses using the water
   # 1.6.1 EXIT landlord or water company and not sharing the water
   - title: You cannot apply for a grant from this scheme
     id: 399ec4cf-745f-41ee-9a40-1c23fa617d2b
@@ -840,8 +840,8 @@ pages:
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I confirm I want to continue with the application for this project
-        shortDescription: Project score declaration
+          declarationConfirmationLabel: I confirm I want to continue with the application based on this project score
+        shortDescription: Declaration
   # ==========================================
   # Section 3: Project details and estimated costs
   # ==========================================
@@ -939,12 +939,14 @@ pages:
           suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in metres cubed (m³)
-            number.max: Enter a value less than one million metres cubed (m³)
-            number.min: Enter a value of one metre cubed (m³) or more
+            any.required: Enter a value in cubic metres
+            number.base: Enter a whole number
+            number.integer: Enter a whole number
+            number.min: Enter a value of 1 cubic metre or more
+            number.max: Enter a value of not more than 1.3 million cubic metres
         schema:
           min: 1
-          max: 999999
+          max: 1300000
           precision: 0
         shortDescription: Reservoir volume
   # 2.2.3 More than one reservoir
@@ -994,15 +996,17 @@ pages:
           suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in metres cubed (m³)
-            number.max: Enter a value less than one million metres cubed (m³)
-            number.min: Enter a value of one metre cubed (m³) or more
+            any.required: Enter a value in cubic metres
+            number.base: Enter a whole number
+            number.integer: Enter a whole number
+            number.min: Enter a value of 1 cubic metre or more
+            number.max: Enter a value of not more than 1.3 million cubic metres
         schema:
           min: 1
-          max: 999999
+          max: 1300000
           precision: 0
         shortDescription: Reservoir volume
-  # 2.2.4 Water storage capacity
+  # 2.2.4 Water storage volume
   - title: How much water will your storage tank or tanks hold?
     id: 275fbb62-a3d8-47ac-9564-96e60fe9db6c
     path: /project-details-water-storage-volume
@@ -1013,7 +1017,7 @@ pages:
       - name: waterStorageCapacity
         id: a19b4ad2-a777-4d5a-ad03-607537709f61
         title: How much water will your storage tank or tanks hold?
-        hint: Enter the total capacity of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.
+        hint: Enter the total volume of all the water storage tanks you plan to install in cubic metres. Use a whole number without decimals.
         type: NumberField
         options:
           required: true
@@ -1022,12 +1026,16 @@ pages:
           suffix: m³
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in metres cubed (m³)
-            number.min: Enter a value of one metre cubed (m³) or more
+            any.required: Enter a value in cubic metres
+            number.base: Enter a whole number
+            number.integer: Enter a whole number
+            number.min: Enter a value of 100 cubic metres or more
+            number.max: Enter a value of not more than 10,000 cubic metres
         schema:
-          min: 1
+          min: 100
+          max: 10000
           precision: 0
-        shortDescription: Water storage tank capacity
+        shortDescription: Water storage tank volume
   # 2.2.5 Water distribution length
   - title: How long will your underground water distribution main be?
     id: 5f6de34d-250a-43b1-ba92-a4a388fc36cb
@@ -1048,10 +1056,14 @@ pages:
           suffix: m
           autocomplete: off
           customValidationMessages:
-            any.required: Enter value in metres (m)
-            number.min: Enter a value of one metre (m) or more
+            any.required: Enter a value in metres
+            number.base: Enter a whole number
+            number.integer: Enter a whole number
+            number.min: Enter a value of 1 metre or more
+            number.max: Enter a value of not more than 100,000 metres
         schema:
           min: 1
+          max: 100000
           precision: 0
         shortDescription: Length of underground water distribution main
   # 2.3 Total estimated grant
@@ -1161,7 +1173,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I understand there is no guarantee that my application will be successful
-        shortDescription: No guarantee declaration
+        shortDescription: Declaration
   # See EXTRA PAGES for min grant not reached exit page
   # ============================================
   # Section 4: Check and submit your application
@@ -1219,7 +1231,7 @@ pages:
         options:
           required: true
           declarationConfirmationLabel: I accept the terms and conditions
-        shortDescription: Acceptance of terms and conditions
+        shortDescription: Terms and conditions
   # 3.3 Confirmation
   - title: Confirmation
     id: ae9f2211-7278-4071-bb66-a7f56f4194df
@@ -1267,7 +1279,7 @@ pages:
     components:
       - name: whereProjectLocatedNotInEnglandInfo
         id: 34f0a49a-29cc-43df-8093-8894b81b13ef
-        type: Html # TODO update link - return to map
+        type: Html
         content: >
           <p class="govuk-body">You cannot apply for this grant because you have selected a location that is not in England.</p>
           <p class="govuk-body">If your project is in England, <a href="/water-management/eligibility-project-location" class="govuk-link">return to the map page</a> and select the correct location.</p>
@@ -1458,7 +1470,7 @@ lists:
         value: N
         id: 0b9381c4-dd5c-4be7-9c0a-286dc9134e8a
       - text: I do not need planning permission because I’m only installing an underground distribution main
-        value: NNDM # TODO scoring update required
+        value: NNDM
         id: 51fc81c3-d3b3-4e9e-bc41-922755e5aabc
   - title: Need abstraction licence list
     id: 9ea41f27-6ef5-4c71-86f7-ad6ddc54557d
@@ -1472,7 +1484,7 @@ lists:
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
       - text: I do not need a licence
-        description: 'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 metres cubed per day'
+        description: 'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 cubic metres per day'
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
   - title: How many businesses will use the water
@@ -1582,7 +1594,7 @@ conditions:
           listId: d05095a0-a3d0-46c9-905d-a3889c4e1306
           itemId: b7d87b83-0ebc-4599-815c-3bc18f4b8134
     coordinator: or
-  # Crops irrigated is ONLY something else -> exit page
+  # Crops irrigated is something else -> exit page
   - id: 12e0a793-1929-4931-ad20-e5eb76d1d95c
     displayName: sectorsIrrigatedOnlySomethingElse
     items:

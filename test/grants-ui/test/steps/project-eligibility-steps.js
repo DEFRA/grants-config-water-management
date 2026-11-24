@@ -96,7 +96,7 @@ export async function projectEligibilitySteps(page) {
     await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
     await page
       .getByRole('checkbox', {
-        name: 'I confirm I want to continue with the application for this project'
+        name: 'I confirm I want to continue with the application based on this project score'
       })
       .check()
     await page.getByRole('button', { name: 'Save and continue' }).click()
