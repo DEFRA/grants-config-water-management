@@ -1,5 +1,6 @@
 import { formatUrlForPath } from '../utils/urls.js'
 import { test, expect } from '@playwright/test'
+import { setHiddenFieldValue } from '../utils/forms.js'
 
 export async function projectEligibilitySteps(page) {
   await test.step('Complete project eligibility steps', async () => {
@@ -19,6 +20,10 @@ export async function projectEligibilitySteps(page) {
     )
     await page.locator('#projectLocated__easting').fill('374980')
     await page.locator('#projectLocated__northing').fill('448127')
+    await setHiddenFieldValue(
+      page.locator('#projectLocatedDescription'),
+      'BB7, Ribble Valley'
+    )
     await page
       .getByRole('checkbox', {
         name: 'I confirm I have selected the right location on the map'

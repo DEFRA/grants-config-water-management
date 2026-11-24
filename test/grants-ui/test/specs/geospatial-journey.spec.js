@@ -5,6 +5,7 @@ import { analyzeAccessibility } from '../utils/accessibility.js'
 import { preTaskSteps } from '../steps/pre-task-steps.js'
 import { legalStatusSteps } from '../steps/legal-status-steps.js'
 import { availableUsers } from '../data/test-users.js'
+import { setHiddenFieldValue } from '../utils/forms.js'
 
 //ideally this would use a different test user, when we get more, but as this doesn't run on CI, we can use the same one for now
 const CRN = availableUsers.get(1).crn
@@ -37,6 +38,10 @@ test.describe('Water Management Grant Round 3', () => {
       )
       await page.locator('#projectLocated__easting').fill('92391')
       await page.locator('#projectLocated__northing').fill('10821')
+      await setHiddenFieldValue(
+        page.locator('#projectLocatedDescription'),
+        'TR21, Isles of Scilly'
+      )
       await page
         .getByRole('checkbox', {
           name: 'I confirm I have selected the right location on the map'
@@ -58,6 +63,10 @@ test.describe('Water Management Grant Round 3', () => {
       // Enter a location outside of England (A rock in Isle of Scilly) (Easting: 83727, Northing: 5203)
       await page.locator('#projectLocated__easting').fill('83727')
       await page.locator('#projectLocated__northing').fill('5203')
+      await setHiddenFieldValue(
+        page.locator('#projectLocatedDescription'),
+        'TR22, Isles of Scilly'
+      )
       await page
         .getByRole('checkbox', {
           name: 'I confirm I have selected the right location on the map'
