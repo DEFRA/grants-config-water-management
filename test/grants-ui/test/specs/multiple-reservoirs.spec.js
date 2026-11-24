@@ -18,7 +18,7 @@ test.describe('Water Management Grant Round 3', () => {
     await clearApplicationData(SBI)
   })
 
-  test('Multiple reservoirs', { tag: ['@cdp', '@ci'] }, async ({ page }) => {
+  test('Multiple reservoirs', { tag: ['@ci'] }, async ({ page }) => {
     await preTaskSteps(page, CRN, SBI)
 
     await legalStatusSteps(page)

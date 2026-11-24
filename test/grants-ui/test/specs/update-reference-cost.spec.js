@@ -23,7 +23,7 @@ test.describe('Water Management Grant Round 3', () => {
     await clearApplicationData(SBI)
   })
 
-  test('Reference costs', { tag: ['@cdp', '@ci'] }, async ({ page }) => {
+  test('Reference costs', { tag: ['@ci'] }, async ({ page }) => {
     await preTaskSteps(page, CRN)
 
     await legalStatusSteps(page)
