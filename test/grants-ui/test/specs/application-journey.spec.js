@@ -32,7 +32,6 @@ const CRN = availableUsers.get(1).crn
 const SBI = availableUsers.get(1).sbi
 
 test.describe('Water Management Grant application', () => {
-  test.describe.configure({ retries: 2 })
   test.beforeEach(async () => {
     await clearApplicationData(SBI)
   })
@@ -1382,6 +1381,54 @@ test.describe('Water Management Grant application', () => {
           printTab.getByRole('button', { name: 'Print this page' })
         ).toBeVisible()
         await printTab.close()
+      })
+
+      await test.step('confirmation -> manage applications -> verify manage applications page', async () => {
+        await page
+          .getByRole('link', {
+            name: 'manage your applications',
+            exact: true
+          })
+          .click()
+        await expect(page).toHaveURL(formatUrlForPath('applications'))
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          'Manage your Water Management grant round 3 applications'
+        )
+        await analyzeAccessibility(page)
+        await expect(
+          page.getByText(
+            'You can view your submitted applications, continue working on draft applications or start a new application.'
+          )
+        ).toBeVisible()
+        await page
+          .locator('details summary span', {
+            hasText: 'If you need to withdraw an application'
+          })
+          .click()
+        await expect(
+          page.getByText(
+            'To withdraw a submitted application, email the Rural Payments service. Include the following in the email subject line (separate each item with a comma):'
+          )
+        ).toBeVisible()
+        await expect(
+          page.getByRole('link', { name: 'email the Rural Payments service' })
+        ).toHaveAttribute(
+          'href',
+          'mailto:ruralpayments@defra.gov.uk?subject=Water%20Management%20grant%20round%203%20withdrawal%2C%20[insert%20single%20business%20identifier%20here]%2C%20[insert%20project%20reference%20number%20here]&body=I%20would%20like%20to%20withdraw%20my%20application%20for%20the%20Water%20Management%20grant%20round%203.'
+        )
+        await expect(
+          page.getByText('Water Management grant round 3 withdrawal', {
+            exact: true
+          })
+        ).toBeVisible()
+        await expect(
+          page.getByText('your Single Business Identifier')
+        ).toBeVisible()
+        await expect(
+          page.getByText(
+            'your project reference number, if you have one (For example:Water Management grant round 3 withdrawal, 234567890, WMG12345)'
+          )
+        ).toBeVisible()
       })
 
       if (CI()) {
