@@ -326,7 +326,7 @@
               "validFrom": [
                 {
                   "code": "STATUS_APPLICATION_WITHDRAWAL_REQUESTED",
-                  "processes": ["WITHDRAW_APPLICATION"]
+                  "processes": ["WITHDRAW_AGREEMENT"]
                 }
               ]
             }
