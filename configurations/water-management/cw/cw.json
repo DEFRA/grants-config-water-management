@@ -60,6 +60,7 @@
               "theme": "NEUTRAL",
               "description": "Application received and pending ranking",
               "interactive": false,
+              "hideTaskGroups": true,
               "closes": false,
               "transitions": [
                 {
@@ -84,6 +85,7 @@
               "theme": "WARN",
               "description": "Application withdrawal has been requested and is awaiting withdrawal confirmation",
               "interactive": false,
+              "hideTaskGroups": true,
               "closes": false,
               "transitions": [
                 {
