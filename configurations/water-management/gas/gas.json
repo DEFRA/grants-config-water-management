@@ -315,7 +315,10 @@
             {
               "code": "STATUS_APPLICATION_WITHDRAWN",
               "validFrom": [
-                { "code": "STATUS_APPLICATION_RECEIVED", "processes": [] }
+                {
+                  "code": "STATUS_APPLICATION_RECEIVED",
+                  "processes": ["WITHDRAW_AGREEMENT"]
+                }
               ]
             }
           ]
