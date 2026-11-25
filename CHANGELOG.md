@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.54
+
+### Patch Changes
+
+- bf4ac3a: gas config, add withdrawn capability (attempt 3)
+
 ## 0.8.53
 
 ### Patch Changes
