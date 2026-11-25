@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.53
+
+### Patch Changes
+
+- dcbae4c: gas config, add withdrawn capability (attempt 2)
+
 ## 0.8.52
 
 ### Patch Changes
