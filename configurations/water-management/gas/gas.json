@@ -311,12 +311,36 @@
             {
               "code": "STATUS_APPLICATION_RECEIVED",
               "validFrom": []
+            },
+            {
+              "code": "STATUS_APPLICATION_WITHDRAWN",
+              "validFrom": [
+                { "code": "STATUS_APPLICATION_RECEIVED", "processes": [] }
+              ]
             }
           ]
         }
       ]
     }
   ],
-  "externalStatusMap": {},
+  "externalStatusMap": {
+    "phases": [
+      {
+        "code": "PHASE_PRE_AWARD",
+        "stages": [
+          {
+            "code": "STAGE_REVIEW_APPLICATION",
+            "statuses": [
+              {
+                "code": "PHASE_PRE_AWARD:STAGE_REVIEW_APPLICATION:STATUS_APPLICATION_WITHDRAWN",
+                "source": "CW",
+                "mappedTo": "PHASE_PRE_AWARD:STAGE_REVIEW_APPLICATION:STATUS_APPLICATION_WITHDRAWN"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "pages": {}
 }
