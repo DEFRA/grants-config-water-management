@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.55
+
+### Patch Changes
+
+- e60d2cf: gas config, add withdrawn capability (attempt 4)
+
 ## 0.8.54
 
 ### Patch Changes
