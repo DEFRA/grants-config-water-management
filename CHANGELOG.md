@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.8.52
+
+### Patch Changes
+
+- 267ac88: gas config, add withdrawn capability
+
 ## 0.8.51
 
 ### Patch Changes
