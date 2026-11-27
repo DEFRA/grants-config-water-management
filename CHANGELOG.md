@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.9.0
+
+### Minor Changes
+
+- 48331c6: grants-ui config, final content changes
+
 ## 0.8.56
 
 ### Patch Changes
