@@ -819,7 +819,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            "If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner)."
+            'If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).'
           )
         ).toBeVisible()
         await expect(
@@ -834,7 +834,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await page
           .getByRole('checkbox', {
-            name: 'I confirm I will get an abstraction licence'
+            name: 'I confirm I will apply for an abstraction licence if required'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
