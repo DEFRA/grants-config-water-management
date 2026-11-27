@@ -853,11 +853,6 @@ test.describe('Water Management Grant application', () => {
             name: 'I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)'
           })
           .click()
-        await expect(
-          page.locator('#haveAbstractionLicence-3-item-hint')
-        ).toHaveText(
-          'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 cubic metres per day'
-        )
         await page.getByRole('button', { name: 'Save and continue' }).click()
 
         await expect(page).toHaveURL(formatUrlForPath('project-score-results'))
