@@ -8,10 +8,7 @@ import { getApplicationSubmission } from '../utils/gas.js'
 import { formatUrlForPath } from '../utils/urls.js'
 import { setHiddenFieldValue } from '../utils/forms.js'
 import { assertTaskStatuses } from '../utils/assertion.js'
-import {
-  legalStatusOptionsSteps,
-  legalStatusSteps
-} from '../steps/legal-status-steps.js'
+import { legalStatusSteps } from '../steps/legal-status-steps.js'
 import {
   getExpectedClayReservoirCostText,
   getExpectedWaterStorageTankCostText
@@ -74,12 +71,12 @@ test.describe('Water Management Grant application', () => {
         )
       })
 
-      await test.step('check-details -> task-list', async () => {
+      await test.step('check-details -> select yes and continue', async () => {
         await page.getByRole('radio', { name: 'Yes' }).click()
         await page.getByRole('button', { name: 'Continue' }).click()
       })
 
-      await test.step('task-list -> grant-overview', async () => {
+      await test.step('grant-overview -> verify content -> continue', async () => {
         await expect(page).toHaveURL(formatUrlForPath('grant-overview'))
         await expect(
           page.getByRole('heading', {
@@ -128,9 +125,6 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await page.getByRole('button', { name: 'Continue' }).click()
       })
-
-      // Verify all legal status options combo
-      await legalStatusOptionsSteps(page)
 
       // Select a legal status and continue
       await legalStatusSteps(page)
@@ -931,7 +925,7 @@ test.describe('Water Management Grant application', () => {
         await page.getByRole('link', { name: 'Your project details' }).click()
       })
 
-      await test.step('roject-details-expected-start-date', async () => {
+      await test.step('project-details-expected-start-date', async () => {
         await expect(page).toHaveURL(
           formatUrlForPath('project-details-expected-start-date')
         )
