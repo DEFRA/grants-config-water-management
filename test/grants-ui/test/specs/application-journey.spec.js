@@ -789,7 +789,7 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await expect(
           page.getByText(
-            'You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the Apply for a water abstraction or impounding licence guidance (opens in a new tab).'
+            'If required, you must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the Apply for a water abstraction or impounding licence guidance (opens in a new tab).'
           )
         ).toBeVisible()
         await expect(
@@ -1247,7 +1247,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'you have read and understood the information in the Water Management grant round 3 guidance (opens in a new tab)'
+            'you have read and understood the information in the Water Management grant round 3 guidance (opens in a new tab) about this grant'
           )
         ).toBeVisible()
         await expect(

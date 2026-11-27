@@ -750,7 +750,7 @@ pages:
         id: 00cafd98-a399-4ac2-8f3a-6a1b845eb2f2
         type: Html
         content: >
-          <p class="govuk-body">You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">If required, you must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
@@ -1219,7 +1219,7 @@ pages:
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>the information you have provided is correct to the best of your knowledge</li>
-            <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
+            <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> about this grant</li>
             <li>you have read, understood and agree to the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3/water-management-grant-round-3-general-terms-and-conditions" class="govuk-link" target="_blank">Water Management grant round 3 general terms and conditions (opens in a new tab)</a> under which this grant is offered</li>
             <li>you understand that should you be offered the grant, the Grant Funding Agreement may contain project specific conditions which will apply for the duration of the agreement</li>
             <li>you’re not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
