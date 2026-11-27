@@ -1421,7 +1421,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'your project reference number, if you have one (For example:Water Management grant round 3 withdrawal, 234567890, WMG12345)'
+            'your project reference number, if you have one (For example:Water Management grant round 3 withdrawal, 234567890, WMG-123-456)'
           )
         ).toBeVisible()
       })
