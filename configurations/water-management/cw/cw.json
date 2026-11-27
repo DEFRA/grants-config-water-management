@@ -72,7 +72,7 @@
                     "checkTasks": false,
                     "comment": {
                       "label": "Explain this decision",
-                      "helpText": "You must include an explanation for auditing purposes.",
+                      "helpText": "Enter the reason why the customer needs to withdraw the application",
                       "mandatory": true
                     }
                   }
@@ -89,7 +89,7 @@
               "closes": false,
               "transitions": [
                 {
-                  "targetPosition": "PHASE_PRE_AWARD:STAGE_REVIEW_APPLICATION:STATUS_APPLICATION_WITHDRAWN",
+                  "targetPosition": "PHASE_PRE_AWARD:STAGE_REVIEW_APPLICATION:APPLICATION_WITHDRAWN",
                   "checkTasks": false,
                   "action": null
                 }
@@ -97,7 +97,7 @@
             },
             {
               "name": "Withdrawn",
-              "code": "STATUS_APPLICATION_WITHDRAWN",
+              "code": "APPLICATION_WITHDRAWN",
               "theme": "WARN",
               "description": "Application has been withdrawn",
               "interactive": false,
@@ -133,7 +133,7 @@
                     },
                     {
                       "component": "text",
-                      "text": "there is an error in the application"
+                      "text": "has made an error in their application"
                     }
                   ]
                 }
@@ -165,7 +165,7 @@
               ]
             },
             {
-              "renderIf": "jsonata:$.position.statusCode = 'STATUS_APPLICATION_WITHDRAWN'",
+              "renderIf": "jsonata:$.position.statusCode = 'APPLICATION_WITHDRAWN'",
               "content": [
                 {
                   "component": "heading",

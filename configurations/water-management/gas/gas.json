@@ -322,7 +322,7 @@
               ]
             },
             {
-              "code": "STATUS_APPLICATION_WITHDRAWN",
+              "code": "APPLICATION_WITHDRAWN",
               "validFrom": [
                 {
                   "code": "STATUS_APPLICATION_WITHDRAWAL_REQUESTED",
@@ -351,7 +351,7 @@
               {
                 "code": "withdrawn",
                 "source": "AS",
-                "mappedTo": "PHASE_PRE_AWARD:STAGE_REVIEW_APPLICATION:STATUS_APPLICATION_WITHDRAWN"
+                "mappedTo": "PHASE_PRE_AWARD:STAGE_REVIEW_APPLICATION:APPLICATION_WITHDRAWN"
               }
             ]
           }
