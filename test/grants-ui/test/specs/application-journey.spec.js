@@ -850,7 +850,7 @@ test.describe('Water Management Grant application', () => {
       await test.step('eligibility-abstraction-licence -> I do not need a licence -> project-score-results -> back -> eligibility-abstraction-licence', async () => {
         await page
           .getByRole('radio', {
-            name: 'I do not need an abstraction licence for my project because I will, for example, fill the reservoir with harvested rainwater or only abstract less than 20 cubic metres per day, in accordance with Environment Agency guidance.'
+            name: 'I do not need an abstraction licence for my project because I will, for example, fill the reservoir with harvested rainwater or only abstract less than 20 cubic metres per day, in accordance with Environment Agency guidance'
           })
           .click()
         await page.getByRole('button', { name: 'Save and continue' }).click()
