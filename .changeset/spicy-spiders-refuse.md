@@ -2,4 +2,4 @@
 'grants-config-water-management': patch
 ---
 
-gas config, add withdrawn capability (attempt 6)
+grants-ui/gas/cw configs, add withdrawn capability (attempt 6)
