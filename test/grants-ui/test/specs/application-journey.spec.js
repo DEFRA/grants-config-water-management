@@ -282,12 +282,12 @@ test.describe('Water Management Grant application', () => {
           .click()
         await expect(
           page.getByText(
-            'You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a grant funding agreement.'
+            'You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a Grant Funding Agreement.'
           )
         ).toBeVisible()
         await expect(
           page.getByText(
-            'Before the start date in your grant funding agreement, you can:'
+            'Before the start date in your Grant Funding Agreement, you can:'
           )
         ).toBeVisible()
 
@@ -716,7 +716,7 @@ test.describe('Water Management Grant application', () => {
         await expect(
           page.locator('.govuk-body').filter({
             hasText:
-              'If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have all the required planning permission within 12 months of your grant funding agreement or before making your first claim (if this is earlier).'
+              'If you’re invited to stage 2 of the application process, and are successful in being offered a Grant Funding Agreement, you must have all the required planning permission within 12 months of your Grant Funding Agreement or before making your first claim (if this is earlier).'
           })
         ).toBeVisible()
         await page
@@ -819,7 +819,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).'
+            'If you’re invited to stage 2 of the application process, and are successful in being offered a Grant Funding Agreement, you must have the required abstraction licences within 12 months of your Grant Funding Agreement or before making your first claim (if this is earlier).'
           )
         ).toBeVisible()
         await expect(
@@ -940,7 +940,7 @@ test.describe('Water Management Grant application', () => {
         )
         await expect(
           page.getByText(
-            'Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a grant funding agreement.'
+            'Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a Grant Funding Agreement.'
           )
         ).toBeVisible()
         await expect(
@@ -1262,7 +1262,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'you’re not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful'
+            'you are not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful'
           )
         ).toBeVisible()
         await page

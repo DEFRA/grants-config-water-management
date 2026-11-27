@@ -442,8 +442,8 @@ pages:
               </span>
             </summary>
             <div class="govuk-details__text">
-              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a grant funding agreement.</p>
-              <p class="govuk-body govuk-!-margin-bottom-0">Before the start date in your grant funding agreement, you can:</p>
+              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a Grant Funding Agreement.</p>
+              <p class="govuk-body govuk-!-margin-bottom-0">Before the start date in your Grant Funding Agreement, you can:</p>
               <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
                 <li>have discussions with suppliers</li>
                 <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
@@ -729,7 +729,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have all the required planning permission within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a Grant Funding Agreement, you must have all the required planning permission within 12 months of your Grant Funding Agreement or before making your first claim (if this is earlier).</p>
           <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetPlanningPermission
         id: 8f8e667b-84a4-4c39-940b-fdc9d8b67063
@@ -790,7 +790,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a Grant Funding Agreement, you must have the required abstraction licences within 12 months of your Grant Funding Agreement or before making your first claim (if this is earlier).</p>
           <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetAbstractionLicence
         id: 4778d175-9398-4223-a20b-3fc64c0f4069
@@ -856,7 +856,7 @@ pages:
         id: 965df9cc-eeca-4fd5-ac5a-815eab8513cd
         type: Html
         content: >
-          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a grant funding agreement.</p>
+          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a Grant Funding Agreement.</p>
           <p class="govuk-body">The date you choose should allow you time to complete the work and submit your final claim by 31 March 2030.</p>
       - name: expectedProjectStartDate
         id: 331371cf-61c9-4753-b8c6-a0238ae1375b
@@ -1107,7 +1107,7 @@ pages:
           </div>
           <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
           <p class="govuk-body">Grants are based on reference costs to work out the maximum grant amount you could get. Reference costs are based on the expected average cost for each item. The maximum grant available is £300,000.</p>
-          <p class="govuk-body">If you’re invited to apply for stage 2, and are successful in being offered a grant funding agreement, the grant you can claim for eligible items will be the lower of 40% of the reference costs or 40% of your actual invoiced costs at claim stage.</p>
+          <p class="govuk-body">If you’re invited to apply for stage 2, and are successful in being offered a Grant Funding Agreement, the grant you can claim for eligible items will be the lower of 40% of the reference costs or 40% of your actual invoiced costs at claim stage.</p>
           <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
           <h2 class="govuk-heading-m">Estimated costs</h2>
           <table class="govuk-table">
@@ -1222,7 +1222,7 @@ pages:
             <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> about this grant</li>
             <li>you have read, understood and agree to the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3/water-management-grant-round-3-general-terms-and-conditions" class="govuk-link" target="_blank">Water Management grant round 3 general terms and conditions (opens in a new tab)</a> under which this grant is offered</li>
             <li>you understand that should you be offered the grant, the Grant Funding Agreement may contain project specific conditions which will apply for the duration of the agreement</li>
-            <li>you’re not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
+            <li>you are not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
           </ul>
       - name: acceptTermsAndConditionsOnSubmitApplicationPage
         id: 1eb2dc48-1f2d-4a70-8957-41a71ce41a22
