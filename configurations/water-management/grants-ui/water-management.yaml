@@ -442,8 +442,8 @@ pages:
               </span>
             </summary>
             <div class="govuk-details__text">
-              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a grant funding agreement.</p>
-              <p class="govuk-body govuk-!-margin-bottom-0">Before the start date in your grant funding agreement, you can:</p>
+              <p class="govuk-body">You will invalidate your application if you start the project or commit to any costs (such as placing orders) before you receive a Grant Funding Agreement.</p>
+              <p class="govuk-body govuk-!-margin-bottom-0">Before the start date in your Grant Funding Agreement, you can:</p>
               <ul class="govuk-list govuk-list--bullet govuk-!-padding-left-6">
                 <li>have discussions with suppliers</li>
                 <li>apply for planning permission or an abstraction licence (these can take a long time)</li>
@@ -476,12 +476,12 @@ pages:
         id: 448f0088-240b-4270-844f-0360e6fa868b
         type: Html
         content: >
-          <p class="govuk-body">You cannot apply for this grant on behalf of:</p>
+          <p class="govuk-body">The following public sector bodies are not eligible for a grant:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>a government department</li>
-            <li>an executive agency</li>
-            <li>a non-departmental public body such as the Environment Agency or the Forestry Commission</li>
-            <li>a public body unless it is a local authority, National Park Authority or the Crown Estate</li>
+            <li>government departments</li>
+            <li>executive agencies</li>
+            <li>non-departmental public bodies (NDPB)</li>
+            <li>public bodies (excluding local authorities, national park authorities and the Crown Estate)</li>
           </ul>
       - name: eligibleOrganisation
         id: 072ea72d-4330-4944-9d85-d0e7655cfcff
@@ -729,7 +729,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have all the required planning permission within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a Grant Funding Agreement, you must have all the required planning permission within 12 months of your Grant Funding Agreement or before making your first claim (if this is earlier).</p>
           <p class="govuk-body">Read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetPlanningPermission
         id: 8f8e667b-84a4-4c39-940b-fdc9d8b67063
@@ -790,7 +790,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a Grant Funding Agreement, you must have the required abstraction licences within 12 months of your Grant Funding Agreement or before making your first claim (if this is earlier).</p>
           <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetAbstractionLicence
         id: 4778d175-9398-4223-a20b-3fc64c0f4069
@@ -798,7 +798,7 @@ pages:
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I confirm I will apply for an abstraction licence
+          declarationConfirmationLabel: I confirm I will apply for an abstraction licence if required
         shortDescription: Abstraction licence declaration
   # 1.10 Score results
   - title: Your project score
@@ -856,7 +856,7 @@ pages:
         id: 965df9cc-eeca-4fd5-ac5a-815eab8513cd
         type: Html
         content: >
-          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a grant funding agreement.</p>
+          <p class="govuk-body">Tell us when you expect to start work on your project. The earliest date you can enter is March 2027. You cannot start work before you are offered and accept a Grant Funding Agreement.</p>
           <p class="govuk-body">The date you choose should allow you time to complete the work and submit your final claim by 31 March 2030.</p>
       - name: expectedProjectStartDate
         id: 331371cf-61c9-4753-b8c6-a0238ae1375b
@@ -1107,7 +1107,7 @@ pages:
           </div>
           <h2 class="govuk-heading-m">How your total estimated grant was calculated</h2>
           <p class="govuk-body">Grants are based on reference costs to work out the maximum grant amount you could get. Reference costs are based on the expected average cost for each item. The maximum grant available is £300,000.</p>
-          <p class="govuk-body">If you’re invited to apply for stage 2, and are successful in being offered a grant funding agreement, the grant you can claim for eligible items will be the lower of 40% of the reference costs or 40% of your actual invoiced costs at claim stage.</p>
+          <p class="govuk-body">If you’re invited to apply for stage 2, and are successful in being offered a Grant Funding Agreement, the grant you can claim for eligible items will be the lower of 40% of the reference costs or 40% of your actual invoiced costs at claim stage.</p>
           <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></p>
           <h2 class="govuk-heading-m">Estimated costs</h2>
           <table class="govuk-table">
@@ -1199,7 +1199,7 @@ pages:
             - title: Estimated grant
               stateValue: additionalAnswers.estimatedMaxGrant
               format: currency:gbp
-  # 3.2 Submit application
+  # 3.2 Submit an application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
     path: /application-declaration
@@ -1219,10 +1219,10 @@ pages:
           <p class="govuk-body">By submitting your application, you confirm that:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>the information you have provided is correct to the best of your knowledge</li>
-            <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
+            <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a> about this grant</li>
             <li>you have read, understood and agree to the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3/water-management-grant-round-3-general-terms-and-conditions" class="govuk-link" target="_blank">Water Management grant round 3 general terms and conditions (opens in a new tab)</a> under which this grant is offered</li>
-            <li>you understand that if you are offered the grant, the grant funding agreement may contain specific conditions which will apply for the duration of the agreement</li>
-            <li>you’re not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
+            <li>you understand that should you be offered the grant, the Grant Funding Agreement may contain project specific conditions which will apply for the duration of the agreement</li>
+            <li>you are not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
           </ul>
       - name: acceptTermsAndConditionsOnSubmitApplicationPage
         id: 1eb2dc48-1f2d-4a70-8957-41a71ce41a22
@@ -1408,7 +1408,7 @@ lists:
     name: organisationEligibleList
     type: string
     items:
-      - text: Yes, I confirm my organisation can apply
+      - text: Yes, I confirm my organisation is eligible to apply
         value: Y
         id: e27a11e2-8602-4006-9976-2fabc2df8b25
       - text: No, my organisation is not eligible to apply
@@ -1483,8 +1483,7 @@ lists:
       - text: I need a licence but I do not have it yet
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-      - text: I do not need a licence
-        description: 'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 cubic metres per day'
+      - text: I do not need an abstraction licence for my project because I will, for example, fill the reservoir with harvested rainwater or only abstract less than 20 cubic metres per day, in accordance with Environment Agency guidance
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
   - title: How many businesses will use the water
