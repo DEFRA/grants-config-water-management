@@ -145,7 +145,7 @@ test.describe(
 
           await page
             .getByRole('radio', {
-              name: 'Yes, I confirm my organisation can apply'
+              name: 'Yes, I confirm my organisation is eligible to apply'
             })
             .click()
           await page.getByRole('button', { name: 'Save and continue' }).click()
