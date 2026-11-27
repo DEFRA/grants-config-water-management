@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.9.2
+
+### Patch Changes
+
+- c52b4f1: grants-ui config, go-live, allow access in production
+
 ## 0.9.1
 
 ### Patch Changes
