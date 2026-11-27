@@ -32,6 +32,11 @@ metadata:
     preSubmission:
       - toPath: '/task-list'
     postSubmission:
+      # Support withdrawal
+      - fromGrantsStatus: SUBMITTED
+        gasStatus: APPLICATION_WITHDRAWN
+        toGrantsStatus: CLEARED
+        toPath: /check-details
       # Default fallback
       - fromGrantsStatus: default
         gasStatus: default
