@@ -1,5 +1,11 @@
 # grants-config-water-management
 
+## 0.9.3
+
+### Patch Changes
+
+- 1539799: GRAN-204: Input validations and error message verifications. Also added some minor refactor to existing specs
+
 ## 0.9.2
 
 ### Patch Changes
