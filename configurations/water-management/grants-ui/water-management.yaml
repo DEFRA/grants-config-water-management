@@ -476,12 +476,12 @@ pages:
         id: 448f0088-240b-4270-844f-0360e6fa868b
         type: Html
         content: >
-          <p class="govuk-body">You cannot apply for this grant on behalf of:</p>
+          <p class="govuk-body">The following public sector bodies are not eligible for a grant:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>a government department</li>
-            <li>an executive agency</li>
-            <li>a non-departmental public body such as the Environment Agency or the Forestry Commission</li>
-            <li>a public body unless it is a local authority, National Park Authority or the Crown Estate</li>
+            <li>government departments</li>
+            <li>executive agencies</li>
+            <li>non-departmental public bodies (NDPB)</li>
+            <li>public bodies (excluding local authorities, national park authorities and the Crown Estate)</li>
           </ul>
       - name: eligibleOrganisation
         id: 072ea72d-4330-4944-9d85-d0e7655cfcff
@@ -750,7 +750,7 @@ pages:
         id: 00cafd98-a399-4ac2-8f3a-6a1b845eb2f2
         type: Html
         content: >
-          <p class="govuk-body">If required, you must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
+          <p class="govuk-body">You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the <a href="https://www.gov.uk/guidance/water-management-apply-for-a-water-abstraction-or-impoundment-licence" class="govuk-link" target="_blank">Apply for a water abstraction or impounding licence guidance (opens in a new tab)</a>.</p>
       - name: haveAbstractionLicence
         id: 86e5ae73-ed7b-4720-8f71-5b461adbe382
         title: Will you need an abstraction licence?
@@ -790,7 +790,7 @@ pages:
         type: Html
         content: >
           <p class="govuk-body">You can continue with this application for grant funding.</p>
-          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).</p>
+          <p class="govuk-body">If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner).</p>
           <p class="govuk-body">For more information, read the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a>.</p>
       - name: confirmWillGetAbstractionLicence
         id: 4778d175-9398-4223-a20b-3fc64c0f4069
@@ -798,7 +798,7 @@ pages:
         type: DeclarationField
         options:
           required: true
-          declarationConfirmationLabel: I confirm I will apply for an abstraction licence
+          declarationConfirmationLabel: I confirm I will get an abstraction licence
         shortDescription: Abstraction licence declaration
   # 1.10 Score results
   - title: Your project score
@@ -1199,7 +1199,7 @@ pages:
             - title: Estimated grant
               stateValue: additionalAnswers.estimatedMaxGrant
               format: currency:gbp
-  # 3.2 Submit application
+  # 3.2 Submit an application
   - title: Submit your application
     id: fdef0855-c5ec-4b85-b289-ef9bccb94bfb
     path: /application-declaration
@@ -1221,7 +1221,7 @@ pages:
             <li>the information you have provided is correct to the best of your knowledge</li>
             <li>you have read and understood the information in the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3" class="govuk-link" target="_blank">Water Management grant round 3 guidance (opens in a new tab)</a></li>
             <li>you have read, understood and agree to the <a href="https://www.gov.uk/government/publications/water-management-grant-round-3/water-management-grant-round-3-general-terms-and-conditions" class="govuk-link" target="_blank">Water Management grant round 3 general terms and conditions (opens in a new tab)</a> under which this grant is offered</li>
-            <li>you understand that if you are offered the grant, the grant funding agreement may contain specific conditions which will apply for the duration of the agreement</li>
+            <li>you understand that should you be offered the grant, the Grant Funding Agreement may contain project specific conditions which will apply for the duration of the agreement</li>
             <li>you’re not aware of any circumstances which would prevent you from fulfilling the obligations which will be required of you if your application is successful</li>
           </ul>
       - name: acceptTermsAndConditionsOnSubmitApplicationPage
@@ -1483,8 +1483,7 @@ lists:
       - text: I need a licence but I do not have it yet
         value: N
         id: 16dc7d87-c73f-4fd5-b350-082d32385b09
-      - text: I do not need a licence
-        description: 'For example because you will fill the reservoir only with harvested rainwater or abstract less than 20 cubic metres per day'
+      - text: I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)
         value: NN
         id: 077f18c8-d91c-4b18-8a8b-13997d5b867d
   - title: How many businesses will use the water

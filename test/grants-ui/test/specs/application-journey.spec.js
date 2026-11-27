@@ -353,18 +353,18 @@ test.describe('Water Management Grant application', () => {
         )
         await analyzeAccessibility(page)
         await expect(
-          page.getByText('You cannot apply for this grant on behalf of:')
-        ).toBeVisible()
-        await expect(page.getByText('a government department')).toBeVisible()
-        await expect(page.getByText('an executive agency')).toBeVisible()
-        await expect(
           page.getByText(
-            'a non-departmental public body such as the Environment Agency or the Forestry Commission'
+            'The following public sector bodies are not eligible for a grant:'
           )
         ).toBeVisible()
+        await expect(page.getByText('government departments')).toBeVisible()
+        await expect(page.getByText('executive agencies')).toBeVisible()
+        await expect(
+          page.getByText('non-departmental public bodies (NDPB)')
+        ).toBeVisible()
         await expect(
           page.getByText(
-            'a public body unless it is a local authority, National Park Authority or the Crown Estate'
+            'public bodies (excluding local authorities, national park authorities and the Crown Estate)'
           )
         ).toBeVisible()
         await page
@@ -789,7 +789,7 @@ test.describe('Water Management Grant application', () => {
         await analyzeAccessibility(page)
         await expect(
           page.getByText(
-            'If required, you must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the Apply for a water abstraction or impounding licence guidance (opens in a new tab).'
+            'You must have an abstraction licence that allows you to abstract water for storage and to irrigate agricultural and horticultural crops. For more information, read the Apply for a water abstraction or impounding licence guidance (opens in a new tab).'
           )
         ).toBeVisible()
         await expect(
@@ -819,7 +819,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you must have the required abstraction licences within 12 months of your grant funding agreement or before making your first claim (if this is earlier).'
+            "If you’re invited to stage 2 of the application process, and are successful in being offered a grant funding agreement, you'll need to get an abstraction licence within 12 months of your grant funding agreement or before making your first claim (whichever is sooner)."
           )
         ).toBeVisible()
         await expect(
@@ -834,7 +834,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await page
           .getByRole('checkbox', {
-            name: 'I confirm I will apply for an abstraction licence'
+            name: 'I confirm I will get an abstraction licence'
           })
           .check()
         await page.getByRole('button', { name: 'Save and continue' }).click()
@@ -850,7 +850,7 @@ test.describe('Water Management Grant application', () => {
       await test.step('eligibility-abstraction-licence -> I do not need a licence -> project-score-results -> back -> eligibility-abstraction-licence', async () => {
         await page
           .getByRole('radio', {
-            name: 'I do not need a licence'
+            name: 'I do not need a licence (for example because you’ll only harvest rainwater, you will take no more that 20 cubic metres a day)'
           })
           .click()
         await expect(
@@ -1262,7 +1262,7 @@ test.describe('Water Management Grant application', () => {
         ).toBeVisible()
         await expect(
           page.getByText(
-            'you understand that if you are offered the grant, the grant funding agreement may contain specific conditions which will apply for the duration of the agreement'
+            'you understand that should you be offered the grant, the Grant Funding Agreement may contain project specific conditions which will apply for the duration of the agreement'
           )
         ).toBeVisible()
         await expect(
